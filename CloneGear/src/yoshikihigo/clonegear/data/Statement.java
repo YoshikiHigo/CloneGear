@@ -3,6 +3,7 @@ package yoshikihigo.clonegear.data;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +34,42 @@ public class Statement {
 
 		return statements;
 	}
-	
+
+	public static List<Statement> getFoldedStatements(
+			final List<Statement> statements) {
+
+		final List<Statement> folds = new ArrayList<>();
+		for (int startIndex = 0; startIndex < statements.size();) {
+
+			final Statement startStatement = statements.get(startIndex);
+
+			int endIndex = startIndex;
+			Statement endStatement = statements.get(endIndex);
+			while ((endIndex + 1) < statements.size()) {
+				endStatement = statements.get(endIndex + 1);
+				if (!Arrays.equals(startStatement.hash, endStatement.hash)) {
+					break;
+				}
+			}
+
+			if (startIndex == endIndex) {
+				folds.add(startStatement);
+			}
+
+			else {
+				final int duplication = endIndex - startIndex + 1;
+				final ConsecutiveStatement consecutive = new ConsecutiveStatement(
+						startStatement.fromLine, endStatement.toLine,
+						startStatement.tokens, duplication);
+				folds.add(consecutive);
+			}
+
+			startIndex = endIndex + 1;
+		}
+
+		return folds;
+	}
+
 	private static byte[] makeHash(final List<Token> tokens) {
 
 		final StringBuilder builder = new StringBuilder();
@@ -75,7 +111,7 @@ public class Statement {
 			return new byte[0];
 		}
 	}
-	
+
 	final public int fromLine;
 	final public int toLine;
 	final public List<Token> tokens;

@@ -75,6 +75,14 @@ public class CGFinder {
 				}
 			}
 		}
+		
+		else if(file.isDirectory()){
+			final File[] children = file.listFiles();
+			for(final File child : children){
+				final List<SourceFile> childFiles = getFiles(child);
+				files.addAll(childFiles);
+			}
+		}
 
 		else {
 			assert false : "\"file\" is invalid.";
