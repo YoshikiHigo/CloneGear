@@ -29,6 +29,7 @@ public class CGFinder {
 				while (reader.ready()) {
 					final String line = reader.readLine();
 					textBuilder.append(line);
+					textBuilder.append(System.lineSeparator());
 				}
 			} catch (IOException e) {
 				System.err.print("file \"");
@@ -40,6 +41,13 @@ public class CGFinder {
 			final List<Statement> statements = StringUtility.splitToStatements(
 					textBuilder.toString(), file.getLanguage());
 			file.addStatements(statements);
+		}
+		
+		for(int i = 0 ; i < files.size() ; i++){
+			final SourceFile iFile = files.get(i);
+			for(int j = i + 1; j < files.size(); j++){
+				final SourceFile jFile = files.get(j);				
+			}
 		}
 	}
 
