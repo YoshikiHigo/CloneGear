@@ -125,4 +125,7 @@ public class Statement {
 		this.hash = makeHash(this.tokens);
 	}
 
+	public int getNumberOfTokens(){
+		return this.tokens.size();
+	}
 }

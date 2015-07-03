@@ -5,9 +5,15 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import yoshikihigo.clonegear.data.CFile;
+import yoshikihigo.clonegear.data.CloneHash;
+import yoshikihigo.clonegear.data.ClonedFragment;
 import yoshikihigo.clonegear.data.JavaFile;
 import yoshikihigo.clonegear.data.SourceFile;
 import yoshikihigo.clonegear.data.Statement;
@@ -42,13 +48,29 @@ public class CGFinder {
 					textBuilder.toString(), file.getLanguage());
 			file.addStatements(statements);
 		}
-		
-		for(int i = 0 ; i < files.size() ; i++){
+
+		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = new HashMap<CloneHash, SortedSet<ClonedFragment>>();
+		for (int i = 0; i < files.size(); i++) {
 			final SourceFile iFile = files.get(i);
-			for(int j = i + 1; j < files.size(); j++){
-				final SourceFile jFile = files.get(j);				
+			for (int j = i + 1; j < files.size(); j++) {
+
+				final SourceFile jFile = files.get(j);
+				final SmithWaterman sw = new SmithWaterman(iFile, jFile);
+				final List<ClonedFragment> clonedFragments = sw
+						.getClonedFragments();
+				for (final ClonedFragment clonedFragment : clonedFragments) {
+					final CloneHash hash = new CloneHash(clonedFragment.cloneID);
+					SortedSet<ClonedFragment> cloneset = clonesets.get(hash);
+					if (null == cloneset) {
+						cloneset = new TreeSet<ClonedFragment>();
+						clonesets.put(hash, cloneset);
+					}
+					cloneset.add(clonedFragment);
+				}
 			}
 		}
+
+		print(clonesets);
 	}
 
 	private static List<SourceFile> getFiles(final File file) {
@@ -83,10 +105,10 @@ public class CGFinder {
 				}
 			}
 		}
-		
-		else if(file.isDirectory()){
+
+		else if (file.isDirectory()) {
 			final File[] children = file.listFiles();
-			for(final File child : children){
+			for (final File child : children) {
 				final List<SourceFile> childFiles = getFiles(child);
 				files.addAll(childFiles);
 			}
@@ -97,5 +119,22 @@ public class CGFinder {
 		}
 
 		return files;
+	}
+
+	private static void print(
+			final Map<CloneHash, SortedSet<ClonedFragment>> clonesets) {
+		for (final SortedSet<ClonedFragment> cloneset : clonesets.values()) {
+			System.out.println("----- begin clone set -----");
+			for (final ClonedFragment clonedFragment : cloneset) {
+				System.out.print(clonedFragment.path);
+				System.out.print("\t");
+				System.out
+						.print(Integer.toString(clonedFragment.getFromLine()));
+				System.out.print("--");
+				System.out
+						.println(Integer.toString(clonedFragment.getToLine()));
+			}
+			System.out.println("-----  end clone set  -----");
+		}
 	}
 }
