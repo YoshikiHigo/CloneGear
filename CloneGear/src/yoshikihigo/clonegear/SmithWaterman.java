@@ -74,11 +74,13 @@ public class SmithWaterman {
 				}
 
 				else if ((upValue <= leftValue) && (upleftValue <= leftValue)) {
-					table[x][y] = new Cell((leftValue > 0 ? leftValue : 0), match,
-							x, y, (leftValue > 0 ? left : null));
+					table[x][y] = new Cell((leftValue > 0 ? leftValue : 0),
+							match, x, y, (leftValue > 0 ? left : null));
 				}
 			}
 		}
+
+		final List<ClonedFragment> clonedFragments = new ArrayList<>();
 
 		final List<Change> changes = new ArrayList<Change>();
 		Cell current = table[array1.size() - 1][array2.size() - 1];
@@ -135,6 +137,47 @@ public class SmithWaterman {
 		}
 
 		return changes;
+	}
+
+	private Cell getMaxCell(final Cell[][] table) {
+		Cell maxCell = table[0][0];
+		for (int x = table.length - 1; 0 <= x; x--) {
+			for (int y = table[0].length - 1; 0 <= y; y--) {
+				if (!table[x][y].isChecked()
+						&& (maxCell.value < table[x][y].value)) {
+					maxCell = table[x][y];
+				}
+			}
+		}
+		return maxCell;
+	}
+
+	private Cell getMinCell(final Cell maxCell) {
+		Cell minCell = maxCell;
+		while (0 < minCell.value) {
+			minCell = minCell.base;
+		}
+		return minCell;
+	}
+
+	public ClonedFragment getClonedFragment(final String path,
+			final List<Statement> statements, final int fromIndex,
+			final int toIndex) {
+		final List<Statement> clonedStatements = new ArrayList<>();
+		for (int index = fromIndex; index <= toIndex; index++) {
+			clonedStatements.add(statements.get(index));
+		}
+		new ClonedFragment(path, clonedStatements);
+	}
+
+	private void switchToChecked(final Cell[][] table, final int fromX,
+			final int toX, final int fromY, final int toY) {
+		for (int x = fromX; x <= toX; x++) {
+			for (int y = fromY; y <= toY; y++) {
+				assert !table[x][y].isChecked() : "this cell must not be a checked-state.";
+				table[x][y].switchToChecked();
+			}
+		}
 	}
 
 	public static List<Token> getTokens(final List<Statement> statements) {
@@ -271,6 +314,7 @@ class Cell {
 	final public int x;
 	final public int y;
 	final public Cell base;
+	private boolean checked;
 
 	public Cell(final int value, final boolean match, final int x, final int y,
 			final Cell base) {
@@ -279,5 +323,14 @@ class Cell {
 		this.x = x;
 		this.y = y;
 		this.base = base;
+		this.checked = false;
+	}
+
+	public void switchToChecked() {
+		this.checked = true;
+	}
+
+	public boolean isChecked() {
+		return this.checked;
 	}
 }
