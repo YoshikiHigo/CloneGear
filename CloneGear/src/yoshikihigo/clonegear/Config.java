@@ -29,6 +29,15 @@ public class Config {
 		}
 
 		{
+			final Option option = new Option("o", "output", true,
+					"output file for detection results");
+			option.setArgName("file");
+			option.setArgs(1);
+			option.setRequired(false);
+			options.addOption(option);
+		}
+		
+		{
 			final Option option = new Option("lang", "language", true,
 					"programming language for analysis");
 			option.setArgName("language");
@@ -129,6 +138,18 @@ public class Config {
 		return this.commandLine.getOptionValue("src");
 	}
 
+	public boolean hasOUTPUT() {
+		return this.commandLine.hasOption("o");
+	}
+	
+	public String getOUTPUT(){
+		if(!this.commandLine.hasOption("o")){
+			System.err.println("option \"o\" is not specified.");
+			System.exit(0);
+		}
+		return this.commandLine.getOptionValue("o");
+	}
+	
 	public int getTHRESHOLD() {
 		return this.commandLine.hasOption("thrld") ? Integer
 				.parseInt(this.commandLine.getOptionValue("thrld")) : 30;

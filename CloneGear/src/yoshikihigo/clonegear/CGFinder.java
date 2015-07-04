@@ -1,9 +1,12 @@
 package yoshikihigo.clonegear;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,11 +27,20 @@ public class CGFinder {
 
 		Config.initialize(args);
 		final long startTime = System.nanoTime();
-		
+
 		final List<SourceFile> files = getFiles(new File(Config.getInstance()
 				.getSource()));
+		int number = 1;
 
 		for (final SourceFile file : files) {
+
+			if (Config.getInstance().isVERBOSE()) {
+				System.out.print(Integer.toString(number++));
+				System.out.print("/");
+				System.out.print(Integer.toString(files.size()));
+				System.out.print(": parsing ");
+				System.out.println(file.path);
+			}
 
 			final StringBuilder textBuilder = new StringBuilder();
 			try (final BufferedReader reader = new BufferedReader(
@@ -71,14 +83,16 @@ public class CGFinder {
 		}
 
 		print(clonesets);
-		
+
 		final long endTime = System.nanoTime();
 		System.out.print("execution time: ");
 		System.out.println(TimingUtility.getExecutionTime(startTime, endTime));
 		System.out.print("matrix creation time: ");
-		System.out.println(TimingUtility.getExecutionTime(SmithWaterman.getMatrixCreationTime()));
+		System.out.println(TimingUtility.getExecutionTime(SmithWaterman
+				.getMatrixCreationTime()));
 		System.out.print("clone detection time: ");
-		System.out.println(TimingUtility.getExecutionTime(SmithWaterman.getCloneDetectionTime()));
+		System.out.println(TimingUtility.getExecutionTime(SmithWaterman
+				.getCloneDetectionTime()));
 	}
 
 	private static List<SourceFile> getFiles(final File file) {
@@ -131,18 +145,29 @@ public class CGFinder {
 
 	private static void print(
 			final Map<CloneHash, SortedSet<ClonedFragment>> clonesets) {
-		for (final SortedSet<ClonedFragment> cloneset : clonesets.values()) {
-			System.out.println("----- begin clone set -----");
-			for (final ClonedFragment clonedFragment : cloneset) {
-				System.out.print(clonedFragment.path);
-				System.out.print("\t");
-				System.out
-						.print(Integer.toString(clonedFragment.getFromLine()));
-				System.out.print("--");
-				System.out
-						.println(Integer.toString(clonedFragment.getToLine()));
+
+		try (final BufferedWriter writer = Config.getInstance().hasOUTPUT() ? new BufferedWriter(
+				new FileWriter(Config.getInstance().getOUTPUT()))
+				: new BufferedWriter(new OutputStreamWriter(System.out))) {
+
+			for (final SortedSet<ClonedFragment> cloneset : clonesets.values()) {
+				writer.write("----- begin clone set -----");
+				writer.newLine();
+				for (final ClonedFragment clonedFragment : cloneset) {
+					writer.write(clonedFragment.path);
+					writer.write("\t");
+					writer.write(Integer.toString(clonedFragment.getFromLine()));
+					writer.write("--");
+					writer.write(Integer.toString(clonedFragment.getToLine()));
+					writer.newLine();
+				}
+				writer.write("-----  end clone set  -----");
+				writer.newLine();
 			}
-			System.out.println("-----  end clone set  -----");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(0);
 		}
 	}
 }
