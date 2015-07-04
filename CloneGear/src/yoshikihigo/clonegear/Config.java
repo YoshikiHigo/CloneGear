@@ -38,6 +38,15 @@ public class Config {
 		}
 
 		{
+			final Option option = new Option("thrld", "threshold", true,
+					"threshold of detected clone size");
+			option.setArgName("threshold");
+			option.setArgs(1);
+			option.setRequired(false);
+			options.addOption(option);
+		}
+		
+		{
 			final Option option = new Option("soft", "software", true,
 					"software name");
 			option.setArgName("software");
@@ -120,6 +129,11 @@ public class Config {
 		return this.commandLine.getOptionValue("src");
 	}
 
+	public int getTHRESHOLD() {
+		return this.commandLine.hasOption("thrld") ? Integer
+				.parseInt(this.commandLine.getOptionValue("thrld")) : 30;
+	}
+	
 	public int getTHREAD() {
 		return this.commandLine.hasOption("thd") ? Integer
 				.parseInt(this.commandLine.getOptionValue("thd")) : 1;

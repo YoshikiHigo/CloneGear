@@ -54,19 +54,7 @@ public class CGFinder {
 		for (int i = 0; i < files.size(); i++) {
 			final SourceFile iFile = files.get(i);
 			for (int j = i + 1; j < files.size(); j++) {
-
 				final SourceFile jFile = files.get(j);
-				
-				System.out.print(Integer.toString(i));
-				System.out.print("(");
-				System.out.print(Integer.toString(iFile.getStatements().size()));
-				System.out.print("), ");
-				System.out.print(Integer.toString(j));
-				System.out.print("(");
-				System.out.print(Integer.toString(jFile.getStatements().size()));
-				System.out.println(")");
-				
-				
 				final SmithWaterman sw = new SmithWaterman(iFile, jFile);
 				final List<ClonedFragment> clonedFragments = sw
 						.getClonedFragments();

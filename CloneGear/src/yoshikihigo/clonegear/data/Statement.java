@@ -14,21 +14,23 @@ import yoshikihigo.clonegear.lexer.token.Token;
 
 public class Statement {
 
-	public static List<Statement> getStatements(final List<Token> tokens) {
+	public static List<Statement> getStatements(final List<Token> allTokens) {
 
 		final List<Statement> statements = new ArrayList<Statement>();
-		List<Token> tokensForaStatement = new ArrayList<Token>();
+		List<Token> tokens = new ArrayList<Token>();
 
-		for (final Token token : tokens) {
+		for (final Token token : allTokens) {
 
-			tokensForaStatement.add(token);
+			tokens.add(token);
 
 			if (token.value.equals("{") || token.value.equals("}")
 					|| token.value.equals(";") || token.value.startsWith("@")) {
-				final Statement statement = new Statement(0, 0,
-						tokensForaStatement);
+				final int fromLine = tokens.get(0).line;
+				final int toLine = tokens.get(tokens.size() - 1).line;
+				final Statement statement = new Statement(fromLine, toLine,
+						tokens);
 				statements.add(statement);
-				tokensForaStatement = new ArrayList<Token>();
+				tokens = new ArrayList<Token>();
 			}
 		}
 
@@ -125,7 +127,7 @@ public class Statement {
 		this.hash = makeHash(this.tokens);
 	}
 
-	public int getNumberOfTokens(){
+	public int getNumberOfTokens() {
 		return this.tokens.size();
 	}
 }

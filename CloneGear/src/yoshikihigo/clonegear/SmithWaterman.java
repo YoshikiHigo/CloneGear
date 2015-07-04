@@ -108,20 +108,21 @@ public class SmithWaterman {
 
 		final long startDetectingClones = System.nanoTime();
 
+		final int threshold = Config.getInstance().getTHRESHOLD();
 		final List<ClonedFragment> clonedFragments = new ArrayList<>();
-
 		for (final Cell maxCell : this.getLocalMaximumCells(table)) {
 			if (maxCell.isChecked()) {
 				continue;
 			}
 			final Cell minCell = getMinCell(maxCell);
 			final byte[][] cloneHash = getCloneHash(minCell, maxCell);
+
 			final ClonedFragment xClonedFragment = getClonedFragment(path1,
 					this.statements1, minCell.x, maxCell.x, cloneHash);
 			final ClonedFragment yClonedFragment = getClonedFragment(path2,
 					this.statements2, minCell.y, maxCell.y, cloneHash);
-			if ((0 <= xClonedFragment.getNumberOfTokens())
-					&& (0 <= yClonedFragment.getNumberOfTokens())) {
+			if ((threshold <= xClonedFragment.getNumberOfTokens())
+					&& (threshold <= yClonedFragment.getNumberOfTokens())) {
 				clonedFragments.add(xClonedFragment);
 				clonedFragments.add(yClonedFragment);
 				switchToChecked(table, minCell.x, maxCell.x, minCell.y,
