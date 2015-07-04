@@ -3,12 +3,24 @@ package yoshikihigo.clonegear;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 import yoshikihigo.clonegear.data.ClonedFragment;
 import yoshikihigo.clonegear.data.SourceFile;
 import yoshikihigo.clonegear.data.Statement;
 
 public class SmithWaterman {
+
+	final private static AtomicLong CREATE_MATRIX_TIME = new AtomicLong(0);
+	final private static AtomicLong DETECT_CLONE_TIME = new AtomicLong(0);
+
+	public static long getMatrixCreationTime() {
+		return CREATE_MATRIX_TIME.get();
+	}
+
+	public static long getCloneDetectionTime() {
+		return DETECT_CLONE_TIME.get();
+	}
 
 	final private String path1;
 	final private String path2;
@@ -27,6 +39,8 @@ public class SmithWaterman {
 		if (this.statements1.isEmpty() || this.statements2.isEmpty()) {
 			return new ArrayList<ClonedFragment>();
 		}
+
+		final long startCreatingMatrix = System.nanoTime();
 
 		final Cell[][] table = new Cell[this.statements1.size()][this.statements2
 				.size()];
@@ -89,9 +103,17 @@ public class SmithWaterman {
 			}
 		}
 
+		final long endCreatingMatrix = System.nanoTime();
+		CREATE_MATRIX_TIME.addAndGet(endCreatingMatrix - startCreatingMatrix);
+
+		final long startDetectingClones = System.nanoTime();
+
 		final List<ClonedFragment> clonedFragments = new ArrayList<>();
 
-		for (Cell maxCell = getMaxCell(table); 0 < maxCell.value; maxCell = getMaxCell(table)) {
+		for (final Cell maxCell : this.getLocalMaximumCells(table)) {
+			if (maxCell.isChecked()) {
+				continue;
+			}
 			final Cell minCell = getMinCell(maxCell);
 			final byte[][] cloneHash = getCloneHash(minCell, maxCell);
 			final ClonedFragment xClonedFragment = getClonedFragment(path1,
@@ -107,30 +129,30 @@ public class SmithWaterman {
 			}
 		}
 
+		final long endDetectingClones = System.nanoTime();
+		DETECT_CLONE_TIME.addAndGet(endDetectingClones - startDetectingClones);
+
 		return clonedFragments;
 	}
 
-	private Cell getMaxCell(final Cell[][] table) {
-		Cell maxCell = table[0][0];
+	private List<Cell> getLocalMaximumCells(final Cell[][] table) {
+		final List<Cell> cells = new ArrayList<>();
 		int x = table.length - 1;
 		int y = table[0].length - 1;
 		while ((0 < x) || (0 < y)) {
-
-			if (!table[x][y].isChecked() && (maxCell.value < table[x][y].value)) {
-				maxCell = table[x][y];
+			if (this.isLocalMaximum(table, x, y)) {
+				cells.add(table[x][y]);
 			}
 
 			for (int index = x - 1; 0 <= index; index--) {
-				if (!table[index][y].isChecked()
-						&& (maxCell.value < table[index][y].value)) {
-					maxCell = table[index][y];
+				if (this.isLocalMaximum(table, index, y)) {
+					cells.add(table[index][y]);
 				}
 			}
 
 			for (int index = y - 1; 0 <= index; index--) {
-				if (!table[x][index].isChecked()
-						&& (maxCell.value < table[x][index].value)) {
-					maxCell = table[x][index];
+				if (this.isLocalMaximum(table, x, index)) {
+					cells.add(table[x][index]);
 				}
 			}
 
@@ -138,16 +160,57 @@ public class SmithWaterman {
 			y = (y > 0) ? y - 1 : 0;
 		}
 
-		return maxCell;
+		return cells;
+	}
+
+	private boolean isLocalMaximum(final Cell[][] table, final int x,
+			final int y) {
+		final int value = table[x][y].value;
+		final int maxX = table.length - 1;
+		final int maxY = table[0].length - 1;
+
+		if ((0 < x) && (0 < y) && (table[x - 1][y - 1].value > value)) {
+			return false;
+		}
+
+		if ((0 < x) && (table[x - 1][y].value > value)) {
+			return false;
+		}
+
+		if ((0 < y) && (table[x][y - 1].value > value)) {
+			return false;
+		}
+
+		if ((0 < x) && (y < maxY) && (table[x - 1][y + 1].value > value)) {
+			return false;
+		}
+
+		if ((x < maxX) && (0 < y) && (table[x + 1][y - 1].value > value)) {
+			return false;
+		}
+
+		if ((y < maxY) && (table[x][y + 1].value > value)) {
+			return false;
+		}
+
+		if ((x < maxX) && (table[x + 1][y].value > value)) {
+			return false;
+		}
+
+		if ((x < maxX) && (y < maxY) && (table[x + 1][y + 1].value > value)) {
+			return false;
+		}
+
+		return true;
 	}
 
 	private Cell getMinCell(final Cell maxCell) {
 		Cell minCell = maxCell;
-		while(true){
-			if(0 == minCell.value){
+		while (true) {
+			if (0 == minCell.value) {
 				break;
 			}
-			if(minCell.base.isChecked()){
+			if (minCell.base.isChecked()) {
 				break;
 			}
 			minCell = minCell.base;
@@ -182,7 +245,8 @@ public class SmithWaterman {
 			final int toX, final int fromY, final int toY) {
 		for (int x = fromX; x <= toX; x++) {
 			for (int y = fromY; y <= toY; y++) {
-				//assert !table[x][y].isChecked() : "this cell must not be a checked-state.";
+				// assert !table[x][y].isChecked() :
+				// "this cell must not be a checked-state.";
 				table[x][y].switchToChecked();
 			}
 		}

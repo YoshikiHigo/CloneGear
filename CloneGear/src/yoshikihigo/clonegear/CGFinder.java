@@ -23,7 +23,8 @@ public class CGFinder {
 	public static void main(final String[] args) {
 
 		Config.initialize(args);
-
+		final long startTime = System.nanoTime();
+		
 		final List<SourceFile> files = getFiles(new File(Config.getInstance()
 				.getSource()));
 
@@ -55,6 +56,17 @@ public class CGFinder {
 			for (int j = i + 1; j < files.size(); j++) {
 
 				final SourceFile jFile = files.get(j);
+				
+				System.out.print(Integer.toString(i));
+				System.out.print("(");
+				System.out.print(Integer.toString(iFile.getStatements().size()));
+				System.out.print("), ");
+				System.out.print(Integer.toString(j));
+				System.out.print("(");
+				System.out.print(Integer.toString(jFile.getStatements().size()));
+				System.out.println(")");
+				
+				
 				final SmithWaterman sw = new SmithWaterman(iFile, jFile);
 				final List<ClonedFragment> clonedFragments = sw
 						.getClonedFragments();
@@ -71,6 +83,14 @@ public class CGFinder {
 		}
 
 		print(clonesets);
+		
+		final long endTime = System.nanoTime();
+		System.out.print("execution time: ");
+		System.out.println(TimingUtility.getExecutionTime(startTime, endTime));
+		System.out.print("matrix creation time: ");
+		System.out.println(TimingUtility.getExecutionTime(SmithWaterman.getMatrixCreationTime()));
+		System.out.print("clone detection time: ");
+		System.out.println(TimingUtility.getExecutionTime(SmithWaterman.getCloneDetectionTime()));
 	}
 
 	private static List<SourceFile> getFiles(final File file) {
