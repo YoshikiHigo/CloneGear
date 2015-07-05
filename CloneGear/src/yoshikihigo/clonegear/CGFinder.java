@@ -30,54 +30,76 @@ public class CGFinder {
 
 		final List<SourceFile> files = getFiles(new File(Config.getInstance()
 				.getSource()));
-		int number = 1;
 
-		for (final SourceFile file : files) {
-
-			if (Config.getInstance().isVERBOSE()) {
-				System.err.print(Integer.toString(number++));
-				System.err.print("/");
-				System.err.print(Integer.toString(files.size()));
-				System.err.print(": parsing ");
-				System.err.println(file.path);
+		{
+			if (!Config.getInstance().isVERBOSE()) {
+				System.err.print("parsing source files ... ");
 			}
 
-			final StringBuilder textBuilder = new StringBuilder();
-			try (final BufferedReader reader = new BufferedReader(
-					new FileReader(file.path))) {
-				while (reader.ready()) {
-					final String line = reader.readLine();
-					textBuilder.append(line);
-					textBuilder.append(System.lineSeparator());
+			int number = 1;
+			for (final SourceFile file : files) {
+
+				if (Config.getInstance().isVERBOSE()) {
+					System.err.print(Integer.toString(number++));
+					System.err.print("/");
+					System.err.print(Integer.toString(files.size()));
+					System.err.print(": parsing ");
+					System.err.println(file.path);
 				}
-			} catch (IOException e) {
-				System.err.print("file \"");
-				System.err.print(file.path);
-				System.err.println("\" is unreeadable.");
-				continue;
+
+				final StringBuilder textBuilder = new StringBuilder();
+				try (final BufferedReader reader = new BufferedReader(
+						new FileReader(file.path))) {
+					while (reader.ready()) {
+						final String line = reader.readLine();
+						textBuilder.append(line);
+						textBuilder.append(System.lineSeparator());
+					}
+				} catch (IOException e) {
+					System.err.print("file \"");
+					System.err.print(file.path);
+					System.err.println("\" is unreeadable.");
+					continue;
+				}
+
+				final List<Statement> statements = StringUtility
+						.splitToStatements(textBuilder.toString(),
+								file.getLanguage());
+				file.addStatements(statements);
 			}
 
-			final List<Statement> statements = StringUtility.splitToStatements(
-					textBuilder.toString(), file.getLanguage());
-			file.addStatements(statements);
+			if (!Config.getInstance().isVERBOSE()) {
+				System.err.println("done.");
+			}
 		}
 
 		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = new HashMap<CloneHash, SortedSet<ClonedFragment>>();
-		for (int i = 0; i < files.size(); i++) {
-			final SourceFile iFile = files.get(i);
-			for (int j = i + 1; j < files.size(); j++) {
-				final SourceFile jFile = files.get(j);
-				final SmithWaterman sw = new SmithWaterman(iFile, jFile);
-				final List<ClonedFragment> clonedFragments = sw
-						.getClonedFragments();
-				for (final ClonedFragment clonedFragment : clonedFragments) {
-					final CloneHash hash = new CloneHash(clonedFragment.cloneID);
-					SortedSet<ClonedFragment> cloneset = clonesets.get(hash);
-					if (null == cloneset) {
-						cloneset = new TreeSet<ClonedFragment>();
-						clonesets.put(hash, cloneset);
+		{
+			if (!Config.getInstance().isVERBOSE()) {
+				System.err.print("detecting clones ... ");
+			}
+
+			final int totalNumber = files.size() * files.size()
+					- sum(files.size() - 1);
+			int number = 0;
+			for (int i = 0; i < files.size(); i++) {
+				final SourceFile iFile = files.get(i);
+				for (int j = i; j < files.size(); j++) {
+					final SourceFile jFile = files.get(j);
+					final SmithWaterman sw = new SmithWaterman(iFile, jFile);
+					final List<ClonedFragment> clonedFragments = sw
+							.getClonedFragments();
+					for (final ClonedFragment clonedFragment : clonedFragments) {
+						final CloneHash hash = new CloneHash(
+								clonedFragment.cloneID);
+						SortedSet<ClonedFragment> cloneset = clonesets
+								.get(hash);
+						if (null == cloneset) {
+							cloneset = new TreeSet<ClonedFragment>();
+							clonesets.put(hash, cloneset);
+						}
+						cloneset.add(clonedFragment);
 					}
-					cloneset.add(clonedFragment);
 				}
 			}
 		}
@@ -149,6 +171,14 @@ public class CGFinder {
 		return files;
 	}
 
+	private static int sum(final int upper) {
+		int sum = 0;
+		for (int i = 0; i < upper; i++) {
+			sum += i;
+		}
+		return sum;
+	}
+
 	private static void print(
 			final Map<CloneHash, SortedSet<ClonedFragment>> clonesets) {
 
@@ -156,19 +186,19 @@ public class CGFinder {
 				new FileWriter(Config.getInstance().getOUTPUT()))
 				: new BufferedWriter(new OutputStreamWriter(System.out))) {
 
+			int clonesetID = 0;
 			for (final SortedSet<ClonedFragment> cloneset : clonesets.values()) {
-				writer.write("----- begin clone set -----");
-				writer.newLine();
 				for (final ClonedFragment clonedFragment : cloneset) {
+					writer.write(Integer.toString(clonesetID));
+					writer.write("\t");
 					writer.write(clonedFragment.path);
 					writer.write("\t");
 					writer.write(Integer.toString(clonedFragment.getFromLine()));
-					writer.write("--");
+					writer.write("\t");
 					writer.write(Integer.toString(clonedFragment.getToLine()));
 					writer.newLine();
 				}
-				writer.write("-----  end clone set  -----");
-				writer.newLine();
+				clonesetID++;
 			}
 
 		} catch (IOException e) {
