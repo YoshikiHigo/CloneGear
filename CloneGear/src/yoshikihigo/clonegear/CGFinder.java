@@ -35,11 +35,11 @@ public class CGFinder {
 		for (final SourceFile file : files) {
 
 			if (Config.getInstance().isVERBOSE()) {
-				System.out.print(Integer.toString(number++));
-				System.out.print("/");
-				System.out.print(Integer.toString(files.size()));
-				System.out.print(": parsing ");
-				System.out.println(file.path);
+				System.err.print(Integer.toString(number++));
+				System.err.print("/");
+				System.err.print(Integer.toString(files.size()));
+				System.err.print(": parsing ");
+				System.err.println(file.path);
 			}
 
 			final StringBuilder textBuilder = new StringBuilder();
@@ -85,14 +85,20 @@ public class CGFinder {
 		print(clonesets);
 
 		final long endTime = System.nanoTime();
-		System.out.print("execution time: ");
-		System.out.println(TimingUtility.getExecutionTime(startTime, endTime));
-		System.out.print("matrix creation time: ");
-		System.out.println(TimingUtility.getExecutionTime(SmithWaterman
-				.getMatrixCreationTime()));
-		System.out.print("clone detection time: ");
-		System.out.println(TimingUtility.getExecutionTime(SmithWaterman
-				.getCloneDetectionTime()));
+		if (Config.getInstance().isVERBOSE()) {
+			final StringBuilder text = new StringBuilder();
+			text.append("execution time: ");
+			text.append(TimingUtility.getExecutionTime(startTime, endTime));
+			text.append(System.lineSeparator());
+			text.append("matrix creation time: ");
+			text.append(TimingUtility.getExecutionTime(SmithWaterman
+					.getMatrixCreationTime()));
+			text.append(System.lineSeparator());
+			text.append("clone detection time: ");
+			text.append(TimingUtility.getExecutionTime(SmithWaterman
+					.getCloneDetectionTime()));
+			System.err.println(text.toString());
+		}
 	}
 
 	private static List<SourceFile> getFiles(final File file) {

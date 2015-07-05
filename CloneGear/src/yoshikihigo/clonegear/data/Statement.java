@@ -18,19 +18,32 @@ public class Statement {
 
 		final List<Statement> statements = new ArrayList<Statement>();
 		List<Token> tokens = new ArrayList<Token>();
+		int nestLevel = 0;
 
 		for (final Token token : allTokens) {
 
-			tokens.add(token);
+			if (!token.value.equals("{") && !token.value.equals("}")) {
+				tokens.add(token);
+			}
+
+			if (token.value.equals("}")) {
+				nestLevel--;
+			}
 
 			if (token.value.equals("{") || token.value.equals("}")
 					|| token.value.equals(";") || token.value.startsWith("@")) {
-				final int fromLine = tokens.get(0).line;
-				final int toLine = tokens.get(tokens.size() - 1).line;
-				final Statement statement = new Statement(fromLine, toLine,
-						tokens);
-				statements.add(statement);
-				tokens = new ArrayList<Token>();
+				if (!tokens.isEmpty()) {
+					final int fromLine = tokens.get(0).line;
+					final int toLine = tokens.get(tokens.size() - 1).line;
+					final Statement statement = new Statement(fromLine, toLine,
+							nestLevel, tokens);
+					statements.add(statement);
+					tokens = new ArrayList<Token>();
+				}
+			}
+
+			if (token.value.equals("{")) {
+				nestLevel++;
 			}
 		}
 
@@ -44,12 +57,18 @@ public class Statement {
 		for (int startIndex = 0; startIndex < statements.size();) {
 
 			final Statement startStatement = statements.get(startIndex);
+			final int startNestLevel = startStatement.nestLevel;
 
 			int endIndex = startIndex;
 			Statement endStatement = statements.get(endIndex);
 			while ((endIndex + 1) < statements.size()) {
 				endStatement = statements.get(endIndex + 1);
 				if (!Arrays.equals(startStatement.hash, endStatement.hash)) {
+					break;
+				}
+
+				final int endNestLevel = endStatement.nestLevel;
+				if (startNestLevel != endNestLevel) {
 					break;
 				}
 			}
@@ -62,7 +81,8 @@ public class Statement {
 				final int duplication = endIndex - startIndex + 1;
 				final ConsecutiveStatement consecutive = new ConsecutiveStatement(
 						startStatement.fromLine, endStatement.toLine,
-						startStatement.tokens, duplication);
+						startStatement.nestLevel, startStatement.tokens,
+						duplication);
 				folds.add(consecutive);
 			}
 
@@ -116,13 +136,15 @@ public class Statement {
 
 	final public int fromLine;
 	final public int toLine;
+	final public int nestLevel;
 	final public List<Token> tokens;
 	final public byte[] hash;
 
-	public Statement(final int fromLine, final int toLine,
+	public Statement(final int fromLine, final int toLine, final int nestLevel,
 			final List<Token> tokens) {
 		this.fromLine = fromLine;
 		this.toLine = toLine;
+		this.nestLevel = nestLevel;
 		this.tokens = Collections.unmodifiableList(tokens);
 		this.hash = makeHash(this.tokens);
 	}
