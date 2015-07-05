@@ -3,6 +3,8 @@ package yoshikihigo.clonegear.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import yoshikihigo.clonegear.LANGUAGE;
+
 public abstract class SourceFile {
 
 	final public String path;
@@ -27,5 +29,5 @@ public abstract class SourceFile {
 		return statements;
 	}
 
-	abstract public String getLanguage();
+	abstract public LANGUAGE getLanguage();
 }

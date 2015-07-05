@@ -1,5 +1,7 @@
 package yoshikihigo.clonegear.data;
 
+import yoshikihigo.clonegear.LANGUAGE;
+
 public class JavaFile extends SourceFile {
 
 	public JavaFile(final String path){
@@ -7,7 +9,7 @@ public class JavaFile extends SourceFile {
 	}
 	
 	@Override
-	public String getLanguage(){
-		return "java";
+	public LANGUAGE getLanguage(){
+		return LANGUAGE.JAVA;
 	}
 }

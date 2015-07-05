@@ -13,7 +13,7 @@ import yoshikihigo.commentremover.CommentRemover;
 public class StringUtility {
 
 	public static List<Statement> splitToStatements(final String text,
-			final String language) {
+			final LANGUAGE language) {
 
 		if (text.isEmpty()) {
 			return new ArrayList<Statement>();
@@ -21,7 +21,7 @@ public class StringUtility {
 
 		final String[] args = new String[8];
 		args[0] = "-l";
-		args[1] = language;
+		args[1] = language.value;
 		args[2] = "-i";
 		args[3] = text;
 		args[4] = "-q";
@@ -34,11 +34,12 @@ public class StringUtility {
 
 		final LineLexer lexer;
 		switch (language) {
-		case "java": {
+		case JAVA: {
 			lexer = new JavaLineLexer();
 			break;
 		}
-		case "c": {
+		case C:
+		case CPP: {
 			lexer = new CLineLexer();
 			break;
 		}

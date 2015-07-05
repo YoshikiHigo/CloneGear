@@ -22,38 +22,38 @@ public class SmithWaterman {
 		return DETECT_CLONE_TIME.get();
 	}
 
-	final private String path1;
-	final private String path2;
-	final private List<Statement> statements1;
-	final private List<Statement> statements2;
+	final SourceFile file1;
+	final SourceFile file2;
 
 	public SmithWaterman(final SourceFile file1, final SourceFile file2) {
-		this.path1 = file1.path;
-		this.path2 = file2.path;
-		this.statements1 = file1.getStatements();
-		this.statements2 = file2.getStatements();
+		this.file1 = file1;
+		this.file2 = file2;
 	}
 
 	public List<ClonedFragment> getClonedFragments() {
 
-		if (this.statements1.isEmpty() || this.statements2.isEmpty()) {
+		final List<Statement> statements1 = this.file1.getStatements();
+		final List<Statement> statements2 = this.file2.getStatements();
+		final LANGUAGE language1 = this.file1.getLanguage();
+		final LANGUAGE language2 = this.file2.getLanguage();
+
+		if (statements1.isEmpty() || statements2.isEmpty()) {
 			return new ArrayList<ClonedFragment>();
 		}
 
 		final long startCreatingMatrix = System.nanoTime();
 
-		final Cell[][] table = new Cell[this.statements1.size()][this.statements2
-				.size()];
+		final Cell[][] table = new Cell[statements1.size()][statements2.size()];
 
-		if (this.statements1.get(0).hash == this.statements2.get(0).hash) {
+		if (statements1.get(0).hash == statements2.get(0).hash) {
 			table[0][0] = new Cell(2, true, 0, 0, null);
 		} else {
 			table[0][0] = new Cell(0, false, 0, 0, null);
 		}
 
 		for (int x = 1; x < statements1.size(); x++) {
-			final boolean match = Arrays.equals(this.statements1.get(x).hash,
-					this.statements2.get(0).hash);
+			final boolean match = Arrays.equals(statements1.get(x).hash,
+					statements2.get(0).hash);
 			if (table[x - 1][0].value > 2) {
 				final Cell base = table[x - 1][0];
 				table[x][0] = new Cell(base.value - 1, match, x, 0, base);
@@ -62,9 +62,9 @@ public class SmithWaterman {
 			}
 		}
 
-		for (int y = 1; y < this.statements2.size(); y++) {
-			final boolean match = Arrays.equals(this.statements1.get(0).hash,
-					this.statements2.get(y).hash);
+		for (int y = 1; y < statements2.size(); y++) {
+			final boolean match = Arrays.equals(statements1.get(0).hash,
+					statements2.get(y).hash);
 			if (table[0][y - 1].value > 2) {
 				final Cell base = table[0][y - 1];
 				table[0][y] = new Cell(base.value - 1, match, 0, y, base);
@@ -73,12 +73,11 @@ public class SmithWaterman {
 			}
 		}
 
-		for (int x = 1; x < this.statements1.size(); x++) {
-			for (int y = 1; y < this.statements2.size(); y++) {
+		for (int x = 1; x < statements1.size(); x++) {
+			for (int y = 1; y < statements2.size(); y++) {
 
-				final boolean match = Arrays.equals(
-						this.statements1.get(x).hash,
-						this.statements2.get(y).hash);
+				final boolean match = Arrays.equals(statements1.get(x).hash,
+						statements2.get(y).hash);
 				final Cell left = table[x - 1][y];
 				final Cell up = table[x][y - 1];
 				final Cell upleft = table[x - 1][y - 1];
@@ -117,10 +116,12 @@ public class SmithWaterman {
 			final Cell minCell = getMinCell(maxCell);
 			final byte[][] cloneHash = getCloneHash(minCell, maxCell);
 
-			final ClonedFragment xClonedFragment = getClonedFragment(path1,
-					this.statements1, minCell.x, maxCell.x, cloneHash);
-			final ClonedFragment yClonedFragment = getClonedFragment(path2,
-					this.statements2, minCell.y, maxCell.y, cloneHash);
+			final ClonedFragment xClonedFragment = getClonedFragment(
+					this.file1.path, statements1, minCell.x, maxCell.x,
+					cloneHash);
+			final ClonedFragment yClonedFragment = getClonedFragment(
+					this.file2.path, statements2, minCell.y, maxCell.y,
+					cloneHash);
 			if ((threshold <= xClonedFragment.getNumberOfTokens())
 					&& (threshold <= yClonedFragment.getNumberOfTokens())) {
 				clonedFragments.add(xClonedFragment);
@@ -224,7 +225,7 @@ public class SmithWaterman {
 		final List<byte[]> list = new ArrayList<>();
 		do {
 			if (cell.match) {
-				list.add(this.statements1.get(cell.x).hash);
+				list.add(this.file1.getStatements().get(cell.x).hash);
 			}
 			cell = cell.base;
 		} while ((null != cell) && (minCell.x <= cell.x)
