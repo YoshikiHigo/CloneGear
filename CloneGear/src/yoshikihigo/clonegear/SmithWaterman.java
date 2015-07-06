@@ -43,6 +43,8 @@ public class SmithWaterman {
 
 		final List<Statement> statements = this.file1.getStatements();
 		final LANGUAGE language = this.file1.getLanguage();
+		final int limitNestLevel = language == LANGUAGE.JAVA ? 2
+				: language == LANGUAGE.CPP ? 2 : 1;
 
 		if (statements.isEmpty()) {
 			return new ArrayList<ClonedFragment>();
@@ -57,6 +59,13 @@ public class SmithWaterman {
 		}
 
 		for (int y = 1; y < statements.size(); y++) {
+
+			if (statements.get(0).nestLevel < limitNestLevel
+					|| statements.get(y).nestLevel < limitNestLevel) {
+				table[0][y] = new Cell(0, false, 0, y, null);
+				continue;
+			}
+
 			final boolean match = Arrays.equals(statements.get(0).hash,
 					statements.get(y).hash);
 			if (table[0][y - 1].value > 2) {
@@ -69,6 +78,12 @@ public class SmithWaterman {
 
 		for (int x = 1; x < statements.size(); x++) {
 			for (int y = x + 1; y < statements.size(); y++) {
+
+				if (statements.get(x).nestLevel < limitNestLevel
+						|| statements.get(y).nestLevel < limitNestLevel) {
+					table[x][y] = new Cell(0, false, x, y, null);
+					continue;
+				}
 
 				final boolean match = Arrays.equals(statements.get(x).hash,
 						statements.get(y).hash);
@@ -113,6 +128,10 @@ public class SmithWaterman {
 		final List<Statement> statements2 = this.file2.getStatements();
 		final LANGUAGE language1 = this.file1.getLanguage();
 		final LANGUAGE language2 = this.file2.getLanguage();
+		final int limitNestLevel1 = language1 == LANGUAGE.JAVA ? 2
+				: language1 == LANGUAGE.CPP ? 2 : 1;
+		final int limitNestLevel2 = language2 == LANGUAGE.JAVA ? 2
+				: language2 == LANGUAGE.CPP ? 2 : 1;
 
 		if (statements1.isEmpty() || statements2.isEmpty()) {
 			return new ArrayList<ClonedFragment>();
@@ -122,13 +141,27 @@ public class SmithWaterman {
 
 		final Cell[][] table = new Cell[statements1.size()][statements2.size()];
 
-		if (statements1.get(0).hash == statements2.get(0).hash) {
-			table[0][0] = new Cell(2, true, 0, 0, null);
+		// operations for table[0][0]
+		if (statements1.get(0).nestLevel < limitNestLevel1
+				|| statements2.get(0).nestLevel < limitNestLevel2) {
+			table[0][0] = new Cell(2, false, 0, 0, null);
 		} else {
-			table[0][0] = new Cell(0, false, 0, 0, null);
+			if (statements1.get(0).hash == statements2.get(0).hash) {
+				table[0][0] = new Cell(2, true, 0, 0, null);
+			} else {
+				table[0][0] = new Cell(0, false, 0, 0, null);
+			}
 		}
 
+		// operations for table[x][0]
 		for (int x = 1; x < statements1.size(); x++) {
+
+			if (statements1.get(x).nestLevel < limitNestLevel1
+					|| statements2.get(0).nestLevel < limitNestLevel2) {
+				table[x][0] = new Cell(0, false, x, 0, null);
+				continue;
+			}
+
 			final boolean match = Arrays.equals(statements1.get(x).hash,
 					statements2.get(0).hash);
 			if (table[x - 1][0].value > 2) {
@@ -139,7 +172,15 @@ public class SmithWaterman {
 			}
 		}
 
+		// operations for table[0][y]
 		for (int y = 1; y < statements2.size(); y++) {
+
+			if (statements1.get(0).nestLevel < limitNestLevel1
+					|| statements2.get(y).nestLevel < limitNestLevel2) {
+				table[0][y] = new Cell(0, false, 0, y, null);
+				continue;
+			}
+
 			final boolean match = Arrays.equals(statements1.get(0).hash,
 					statements2.get(y).hash);
 			if (table[0][y - 1].value > 2) {
@@ -152,6 +193,12 @@ public class SmithWaterman {
 
 		for (int x = 1; x < statements1.size(); x++) {
 			for (int y = 1; y < statements2.size(); y++) {
+
+				if (statements1.get(x).nestLevel < limitNestLevel1
+						|| statements2.get(y).nestLevel < limitNestLevel2) {
+					table[x][y] = new Cell(0, false, x, y, null);
+					continue;
+				}
 
 				final boolean match = Arrays.equals(statements1.get(x).hash,
 						statements2.get(y).hash);
@@ -296,6 +343,9 @@ public class SmithWaterman {
 		Cell minCell = maxCell;
 		while (true) {
 			if (0 == minCell.value) {
+				break;
+			}
+			if (null == minCell.base) {
 				break;
 			}
 			if (minCell.base.isChecked()) {

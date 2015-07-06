@@ -35,8 +35,9 @@ public class Statement {
 				if (!tokens.isEmpty()) {
 					final int fromLine = tokens.get(0).line;
 					final int toLine = tokens.get(tokens.size() - 1).line;
+					final byte[] hash = makeHash(tokens);
 					final Statement statement = new Statement(fromLine, toLine,
-							nestLevel, tokens);
+							nestLevel, tokens, hash);
 					statements.add(statement);
 					tokens = new ArrayList<Token>();
 				}
@@ -57,6 +58,10 @@ public class Statement {
 		for (int startIndex = 0; startIndex < statements.size();) {
 
 			final Statement startStatement = statements.get(startIndex);
+			final List<Token> foldedTokens = new ArrayList<>(
+					startStatement.tokens);
+			final List<Statement> foldedStatements = new ArrayList<>();
+			foldedStatements.add(startStatement);
 			final int startNestLevel = startStatement.nestLevel;
 
 			int endIndex = startIndex;
@@ -71,6 +76,8 @@ public class Statement {
 				if (startNestLevel != endNestLevel) {
 					break;
 				}
+				foldedStatements.add(endStatement);
+				foldedTokens.addAll(endStatement.tokens);
 			}
 
 			if (startIndex == endIndex) {
@@ -78,11 +85,10 @@ public class Statement {
 			}
 
 			else {
-				final int duplication = endIndex - startIndex + 1;
 				final ConsecutiveStatement consecutive = new ConsecutiveStatement(
 						startStatement.fromLine, endStatement.toLine,
-						startStatement.nestLevel, startStatement.tokens,
-						duplication);
+						startStatement.nestLevel, foldedTokens,
+						startStatement.hash, foldedStatements);
 				folds.add(consecutive);
 			}
 
@@ -141,12 +147,12 @@ public class Statement {
 	final public byte[] hash;
 
 	public Statement(final int fromLine, final int toLine, final int nestLevel,
-			final List<Token> tokens) {
+			final List<Token> tokens, final byte[] hash) {
 		this.fromLine = fromLine;
 		this.toLine = toLine;
 		this.nestLevel = nestLevel;
 		this.tokens = Collections.unmodifiableList(tokens);
-		this.hash = makeHash(this.tokens);
+		this.hash = hash;
 	}
 
 	public int getNumberOfTokens() {
