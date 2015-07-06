@@ -78,6 +78,7 @@ public class Statement {
 				}
 				foldedStatements.add(endStatement);
 				foldedTokens.addAll(endStatement.tokens);
+				endIndex++;
 			}
 
 			if (startIndex == endIndex) {
