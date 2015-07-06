@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -105,7 +107,8 @@ public class CGFinder {
 		}
 
 		print(clonesets);
-
+		//printInCCFinderFormat(files, clonesets);
+		
 		final long endTime = System.nanoTime();
 		if (Config.getInstance().isVERBOSE()) {
 			final StringBuilder text = new StringBuilder();
@@ -206,4 +209,73 @@ public class CGFinder {
 			System.exit(0);
 		}
 	}
+	
+	private static void printInCCFinderFormat(final List<SourceFile> files, final Map<CloneHash, SortedSet<ClonedFragment>> clonesets){
+		
+		try (final BufferedWriter writer = Config.getInstance().hasOUTPUT() ? new BufferedWriter(
+				new FileWriter(Config.getInstance().getOUTPUT()))
+				: new BufferedWriter(new OutputStreamWriter(System.out))) {
+
+			writer.write("#begin{file description}");
+			writer.newLine();
+			Collections.sort(files, new Comparator<SourceFile>(){
+				@Override
+				public int compare(final SourceFile file1, final SourceFile file2) {
+					return file1.path.compareTo(file2.path);
+				}				
+			});
+			final Map<String, Integer> map = new HashMap<String, Integer>();
+			for(final SourceFile file : files){
+				final int number = map.size();
+				writer.write("0.");
+				writer.write(Integer.toString(number));
+				writer.write("\t");
+				writer.write(Integer.toString(file.getStatements().size()));
+				writer.write("\t");
+				writer.write(Integer.toString(file.getStatements().size()));
+				writer.write("\t");
+				writer.write(file.path);
+				writer.newLine();
+				map.put(file.path, number);
+			}
+			writer.write("#end{file description}");
+			writer.newLine();
+			
+			writer.write("#begin{syntax error}");
+			writer.newLine();
+			writer.write("#end{syntax error}");
+			writer.newLine();
+			
+			writer.write("#begin{clone}");
+			writer.newLine();
+			for(final SortedSet<ClonedFragment> cloneset : clonesets.values()){
+				writer.write("#begin{set}");
+				writer.newLine();
+				for(final ClonedFragment fragment : cloneset){
+					final Integer id = map.get(fragment.path);
+					writer.write("0.");
+					writer.write(id.toString());
+					writer.write("\t");
+					writer.write(Integer.toString(fragment.getFromLine()));
+					writer.write(",0,");
+					writer.write(Integer.toString(fragment.getFromLine()));
+					writer.write("\t");
+					writer.write(Integer.toString(fragment.getToLine()));
+					writer.write(",0,");
+					writer.write(Integer.toString(fragment.getToLine()));
+					writer.write("\t");
+					writer.write(Integer.toString(fragment.getNumberOfTokens()));
+					writer.newLine();
+				}
+				writer.write("#end{set}");
+				writer.newLine();
+			}
+			writer.write("#end{clone}");
+			writer.newLine();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
+	}	
 }
