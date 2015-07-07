@@ -19,10 +19,11 @@ public class Statement {
 		final List<Statement> statements = new ArrayList<Statement>();
 		List<Token> tokens = new ArrayList<Token>();
 		int nestLevel = 0;
-
+		int index = 0;
 		for (final Token token : allTokens) {
-
+			
 			if (!token.value.equals("{") && !token.value.equals("}")) {
+				token.index = index++;
 				tokens.add(token);
 			}
 

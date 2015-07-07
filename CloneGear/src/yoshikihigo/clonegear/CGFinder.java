@@ -22,6 +22,7 @@ import yoshikihigo.clonegear.data.ClonedFragment;
 import yoshikihigo.clonegear.data.JavaFile;
 import yoshikihigo.clonegear.data.SourceFile;
 import yoshikihigo.clonegear.data.Statement;
+import yoshikihigo.clonegear.lexer.token.Token;
 
 public class CGFinder {
 
@@ -49,13 +50,15 @@ public class CGFinder {
 					System.err.println(file.path);
 				}
 
-				final StringBuilder textBuilder = new StringBuilder();
+				int loc = 0;
+				final StringBuilder textBuilder = new StringBuilder();				
 				try (final BufferedReader reader = new BufferedReader(
 						new FileReader(file.path))) {
 					while (reader.ready()) {
 						final String line = reader.readLine();
 						textBuilder.append(line);
 						textBuilder.append(System.lineSeparator());
+						loc++;
 					}
 				} catch (IOException e) {
 					System.err.print("file \"");
@@ -70,6 +73,7 @@ public class CGFinder {
 				final List<Statement> foldedStatements = Statement
 						.getFoldedStatements(statements);
 				file.addStatements(foldedStatements);
+				file.setLOC(loc);
 			}
 
 			if (!Config.getInstance().isVERBOSE()) {
@@ -108,8 +112,8 @@ public class CGFinder {
 			}
 		}
 
-		print(clonesets);
-		// printInCCFinderFormat(files, clonesets);
+		// print(clonesets);
+		printInCCFinderFormat(files, clonesets);
 
 		final long endTime = System.nanoTime();
 		if (Config.getInstance().isVERBOSE()) {
@@ -234,9 +238,9 @@ public class CGFinder {
 				writer.write("0.");
 				writer.write(Integer.toString(number));
 				writer.write("\t");
-				writer.write(Integer.toString(file.getStatements().size()));
+				writer.write(Integer.toString(file.getLOC()));
 				writer.write("\t");
-				writer.write(Integer.toString(file.getStatements().size()));
+				writer.write(Integer.toString(file.getTokens().size()));
 				writer.write("\t");
 				writer.write(file.path);
 				writer.newLine();
@@ -257,18 +261,19 @@ public class CGFinder {
 				writer.newLine();
 				for (final ClonedFragment fragment : cloneset) {
 					final Integer id = map.get(fragment.path);
+					final List<Token> tokens = fragment.getTokens();
 					writer.write("0.");
 					writer.write(id.toString());
 					writer.write("\t");
 					writer.write(Integer.toString(fragment.getFromLine()));
 					writer.write(",0,");
-					writer.write(Integer.toString(fragment.getFromLine()));
+					writer.write(Integer.toString(tokens.get(0).index));
 					writer.write("\t");
-					writer.write(Integer.toString(fragment.getToLine()));
+					writer.write(Integer.toString(fragment.getToLine() + 1));
 					writer.write(",0,");
-					writer.write(Integer.toString(fragment.getToLine()));
+					writer.write(Integer.toString(tokens.get(tokens.size()-1).index));
 					writer.write("\t");
-					writer.write(Integer.toString(fragment.getNumberOfTokens()));
+					writer.write(Integer.toString(tokens.size()));
 					writer.newLine();
 				}
 				writer.write("#end{set}");

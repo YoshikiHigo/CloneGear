@@ -191,6 +191,7 @@ public class SmithWaterman {
 			}
 		}
 
+		// operations for table[x][y]
 		for (int x = 1; x < statements1.size(); x++) {
 			for (int y = 1; y < statements2.size(); y++) {
 
@@ -342,10 +343,10 @@ public class SmithWaterman {
 	private Cell getMinCell(final Cell maxCell) {
 		Cell minCell = maxCell;
 		while (true) {
-			if (0 == minCell.value) {
+			if (null == minCell.base) {
 				break;
 			}
-			if (null == minCell.base) {
+			if (0 == minCell.base.value) {
 				break;
 			}
 			if (minCell.base.isChecked()) {
