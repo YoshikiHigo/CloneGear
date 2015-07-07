@@ -3,6 +3,8 @@ package yoshikihigo.clonegear;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.concurrent.atomic.AtomicLong;
 
 import yoshikihigo.clonegear.data.ClonedFragment;
@@ -144,7 +146,7 @@ public class SmithWaterman {
 		// operations for table[0][0]
 		if (statements1.get(0).nestLevel < limitNestLevel1
 				|| statements2.get(0).nestLevel < limitNestLevel2) {
-			table[0][0] = new Cell(2, false, 0, 0, null);
+			table[0][0] = new Cell(0, false, 0, 0, null);
 		} else {
 			if (statements1.get(0).hash == statements2.get(0).hash) {
 				table[0][0] = new Cell(2, true, 0, 0, null);
@@ -271,8 +273,8 @@ public class SmithWaterman {
 		return clonedFragments;
 	}
 
-	private List<Cell> getLocalMaximumCells(final Cell[][] table) {
-		final List<Cell> cells = new ArrayList<>();
+	private Cell[] getLocalMaximumCells(final Cell[][] table) {
+		final SortedSet<Cell> cells = new TreeSet<>();
 		int x = table.length - 1;
 		int y = table[0].length - 1;
 		while ((0 < x) || (0 < y)) {
@@ -296,7 +298,7 @@ public class SmithWaterman {
 			y = (y > 0) ? y - 1 : 0;
 		}
 
-		return cells;
+		return (Cell[]) cells.toArray(new Cell[] {});
 	}
 
 	private boolean isLocalMaximum(final Cell[][] table, final int x,
@@ -305,35 +307,35 @@ public class SmithWaterman {
 		final int maxX = table.length - 1;
 		final int maxY = table[0].length - 1;
 
-		if ((0 < x) && (0 < y) && (table[x - 1][y - 1].value > value)) {
+		if ((0 < x) && (0 < y) && (table[x - 1][y - 1].value >= value)) {
 			return false;
 		}
 
-		if ((0 < x) && (table[x - 1][y].value > value)) {
+		if ((0 < x) && (table[x - 1][y].value >= value)) {
 			return false;
 		}
 
-		if ((0 < y) && (table[x][y - 1].value > value)) {
+		if ((0 < y) && (table[x][y - 1].value >= value)) {
 			return false;
 		}
 
-		if ((0 < x) && (y < maxY) && (table[x - 1][y + 1].value > value)) {
+		if ((0 < x) && (y < maxY) && (table[x - 1][y + 1].value >= value)) {
 			return false;
 		}
 
-		if ((x < maxX) && (0 < y) && (table[x + 1][y - 1].value > value)) {
+		if ((x < maxX) && (0 < y) && (table[x + 1][y - 1].value >= value)) {
 			return false;
 		}
 
-		if ((y < maxY) && (table[x][y + 1].value > value)) {
+		if ((y < maxY) && (table[x][y + 1].value >= value)) {
 			return false;
 		}
 
-		if ((x < maxX) && (table[x + 1][y].value > value)) {
+		if ((x < maxX) && (table[x + 1][y].value >= value)) {
 			return false;
 		}
 
-		if ((x < maxX) && (y < maxY) && (table[x + 1][y + 1].value > value)) {
+		if ((x < maxX) && (y < maxY) && (table[x + 1][y + 1].value >= value)) {
 			return false;
 		}
 
@@ -396,7 +398,7 @@ public class SmithWaterman {
 	}
 }
 
-class Cell {
+class Cell implements Comparable<Cell> {
 
 	final public int value;
 	final public boolean match;
@@ -413,6 +415,22 @@ class Cell {
 		this.y = y;
 		this.base = base;
 		this.checked = false;
+	}
+
+	@Override
+	public int compareTo(final Cell target) {
+		if ((this.x + this.y) > (target.x + target.y)) {
+			return -1;
+		} else if ((this.x + this.y) < (target.x + target.y)) {
+			return 1;
+		} else if (this.x > target.x) {
+			return -1;
+		} else if (this.x < target.x) {
+			return 1;
+		} else {
+			return 0;
+		}
+
 	}
 
 	public void switchToChecked() {
