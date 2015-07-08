@@ -152,7 +152,7 @@ public class Config {
 	
 	public int getTHRESHOLD() {
 		return this.commandLine.hasOption("thrld") ? Integer
-				.parseInt(this.commandLine.getOptionValue("thrld")) : 30;
+				.parseInt(this.commandLine.getOptionValue("thrld")) : 50;
 	}
 	
 	public int getTHREAD() {

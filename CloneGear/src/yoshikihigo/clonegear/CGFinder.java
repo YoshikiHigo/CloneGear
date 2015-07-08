@@ -14,7 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import yoshikihigo.clonegear.data.CFile;
 import yoshikihigo.clonegear.data.CloneHash;
@@ -34,10 +37,8 @@ public class CGFinder {
 		final List<SourceFile> files = getFiles();
 		final long middleTime = System.nanoTime();
 		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = detectClones(files);
-
 		// print(clonesets);
 		printInCCFinderFormat(files, clonesets);
-
 		final long endTime = System.nanoTime();
 
 		if (Config.getInstance().isVERBOSE()) {
@@ -45,15 +46,17 @@ public class CGFinder {
 			text.append("execution time: ");
 			text.append(TimingUtility.getExecutionTime(startTime, endTime));
 			text.append(System.lineSeparator());
-
-			text.append("file reading time: ");
+			text.append(" file reading time: ");
 			text.append(TimingUtility.getExecutionTime(startTime, middleTime));
 			text.append(System.lineSeparator());
-			text.append("matrix creation time: ");
+			text.append(" clone detection time: ");
+			text.append(TimingUtility.getExecutionTime(middleTime, endTime));
+			text.append(System.lineSeparator());			
+			text.append(" (for performance turning) matrix creation time for all the threads: ");
 			text.append(TimingUtility.getExecutionTime(SmithWaterman
 					.getMatrixCreationTime()));
 			text.append(System.lineSeparator());
-			text.append("clone detection time: ");
+			text.append(" (for performance turning) similar alignment identification time for all the threads: ");
 			text.append(TimingUtility.getExecutionTime(SmithWaterman
 					.getCloneDetectionTime()));
 			System.err.println(text.toString());
@@ -165,41 +168,36 @@ public class CGFinder {
 
 	private static Map<CloneHash, SortedSet<ClonedFragment>> detectClones(
 			final List<SourceFile> files) {
-		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = new HashMap<CloneHash, SortedSet<ClonedFragment>>();
+
 		if (!Config.getInstance().isVERBOSE()) {
 			System.err.print("detecting clones ... ");
 		}
 
-		final int totalNumber = files.size() * files.size()
-				- sum(files.size() - 1);
-		int number = 0;
+		final ExecutorService executorService = Executors
+				.newFixedThreadPool(Config.getInstance().getTHREAD());
+		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = new HashMap<CloneHash, SortedSet<ClonedFragment>>();
+		final List<Future<?>> futures = new ArrayList<>();
 		for (int i = 0; i < files.size(); i++) {
 			final SourceFile iFile = files.get(i);
 			for (int j = i; j < files.size(); j++) {
 				final SourceFile jFile = files.get(j);
-				final SmithWaterman sw = new SmithWaterman(iFile, jFile);
-				final List<ClonedFragment> clonedFragments = sw
-						.getClonedFragments();
-				for (final ClonedFragment clonedFragment : clonedFragments) {
-					final CloneHash hash = new CloneHash(clonedFragment.cloneID);
-					SortedSet<ClonedFragment> cloneset = clonesets.get(hash);
-					if (null == cloneset) {
-						cloneset = new TreeSet<ClonedFragment>();
-						clonesets.put(hash, cloneset);
-					}
-					cloneset.add(clonedFragment);
-				}
+				Future<?> future = executorService
+						.submit(new CloneDetectionThread(iFile, jFile,
+								clonesets));
+				futures.add(future);
 			}
 		}
-		return clonesets;
-	}
 
-	private static int sum(final int upper) {
-		int sum = 0;
-		for (int i = 0; i < upper; i++) {
-			sum += i;
+		try {
+			for (final Future<?> future : futures) {
+				future.get();
+			}
+		} catch (final ExecutionException | InterruptedException e) {
+			e.printStackTrace();
+			System.exit(0);
 		}
-		return sum;
+
+		return clonesets;
 	}
 
 	private static void print(
