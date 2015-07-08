@@ -29,10 +29,41 @@ public class CGFinder {
 	public static void main(final String[] args) {
 
 		Config.initialize(args);
-		final long startTime = System.nanoTime();
 
-		final List<SourceFile> files = getFiles(new File(Config.getInstance()
-				.getSource()));
+		final long startTime = System.nanoTime();
+		final List<SourceFile> files = getFiles();
+		final long middleTime = System.nanoTime();
+		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = detectClones(files);
+
+		// print(clonesets);
+		printInCCFinderFormat(files, clonesets);
+
+		final long endTime = System.nanoTime();
+
+		if (Config.getInstance().isVERBOSE()) {
+			final StringBuilder text = new StringBuilder();
+			text.append("execution time: ");
+			text.append(TimingUtility.getExecutionTime(startTime, endTime));
+			text.append(System.lineSeparator());
+
+			text.append("file reading time: ");
+			text.append(TimingUtility.getExecutionTime(startTime, middleTime));
+			text.append(System.lineSeparator());
+			text.append("matrix creation time: ");
+			text.append(TimingUtility.getExecutionTime(SmithWaterman
+					.getMatrixCreationTime()));
+			text.append(System.lineSeparator());
+			text.append("clone detection time: ");
+			text.append(TimingUtility.getExecutionTime(SmithWaterman
+					.getCloneDetectionTime()));
+			System.err.println(text.toString());
+		}
+	}
+
+	private static List<SourceFile> getFiles() {
+
+		final List<SourceFile> files = collectFiles(new File(Config
+				.getInstance().getSource()));
 
 		{
 			if (!Config.getInstance().isVERBOSE()) {
@@ -51,7 +82,7 @@ public class CGFinder {
 				}
 
 				int loc = 0;
-				final StringBuilder textBuilder = new StringBuilder();				
+				final StringBuilder textBuilder = new StringBuilder();
 				try (final BufferedReader reader = new BufferedReader(
 						new FileReader(file.path))) {
 					while (reader.ready()) {
@@ -79,60 +110,12 @@ public class CGFinder {
 			if (!Config.getInstance().isVERBOSE()) {
 				System.err.println("done.");
 			}
-		}
 
-		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = new HashMap<CloneHash, SortedSet<ClonedFragment>>();
-		{
-			if (!Config.getInstance().isVERBOSE()) {
-				System.err.print("detecting clones ... ");
-			}
-
-			final int totalNumber = files.size() * files.size()
-					- sum(files.size() - 1);
-			int number = 0;
-			for (int i = 0; i < files.size(); i++) {
-				final SourceFile iFile = files.get(i);
-				for (int j = i; j < files.size(); j++) {
-					final SourceFile jFile = files.get(j);
-					final SmithWaterman sw = new SmithWaterman(iFile, jFile);
-					final List<ClonedFragment> clonedFragments = sw
-							.getClonedFragments();
-					for (final ClonedFragment clonedFragment : clonedFragments) {
-						final CloneHash hash = new CloneHash(
-								clonedFragment.cloneID);
-						SortedSet<ClonedFragment> cloneset = clonesets
-								.get(hash);
-						if (null == cloneset) {
-							cloneset = new TreeSet<ClonedFragment>();
-							clonesets.put(hash, cloneset);
-						}
-						cloneset.add(clonedFragment);
-					}
-				}
-			}
-		}
-
-		// print(clonesets);
-		printInCCFinderFormat(files, clonesets);
-
-		final long endTime = System.nanoTime();
-		if (Config.getInstance().isVERBOSE()) {
-			final StringBuilder text = new StringBuilder();
-			text.append("execution time: ");
-			text.append(TimingUtility.getExecutionTime(startTime, endTime));
-			text.append(System.lineSeparator());
-			text.append("matrix creation time: ");
-			text.append(TimingUtility.getExecutionTime(SmithWaterman
-					.getMatrixCreationTime()));
-			text.append(System.lineSeparator());
-			text.append("clone detection time: ");
-			text.append(TimingUtility.getExecutionTime(SmithWaterman
-					.getCloneDetectionTime()));
-			System.err.println(text.toString());
+			return files;
 		}
 	}
 
-	private static List<SourceFile> getFiles(final File file) {
+	private static List<SourceFile> collectFiles(final File file) {
 
 		final List<SourceFile> files = new ArrayList<>();
 
@@ -168,7 +151,7 @@ public class CGFinder {
 		else if (file.isDirectory()) {
 			final File[] children = file.listFiles();
 			for (final File child : children) {
-				final List<SourceFile> childFiles = getFiles(child);
+				final List<SourceFile> childFiles = collectFiles(child);
 				files.addAll(childFiles);
 			}
 		}
@@ -178,6 +161,37 @@ public class CGFinder {
 		}
 
 		return files;
+	}
+
+	private static Map<CloneHash, SortedSet<ClonedFragment>> detectClones(
+			final List<SourceFile> files) {
+		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = new HashMap<CloneHash, SortedSet<ClonedFragment>>();
+		if (!Config.getInstance().isVERBOSE()) {
+			System.err.print("detecting clones ... ");
+		}
+
+		final int totalNumber = files.size() * files.size()
+				- sum(files.size() - 1);
+		int number = 0;
+		for (int i = 0; i < files.size(); i++) {
+			final SourceFile iFile = files.get(i);
+			for (int j = i; j < files.size(); j++) {
+				final SourceFile jFile = files.get(j);
+				final SmithWaterman sw = new SmithWaterman(iFile, jFile);
+				final List<ClonedFragment> clonedFragments = sw
+						.getClonedFragments();
+				for (final ClonedFragment clonedFragment : clonedFragments) {
+					final CloneHash hash = new CloneHash(clonedFragment.cloneID);
+					SortedSet<ClonedFragment> cloneset = clonesets.get(hash);
+					if (null == cloneset) {
+						cloneset = new TreeSet<ClonedFragment>();
+						clonesets.put(hash, cloneset);
+					}
+					cloneset.add(clonedFragment);
+				}
+			}
+		}
+		return clonesets;
 	}
 
 	private static int sum(final int upper) {
@@ -271,7 +285,7 @@ public class CGFinder {
 					writer.write("\t");
 					writer.write(Integer.toString(fragment.getToLine() + 1));
 					writer.write(",0,");
-					writer.write(Integer.toString(tokens.get(tokens.size()-1).index));
+					writer.write(Integer.toString(tokens.get(tokens.size() - 1).index));
 					writer.write("\t");
 					writer.write(Integer.toString(tokens.size()));
 					writer.newLine();
