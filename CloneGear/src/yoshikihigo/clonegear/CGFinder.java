@@ -31,7 +31,7 @@ public class CGFinder {
 
 	public static void main(final String[] args) {
 
-		Config.initialize(args);
+		CGConfig.initialize(args);
 
 		final long startTime = System.nanoTime();
 		final List<SourceFile> files = getFiles();
@@ -41,7 +41,7 @@ public class CGFinder {
 		printInCCFinderFormat(files, clonesets);
 		final long endTime = System.nanoTime();
 
-		if (Config.getInstance().isVERBOSE()) {
+		if (CGConfig.getInstance().isVERBOSE()) {
 			final StringBuilder text = new StringBuilder();
 			text.append("execution time: ");
 			text.append(TimingUtility.getExecutionTime(startTime, endTime));
@@ -51,7 +51,7 @@ public class CGFinder {
 			text.append(System.lineSeparator());
 			text.append(" clone detection time: ");
 			text.append(TimingUtility.getExecutionTime(middleTime, endTime));
-			text.append(System.lineSeparator());			
+			text.append(System.lineSeparator());
 			text.append(" (for performance turning) matrix creation time for all the threads: ");
 			text.append(TimingUtility.getExecutionTime(SmithWaterman
 					.getMatrixCreationTime()));
@@ -65,18 +65,18 @@ public class CGFinder {
 
 	private static List<SourceFile> getFiles() {
 
-		final List<SourceFile> files = collectFiles(new File(Config
+		final List<SourceFile> files = collectFiles(new File(CGConfig
 				.getInstance().getSource()));
 
 		{
-			if (!Config.getInstance().isVERBOSE()) {
+			if (!CGConfig.getInstance().isVERBOSE()) {
 				System.err.print("parsing source files ... ");
 			}
 
 			int number = 1;
 			for (final SourceFile file : files) {
 
-				if (Config.getInstance().isVERBOSE()) {
+				if (CGConfig.getInstance().isVERBOSE()) {
 					System.err.print(Integer.toString(number++));
 					System.err.print("/");
 					System.err.print(Integer.toString(files.size()));
@@ -110,7 +110,7 @@ public class CGFinder {
 				file.setLOC(loc);
 			}
 
-			if (!Config.getInstance().isVERBOSE()) {
+			if (!CGConfig.getInstance().isVERBOSE()) {
 				System.err.println("done.");
 			}
 
@@ -124,8 +124,8 @@ public class CGFinder {
 
 		if (file.isFile()) {
 
-			if (Config.getInstance().getLANGUAGE().equals("")
-					|| Config.getInstance().getLANGUAGE()
+			if (CGConfig.getInstance().getLANGUAGE().equals("")
+					|| CGConfig.getInstance().getLANGUAGE()
 							.equalsIgnoreCase("java")) {
 
 				if (file.getName().endsWith(".java")) {
@@ -133,19 +133,28 @@ public class CGFinder {
 				}
 			}
 
-			else if (Config.getInstance().getLANGUAGE().equals("")
-					|| Config.getInstance().getLANGUAGE().equalsIgnoreCase("c")) {
+			else if (CGConfig.getInstance().getLANGUAGE().equals("")
+					|| CGConfig.getInstance().getLANGUAGE().equalsIgnoreCase("c")) {
 
 				if (file.getName().endsWith(".c")) {
 					files.add(new CFile(file.getAbsolutePath()));
 				}
 			}
 
-			else if (Config.getInstance().getLANGUAGE().equals("")
-					|| Config.getInstance().getLANGUAGE()
+			else if (CGConfig.getInstance().getLANGUAGE().equals("")
+					|| CGConfig.getInstance().getLANGUAGE()
 							.equalsIgnoreCase("cpp")) {
 
 				if (file.getName().endsWith(".cpp")) {
+					files.add(new CFile(file.getAbsolutePath()));
+				}
+			}
+
+			else if (CGConfig.getInstance().getLANGUAGE().equals("")
+					|| CGConfig.getInstance().getLANGUAGE()
+							.equalsIgnoreCase("python")) {
+
+				if (file.getName().endsWith(".py")) {
 					files.add(new CFile(file.getAbsolutePath()));
 				}
 			}
@@ -169,12 +178,12 @@ public class CGFinder {
 	private static Map<CloneHash, SortedSet<ClonedFragment>> detectClones(
 			final List<SourceFile> files) {
 
-		if (!Config.getInstance().isVERBOSE()) {
+		if (!CGConfig.getInstance().isVERBOSE()) {
 			System.err.print("detecting clones ... ");
 		}
 
 		final ExecutorService executorService = Executors
-				.newFixedThreadPool(Config.getInstance().getTHREAD());
+				.newFixedThreadPool(CGConfig.getInstance().getTHREAD());
 		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = new HashMap<CloneHash, SortedSet<ClonedFragment>>();
 		final List<Future<?>> futures = new ArrayList<>();
 		for (int i = 0; i < files.size(); i++) {
@@ -203,8 +212,8 @@ public class CGFinder {
 	private static void print(
 			final Map<CloneHash, SortedSet<ClonedFragment>> clonesets) {
 
-		try (final BufferedWriter writer = Config.getInstance().hasOUTPUT() ? new BufferedWriter(
-				new FileWriter(Config.getInstance().getOUTPUT()))
+		try (final BufferedWriter writer = CGConfig.getInstance().hasOUTPUT() ? new BufferedWriter(
+				new FileWriter(CGConfig.getInstance().getOUTPUT()))
 				: new BufferedWriter(new OutputStreamWriter(System.out))) {
 
 			int clonesetID = 0;
@@ -231,8 +240,8 @@ public class CGFinder {
 	private static void printInCCFinderFormat(final List<SourceFile> files,
 			final Map<CloneHash, SortedSet<ClonedFragment>> clonesets) {
 
-		try (final BufferedWriter writer = Config.getInstance().hasOUTPUT() ? new BufferedWriter(
-				new FileWriter(Config.getInstance().getOUTPUT()))
+		try (final BufferedWriter writer = CGConfig.getInstance().hasOUTPUT() ? new BufferedWriter(
+				new FileWriter(CGConfig.getInstance().getOUTPUT()))
 				: new BufferedWriter(new OutputStreamWriter(System.out))) {
 
 			writer.write("#begin{file description}");
