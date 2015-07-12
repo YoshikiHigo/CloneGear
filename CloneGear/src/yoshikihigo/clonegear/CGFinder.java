@@ -3,10 +3,12 @@ package yoshikihigo.clonegear;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -87,7 +89,8 @@ public class CGFinder {
 				int loc = 0;
 				final StringBuilder textBuilder = new StringBuilder();
 				try (final BufferedReader reader = new BufferedReader(
-						new FileReader(file.path))) {
+						new InputStreamReader(new FileInputStream(file.path),
+								"JISAutoDetect"))) {
 					while (reader.ready()) {
 						final String line = reader.readLine();
 						textBuilder.append(line);
@@ -134,7 +137,8 @@ public class CGFinder {
 			}
 
 			else if (CGConfig.getInstance().getLANGUAGE().equals("")
-					|| CGConfig.getInstance().getLANGUAGE().equalsIgnoreCase("c")) {
+					|| CGConfig.getInstance().getLANGUAGE()
+							.equalsIgnoreCase("c")) {
 
 				if (file.getName().endsWith(".c")) {
 					files.add(new CFile(file.getAbsolutePath()));
@@ -162,9 +166,11 @@ public class CGFinder {
 
 		else if (file.isDirectory()) {
 			final File[] children = file.listFiles();
-			for (final File child : children) {
-				final List<SourceFile> childFiles = collectFiles(child);
-				files.addAll(childFiles);
+			if (null != children) {
+				for (final File child : children) {
+					final List<SourceFile> childFiles = collectFiles(child);
+					files.addAll(childFiles);
+				}
 			}
 		}
 
@@ -212,21 +218,22 @@ public class CGFinder {
 	private static void print(
 			final Map<CloneHash, SortedSet<ClonedFragment>> clonesets) {
 
-		try (final BufferedWriter writer = CGConfig.getInstance().hasOUTPUT() ? new BufferedWriter(
-				new FileWriter(CGConfig.getInstance().getOUTPUT()))
-				: new BufferedWriter(new OutputStreamWriter(System.out))) {
+		try (final PrintWriter writer = CGConfig.getInstance().hasOUTPUT() ? new PrintWriter(
+				new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
+						CGConfig.getInstance().getOUTPUT()), "UTF-8")))
+				: new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"))) {
 
 			int clonesetID = 0;
 			for (final SortedSet<ClonedFragment> cloneset : clonesets.values()) {
 				for (final ClonedFragment clonedFragment : cloneset) {
-					writer.write(Integer.toString(clonesetID));
-					writer.write("\t");
-					writer.write(clonedFragment.path);
-					writer.write("\t");
-					writer.write(Integer.toString(clonedFragment.getFromLine()));
-					writer.write("\t");
-					writer.write(Integer.toString(clonedFragment.getToLine()));
-					writer.newLine();
+					writer.print(Integer.toString(clonesetID));
+					writer.print("\t");
+					writer.print(clonedFragment.path);
+					writer.print("\t");
+					writer.print(Integer.toString(clonedFragment.getFromLine()));
+					writer.print("\t");
+					writer.print(Integer.toString(clonedFragment.getToLine()));
+					writer.println();
 				}
 				clonesetID++;
 			}
@@ -240,12 +247,12 @@ public class CGFinder {
 	private static void printInCCFinderFormat(final List<SourceFile> files,
 			final Map<CloneHash, SortedSet<ClonedFragment>> clonesets) {
 
-		try (final BufferedWriter writer = CGConfig.getInstance().hasOUTPUT() ? new BufferedWriter(
-				new FileWriter(CGConfig.getInstance().getOUTPUT()))
-				: new BufferedWriter(new OutputStreamWriter(System.out))) {
+		try (final PrintWriter writer = CGConfig.getInstance().hasOUTPUT() ? new PrintWriter(
+				new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
+						CGConfig.getInstance().getOUTPUT()), "UTF-8")))
+				: new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"))) {
 
-			writer.write("#begin{file description}");
-			writer.newLine();
+			writer.println("#begin{file description}");
 			Collections.sort(files, new Comparator<SourceFile>() {
 				@Override
 				public int compare(final SourceFile file1,
@@ -256,52 +263,45 @@ public class CGFinder {
 			final Map<String, Integer> map = new HashMap<String, Integer>();
 			for (final SourceFile file : files) {
 				final int number = map.size();
-				writer.write("0.");
-				writer.write(Integer.toString(number));
-				writer.write("\t");
-				writer.write(Integer.toString(file.getLOC()));
-				writer.write("\t");
-				writer.write(Integer.toString(file.getTokens().size()));
-				writer.write("\t");
-				writer.write(file.path);
-				writer.newLine();
+				writer.print("0.");
+				writer.print(Integer.toString(number));
+				writer.print("\t");
+				writer.print(Integer.toString(file.getLOC()));
+				writer.print("\t");
+				writer.print(Integer.toString(file.getTokens().size()));
+				writer.print("\t");
+				writer.print(file.path);
+				writer.println();
 				map.put(file.path, number);
 			}
-			writer.write("#end{file description}");
-			writer.newLine();
+			writer.println("#end{file description}");
 
-			writer.write("#begin{syntax error}");
-			writer.newLine();
-			writer.write("#end{syntax error}");
-			writer.newLine();
+			writer.println("#begin{syntax error}");
+			writer.println("#end{syntax error}");
 
-			writer.write("#begin{clone}");
-			writer.newLine();
+			writer.println("#begin{clone}");
 			for (final SortedSet<ClonedFragment> cloneset : clonesets.values()) {
-				writer.write("#begin{set}");
-				writer.newLine();
+				writer.println("#begin{set}");
 				for (final ClonedFragment fragment : cloneset) {
 					final Integer id = map.get(fragment.path);
 					final List<Token> tokens = fragment.getTokens();
-					writer.write("0.");
-					writer.write(id.toString());
-					writer.write("\t");
-					writer.write(Integer.toString(fragment.getFromLine()));
-					writer.write(",0,");
-					writer.write(Integer.toString(tokens.get(0).index));
-					writer.write("\t");
-					writer.write(Integer.toString(fragment.getToLine() + 1));
-					writer.write(",0,");
-					writer.write(Integer.toString(tokens.get(tokens.size() - 1).index));
-					writer.write("\t");
-					writer.write(Integer.toString(tokens.size()));
-					writer.newLine();
+					writer.print("0.");
+					writer.print(id.toString());
+					writer.print("\t");
+					writer.print(Integer.toString(fragment.getFromLine()));
+					writer.print(",0,");
+					writer.print(Integer.toString(tokens.get(0).index));
+					writer.print("\t");
+					writer.print(Integer.toString(fragment.getToLine() + 1));
+					writer.print(",0,");
+					writer.print(Integer.toString(tokens.get(tokens.size() - 1).index));
+					writer.print("\t");
+					writer.print(Integer.toString(tokens.size()));
+					writer.println();
 				}
-				writer.write("#end{set}");
-				writer.newLine();
+				writer.println("#end{set}");
 			}
-			writer.write("#end{clone}");
-			writer.newLine();
+			writer.println("#end{clone}");
 
 		} catch (IOException e) {
 			e.printStackTrace();

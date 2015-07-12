@@ -1,6 +1,6 @@
 package yoshikihigo.clonegear.lexer;
 
-import java.io.BufferedReader;
+import java.io.LineNumberReader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -101,28 +101,27 @@ public class JavaLineLexer implements LineLexer {
 
 	@Override
 	public List<Token> lexFile(final String text) {
-		try {
-			final BufferedReader reader = new BufferedReader(new StringReader(
-					text));
-			final JavaLineLexer lexer = new JavaLineLexer();
-			final List<Token> tokens = new ArrayList<Token>();
+
+		final List<Token> tokens = new ArrayList<Token>();
+
+		try (final LineNumberReader reader = new LineNumberReader(
+				new StringReader(text))) {
+
 			String line;
-			int lineNumber = 1;
+			final JavaLineLexer lexer = new JavaLineLexer();
 			while (null != (line = reader.readLine())) {
 				for (final Token t : lexer.lexLine(line)) {
-					t.line = lineNumber;
+					t.line = reader.getLineNumber();
 					tokens.add(t);
 				}
-				lineNumber++;
 			}
-
-			return tokens;
 
 		} catch (final Exception e) {
 			e.printStackTrace();
 			System.exit(0);
-			return null;
 		}
+
+		return tokens;
 	}
 
 	public List<Token> lexLine(final String line) {

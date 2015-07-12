@@ -430,7 +430,6 @@ class Cell implements Comparable<Cell> {
 		} else {
 			return 0;
 		}
-
 	}
 
 	public void switchToChecked() {
