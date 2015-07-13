@@ -1,6 +1,6 @@
 package yoshikihigo.clonegear.lexer;
 
-import java.io.BufferedReader;
+import java.io.LineNumberReader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,6 @@ import yoshikihigo.clonegear.lexer.token.MINUS;
 import yoshikihigo.clonegear.lexer.token.MINUSEQUAL;
 import yoshikihigo.clonegear.lexer.token.MOD;
 import yoshikihigo.clonegear.lexer.token.MODEQUAL;
-import yoshikihigo.clonegear.lexer.token.NOT;
 import yoshikihigo.clonegear.lexer.token.NULL;
 import yoshikihigo.clonegear.lexer.token.NUMBERLITERAL;
 import yoshikihigo.clonegear.lexer.token.OR;
@@ -84,28 +83,26 @@ public class CLineLexer implements LineLexer {
 
 	@Override
 	public List<Token> lexFile(final String text) {
-		try {
-			final BufferedReader reader = new BufferedReader(new StringReader(
-					text));
-			final CLineLexer lexer = new CLineLexer();
-			final List<Token> tokens = new ArrayList<Token>();
+
+		final List<Token> tokens = new ArrayList<Token>();
+		try (final LineNumberReader reader = new LineNumberReader(
+				new StringReader(text));) {
+
 			String line;
-			int lineNumber = 1;
+			final CLineLexer lexer = new CLineLexer();
 			while (null != (line = reader.readLine())) {
 				for (final Token t : lexer.lexLine(line)) {
-					t.line = lineNumber;
+					t.line = reader.getLineNumber();
 					tokens.add(t);
 				}
-				lineNumber++;
 			}
-
-			return tokens;
 
 		} catch (final Exception e) {
 			e.printStackTrace();
 			System.exit(0);
-			return null;
 		}
+
+		return tokens;
 	}
 
 	@Override
@@ -152,9 +149,9 @@ public class CLineLexer implements LineLexer {
 		} else if (string.startsWith("==")) {
 			text.delete(0, 2);
 			tokenList.add(new EQUAL());
-//		} else if (string.startsWith("!")) {
-//			text.delete(0, 1);
-//			tokenList.add(new NOT());
+			// } else if (string.startsWith("!")) {
+			// text.delete(0, 1);
+			// tokenList.add(new NOT());
 		}
 
 		else if (string.startsWith(":")) {

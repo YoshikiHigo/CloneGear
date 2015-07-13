@@ -2,7 +2,7 @@ package yoshikihigo.clonegear;
 
 public enum LANGUAGE {
 
-	JAVA("JAVA"), C("C"), CPP("CPP");
+	JAVA("JAVA"), C("C"), CPP("CPP"), PYTHON("PYTHON");
 
 	final public String value;
 

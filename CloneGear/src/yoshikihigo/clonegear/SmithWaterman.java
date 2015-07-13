@@ -247,7 +247,7 @@ public class SmithWaterman {
 		final String path2 = this.file2.path;
 		final List<Statement> statements1 = this.file1.getStatements();
 		final List<Statement> statements2 = this.file2.getStatements();
-		final int threshold = Config.getInstance().getTHRESHOLD();
+		final int threshold = CGConfig.getInstance().getTHRESHOLD();
 
 		final List<ClonedFragment> clonedFragments = new ArrayList<>();
 		for (final Cell maxCell : this.getLocalMaximumCells(table)) {
@@ -430,7 +430,6 @@ class Cell implements Comparable<Cell> {
 		} else {
 			return 0;
 		}
-
 	}
 
 	public void switchToChecked() {

@@ -1,5 +1,6 @@
 package yoshikihigo.clonegear.data;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class Statement {
 		int nestLevel = 0;
 		int index = 0;
 		for (final Token token : allTokens) {
-			
+
 			if (!token.value.equals("{") && !token.value.equals("}")) {
 				token.index = index++;
 				tokens.add(token);
@@ -132,11 +133,11 @@ public class Statement {
 	private static byte[] getMD5(final String text) {
 		try {
 			final MessageDigest md = MessageDigest.getInstance("MD5");
-			final byte[] data = text.getBytes();
+			final byte[] data = text.getBytes("UTF-8");
 			md.update(data);
 			final byte[] digest = md.digest();
 			return digest;
-		} catch (final NoSuchAlgorithmException e) {
+		} catch (final NoSuchAlgorithmException | UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return new byte[0];
 		}

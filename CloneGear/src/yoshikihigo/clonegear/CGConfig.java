@@ -7,9 +7,9 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 
-public class Config {
+public class CGConfig {
 
-	static private Config SINGLETON = null;
+	static private CGConfig SINGLETON = null;
 
 	static public boolean initialize(final String[] args) {
 
@@ -92,7 +92,7 @@ public class Config {
 		try {
 			final CommandLineParser parser = new PosixParser();
 			final CommandLine commandLine = parser.parse(options, args);
-			SINGLETON = new Config(commandLine);
+			SINGLETON = new CGConfig(commandLine);
 		} catch (ParseException e) {
 			e.printStackTrace();
 			System.exit(0);
@@ -101,7 +101,7 @@ public class Config {
 		return true;
 	}
 
-	static public Config getInstance() {
+	static public CGConfig getInstance() {
 
 		if (null == SINGLETON) {
 			System.err.println("Config is not initialized.");
@@ -113,7 +113,7 @@ public class Config {
 
 	private final CommandLine commandLine;
 
-	private Config(final CommandLine commandLine) {
+	private CGConfig(final CommandLine commandLine) {
 		this.commandLine = commandLine;
 	}
 
