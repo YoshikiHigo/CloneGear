@@ -8,6 +8,7 @@ import java.util.List;
 import yoshikihigo.clonegear.lexer.token.AND;
 import yoshikihigo.clonegear.lexer.token.AND2;
 import yoshikihigo.clonegear.lexer.token.ANDEQUAL;
+import yoshikihigo.clonegear.lexer.token.ANNOTATION;
 import yoshikihigo.clonegear.lexer.token.ASSERT;
 import yoshikihigo.clonegear.lexer.token.ASSIGN;
 import yoshikihigo.clonegear.lexer.token.CHARLITERAL;
@@ -30,6 +31,7 @@ import yoshikihigo.clonegear.lexer.token.EXCLUSIVEOREQUAL;
 import yoshikihigo.clonegear.lexer.token.FALSE2;
 import yoshikihigo.clonegear.lexer.token.FINALLY;
 import yoshikihigo.clonegear.lexer.token.FOR;
+import yoshikihigo.clonegear.lexer.token.FROM;
 import yoshikihigo.clonegear.lexer.token.GLOBAL;
 import yoshikihigo.clonegear.lexer.token.GREAT;
 import yoshikihigo.clonegear.lexer.token.GREATEQUAL;
@@ -249,9 +251,14 @@ public class PythonLineLexer implements LineLexer {
 
 		else if ('\"' == string.charAt(0)) {
 			int index = 1;
-			while (index < string.length()) {
+			LITERAL: while (index < string.length()) {
 				if ('\"' == string.charAt(index)) {
 					break;
+				} else if ('\\' == string.charAt(index)) {
+					index++;
+					if (index == string.length()) {
+						break LITERAL;
+					}
 				}
 				index++;
 			}
@@ -262,22 +269,20 @@ public class PythonLineLexer implements LineLexer {
 
 		else if ('\'' == string.charAt(0)) {
 			int index = 1;
-			while (index < string.length()) {
+			LITERAL: while (index < string.length()) {
 				if ('\'' == string.charAt(index)) {
 					break;
+				} else if ('\\' == string.charAt(index)) {
+					index++;
+					if (index == string.length()) {
+						break LITERAL;
+					}
 				}
 				index++;
 			}
 			final String value = text.substring(1, index);
 			text.delete(0, index + 1);
 			tokenList.add(new CHARLITERAL(value));
-		}
-
-		else if ('/' == string.charAt(0)) {
-
-			if ((2 <= string.length()) && ('/' == string.charAt(1))) {
-				return;
-			}
 		}
 
 		else if (isDigit(string.charAt(0))) {
@@ -293,13 +298,12 @@ public class PythonLineLexer implements LineLexer {
 			tokenList.add(new NUMBERLITERAL(sconstant));
 		}
 
-		else if (isAlphabet(string.charAt(0))) {
+		else if (isAlphabet(string.charAt(0)) || ('_' == string.charAt(0))) {
 			int index = 1;
 			while (index < string.length()) {
 				if (!isAlphabet(string.charAt(index))
 						&& !isDigit(string.charAt(index))
-						&& '_' != string.charAt(index)
-						&& '$' != string.charAt(index)) {
+						&& '_' != string.charAt(index)) {
 					break;
 				}
 				index++;
@@ -335,6 +339,8 @@ public class PythonLineLexer implements LineLexer {
 				tokenList.add(new FINALLY());
 			} else if (identifier.equals("for")) {
 				tokenList.add(new FOR());
+			} else if (identifier.equals("from")) {
+				tokenList.add(new FROM());
 			} else if (identifier.equals("global")) {
 				tokenList.add(new GLOBAL());
 			} else if (identifier.equals("if")) {
@@ -370,6 +376,24 @@ public class PythonLineLexer implements LineLexer {
 			} else {
 				tokenList.add(new IDENTIFIER(identifier));
 			}
+		}
+
+		else if ('@' == string.charAt(0)) {
+
+			int index = 1;
+			while (index < string.length()) {
+				if (' ' == string.charAt(index) || '\t' == string.charAt(index)) {
+
+				}
+				index++;
+			}
+			text.delete(0, index);
+			final String value = string.substring(0, index);
+			tokenList.add(new ANNOTATION(value));
+		}
+		
+		else if (' ' == string.charAt(0) || '\t' == string.charAt(0)) {
+			text.deleteCharAt(0);
 		}
 
 		else {

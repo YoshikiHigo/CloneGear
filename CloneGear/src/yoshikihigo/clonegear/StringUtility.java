@@ -7,6 +7,7 @@ import yoshikihigo.clonegear.data.Statement;
 import yoshikihigo.clonegear.lexer.CLineLexer;
 import yoshikihigo.clonegear.lexer.JavaLineLexer;
 import yoshikihigo.clonegear.lexer.LineLexer;
+import yoshikihigo.clonegear.lexer.PythonLineLexer;
 import yoshikihigo.clonegear.lexer.token.Token;
 import yoshikihigo.commentremover.CRConfig;
 import yoshikihigo.commentremover.CommentRemover;
@@ -47,7 +48,7 @@ public class StringUtility {
 		case PYTHON: {
 			final CommentRemover remover = new CommentRemoverPY(config);
 			final String normalizedText = remover.perform(text);
-			final LineLexer lexer = new CLineLexer();
+			final LineLexer lexer = new PythonLineLexer();
 			final List<Token> tokens = lexer.lexFile(normalizedText);
 			final List<Statement> statements = Statement.getStatements(tokens);
 			return statements;

@@ -21,10 +21,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import yoshikihigo.clonegear.data.CFile;
 import yoshikihigo.clonegear.data.CloneHash;
 import yoshikihigo.clonegear.data.ClonedFragment;
-import yoshikihigo.clonegear.data.JavaFile;
 import yoshikihigo.clonegear.data.SourceFile;
 import yoshikihigo.clonegear.data.Statement;
 import yoshikihigo.clonegear.lexer.token.Token;
@@ -126,41 +124,10 @@ public class CGFinder {
 		final List<SourceFile> files = new ArrayList<>();
 
 		if (file.isFile()) {
-
-			if (CGConfig.getInstance().getLANGUAGE().equals("")
-					|| CGConfig.getInstance().getLANGUAGE()
-							.equalsIgnoreCase("java")) {
-
-				if (file.getName().endsWith(".java")) {
-					files.add(new JavaFile(file.getAbsolutePath()));
-				}
-			}
-
-			else if (CGConfig.getInstance().getLANGUAGE().equals("")
-					|| CGConfig.getInstance().getLANGUAGE()
-							.equalsIgnoreCase("c")) {
-
-				if (file.getName().endsWith(".c")) {
-					files.add(new CFile(file.getAbsolutePath()));
-				}
-			}
-
-			else if (CGConfig.getInstance().getLANGUAGE().equals("")
-					|| CGConfig.getInstance().getLANGUAGE()
-							.equalsIgnoreCase("cpp")) {
-
-				if (file.getName().endsWith(".cpp")) {
-					files.add(new CFile(file.getAbsolutePath()));
-				}
-			}
-
-			else if (CGConfig.getInstance().getLANGUAGE().equals("")
-					|| CGConfig.getInstance().getLANGUAGE()
-							.equalsIgnoreCase("python")) {
-
-				if (file.getName().endsWith(".py")) {
-					files.add(new CFile(file.getAbsolutePath()));
-				}
+			final SourceFile sourcefile = CGConfig.getInstance().getLANGUAGE()
+					.getSourceFile(file);
+			if (null != sourcefile) {
+				files.add(sourcefile);
 			}
 		}
 

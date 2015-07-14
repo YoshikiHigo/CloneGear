@@ -36,7 +36,7 @@ public class CGConfig {
 			option.setRequired(false);
 			options.addOption(option);
 		}
-		
+
 		{
 			final Option option = new Option("lang", "language", true,
 					"programming language for analysis");
@@ -54,7 +54,7 @@ public class CGConfig {
 			option.setRequired(false);
 			options.addOption(option);
 		}
-		
+
 		{
 			final Option option = new Option("soft", "software", true,
 					"software name");
@@ -117,9 +117,24 @@ public class CGConfig {
 		this.commandLine = commandLine;
 	}
 
-	public String getLANGUAGE() {
-		return this.commandLine.hasOption("lang") ? this.commandLine
-				.getOptionValue("lang") : "";
+	public LANGUAGE getLANGUAGE() {
+		if (!this.commandLine.hasOption("lang")) {
+			return LANGUAGE.ALL;
+		} else if (this.commandLine.getOptionValue("lang").equalsIgnoreCase(
+				"Java")) {
+		} else if (this.commandLine.getOptionValue("lang")
+				.equalsIgnoreCase("C")) {
+			return LANGUAGE.C;
+		} else if (this.commandLine.getOptionValue("lang").equalsIgnoreCase(
+				"CPP")) {
+			return LANGUAGE.CPP;
+		} else if (this.commandLine.getOptionValue("lang").equalsIgnoreCase(
+				"Python")) {
+			return LANGUAGE.PYTHON;
+		}
+
+		assert false : "invalid value for option \"-lang\".";
+		return null;
 	}
 
 	public String getSOFTWARE() {
@@ -129,9 +144,9 @@ public class CGConfig {
 		}
 		return this.commandLine.getOptionValue("soft");
 	}
-	
-	public String getSource(){
-		if(!this.commandLine.hasOption("src")){
+
+	public String getSource() {
+		if (!this.commandLine.hasOption("src")) {
 			System.err.println("option \"src\" is not specified.");
 			System.exit(0);
 		}
@@ -141,20 +156,20 @@ public class CGConfig {
 	public boolean hasOUTPUT() {
 		return this.commandLine.hasOption("o");
 	}
-	
-	public String getOUTPUT(){
-		if(!this.commandLine.hasOption("o")){
+
+	public String getOUTPUT() {
+		if (!this.commandLine.hasOption("o")) {
 			System.err.println("option \"o\" is not specified.");
 			System.exit(0);
 		}
 		return this.commandLine.getOptionValue("o");
 	}
-	
+
 	public int getTHRESHOLD() {
 		return this.commandLine.hasOption("thrld") ? Integer
 				.parseInt(this.commandLine.getOptionValue("thrld")) : 50;
 	}
-	
+
 	public int getTHREAD() {
 		return this.commandLine.hasOption("thd") ? Integer
 				.parseInt(this.commandLine.getOptionValue("thd")) : 1;
