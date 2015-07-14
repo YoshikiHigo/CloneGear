@@ -8,7 +8,10 @@ import yoshikihigo.clonegear.lexer.CLineLexer;
 import yoshikihigo.clonegear.lexer.JavaLineLexer;
 import yoshikihigo.clonegear.lexer.LineLexer;
 import yoshikihigo.clonegear.lexer.token.Token;
+import yoshikihigo.commentremover.CRConfig;
 import yoshikihigo.commentremover.CommentRemover;
+import yoshikihigo.commentremover.CommentRemoverJC;
+import yoshikihigo.commentremover.CommentRemoverPY;
 
 public class StringUtility {
 
@@ -19,40 +22,42 @@ public class StringUtility {
 			return new ArrayList<Statement>();
 		}
 
-		final String[] args = new String[8];
-		args[0] = "-l";
-		args[1] = language.value;
-		args[2] = "-i";
-		args[3] = text;
-		args[4] = "-q";
-		args[5] = "-a";
-		args[6] = "-d";
-		args[7] = "-e";
-		final CommentRemover remover = new CommentRemover();
-		remover.perform(args);
-		final String nonCommentText = remover.result;
+		final String[] args = new String[1];
+		args[0] = "-q";
+		final CRConfig config = CRConfig.initialize(args);
 
-		final LineLexer lexer;
 		switch (language) {
 		case JAVA: {
-			lexer = new JavaLineLexer();
-			break;
+			final CommentRemover remover = new CommentRemoverJC(config);
+			final String normalizedText = remover.perform(text);
+			final LineLexer lexer = new JavaLineLexer();
+			final List<Token> tokens = lexer.lexFile(normalizedText);
+			final List<Statement> statements = Statement.getStatements(tokens);
+			return statements;
 		}
 		case C:
 		case CPP: {
-			lexer = new CLineLexer();
-			break;
+			final CommentRemover remover = new CommentRemoverJC(config);
+			final String normalizedText = remover.perform(text);
+			final LineLexer lexer = new CLineLexer();
+			final List<Token> tokens = lexer.lexFile(normalizedText);
+			final List<Statement> statements = Statement.getStatements(tokens);
+			return statements;
 		}
-		default:
-			lexer = null;
-			System.err.print("undefined language value: ");
-			System.err.println(language);
+		case PYTHON: {
+			final CommentRemover remover = new CommentRemoverPY(config);
+			final String normalizedText = remover.perform(text);
+			final LineLexer lexer = new CLineLexer();
+			final List<Token> tokens = lexer.lexFile(normalizedText);
+			final List<Statement> statements = Statement.getStatements(tokens);
+			return statements;
+		}
+		default: {
+			System.err.println("invalid programming language.");
 			System.exit(0);
 		}
+		}
 
-		final List<Token> tokens = lexer.lexFile(nonCommentText);
-		final List<Statement> statements = Statement.getStatements(tokens);
-
-		return statements;
+		return null;
 	}
 }
