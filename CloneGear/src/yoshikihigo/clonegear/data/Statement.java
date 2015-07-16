@@ -11,11 +11,15 @@ import java.util.List;
 import java.util.Map;
 
 import yoshikihigo.clonegear.lexer.token.IDENTIFIER;
+import yoshikihigo.clonegear.lexer.token.LINEEND;
+import yoshikihigo.clonegear.lexer.token.LINEINTERRUPTION;
+import yoshikihigo.clonegear.lexer.token.SEMICOLON;
+import yoshikihigo.clonegear.lexer.token.TAB;
 import yoshikihigo.clonegear.lexer.token.Token;
 
 public class Statement {
 
-	public static List<Statement> getStatements(final List<Token> allTokens) {
+	public static List<Statement> getJCStatements(final List<Token> allTokens) {
 
 		final List<Statement> statements = new ArrayList<Statement>();
 		List<Token> tokens = new ArrayList<Token>();
@@ -51,6 +55,51 @@ public class Statement {
 		}
 
 		return statements;
+	}
+
+	public static List<Statement> getPYStatements(final List<Token> allTokens) {
+
+		final List<Statement> statements = new ArrayList<Statement>();
+		List<Token> tokens = new ArrayList<Token>();
+		int nestLevel = 0;
+		int index = 0;
+		boolean interrupted = false;
+		for (final Token token : allTokens) {
+
+			if (token instanceof TAB) {
+				if (!interrupted) {
+					nestLevel++;
+				}
+			}
+
+			else if (token instanceof LINEINTERRUPTION) {
+				interrupted = false;
+			}
+
+			else if ((token instanceof LINEEND) || (token instanceof SEMICOLON)) {
+				if (!tokens.isEmpty()) {
+					final int fromLine = tokens.get(0).line;
+					final int toLine = tokens.get(tokens.size() - 1).line;
+					final byte[] hash = makeHash(tokens);
+					final Statement statement = new Statement(fromLine, toLine,
+							nestLevel, tokens, hash);
+					statements.add(statement);
+					tokens = new ArrayList<Token>();
+				}
+				if (token instanceof LINEEND) {
+					nestLevel = 0;
+					interrupted = false;
+				}
+			}
+
+			else {
+				token.index = index++;
+				tokens.add(token);
+			}
+		}
+
+		return statements;
+
 	}
 
 	public static List<Statement> getFoldedStatements(

@@ -50,6 +50,8 @@ import yoshikihigo.clonegear.lexer.token.LEFTSHIFTEQUAL;
 import yoshikihigo.clonegear.lexer.token.LEFTSQUAREBRACKET;
 import yoshikihigo.clonegear.lexer.token.LESS;
 import yoshikihigo.clonegear.lexer.token.LESSEQUAL;
+import yoshikihigo.clonegear.lexer.token.LINEEND;
+import yoshikihigo.clonegear.lexer.token.LINEINTERRUPTION;
 import yoshikihigo.clonegear.lexer.token.MINUS;
 import yoshikihigo.clonegear.lexer.token.MINUSEQUAL;
 import yoshikihigo.clonegear.lexer.token.MOD;
@@ -78,6 +80,7 @@ import yoshikihigo.clonegear.lexer.token.STAR;
 import yoshikihigo.clonegear.lexer.token.STAREQUAL;
 import yoshikihigo.clonegear.lexer.token.STARSTAREQUAL;
 import yoshikihigo.clonegear.lexer.token.STRINGLITERAL;
+import yoshikihigo.clonegear.lexer.token.TAB;
 import yoshikihigo.clonegear.lexer.token.TILDA;
 import yoshikihigo.clonegear.lexer.token.TRUE2;
 import yoshikihigo.clonegear.lexer.token.TRY;
@@ -433,8 +436,13 @@ public class PythonLineLexer implements LineLexer {
 					tokens.add(new ANNOTATION(value));
 				}
 
-				else if (' ' == string.charAt(0) || '\t' == string.charAt(0)) {
+				else if (' ' == string.charAt(0)) {
 					text.deleteCharAt(0);
+				}
+
+				else if ('\t' == string.charAt(0)) {
+					text.deleteCharAt(0);
+					tokens.add(new TAB());
 				}
 
 				else {
@@ -485,6 +493,10 @@ public class PythonLineLexer implements LineLexer {
 				assert false : "unexpected situation: " + string;
 				System.exit(0);
 			}
+		}
+
+		if (!(tokens.get(tokens.size() - 1) instanceof LINEINTERRUPTION)) {
+			tokens.add(new LINEEND());
 		}
 
 		return tokens;

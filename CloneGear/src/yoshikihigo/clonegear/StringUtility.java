@@ -33,7 +33,8 @@ public class StringUtility {
 			final String normalizedText = remover.perform(text);
 			final LineLexer lexer = new JavaLineLexer();
 			final List<Token> tokens = lexer.lexFile(normalizedText);
-			final List<Statement> statements = Statement.getStatements(tokens);
+			final List<Statement> statements = Statement
+					.getJCStatements(tokens);
 			return statements;
 		}
 		case C:
@@ -42,7 +43,8 @@ public class StringUtility {
 			final String normalizedText = remover.perform(text);
 			final LineLexer lexer = new CLineLexer();
 			final List<Token> tokens = lexer.lexFile(normalizedText);
-			final List<Statement> statements = Statement.getStatements(tokens);
+			final List<Statement> statements = Statement
+					.getJCStatements(tokens);
 			return statements;
 		}
 		case PYTHON: {
@@ -50,7 +52,8 @@ public class StringUtility {
 			final String normalizedText = remover.perform(text);
 			final LineLexer lexer = new PythonLineLexer();
 			final List<Token> tokens = lexer.lexFile(normalizedText);
-			final List<Statement> statements = Statement.getStatements(tokens);
+			final List<Statement> statements = Statement
+					.getPYStatements(tokens);
 			return statements;
 		}
 		default: {
