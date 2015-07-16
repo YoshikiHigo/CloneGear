@@ -13,7 +13,6 @@ import yoshikihigo.clonegear.lexer.token.ANNOTATION;
 import yoshikihigo.clonegear.lexer.token.ASSERT;
 import yoshikihigo.clonegear.lexer.token.ASSIGN;
 import yoshikihigo.clonegear.lexer.token.BACKQUOTELITERAL;
-import yoshikihigo.clonegear.lexer.token.BACKSLASH;
 import yoshikihigo.clonegear.lexer.token.CHARLITERAL;
 import yoshikihigo.clonegear.lexer.token.CLASS;
 import yoshikihigo.clonegear.lexer.token.COLON;
@@ -132,6 +131,7 @@ public class PythonLineLexer implements LineLexer {
 
 		final List<Token> tokens = new ArrayList<Token>();
 		final StringBuilder text = new StringBuilder(line);
+		boolean interrupted = false;
 
 		while (0 < text.length()) {
 
@@ -264,7 +264,8 @@ public class PythonLineLexer implements LineLexer {
 					tokens.add(new DOT());
 				} else if (string.startsWith("\\")) {
 					text.delete(0, 1);
-					tokens.add(new BACKSLASH());
+					tokens.add(new LINEINTERRUPTION());
+					interrupted = false;
 				}
 
 				else if ('\"' == string.charAt(0)) {
@@ -495,7 +496,7 @@ public class PythonLineLexer implements LineLexer {
 			}
 		}
 
-		if (!(tokens.get(tokens.size() - 1) instanceof LINEINTERRUPTION)) {
+		if (!interrupted) {
 			tokens.add(new LINEEND());
 		}
 

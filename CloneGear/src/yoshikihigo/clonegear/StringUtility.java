@@ -23,8 +23,9 @@ public class StringUtility {
 			return new ArrayList<Statement>();
 		}
 
-		final String[] args = new String[1];
+		final String[] args = new String[2];
 		args[0] = "-q";
+		args[1] = "-blankline";
 		final CRConfig config = CRConfig.initialize(args);
 
 		switch (language) {
