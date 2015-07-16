@@ -177,6 +177,8 @@ public class CGFinder {
 		} catch (final ExecutionException | InterruptedException e) {
 			e.printStackTrace();
 			System.exit(0);
+		}finally{
+			executorService.shutdown();
 		}
 
 		return clonesets;
