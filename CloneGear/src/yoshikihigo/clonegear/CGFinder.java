@@ -37,8 +37,8 @@ public class CGFinder {
 		final List<SourceFile> files = getFiles();
 		final long middleTime = System.nanoTime();
 		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = detectClones(files);
-		// print(clonesets);
-		printInCCFinderFormat(files, clonesets);
+		print(clonesets);
+		//printInCCFinderFormat(files, clonesets);
 		final long endTime = System.nanoTime();
 
 		if (CGConfig.getInstance().isVERBOSE()) {

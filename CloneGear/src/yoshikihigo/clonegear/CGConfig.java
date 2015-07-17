@@ -81,8 +81,8 @@ public class CGConfig {
 		}
 
 		{
-			final Option option = new Option("csv", "csv", true,
-					"CSV file for writing modification patterns");
+			final Option option = new Option("result", "result", true,
+					"clone detection results of CGFinder");
 			option.setArgName("file");
 			option.setArgs(1);
 			option.setRequired(false);
@@ -177,5 +177,13 @@ public class CGConfig {
 
 	public boolean isVERBOSE() {
 		return this.commandLine.hasOption("v");
+	}
+
+	public String getRESULT() {
+		if (!this.commandLine.hasOption("result")) {
+			System.err.println("option \"result\" is not specified.");
+			System.exit(0);
+		}
+		return this.commandLine.getOptionValue("result");
 	}
 }
