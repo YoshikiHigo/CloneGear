@@ -23,13 +23,17 @@ public class StringUtility {
 			return new ArrayList<Statement>();
 		}
 
-		final String[] args = new String[2];
-		args[0] = "-q";
-		args[1] = "-blankline";
-		final CRConfig config = CRConfig.initialize(args);
-
 		switch (language) {
 		case JAVA: {
+			final String[] args = new String[7];
+			args[0] = "-q";
+			args[1] = "-blankline";
+			args[2] = "retain";
+			args[3] = "-bracketline";
+			args[4] = "retain";
+			args[5] = "-indent";
+			args[6] = "retain";
+			final CRConfig config = CRConfig.initialize(args);
 			final CommentRemover remover = new CommentRemoverJC(config);
 			final String normalizedText = remover.perform(text);
 			final LineLexer lexer = new JavaLineLexer();
@@ -40,6 +44,15 @@ public class StringUtility {
 		}
 		case C:
 		case CPP: {
+			final String[] args = new String[7];
+			args[0] = "-q";
+			args[1] = "-blankline";
+			args[2] = "retain";
+			args[3] = "-bracketline";
+			args[4] = "retain";
+			args[5] = "-indent";
+			args[6] = "retain";
+			final CRConfig config = CRConfig.initialize(args);
 			final CommentRemover remover = new CommentRemoverJC(config);
 			final String normalizedText = remover.perform(text);
 			final LineLexer lexer = new CLineLexer();
@@ -49,6 +62,11 @@ public class StringUtility {
 			return statements;
 		}
 		case PYTHON: {
+			final String[] args = new String[3];
+			args[0] = "-q";
+			args[1] = "-blankline";
+			args[2] = "retain";
+			final CRConfig config = CRConfig.initialize(args);
 			final CommentRemover remover = new CommentRemoverPY(config);
 			final String normalizedText = remover.perform(text);
 			final LineLexer lexer = new PythonLineLexer();
