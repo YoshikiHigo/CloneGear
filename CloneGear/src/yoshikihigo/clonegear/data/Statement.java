@@ -73,7 +73,7 @@ public class Statement {
 			}
 
 			else if (token instanceof LINEINTERRUPTION) {
-				interrupted = false;
+				interrupted = true;
 			}
 
 			else if ((token instanceof LINEEND) || (token instanceof SEMICOLON)) {
