@@ -25,7 +25,7 @@ public class StringUtility {
 
 		switch (language) {
 		case JAVA: {
-			final String[] args = new String[7];
+			final String[] args = new String[11];
 			args[0] = "-q";
 			args[1] = "-blankline";
 			args[2] = "retain";
@@ -33,6 +33,10 @@ public class StringUtility {
 			args[4] = "retain";
 			args[5] = "-indent";
 			args[6] = "retain";
+			args[7] = "-blockcomment";
+			args[8] = "remove";
+			args[9] = "-linecomment";
+			args[10] = "remove";
 			final CRConfig config = CRConfig.initialize(args);
 			final CommentRemover remover = new CommentRemoverJC(config);
 			final String normalizedText = remover.perform(text);
@@ -44,7 +48,7 @@ public class StringUtility {
 		}
 		case C:
 		case CPP: {
-			final String[] args = new String[7];
+			final String[] args = new String[11];
 			args[0] = "-q";
 			args[1] = "-blankline";
 			args[2] = "retain";
@@ -52,6 +56,10 @@ public class StringUtility {
 			args[4] = "retain";
 			args[5] = "-indent";
 			args[6] = "retain";
+			args[7] = "-blockcomment";
+			args[8] = "remove";
+			args[9] = "-linecomment";
+			args[10] = "remove";
 			final CRConfig config = CRConfig.initialize(args);
 			final CommentRemover remover = new CommentRemoverJC(config);
 			final String normalizedText = remover.perform(text);
@@ -62,10 +70,14 @@ public class StringUtility {
 			return statements;
 		}
 		case PYTHON: {
-			final String[] args = new String[3];
+			final String[] args = new String[7];
 			args[0] = "-q";
 			args[1] = "-blankline";
 			args[2] = "retain";
+			args[3] = "-blockcomment";
+			args[4] = "remove";
+			args[5] = "-linecomment";
+			args[6] = "remove";
 			final CRConfig config = CRConfig.initialize(args);
 			final CommentRemover remover = new CommentRemoverPY(config);
 			final String normalizedText = remover.perform(text);

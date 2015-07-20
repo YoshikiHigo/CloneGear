@@ -75,27 +75,6 @@ public enum LANGUAGE {
 			}
 			return null;
 		}
-	},
-
-	ALL("ALL") {
-		@Override
-		public boolean isTarget(final File file) {
-			return file.isFile();
-		}
-
-		@Override
-		public SourceFile getSourceFile(final File file) {
-			if (JAVA.isTarget(file)) {
-				return new JavaFile(file.getAbsolutePath());
-			} else if (C.isTarget(file)) {
-				return new CFile(file.getAbsolutePath());
-			} else if (CPP.isTarget(file)) {
-				return new CPPFile(file.getAbsolutePath());
-			} else if (PYTHON.isTarget(file)) {
-				return new PythonFile(file.getAbsolutePath());
-			}
-			return null;
-		}
 	};
 
 	final public String value;

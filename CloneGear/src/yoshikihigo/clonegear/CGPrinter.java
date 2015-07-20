@@ -21,8 +21,11 @@ public class CGPrinter {
 				new InputStreamReader(new FileInputStream(result),
 						"JISAutoDetect"))) {
 
-			while (reader.ready()) {
+			while (true) {
 				final String line = reader.readLine();
+				if (null == line) {
+					break;
+				}
 				final Clone clone = getClone(line);
 				printClone(clone);
 			}

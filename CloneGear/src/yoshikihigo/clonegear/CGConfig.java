@@ -1,5 +1,9 @@
 package yoshikihigo.clonegear;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.StringTokenizer;
+
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Option;
@@ -117,24 +121,33 @@ public class CGConfig {
 		this.commandLine = commandLine;
 	}
 
-	public LANGUAGE getLANGUAGE() {
-		if (!this.commandLine.hasOption("lang")) {
-			return LANGUAGE.ALL;
-		} else if (this.commandLine.getOptionValue("lang").equalsIgnoreCase(
-				"Java")) {
-		} else if (this.commandLine.getOptionValue("lang")
-				.equalsIgnoreCase("C")) {
-			return LANGUAGE.C;
-		} else if (this.commandLine.getOptionValue("lang").equalsIgnoreCase(
-				"CPP")) {
-			return LANGUAGE.CPP;
-		} else if (this.commandLine.getOptionValue("lang").equalsIgnoreCase(
-				"Python")) {
-			return LANGUAGE.PYTHON;
+	public Set<LANGUAGE> getLANGUAGE() {
+
+		final Set<LANGUAGE> languages = new HashSet<>();
+
+		if (this.commandLine.hasOption("lang")) {
+			final String option = this.commandLine.getOptionValue("lang");
+			final StringTokenizer tokenizer = new StringTokenizer(option, ":");
+			while (tokenizer.hasMoreTokens()) {
+				try {
+					final String value = tokenizer.nextToken();
+					final LANGUAGE language = LANGUAGE.valueOf(value
+							.toUpperCase());
+					languages.add(language);
+				} catch (final IllegalArgumentException e) {
+					System.err.println("invalid option value for \"-lang\"");
+					System.exit(0);
+				}
+			}
 		}
 
-		assert false : "invalid value for option \"-lang\".";
-		return null;
+		else {
+			for (final LANGUAGE language : LANGUAGE.values()) {
+				languages.add(language);
+			}
+		}
+
+		return languages;
 	}
 
 	public String getSOFTWARE() {

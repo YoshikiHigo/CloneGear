@@ -38,7 +38,7 @@ public class CGFinder {
 		final long middleTime = System.nanoTime();
 		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = detectClones(files);
 		print(clonesets);
-		//printInCCFinderFormat(files, clonesets);
+		// printInCCFinderFormat(files, clonesets);
 		final long endTime = System.nanoTime();
 
 		if (CGConfig.getInstance().isVERBOSE()) {
@@ -65,7 +65,7 @@ public class CGFinder {
 
 	private static List<SourceFile> getFiles() {
 
-		final List<SourceFile> files = collectFiles(new File(CGConfig
+		final List<SourceFile> files = FileUtility.collectSourceFiles(new File(CGConfig
 				.getInstance().getSource()));
 
 		{
@@ -119,35 +119,6 @@ public class CGFinder {
 		}
 	}
 
-	private static List<SourceFile> collectFiles(final File file) {
-
-		final List<SourceFile> files = new ArrayList<>();
-
-		if (file.isFile()) {
-			final SourceFile sourcefile = CGConfig.getInstance().getLANGUAGE()
-					.getSourceFile(file);
-			if (null != sourcefile) {
-				files.add(sourcefile);
-			}
-		}
-
-		else if (file.isDirectory()) {
-			final File[] children = file.listFiles();
-			if (null != children) {
-				for (final File child : children) {
-					final List<SourceFile> childFiles = collectFiles(child);
-					files.addAll(childFiles);
-				}
-			}
-		}
-
-		else {
-			assert false : "\"file\" is invalid.";
-		}
-
-		return files;
-	}
-
 	private static Map<CloneHash, SortedSet<ClonedFragment>> detectClones(
 			final List<SourceFile> files) {
 
@@ -177,7 +148,7 @@ public class CGFinder {
 		} catch (final ExecutionException | InterruptedException e) {
 			e.printStackTrace();
 			System.exit(0);
-		}finally{
+		} finally {
 			executorService.shutdown();
 		}
 
