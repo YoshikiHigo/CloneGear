@@ -10,11 +10,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import yoshikihigo.clonegear.lexer.token.ABSTRACT;
 import yoshikihigo.clonegear.lexer.token.IDENTIFIER;
+import yoshikihigo.clonegear.lexer.token.LEFTBRACKET;
+import yoshikihigo.clonegear.lexer.token.LEFTPAREN;
 import yoshikihigo.clonegear.lexer.token.LINEEND;
 import yoshikihigo.clonegear.lexer.token.LINEINTERRUPTION;
+import yoshikihigo.clonegear.lexer.token.PRIVATE;
+import yoshikihigo.clonegear.lexer.token.PROTECTED;
+import yoshikihigo.clonegear.lexer.token.PUBLIC;
+import yoshikihigo.clonegear.lexer.token.RIGHTBRACKET;
+import yoshikihigo.clonegear.lexer.token.RIGHTPAREN;
 import yoshikihigo.clonegear.lexer.token.SEMICOLON;
+import yoshikihigo.clonegear.lexer.token.STATIC;
+import yoshikihigo.clonegear.lexer.token.STRICTFP;
 import yoshikihigo.clonegear.lexer.token.TAB;
+import yoshikihigo.clonegear.lexer.token.TRANSIENT;
 import yoshikihigo.clonegear.lexer.token.Token;
 
 public class Statement {
@@ -23,35 +34,50 @@ public class Statement {
 
 		final List<Statement> statements = new ArrayList<Statement>();
 		List<Token> tokens = new ArrayList<Token>();
+		int inParenDepth = 0;
 		int nestLevel = 0;
 		int index = 0;
 		for (final Token token : allTokens) {
 
-			if (!token.value.equals("{") && !token.value.equals("}")) {
-				token.index = index++;
-				tokens.add(token);
-			}
+			token.index = index++;
+			tokens.add(token);
 
-			if (token.value.equals("}")) {
+			if (token instanceof RIGHTBRACKET) {
 				nestLevel--;
 			}
 
-			if (token.value.equals("{") || token.value.equals("}")
-					|| token.value.equals(";") || token.value.startsWith("@")) {
-				if (!tokens.isEmpty()) {
+			if (token instanceof RIGHTPAREN) {
+				inParenDepth--;
+			}
+
+			if ((0 == inParenDepth)
+					&& (token.value.equals("{") || token.value.equals("}")
+							|| token.value.equals(";") || token.value
+								.startsWith("@"))) {
+
+				if (1 < tokens.size()) {
 					final int fromLine = tokens.get(0).line;
 					final int toLine = tokens.get(tokens.size() - 1).line;
-					final byte[] hash = makeHash(tokens);
+					final byte[] hash = makeJCHash(tokens);
 					final Statement statement = new Statement(fromLine, toLine,
 							nestLevel, tokens, hash);
 					statements.add(statement);
 					tokens = new ArrayList<Token>();
 				}
+
+				else {
+					tokens.clear();
+				}
 			}
 
-			if (token.value.equals("{")) {
+			if (token instanceof LEFTBRACKET) {
 				nestLevel++;
 			}
+
+			if (token instanceof LEFTPAREN) {
+				inParenDepth++;
+			}
+
 		}
 
 		return statements;
@@ -80,7 +106,7 @@ public class Statement {
 				if (!tokens.isEmpty()) {
 					final int fromLine = tokens.get(0).line;
 					final int toLine = tokens.get(tokens.size() - 1).line;
-					final byte[] hash = makeHash(tokens);
+					final byte[] hash = makeJCHash(tokens);
 					final Statement statement = new Statement(fromLine, toLine,
 							nestLevel, tokens, hash);
 					statements.add(statement);
@@ -150,21 +176,40 @@ public class Statement {
 		return folds;
 	}
 
-	private static byte[] makeHash(final List<Token> tokens) {
+	private static byte[] makeJCHash(final List<Token> tokens) {
 
 		final StringBuilder builder = new StringBuilder();
 		final Map<String, String> identifiers = new HashMap<>();
 
-		for (final Token token : tokens) {
+		for (int index = 0; index < tokens.size(); index++) {
+
+			final Token token = tokens.get(index);
 
 			if (token instanceof IDENTIFIER) {
-				final String name = token.value;
-				String normalizedName = identifiers.get(name);
-				if (null == normalizedName) {
-					normalizedName = "$" + identifiers.size();
-					identifiers.put(name, normalizedName);
+
+				if (tokens.size() == (index + 1)
+						|| !(tokens.get(index + 1) instanceof LEFTPAREN)) {
+					final String name = token.value;
+					String normalizedName = identifiers.get(name);
+					if (null == normalizedName) {
+						normalizedName = "$" + identifiers.size();
+						identifiers.put(name, normalizedName);
+					}
+					builder.append(normalizedName);
 				}
-				builder.append(normalizedName);
+
+				// not normalize if identifier is method name
+				else {
+					builder.append(token.value);
+				}
+			}
+
+			else if (token instanceof ABSTRACT || token instanceof PRIVATE
+					|| token instanceof PROTECTED || token instanceof PUBLIC
+					|| token instanceof STATIC || token instanceof STRICTFP
+					|| token instanceof TRANSIENT) {
+				// not used for making hash
+				continue;
 			}
 
 			else {
@@ -175,6 +220,7 @@ public class Statement {
 		}
 
 		final String text = builder.toString();
+		System.out.println(text);
 		final byte[] md5 = getMD5(text);
 		return md5;
 	}
