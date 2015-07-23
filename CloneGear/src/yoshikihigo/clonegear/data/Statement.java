@@ -167,9 +167,9 @@ public class Statement {
 					final int toLine = tokens.get(tokens.size() - 1).line;
 					final boolean isTarget = (!methodDefinitionDepth.isEmpty() && (methodDefinitionDepth
 							.peek().intValue() < nestLevel));
-//					System.out.print(Integer.toString(nestLevel) + ": "
-//							+ Boolean.toString(isTarget) + ": ");
-					final byte[] hash = makeJCHash(tokens);
+					// System.out.print(Integer.toString(nestLevel) + ": "
+					// + Boolean.toString(isTarget) + ": ");
+					final byte[] hash = makePYHash(tokens);
 					final Statement statement = new Statement(fromLine, toLine,
 							nestLevel, isTarget, tokens, hash);
 					statements.add(statement);
@@ -204,11 +204,13 @@ public class Statement {
 			while ((endIndex + 1) < statements.size()) {
 				endStatement = statements.get(endIndex + 1);
 				if (!Arrays.equals(startStatement.hash, endStatement.hash)) {
+					endStatement = statements.get(endIndex);
 					break;
 				}
 
 				final int endNestLevel = endStatement.nestLevel;
 				if (startNestLevel != endNestLevel) {
+					endStatement = statements.get(endIndex);
 					break;
 				}
 				foldedStatements.add(endStatement);
@@ -236,7 +238,7 @@ public class Statement {
 
 	private static byte[] makeJCHash(final List<Token> tokens) {
 
-		final List<Token> nonTrivialTokens = removeTrivialTokens(tokens);
+		final List<Token> nonTrivialTokens = removeJCTrivialTokens(tokens);
 		final StringBuilder builder = new StringBuilder();
 		final Map<String, String> identifiers = new HashMap<>();
 
@@ -271,12 +273,54 @@ public class Statement {
 		}
 
 		final String text = builder.toString();
-		//System.out.println(text);
+		// System.out.println(text);
 		final byte[] md5 = getMD5(text);
 		return md5;
 	}
 
-	private static List<Token> removeTrivialTokens(final List<Token> tokens) {
+	private static byte[] makePYHash(final List<Token> tokens) {
+
+		final List<Token> nonTrivialTokens = removePYTrivialTokens(tokens);
+		final StringBuilder builder = new StringBuilder();
+		final Map<String, String> identifiers = new HashMap<>();
+
+		for (int index = 0; index < nonTrivialTokens.size(); index++) {
+
+			final Token token = nonTrivialTokens.get(index);
+
+			if (token instanceof IDENTIFIER) {
+
+				if (nonTrivialTokens.size() == (index + 1)
+						|| !(nonTrivialTokens.get(index + 1) instanceof LEFTPAREN)) {
+					final String name = token.value;
+					String normalizedName = identifiers.get(name);
+					if (null == normalizedName) {
+						normalizedName = "$" + identifiers.size();
+						identifiers.put(name, normalizedName);
+					}
+					builder.append(normalizedName);
+				}
+
+				// not normalize if identifier is method name
+				else {
+					builder.append(token.value);
+				}
+			}
+
+			else {
+				builder.append(token.value);
+			}
+
+			builder.append(" ");
+		}
+
+		final String text = builder.toString();
+		// System.out.println(text);
+		final byte[] md5 = getMD5(text);
+		return md5;
+	}
+
+	private static List<Token> removeJCTrivialTokens(final List<Token> tokens) {
 		final List<Token> nonTrivialTokens = new ArrayList<>();
 		for (final Token token : tokens) {
 
@@ -296,6 +340,15 @@ public class Statement {
 		return nonTrivialTokens;
 	}
 
+	private static List<Token> removePYTrivialTokens(final List<Token> tokens) {
+		final List<Token> nonTrivialTokens = new ArrayList<>();
+		for (final Token token : tokens) {
+			nonTrivialTokens.add(token);
+		}
+
+		return nonTrivialTokens;
+	}
+
 	private static byte[] getMD5(final String text) {
 		try {
 			final MessageDigest md = MessageDigest.getInstance("MD5");
@@ -310,7 +363,7 @@ public class Statement {
 	}
 
 	private static boolean isJCTypeDefinition(final List<Token> tokens) {
-		final List<Token> nonTrivialTokens = removeTrivialTokens(tokens);
+		final List<Token> nonTrivialTokens = removeJCTrivialTokens(tokens);
 		final Token firstToken = nonTrivialTokens.get(0);
 		if (firstToken instanceof CLASS || firstToken instanceof INTERFACE) {
 			return true;
@@ -320,7 +373,7 @@ public class Statement {
 	}
 
 	private static boolean isPYMethodDefinition(final List<Token> tokens) {
-		final List<Token> nonTrivialTokens = removeTrivialTokens(tokens);
+		final List<Token> nonTrivialTokens = removeJCTrivialTokens(tokens);
 		final Token firstToken = nonTrivialTokens.get(0);
 		if (firstToken instanceof DEF) {
 			return true;
