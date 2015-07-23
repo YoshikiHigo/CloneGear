@@ -77,7 +77,6 @@ public class Statement {
 					final int toLine = tokens.get(tokens.size() - 1).line;
 					// System.out.print(Integer.toString(nestDepth) + ": ");
 					final byte[] hash = makeJCHash(tokens);
-
 					final Statement statement = new Statement(fromLine, toLine,
 							nestDepth, 1 < nestDepth, tokens, hash);
 					statements.add(statement);
@@ -168,8 +167,8 @@ public class Statement {
 					final int toLine = tokens.get(tokens.size() - 1).line;
 					final boolean isTarget = (!methodDefinitionDepth.isEmpty() && (methodDefinitionDepth
 							.peek().intValue() < nestLevel));
-					System.out.print(Integer.toString(nestLevel) + ": "
-							+ Boolean.toString(isTarget) + ": ");
+//					System.out.print(Integer.toString(nestLevel) + ": "
+//							+ Boolean.toString(isTarget) + ": ");
 					final byte[] hash = makeJCHash(tokens);
 					final Statement statement = new Statement(fromLine, toLine,
 							nestLevel, isTarget, tokens, hash);
@@ -272,7 +271,7 @@ public class Statement {
 		}
 
 		final String text = builder.toString();
-		System.out.println(text);
+		//System.out.println(text);
 		final byte[] md5 = getMD5(text);
 		return md5;
 	}
