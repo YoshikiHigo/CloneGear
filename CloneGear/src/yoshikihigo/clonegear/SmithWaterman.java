@@ -44,9 +44,6 @@ public class SmithWaterman {
 	private List<ClonedFragment> getClonedFragmentsWithinFile() {
 
 		final List<Statement> statements = this.file1.getStatements();
-		final LANGUAGE language = this.file1.getLanguage();
-		final int limitNestLevel = language == LANGUAGE.JAVA ? 2
-				: language == LANGUAGE.CPP ? 2 : 1;
 
 		if (statements.isEmpty()) {
 			return new ArrayList<ClonedFragment>();
@@ -62,8 +59,7 @@ public class SmithWaterman {
 
 		for (int y = 1; y < statements.size(); y++) {
 
-			if (statements.get(0).nestLevel < limitNestLevel
-					|| statements.get(y).nestLevel < limitNestLevel) {
+			if (!statements.get(0).isTarget || !statements.get(y).isTarget) {
 				table[0][y] = new Cell(0, false, 0, y, null);
 				continue;
 			}
@@ -81,8 +77,7 @@ public class SmithWaterman {
 		for (int x = 1; x < statements.size(); x++) {
 			for (int y = x + 1; y < statements.size(); y++) {
 
-				if (statements.get(x).nestLevel < limitNestLevel
-						|| statements.get(y).nestLevel < limitNestLevel) {
+				if (!statements.get(x).isTarget || !statements.get(y).isTarget) {
 					table[x][y] = new Cell(0, false, x, y, null);
 					continue;
 				}

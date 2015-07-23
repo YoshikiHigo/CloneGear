@@ -10,9 +10,10 @@ public class ConsecutiveStatement extends Statement {
 	final public List<Statement> foldedStatements;
 
 	public ConsecutiveStatement(final int fromLine, final int toLine,
-			final int nestLevel, final List<Token> tokens, final byte[] hash,
+			final int nestLevel, final boolean isTarget,
+			final List<Token> tokens, final byte[] hash,
 			final List<Statement> foldedStatements) {
-		super(fromLine, toLine, nestLevel, tokens, hash);
+		super(fromLine, toLine, nestLevel, isTarget, tokens, hash);
 		this.foldedStatements = Collections.unmodifiableList(foldedStatements);
 	}
 }

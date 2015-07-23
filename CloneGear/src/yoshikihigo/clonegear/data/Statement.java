@@ -9,9 +9,15 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 import yoshikihigo.clonegear.lexer.token.ABSTRACT;
+import yoshikihigo.clonegear.lexer.token.ANNOTATION;
+import yoshikihigo.clonegear.lexer.token.CLASS;
+import yoshikihigo.clonegear.lexer.token.DEF;
+import yoshikihigo.clonegear.lexer.token.FINAL;
 import yoshikihigo.clonegear.lexer.token.IDENTIFIER;
+import yoshikihigo.clonegear.lexer.token.INTERFACE;
 import yoshikihigo.clonegear.lexer.token.LEFTBRACKET;
 import yoshikihigo.clonegear.lexer.token.LEFTPAREN;
 import yoshikihigo.clonegear.lexer.token.LINEEND;
@@ -34,16 +40,21 @@ public class Statement {
 
 		final List<Statement> statements = new ArrayList<Statement>();
 		List<Token> tokens = new ArrayList<Token>();
+
+		final Stack<Integer> nestLevel = new Stack<>();
+		nestLevel.push(new Integer(0));
 		int inParenDepth = 0;
-		int nestLevel = 0;
 		int index = 0;
 		for (final Token token : allTokens) {
 
 			token.index = index++;
 			tokens.add(token);
 
-			if (token instanceof RIGHTBRACKET) {
-				nestLevel--;
+			if ((0 == inParenDepth) && (token instanceof RIGHTBRACKET)) {
+				nestLevel.pop();
+				if (0 == nestLevel.peek().intValue()) {
+					nestLevel.pop();
+				}
 			}
 
 			if (token instanceof RIGHTPAREN) {
@@ -51,16 +62,24 @@ public class Statement {
 			}
 
 			if ((0 == inParenDepth)
-					&& (token.value.equals("{") || token.value.equals("}")
-							|| token.value.equals(";") || token.value
-								.startsWith("@"))) {
+					&& (token instanceof LEFTBRACKET
+							|| token instanceof RIGHTBRACKET
+							|| token instanceof SEMICOLON || token instanceof ANNOTATION)) {
 
 				if (1 < tokens.size()) {
+
+					if (isJCTypeDefinition(tokens)) {
+						nestLevel.push(new Integer(0));
+					}
+					final int nestDepth = nestLevel.peek().intValue();
+
 					final int fromLine = tokens.get(0).line;
 					final int toLine = tokens.get(tokens.size() - 1).line;
+					// System.out.print(Integer.toString(nestDepth) + ": ");
 					final byte[] hash = makeJCHash(tokens);
+
 					final Statement statement = new Statement(fromLine, toLine,
-							nestLevel, tokens, hash);
+							nestDepth, 1 < nestDepth, tokens, hash);
 					statements.add(statement);
 					tokens = new ArrayList<Token>();
 				}
@@ -70,8 +89,8 @@ public class Statement {
 				}
 			}
 
-			if (token instanceof LEFTBRACKET) {
-				nestLevel++;
+			if ((0 == inParenDepth) && (token instanceof LEFTBRACKET)) {
+				nestLevel.push(new Integer(nestLevel.peek().intValue() + 1));
 			}
 
 			if (token instanceof LEFTPAREN) {
@@ -87,40 +106,80 @@ public class Statement {
 
 		final List<Statement> statements = new ArrayList<Statement>();
 		List<Token> tokens = new ArrayList<Token>();
+
+		final Stack<Integer> methodDefinitionDepth = new Stack<>();
+
 		int nestLevel = 0;
 		int index = 0;
+		int inParenDepth = 0;
 		boolean interrupted = false;
+		boolean isIndent = true;
 		for (final Token token : allTokens) {
 
 			if (token instanceof TAB) {
-				if (!interrupted) {
+				if (isIndent && !interrupted) {
 					nestLevel++;
 				}
+			} else {
+				isIndent = false;
 			}
 
-			else if (token instanceof LINEINTERRUPTION) {
+			if (!(token instanceof TAB) && !(token instanceof LINEEND)) {
+				token.index = index++;
+			}
+
+			if (!(token instanceof TAB) && !(token instanceof LINEEND)
+					&& !(token instanceof SEMICOLON)
+					&& !(token instanceof LINEINTERRUPTION)) {
+				tokens.add(token);
+			}
+
+			if (token instanceof RIGHTPAREN) {
+				inParenDepth--;
+			}
+
+			if (token instanceof LEFTPAREN) {
+				inParenDepth++;
+			}
+
+			if (token instanceof LINEINTERRUPTION) {
 				interrupted = true;
+			} else {
+				interrupted = false;
 			}
 
-			else if ((token instanceof LINEEND) || (token instanceof SEMICOLON)) {
+			// make a statement
+			if (!interrupted
+					&& (0 == inParenDepth)
+					&& ((token instanceof LINEEND) || (token instanceof SEMICOLON))) {
 				if (!tokens.isEmpty()) {
+
+					if (isPYMethodDefinition(tokens)) {
+						methodDefinitionDepth.push(new Integer(nestLevel));
+					}
+
+					if (!methodDefinitionDepth.isEmpty()
+							&& (nestLevel < methodDefinitionDepth.peek()
+									.intValue())) {
+						methodDefinitionDepth.pop();
+					}
+
 					final int fromLine = tokens.get(0).line;
 					final int toLine = tokens.get(tokens.size() - 1).line;
+					final boolean isTarget = (!methodDefinitionDepth.isEmpty() && (methodDefinitionDepth
+							.peek().intValue() < nestLevel));
+					System.out.print(Integer.toString(nestLevel) + ": "
+							+ Boolean.toString(isTarget) + ": ");
 					final byte[] hash = makeJCHash(tokens);
 					final Statement statement = new Statement(fromLine, toLine,
-							nestLevel, tokens, hash);
+							nestLevel, isTarget, tokens, hash);
 					statements.add(statement);
 					tokens = new ArrayList<Token>();
 				}
 				if (token instanceof LINEEND) {
 					nestLevel = 0;
-					interrupted = false;
+					isIndent = true;
 				}
-			}
-
-			else {
-				token.index = index++;
-				tokens.add(token);
 			}
 		}
 
@@ -165,8 +224,8 @@ public class Statement {
 			else {
 				final ConsecutiveStatement consecutive = new ConsecutiveStatement(
 						startStatement.fromLine, endStatement.toLine,
-						startStatement.nestLevel, foldedTokens,
-						startStatement.hash, foldedStatements);
+						startStatement.nestLevel, startStatement.isTarget,
+						foldedTokens, startStatement.hash, foldedStatements);
 				folds.add(consecutive);
 			}
 
@@ -178,17 +237,18 @@ public class Statement {
 
 	private static byte[] makeJCHash(final List<Token> tokens) {
 
+		final List<Token> nonTrivialTokens = removeTrivialTokens(tokens);
 		final StringBuilder builder = new StringBuilder();
 		final Map<String, String> identifiers = new HashMap<>();
 
-		for (int index = 0; index < tokens.size(); index++) {
+		for (int index = 0; index < nonTrivialTokens.size(); index++) {
 
-			final Token token = tokens.get(index);
+			final Token token = nonTrivialTokens.get(index);
 
 			if (token instanceof IDENTIFIER) {
 
-				if (tokens.size() == (index + 1)
-						|| !(tokens.get(index + 1) instanceof LEFTPAREN)) {
+				if (nonTrivialTokens.size() == (index + 1)
+						|| !(nonTrivialTokens.get(index + 1) instanceof LEFTPAREN)) {
 					final String name = token.value;
 					String normalizedName = identifiers.get(name);
 					if (null == normalizedName) {
@@ -204,14 +264,6 @@ public class Statement {
 				}
 			}
 
-			else if (token instanceof ABSTRACT || token instanceof PRIVATE
-					|| token instanceof PROTECTED || token instanceof PUBLIC
-					|| token instanceof STATIC || token instanceof STRICTFP
-					|| token instanceof TRANSIENT) {
-				// not used for making hash
-				continue;
-			}
-
 			else {
 				builder.append(token.value);
 			}
@@ -223,6 +275,26 @@ public class Statement {
 		System.out.println(text);
 		final byte[] md5 = getMD5(text);
 		return md5;
+	}
+
+	private static List<Token> removeTrivialTokens(final List<Token> tokens) {
+		final List<Token> nonTrivialTokens = new ArrayList<>();
+		for (final Token token : tokens) {
+
+			if (token instanceof ABSTRACT || token instanceof FINAL
+					|| token instanceof PRIVATE || token instanceof PROTECTED
+					|| token instanceof PUBLIC || token instanceof STATIC
+					|| token instanceof STRICTFP || token instanceof TRANSIENT) {
+				// not used for making hash
+				continue;
+			}
+
+			else {
+				nonTrivialTokens.add(token);
+			}
+		}
+
+		return nonTrivialTokens;
 	}
 
 	private static byte[] getMD5(final String text) {
@@ -238,17 +310,39 @@ public class Statement {
 		}
 	}
 
+	private static boolean isJCTypeDefinition(final List<Token> tokens) {
+		final List<Token> nonTrivialTokens = removeTrivialTokens(tokens);
+		final Token firstToken = nonTrivialTokens.get(0);
+		if (firstToken instanceof CLASS || firstToken instanceof INTERFACE) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	private static boolean isPYMethodDefinition(final List<Token> tokens) {
+		final List<Token> nonTrivialTokens = removeTrivialTokens(tokens);
+		final Token firstToken = nonTrivialTokens.get(0);
+		if (firstToken instanceof DEF) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	final public int fromLine;
 	final public int toLine;
 	final public int nestLevel;
+	final public boolean isTarget;
 	final public List<Token> tokens;
 	final public byte[] hash;
 
 	public Statement(final int fromLine, final int toLine, final int nestLevel,
-			final List<Token> tokens, final byte[] hash) {
+			final boolean isTarget, final List<Token> tokens, final byte[] hash) {
 		this.fromLine = fromLine;
 		this.toLine = toLine;
 		this.nestLevel = nestLevel;
+		this.isTarget = isTarget;
 		this.tokens = Collections.unmodifiableList(tokens);
 		this.hash = hash;
 	}
