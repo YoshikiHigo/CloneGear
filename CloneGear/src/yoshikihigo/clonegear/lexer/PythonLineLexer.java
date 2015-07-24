@@ -85,6 +85,7 @@ import yoshikihigo.clonegear.lexer.token.TRUE2;
 import yoshikihigo.clonegear.lexer.token.TRY;
 import yoshikihigo.clonegear.lexer.token.Token;
 import yoshikihigo.clonegear.lexer.token.WHILE;
+import yoshikihigo.clonegear.lexer.token.WHITESPACE;
 import yoshikihigo.clonegear.lexer.token.WITH;
 import yoshikihigo.clonegear.lexer.token.YIELD;
 
@@ -262,6 +263,9 @@ public class PythonLineLexer implements LineLexer {
 				} else if (string.startsWith(".")) {
 					text.delete(0, 1);
 					tokens.add(new DOT());
+				} else if (string.startsWith(" ")) {
+					text.delete(0, 1);
+					tokens.add(new WHITESPACE());
 				} else if (string.startsWith("\\")) {
 					text.delete(0, 1);
 					tokens.add(new LINEINTERRUPTION());

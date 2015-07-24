@@ -33,6 +33,7 @@ import yoshikihigo.clonegear.lexer.token.STRICTFP;
 import yoshikihigo.clonegear.lexer.token.TAB;
 import yoshikihigo.clonegear.lexer.token.TRANSIENT;
 import yoshikihigo.clonegear.lexer.token.Token;
+import yoshikihigo.clonegear.lexer.token.WHITESPACE;
 
 public class Statement {
 
@@ -117,7 +118,7 @@ public class Statement {
 		boolean isIndent = true;
 		for (final Token token : allTokens) {
 
-			if (token instanceof TAB) {
+			if ((token instanceof TAB) || (token instanceof WHITESPACE)) {
 				if (isIndent && !interrupted) {
 					nestLevel++;
 				}
@@ -125,11 +126,13 @@ public class Statement {
 				isIndent = false;
 			}
 
-			if (!(token instanceof TAB) && !(token instanceof LINEEND)) {
+			if (!(token instanceof TAB) && !(token instanceof WHITESPACE)
+					&& !(token instanceof LINEEND)) {
 				token.index = index++;
 			}
 
-			if (!(token instanceof TAB) && !(token instanceof LINEEND)
+			if (!(token instanceof TAB) && !(token instanceof WHITESPACE)
+					&& !(token instanceof LINEEND)
 					&& !(token instanceof SEMICOLON)
 					&& !(token instanceof LINEINTERRUPTION)) {
 				tokens.add(token);
@@ -155,22 +158,22 @@ public class Statement {
 					&& ((token instanceof LINEEND) || (token instanceof SEMICOLON))) {
 				if (!tokens.isEmpty()) {
 
-					if (isPYMethodDefinition(tokens)) {
-						methodDefinitionDepth.push(new Integer(nestLevel));
-					}
-
 					if (!methodDefinitionDepth.isEmpty()
-							&& (nestLevel < methodDefinitionDepth.peek()
+							&& (nestLevel <= methodDefinitionDepth.peek()
 									.intValue())) {
 						methodDefinitionDepth.pop();
+					}
+
+					if (isPYMethodDefinition(tokens)) {
+						methodDefinitionDepth.push(new Integer(nestLevel));
 					}
 
 					final int fromLine = tokens.get(0).line;
 					final int toLine = tokens.get(tokens.size() - 1).line;
 					final boolean isTarget = (!methodDefinitionDepth.isEmpty() && (methodDefinitionDepth
 							.peek().intValue() < nestLevel));
-					// System.out.print(Integer.toString(nestLevel) + ": "
-					// + Boolean.toString(isTarget) + ": ");
+					System.out.print(Integer.toString(nestLevel) + ": "
+							+ Boolean.toString(isTarget) + ": ");
 					final byte[] hash = makePYHash(tokens);
 					final Statement statement = new Statement(fromLine, toLine,
 							nestLevel, isTarget, tokens, hash);
@@ -317,7 +320,7 @@ public class Statement {
 		}
 
 		final String text = builder.toString();
-		// System.out.println(text);
+		System.out.println(text);
 		final byte[] md5 = getMD5(text);
 		return md5;
 	}
