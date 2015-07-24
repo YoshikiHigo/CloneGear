@@ -51,8 +51,10 @@ public class Statement {
 			tokens.add(token);
 
 			if ((0 == inParenDepth) && (token instanceof RIGHTBRACKET)) {
-				nestLevel.pop();
 				if (0 == nestLevel.peek().intValue()) {
+					nestLevel.pop();
+					nestLevel.pop();
+				} else {
 					nestLevel.pop();
 				}
 			}
