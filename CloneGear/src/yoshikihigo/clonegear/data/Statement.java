@@ -172,8 +172,8 @@ public class Statement {
 					final int toLine = tokens.get(tokens.size() - 1).line;
 					final boolean isTarget = (!methodDefinitionDepth.isEmpty() && (methodDefinitionDepth
 							.peek().intValue() < nestLevel));
-					System.out.print(Integer.toString(nestLevel) + ": "
-							+ Boolean.toString(isTarget) + ": ");
+//					System.out.print(Integer.toString(nestLevel) + ": "
+//							+ Boolean.toString(isTarget) + ": ");
 					final byte[] hash = makePYHash(tokens);
 					final Statement statement = new Statement(fromLine, toLine,
 							nestLevel, isTarget, tokens, hash);
@@ -320,7 +320,7 @@ public class Statement {
 		}
 
 		final String text = builder.toString();
-		System.out.println(text);
+		//System.out.println(text);
 		final byte[] md5 = getMD5(text);
 		return md5;
 	}
