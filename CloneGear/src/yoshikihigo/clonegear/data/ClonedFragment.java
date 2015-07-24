@@ -47,6 +47,25 @@ public class ClonedFragment implements Comparable<ClonedFragment> {
 		return this.statements.get(this.statements.size() - 1).toLine;
 	}
 
+	public boolean isOverraped(final ClonedFragment clonedFragment) {
+
+		if (!this.path.equals(clonedFragment.path)) {
+			return false;
+		}
+
+		else if (this.getToLine() < clonedFragment.getFromLine()) {
+			return false;
+		}
+
+		else if (clonedFragment.getToLine() < this.getFromLine()) {
+			return false;
+		}
+
+		else {
+			return true;
+		}
+	}
+
 	@Override
 	public int compareTo(final ClonedFragment o) {
 

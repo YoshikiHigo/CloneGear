@@ -257,7 +257,8 @@ public class SmithWaterman {
 			final ClonedFragment yClonedFragment = getClonedFragment(path2,
 					statements2, minCell.y, maxCell.y, cloneHash);
 			if ((threshold <= xClonedFragment.getNumberOfTokens())
-					&& (threshold <= yClonedFragment.getNumberOfTokens())) {
+					&& (threshold <= yClonedFragment.getNumberOfTokens())
+					&& !xClonedFragment.isOverraped(yClonedFragment)) {
 				clonedFragments.add(xClonedFragment);
 				clonedFragments.add(yClonedFragment);
 				switchToChecked(table, minCell.x, maxCell.x, minCell.y,
