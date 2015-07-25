@@ -57,6 +57,7 @@ import yoshikihigo.clonegear.lexer.token.PLUSEQUAL;
 import yoshikihigo.clonegear.lexer.token.QUESTION;
 import yoshikihigo.clonegear.lexer.token.REGISTER;
 import yoshikihigo.clonegear.lexer.token.RETURN;
+import yoshikihigo.clonegear.lexer.token.RIGHTARROW;
 import yoshikihigo.clonegear.lexer.token.RIGHTBRACKET;
 import yoshikihigo.clonegear.lexer.token.RIGHTPAREN;
 import yoshikihigo.clonegear.lexer.token.RIGHTSQUAREBRACKET;
@@ -149,11 +150,13 @@ public class CLineLexer implements LineLexer {
 		} else if (string.startsWith("==")) {
 			text.delete(0, 2);
 			tokenList.add(new EQUAL());
-			// } else if (string.startsWith("!")) {
-			// text.delete(0, 1);
-			// tokenList.add(new NOT());
+		} else if (string.startsWith("->")) {
+			text.delete(0, 2);
+			tokenList.add(new RIGHTARROW());
 		}
-
+		// } else if (string.startsWith("!")) {
+		// text.delete(0, 1);
+		// tokenList.add(new NOT());
 		else if (string.startsWith(":")) {
 			text.delete(0, 1);
 			tokenList.add(new COLON());
