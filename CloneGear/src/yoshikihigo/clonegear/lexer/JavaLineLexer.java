@@ -5,97 +5,7 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import yoshikihigo.clonegear.lexer.token.ABSTRACT;
-import yoshikihigo.clonegear.lexer.token.AND;
-import yoshikihigo.clonegear.lexer.token.ANNOTATION;
-import yoshikihigo.clonegear.lexer.token.ASSERT;
-import yoshikihigo.clonegear.lexer.token.ASSIGN;
-import yoshikihigo.clonegear.lexer.token.BOOLEAN;
-import yoshikihigo.clonegear.lexer.token.BREAK;
-import yoshikihigo.clonegear.lexer.token.BYTE;
-import yoshikihigo.clonegear.lexer.token.CASE;
-import yoshikihigo.clonegear.lexer.token.CATCH;
-import yoshikihigo.clonegear.lexer.token.CHAR;
-import yoshikihigo.clonegear.lexer.token.CHARLITERAL;
-import yoshikihigo.clonegear.lexer.token.CLASS;
-import yoshikihigo.clonegear.lexer.token.COLON;
-import yoshikihigo.clonegear.lexer.token.COMMA;
-import yoshikihigo.clonegear.lexer.token.CONST;
-import yoshikihigo.clonegear.lexer.token.CONTINUE;
-import yoshikihigo.clonegear.lexer.token.DECREMENT;
-import yoshikihigo.clonegear.lexer.token.DEFAULT;
-import yoshikihigo.clonegear.lexer.token.DIVIDE;
-import yoshikihigo.clonegear.lexer.token.DIVIDEEQUAL;
-import yoshikihigo.clonegear.lexer.token.DO;
-import yoshikihigo.clonegear.lexer.token.DOT;
-import yoshikihigo.clonegear.lexer.token.DOUBLE;
-import yoshikihigo.clonegear.lexer.token.ELSE;
-import yoshikihigo.clonegear.lexer.token.ENUM;
-import yoshikihigo.clonegear.lexer.token.EQUAL;
-import yoshikihigo.clonegear.lexer.token.EXTENDS;
-import yoshikihigo.clonegear.lexer.token.FALSE;
-import yoshikihigo.clonegear.lexer.token.FINAL;
-import yoshikihigo.clonegear.lexer.token.FINALLY;
-import yoshikihigo.clonegear.lexer.token.FLOAT;
-import yoshikihigo.clonegear.lexer.token.FOR;
-import yoshikihigo.clonegear.lexer.token.GOTO;
-import yoshikihigo.clonegear.lexer.token.GREAT;
-import yoshikihigo.clonegear.lexer.token.GREATEQUAL;
-import yoshikihigo.clonegear.lexer.token.IDENTIFIER;
-import yoshikihigo.clonegear.lexer.token.IF;
-import yoshikihigo.clonegear.lexer.token.IMPLEMENTS;
-import yoshikihigo.clonegear.lexer.token.IMPORT;
-import yoshikihigo.clonegear.lexer.token.INCREMENT;
-import yoshikihigo.clonegear.lexer.token.INSTANCEOF;
-import yoshikihigo.clonegear.lexer.token.INT;
-import yoshikihigo.clonegear.lexer.token.INTERFACE;
-import yoshikihigo.clonegear.lexer.token.LEFTBRACKET;
-import yoshikihigo.clonegear.lexer.token.LEFTPAREN;
-import yoshikihigo.clonegear.lexer.token.LEFTSQUAREBRACKET;
-import yoshikihigo.clonegear.lexer.token.LESS;
-import yoshikihigo.clonegear.lexer.token.LESSEQUAL;
-import yoshikihigo.clonegear.lexer.token.LONG;
-import yoshikihigo.clonegear.lexer.token.MINUS;
-import yoshikihigo.clonegear.lexer.token.MINUSEQUAL;
-import yoshikihigo.clonegear.lexer.token.MOD;
-import yoshikihigo.clonegear.lexer.token.MODEQUAL;
-import yoshikihigo.clonegear.lexer.token.NATIVE;
-import yoshikihigo.clonegear.lexer.token.NEW;
-import yoshikihigo.clonegear.lexer.token.NOT;
-import yoshikihigo.clonegear.lexer.token.NULL;
-import yoshikihigo.clonegear.lexer.token.NUMBERLITERAL;
-import yoshikihigo.clonegear.lexer.token.OR;
-import yoshikihigo.clonegear.lexer.token.PACKAGE;
-import yoshikihigo.clonegear.lexer.token.PLUS;
-import yoshikihigo.clonegear.lexer.token.PLUSEQUAL;
-import yoshikihigo.clonegear.lexer.token.PRIVATE;
-import yoshikihigo.clonegear.lexer.token.PROTECTED;
-import yoshikihigo.clonegear.lexer.token.PUBLIC;
-import yoshikihigo.clonegear.lexer.token.QUESTION;
-import yoshikihigo.clonegear.lexer.token.RETURN;
-import yoshikihigo.clonegear.lexer.token.RIGHTBRACKET;
-import yoshikihigo.clonegear.lexer.token.RIGHTPAREN;
-import yoshikihigo.clonegear.lexer.token.RIGHTSQUAREBRACKET;
-import yoshikihigo.clonegear.lexer.token.SEMICOLON;
-import yoshikihigo.clonegear.lexer.token.SHORT;
-import yoshikihigo.clonegear.lexer.token.STAR;
-import yoshikihigo.clonegear.lexer.token.STAREQUAL;
-import yoshikihigo.clonegear.lexer.token.STATIC;
-import yoshikihigo.clonegear.lexer.token.STRICTFP;
-import yoshikihigo.clonegear.lexer.token.STRINGLITERAL;
-import yoshikihigo.clonegear.lexer.token.SUPER;
-import yoshikihigo.clonegear.lexer.token.SWITCH;
-import yoshikihigo.clonegear.lexer.token.SYNCHRONIZED;
-import yoshikihigo.clonegear.lexer.token.THIS;
-import yoshikihigo.clonegear.lexer.token.THROW;
-import yoshikihigo.clonegear.lexer.token.THROWS;
-import yoshikihigo.clonegear.lexer.token.TRANSIENT;
-import yoshikihigo.clonegear.lexer.token.TRUE;
-import yoshikihigo.clonegear.lexer.token.TRY;
-import yoshikihigo.clonegear.lexer.token.Token;
-import yoshikihigo.clonegear.lexer.token.VOID;
-import yoshikihigo.clonegear.lexer.token.VOLATILE;
-import yoshikihigo.clonegear.lexer.token.WHILE;
+import yoshikihigo.clonegear.lexer.token.*;
 
 public class JavaLineLexer implements LineLexer {
 
@@ -137,7 +47,19 @@ public class JavaLineLexer implements LineLexer {
 		}
 
 		final String string = text.toString();
-		if (string.startsWith("-=")) {
+		if (string.startsWith(">>>=")) {
+			text.delete(0, 4);
+			tokenList.add(new RIGHTSHIFTEQUAL2());
+		} else if (string.startsWith(">>>")) {
+			text.delete(0, 3);
+			tokenList.add(new RIGHTSHIFT2());
+		} else if (string.startsWith("<<=")) {
+			text.delete(0, 3);
+			tokenList.add(new LEFTSHIFTEQUAL());
+		} else if (string.startsWith(">>=")) {
+			text.delete(0, 3);
+			tokenList.add(new RIGHTSHIFTEQUAL());
+		} else if (string.startsWith("-=")) {
 			text.delete(0, 2);
 			tokenList.add(new MINUSEQUAL());
 		} else if (string.startsWith("+=")) {
@@ -167,12 +89,24 @@ public class JavaLineLexer implements LineLexer {
 		} else if (string.startsWith("==")) {
 			text.delete(0, 2);
 			tokenList.add(new EQUAL());
-		} else if (string.startsWith("!")) {
-			text.delete(0, 1);
-			tokenList.add(new NOT());
+		} else if (string.startsWith("&&")) {
+			text.delete(0, 2);
+			tokenList.add(new ANDAND());
+		} else if (string.startsWith("||")) {
+			text.delete(0, 2);
+			tokenList.add(new OROR());
+		} else if (string.startsWith("<<")) {
+			text.delete(0, 2);
+			tokenList.add(new LEFTSHIFT());
+		} else if (string.startsWith(">>")) {
+			text.delete(0, 2);
+			tokenList.add(new RIGHTSHIFT());
 		}
 
-		else if (string.startsWith(":")) {
+		else if (string.startsWith("!")) {
+			text.delete(0, 1);
+			tokenList.add(new NOT());
+		} else if (string.startsWith(":")) {
 			text.delete(0, 1);
 			tokenList.add(new COLON());
 		} else if (string.startsWith(";")) {

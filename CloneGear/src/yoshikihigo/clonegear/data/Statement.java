@@ -15,6 +15,7 @@ import yoshikihigo.clonegear.CGConfig;
 import yoshikihigo.clonegear.lexer.token.ABSTRACT;
 import yoshikihigo.clonegear.lexer.token.ANNOTATION;
 import yoshikihigo.clonegear.lexer.token.CLASS;
+import yoshikihigo.clonegear.lexer.token.COLON;
 import yoshikihigo.clonegear.lexer.token.DEF;
 import yoshikihigo.clonegear.lexer.token.FINAL;
 import yoshikihigo.clonegear.lexer.token.IDENTIFIER;
@@ -72,7 +73,8 @@ public class Statement {
 			if ((0 == inParenDepth)
 					&& (token instanceof LEFTBRACKET
 							|| token instanceof RIGHTBRACKET
-							|| token instanceof SEMICOLON || token instanceof ANNOTATION)) {
+							|| token instanceof SEMICOLON
+							|| token instanceof COLON || token instanceof ANNOTATION)) {
 
 				if (1 < tokens.size()) {
 

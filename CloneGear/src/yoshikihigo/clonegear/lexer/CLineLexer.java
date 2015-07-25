@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import yoshikihigo.clonegear.lexer.token.AND;
+import yoshikihigo.clonegear.lexer.token.ANDAND;
 import yoshikihigo.clonegear.lexer.token.ASM;
 import yoshikihigo.clonegear.lexer.token.ASSIGN;
 import yoshikihigo.clonegear.lexer.token.AUTO;
@@ -41,6 +42,8 @@ import yoshikihigo.clonegear.lexer.token.INCREMENT;
 import yoshikihigo.clonegear.lexer.token.INT;
 import yoshikihigo.clonegear.lexer.token.LEFTBRACKET;
 import yoshikihigo.clonegear.lexer.token.LEFTPAREN;
+import yoshikihigo.clonegear.lexer.token.LEFTSHIFT;
+import yoshikihigo.clonegear.lexer.token.LEFTSHIFTEQUAL;
 import yoshikihigo.clonegear.lexer.token.LEFTSQUAREBRACKET;
 import yoshikihigo.clonegear.lexer.token.LESS;
 import yoshikihigo.clonegear.lexer.token.LESSEQUAL;
@@ -52,6 +55,7 @@ import yoshikihigo.clonegear.lexer.token.MODEQUAL;
 import yoshikihigo.clonegear.lexer.token.NULL;
 import yoshikihigo.clonegear.lexer.token.NUMBERLITERAL;
 import yoshikihigo.clonegear.lexer.token.OR;
+import yoshikihigo.clonegear.lexer.token.OROR;
 import yoshikihigo.clonegear.lexer.token.PLUS;
 import yoshikihigo.clonegear.lexer.token.PLUSEQUAL;
 import yoshikihigo.clonegear.lexer.token.QUESTION;
@@ -60,6 +64,8 @@ import yoshikihigo.clonegear.lexer.token.RETURN;
 import yoshikihigo.clonegear.lexer.token.RIGHTARROW;
 import yoshikihigo.clonegear.lexer.token.RIGHTBRACKET;
 import yoshikihigo.clonegear.lexer.token.RIGHTPAREN;
+import yoshikihigo.clonegear.lexer.token.RIGHTSHIFT;
+import yoshikihigo.clonegear.lexer.token.RIGHTSHIFTEQUAL;
 import yoshikihigo.clonegear.lexer.token.RIGHTSQUAREBRACKET;
 import yoshikihigo.clonegear.lexer.token.SEMICOLON;
 import yoshikihigo.clonegear.lexer.token.SHARP;
@@ -120,7 +126,13 @@ public class CLineLexer implements LineLexer {
 		}
 
 		final String string = text.toString();
-		if (string.startsWith("-=")) {
+		if (string.startsWith("<<=")) {
+			text.delete(0, 3);
+			tokenList.add(new LEFTSHIFTEQUAL());
+		} else if (string.startsWith(">>=")) {
+			text.delete(0, 3);
+			tokenList.add(new RIGHTSHIFTEQUAL());
+		} else if (string.startsWith("-=")) {
 			text.delete(0, 2);
 			tokenList.add(new MINUSEQUAL());
 		} else if (string.startsWith("+=")) {
@@ -153,6 +165,18 @@ public class CLineLexer implements LineLexer {
 		} else if (string.startsWith("->")) {
 			text.delete(0, 2);
 			tokenList.add(new RIGHTARROW());
+		} else if (string.startsWith("&&")) {
+			text.delete(0, 2);
+			tokenList.add(new ANDAND());
+		} else if (string.startsWith("||")) {
+			text.delete(0, 2);
+			tokenList.add(new OROR());
+		} else if (string.startsWith("<<")) {
+			text.delete(0, 2);
+			tokenList.add(new LEFTSHIFT());
+		} else if (string.startsWith(">>")) {
+			text.delete(0, 2);
+			tokenList.add(new RIGHTSHIFT());
 		}
 		// } else if (string.startsWith("!")) {
 		// text.delete(0, 1);
