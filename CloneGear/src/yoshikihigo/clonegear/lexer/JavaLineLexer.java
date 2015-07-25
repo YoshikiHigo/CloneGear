@@ -89,6 +89,9 @@ public class JavaLineLexer implements LineLexer {
 		} else if (string.startsWith("==")) {
 			text.delete(0, 2);
 			tokenList.add(new EQUAL());
+		} else if (string.startsWith("!=")) {
+			text.delete(0, 2);
+			tokenList.add(new NOTEQUAL());
 		} else if (string.startsWith("&&")) {
 			text.delete(0, 2);
 			tokenList.add(new ANDAND());

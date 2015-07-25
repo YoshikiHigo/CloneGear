@@ -59,7 +59,7 @@ import yoshikihigo.clonegear.lexer.token.NONE;
 import yoshikihigo.clonegear.lexer.token.NONLOCAL;
 import yoshikihigo.clonegear.lexer.token.NOT;
 import yoshikihigo.clonegear.lexer.token.NOT2;
-import yoshikihigo.clonegear.lexer.token.NOTEQUAL;
+import yoshikihigo.clonegear.lexer.token.NOTEQUAL2;
 import yoshikihigo.clonegear.lexer.token.NUMBERLITERAL;
 import yoshikihigo.clonegear.lexer.token.OR;
 import yoshikihigo.clonegear.lexer.token.OR2;
@@ -188,7 +188,7 @@ public class PythonLineLexer implements LineLexer {
 					tokens.add(new EQUAL());
 				} else if (string.startsWith("<>")) {
 					text.delete(0, 2);
-					tokens.add(new NOTEQUAL());
+					tokens.add(new NOTEQUAL2());
 				} else if (string.startsWith("!")) {
 					text.delete(0, 1);
 					tokens.add(new NOT());
