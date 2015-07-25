@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import yoshikihigo.clonegear.CGConfig;
 import yoshikihigo.clonegear.lexer.token.ABSTRACT;
 import yoshikihigo.clonegear.lexer.token.ANNOTATION;
 import yoshikihigo.clonegear.lexer.token.CLASS;
@@ -48,6 +49,8 @@ public class Statement {
 		nestLevel.push(new Integer(0));
 		int inParenDepth = 0;
 		int index = 0;
+		final boolean isDebug = CGConfig.getInstance().isDEBUG();
+
 		for (final Token token : allTokens) {
 
 			token.index = index++;
@@ -80,12 +83,15 @@ public class Statement {
 
 					final int fromLine = tokens.get(0).line;
 					final int toLine = tokens.get(tokens.size() - 1).line;
-					// System.out.print(Integer.toString(nestDepth) + ": ");
 					final byte[] hash = makeJCHash(tokens);
 					final Statement statement = new Statement(fromLine, toLine,
 							nestDepth, 1 < nestDepth, tokens, hash);
 					statements.add(statement);
 					tokens = new ArrayList<Token>();
+
+					if (isDebug) {
+						System.out.println(statement.toString());
+					}
 				}
 
 				else {
@@ -120,6 +126,8 @@ public class Statement {
 		int inSquareBracketDepth = 0;
 		boolean interrupted = false;
 		boolean isIndent = true;
+		final boolean isDebug = CGConfig.getInstance().isDEBUG();
+
 		for (final Token token : allTokens) {
 
 			if ((token instanceof TAB) || (token instanceof WHITESPACE)) {
@@ -196,13 +204,15 @@ public class Statement {
 					final int toLine = tokens.get(tokens.size() - 1).line;
 					final boolean isTarget = (!methodDefinitionDepth.isEmpty() && (methodDefinitionDepth
 							.peek().intValue() < nestLevel));
-					System.out.print(Integer.toString(nestLevel) + ": "
-							+ Boolean.toString(isTarget) + ": ");
 					final byte[] hash = makePYHash(tokens);
 					final Statement statement = new Statement(fromLine, toLine,
 							nestLevel, isTarget, tokens, hash);
 					statements.add(statement);
 					tokens = new ArrayList<Token>();
+
+					if (isDebug) {
+						System.out.println(statement.toString());
+					}
 				}
 				if (token instanceof LINEEND) {
 					nestLevel = 0;
@@ -343,7 +353,6 @@ public class Statement {
 		}
 
 		final String text = builder.toString();
-		System.out.println(text);
 		final byte[] md5 = getMD5(text);
 		return md5;
 	}
@@ -429,5 +438,19 @@ public class Statement {
 
 	public int getNumberOfTokens() {
 		return this.tokens.size();
+	}
+
+	@Override
+	public String toString() {
+		final StringBuilder text = new StringBuilder();
+		text.append(Integer.toString(this.nestLevel));
+		text.append(" (");
+		text.append(Boolean.toString(this.isTarget));
+		text.append("): ");
+		for (final Token token : this.tokens) {
+			text.append(token.value);
+			text.append(" ");
+		}
+		return text.toString();
 	}
 }

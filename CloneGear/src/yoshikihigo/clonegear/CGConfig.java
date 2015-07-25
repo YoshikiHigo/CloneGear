@@ -24,73 +24,80 @@ public class CGConfig {
 		final Options options = new Options();
 
 		{
-			final Option option = new Option("src", "source", true,
+			final Option source = new Option("src", "source", true,
 					"source code of clone detection target");
-			option.setArgName("sourcecode");
-			option.setArgs(1);
-			option.setRequired(false);
-			options.addOption(option);
+			source.setArgName("sourcecode");
+			source.setArgs(1);
+			source.setRequired(false);
+			options.addOption(source);
 		}
 
 		{
-			final Option option = new Option("o", "output", true,
+			final Option output = new Option("o", "output", true,
 					"output file for detection results");
-			option.setArgName("file");
-			option.setArgs(1);
-			option.setRequired(false);
-			options.addOption(option);
+			output.setArgName("file");
+			output.setArgs(1);
+			output.setRequired(false);
+			options.addOption(output);
 		}
 
 		{
-			final Option option = new Option("lang", "language", true,
+			final Option language = new Option("lang", "language", true,
 					"programming language for analysis");
-			option.setArgName("language");
-			option.setArgs(1);
-			option.setRequired(false);
-			options.addOption(option);
+			language.setArgName("language");
+			language.setArgs(1);
+			language.setRequired(false);
+			options.addOption(language);
 		}
 
 		{
-			final Option option = new Option("thrld", "threshold", true,
+			final Option threshold = new Option("thrld", "threshold", true,
 					"threshold of detected clone size");
-			option.setArgName("threshold");
-			option.setArgs(1);
-			option.setRequired(false);
-			options.addOption(option);
+			threshold.setArgName("threshold");
+			threshold.setArgs(1);
+			threshold.setRequired(false);
+			options.addOption(threshold);
 		}
 
 		{
-			final Option option = new Option("soft", "software", true,
+			final Option software = new Option("soft", "software", true,
 					"software name");
-			option.setArgName("software");
-			option.setArgs(1);
-			option.setRequired(false);
-			options.addOption(option);
+			software.setArgName("software");
+			software.setArgs(1);
+			software.setRequired(false);
+			options.addOption(software);
 		}
 
 		{
-			final Option option = new Option("thd", "thread", true,
+			final Option thread = new Option("thd", "thread", true,
 					"end revision of repository for test");
-			option.setArgName("thread");
-			option.setArgs(1);
-			option.setRequired(false);
-			options.addOption(option);
+			thread.setArgName("thread");
+			thread.setArgs(1);
+			thread.setRequired(false);
+			options.addOption(thread);
 		}
 
 		{
-			final Option option = new Option("v", "verbose", false,
+			final Option verbose = new Option("v", "verbose", false,
 					"verbose output for progressing");
-			option.setRequired(false);
-			options.addOption(option);
+			verbose.setRequired(false);
+			options.addOption(verbose);
 		}
 
 		{
-			final Option option = new Option("result", "result", true,
+			final Option result = new Option("result", "result", true,
 					"clone detection results of CGFinder");
-			option.setArgName("file");
-			option.setArgs(1);
-			option.setRequired(false);
-			options.addOption(option);
+			result.setArgName("file");
+			result.setArgs(1);
+			result.setRequired(false);
+			options.addOption(result);
+		}
+
+		{
+			final Option debug = new Option("debug", "debug", false,
+					"print some informlation for debugging");
+			debug.setRequired(false);
+			options.addOption(debug);
 		}
 
 		try {
@@ -198,5 +205,9 @@ public class CGConfig {
 			System.exit(0);
 		}
 		return this.commandLine.getOptionValue("result");
+	}
+
+	public boolean isDEBUG() {
+		return this.commandLine.hasOption("debug");
 	}
 }
