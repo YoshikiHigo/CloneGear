@@ -28,6 +28,7 @@ import yoshikihigo.clonegear.lexer.token.LINEINTERRUPTION;
 import yoshikihigo.clonegear.lexer.token.PRIVATE;
 import yoshikihigo.clonegear.lexer.token.PROTECTED;
 import yoshikihigo.clonegear.lexer.token.PUBLIC;
+import yoshikihigo.clonegear.lexer.token.QUESTION;
 import yoshikihigo.clonegear.lexer.token.RIGHTBRACKET;
 import yoshikihigo.clonegear.lexer.token.RIGHTPAREN;
 import yoshikihigo.clonegear.lexer.token.RIGHTSQUAREBRACKET;
@@ -49,6 +50,7 @@ public class Statement {
 		final Stack<Integer> nestLevel = new Stack<>();
 		nestLevel.push(new Integer(1));
 		int inParenDepth = 0;
+		int inTernaryOperationDepth = 0;
 		int index = 0;
 		final boolean isDebug = CGConfig.getInstance().isDEBUG();
 
@@ -66,11 +68,16 @@ public class Statement {
 				}
 			}
 
+			if (token instanceof QUESTION) {
+				inTernaryOperationDepth++;
+			}
+
 			if (token instanceof RIGHTPAREN) {
 				inParenDepth--;
 			}
 
 			if ((0 == inParenDepth)
+					&& (0 == inTernaryOperationDepth)
 					&& (token instanceof LEFTBRACKET
 							|| token instanceof RIGHTBRACKET
 							|| token instanceof SEMICOLON
@@ -103,6 +110,10 @@ public class Statement {
 
 			if ((0 == inParenDepth) && (token instanceof LEFTBRACKET)) {
 				nestLevel.push(new Integer(nestLevel.peek().intValue() + 1));
+			}
+
+			if ((0 < inTernaryOperationDepth) && (token instanceof COLON)) {
+				inTernaryOperationDepth--;
 			}
 
 			if (token instanceof LEFTPAREN) {
