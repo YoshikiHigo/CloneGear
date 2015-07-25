@@ -98,6 +98,11 @@ public class CLineLexer implements LineLexer {
 			String line;
 			final CLineLexer lexer = new CLineLexer();
 			while (null != (line = reader.readLine())) {
+
+				if (line.startsWith("#")) {
+					continue;
+				}
+
 				for (final Token t : lexer.lexLine(line)) {
 					t.line = reader.getLineNumber();
 					tokens.add(t);
