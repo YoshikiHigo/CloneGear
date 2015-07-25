@@ -52,6 +52,7 @@ import yoshikihigo.clonegear.lexer.token.MINUS;
 import yoshikihigo.clonegear.lexer.token.MINUSEQUAL;
 import yoshikihigo.clonegear.lexer.token.MOD;
 import yoshikihigo.clonegear.lexer.token.MODEQUAL;
+import yoshikihigo.clonegear.lexer.token.NOT;
 import yoshikihigo.clonegear.lexer.token.NULL;
 import yoshikihigo.clonegear.lexer.token.NUMBERLITERAL;
 import yoshikihigo.clonegear.lexer.token.OR;
@@ -183,10 +184,11 @@ public class CLineLexer implements LineLexer {
 			text.delete(0, 2);
 			tokenList.add(new RIGHTSHIFT());
 		}
-		// } else if (string.startsWith("!")) {
-		// text.delete(0, 1);
-		// tokenList.add(new NOT());
-		else if (string.startsWith(":")) {
+
+		else if (string.startsWith("!")) {
+			text.delete(0, 1);
+			tokenList.add(new NOT());
+		} else if (string.startsWith(":")) {
 			text.delete(0, 1);
 			tokenList.add(new COLON());
 		} else if (string.startsWith(";")) {
