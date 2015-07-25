@@ -204,6 +204,20 @@ public class JavaLineLexer implements LineLexer {
 			}
 		}
 
+		else if (string.startsWith("0x")) {
+			int index = 2;
+			while (index < string.length()) {
+				if ((!isDigit(string.charAt(index)))
+						&& (!isAlphabet(string.charAt(index)))) {
+					break;
+				}
+				index++;
+			}
+			text.delete(0, index);
+			final String sconstant = string.substring(0, index);
+			tokenList.add(new NUMBERLITERAL(sconstant));
+		}
+
 		else if (isDigit(string.charAt(0))) {
 			int index = 1;
 			while (index < string.length()) {
