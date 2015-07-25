@@ -46,7 +46,7 @@ public class Statement {
 		List<Token> tokens = new ArrayList<Token>();
 
 		final Stack<Integer> nestLevel = new Stack<>();
-		nestLevel.push(new Integer(0));
+		nestLevel.push(new Integer(1));
 		int inParenDepth = 0;
 		int index = 0;
 		final boolean isDebug = CGConfig.getInstance().isDEBUG();
