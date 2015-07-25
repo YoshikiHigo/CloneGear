@@ -54,7 +54,7 @@ import yoshikihigo.clonegear.lexer.token.MOD;
 import yoshikihigo.clonegear.lexer.token.MODEQUAL;
 import yoshikihigo.clonegear.lexer.token.NOT;
 import yoshikihigo.clonegear.lexer.token.NOTEQUAL;
-import yoshikihigo.clonegear.lexer.token.NULL;
+import yoshikihigo.clonegear.lexer.token.NULL2;
 import yoshikihigo.clonegear.lexer.token.NUMBERLITERAL;
 import yoshikihigo.clonegear.lexer.token.OR;
 import yoshikihigo.clonegear.lexer.token.OROR;
@@ -171,7 +171,7 @@ public class CLineLexer implements LineLexer {
 			tokenList.add(new EQUAL());
 		} else if (string.startsWith("!=")) {
 			text.delete(0, 2);
-			tokenList.add(new NOTEQUAL());			
+			tokenList.add(new NOTEQUAL());
 		} else if (string.startsWith("->")) {
 			text.delete(0, 2);
 			tokenList.add(new RIGHTARROW());
@@ -377,7 +377,7 @@ public class CLineLexer implements LineLexer {
 			} else if (identifier.equals("long")) {
 				tokenList.add(new LONG());
 			} else if (identifier.equals("NULL")) {
-				tokenList.add(new NULL());
+				tokenList.add(new NULL2());
 			} else if (identifier.equals("register")) {
 				tokenList.add(new REGISTER());
 			} else if (identifier.equals("return")) {
