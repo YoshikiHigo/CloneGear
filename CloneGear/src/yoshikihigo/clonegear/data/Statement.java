@@ -20,6 +20,7 @@ import yoshikihigo.clonegear.lexer.token.IDENTIFIER;
 import yoshikihigo.clonegear.lexer.token.INTERFACE;
 import yoshikihigo.clonegear.lexer.token.LEFTBRACKET;
 import yoshikihigo.clonegear.lexer.token.LEFTPAREN;
+import yoshikihigo.clonegear.lexer.token.LEFTSQUAREBRACKET;
 import yoshikihigo.clonegear.lexer.token.LINEEND;
 import yoshikihigo.clonegear.lexer.token.LINEINTERRUPTION;
 import yoshikihigo.clonegear.lexer.token.PRIVATE;
@@ -27,6 +28,7 @@ import yoshikihigo.clonegear.lexer.token.PROTECTED;
 import yoshikihigo.clonegear.lexer.token.PUBLIC;
 import yoshikihigo.clonegear.lexer.token.RIGHTBRACKET;
 import yoshikihigo.clonegear.lexer.token.RIGHTPAREN;
+import yoshikihigo.clonegear.lexer.token.RIGHTSQUAREBRACKET;
 import yoshikihigo.clonegear.lexer.token.SEMICOLON;
 import yoshikihigo.clonegear.lexer.token.STATIC;
 import yoshikihigo.clonegear.lexer.token.STRICTFP;
@@ -114,6 +116,8 @@ public class Statement {
 		int nestLevel = 0;
 		int index = 0;
 		int inParenDepth = 0;
+		int inBracketDepth = 0;
+		int inSquareBracketDepth = 0;
 		boolean interrupted = false;
 		boolean isIndent = true;
 		for (final Token token : allTokens) {
@@ -146,8 +150,26 @@ public class Statement {
 				inParenDepth++;
 			}
 
+			if (token instanceof RIGHTBRACKET) {
+				inBracketDepth--;
+			}
+
+			if (token instanceof LEFTBRACKET) {
+				inBracketDepth++;
+			}
+
+			if (token instanceof RIGHTSQUAREBRACKET) {
+				inSquareBracketDepth--;
+			}
+
+			if (token instanceof LEFTSQUAREBRACKET) {
+				inSquareBracketDepth++;
+			}
+
 			if (token instanceof LINEINTERRUPTION) {
 				interrupted = true;
+			} else if (token instanceof LINEEND) {
+				// do nothing
 			} else {
 				interrupted = false;
 			}
@@ -155,6 +177,8 @@ public class Statement {
 			// make a statement
 			if (!interrupted
 					&& (0 == inParenDepth)
+					&& (0 == inBracketDepth)
+					&& (0 == inSquareBracketDepth)
 					&& ((token instanceof LINEEND) || (token instanceof SEMICOLON))) {
 				if (!tokens.isEmpty()) {
 
@@ -172,8 +196,8 @@ public class Statement {
 					final int toLine = tokens.get(tokens.size() - 1).line;
 					final boolean isTarget = (!methodDefinitionDepth.isEmpty() && (methodDefinitionDepth
 							.peek().intValue() < nestLevel));
-//					System.out.print(Integer.toString(nestLevel) + ": "
-//							+ Boolean.toString(isTarget) + ": ");
+					System.out.print(Integer.toString(nestLevel) + ": "
+							+ Boolean.toString(isTarget) + ": ");
 					final byte[] hash = makePYHash(tokens);
 					final Statement statement = new Statement(fromLine, toLine,
 							nestLevel, isTarget, tokens, hash);
@@ -188,7 +212,6 @@ public class Statement {
 		}
 
 		return statements;
-
 	}
 
 	public static List<Statement> getFoldedStatements(
@@ -320,7 +343,7 @@ public class Statement {
 		}
 
 		final String text = builder.toString();
-		//System.out.println(text);
+		System.out.println(text);
 		final byte[] md5 = getMD5(text);
 		return md5;
 	}
