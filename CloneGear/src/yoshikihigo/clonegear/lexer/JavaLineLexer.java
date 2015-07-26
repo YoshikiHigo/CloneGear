@@ -363,8 +363,9 @@ public class JavaLineLexer implements LineLexer {
 
 			int index = 1;
 			while (index < string.length()) {
-				if (' ' == string.charAt(index) || '\t' == string.charAt(index)) {
-
+				if (' ' == string.charAt(index) || '\t' == string.charAt(index)
+						|| '(' == string.charAt(index)) {
+					break;
 				}
 				index++;
 			}

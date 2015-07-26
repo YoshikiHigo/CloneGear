@@ -49,6 +49,7 @@ public class Statement {
 
 		final Stack<Integer> nestLevel = new Stack<>();
 		nestLevel.push(new Integer(1));
+		int inAnnotationDepth = 0;
 		int inParenDepth = 0;
 		int inTernaryOperationDepth = 0;
 		int index = 0;
@@ -57,7 +58,15 @@ public class Statement {
 		for (final Token token : allTokens) {
 
 			token.index = index++;
-			tokens.add(token);
+			if (0 < inAnnotationDepth) {
+				final ANNOTATION annotation = new ANNOTATION(token.value);
+				annotation.index = index++;
+				annotation.line = token.line;
+				tokens.add(annotation);
+			} else {
+				token.index = index++;
+				tokens.add(token);
+			}
 
 			if ((0 == inParenDepth) && (token instanceof RIGHTBRACKET)) {
 				if (0 == nestLevel.peek().intValue()) {
@@ -74,14 +83,16 @@ public class Statement {
 
 			if (token instanceof RIGHTPAREN) {
 				inParenDepth--;
+				if (0 < inAnnotationDepth) {
+					inAnnotationDepth--;
+				}
 			}
 
 			if ((0 == inParenDepth)
 					&& (0 == inTernaryOperationDepth)
 					&& (token instanceof LEFTBRACKET
 							|| token instanceof RIGHTBRACKET
-							|| token instanceof SEMICOLON
-							|| token instanceof COLON || token instanceof ANNOTATION)) {
+							|| token instanceof SEMICOLON || token instanceof COLON)) {
 
 				if (1 < tokens.size()) {
 
@@ -118,6 +129,15 @@ public class Statement {
 
 			if (token instanceof LEFTPAREN) {
 				inParenDepth++;
+				if ((1 < tokens.size())
+						&& (tokens.get(tokens.size() - 2) instanceof ANNOTATION)) {
+					inAnnotationDepth++;
+					tokens.remove(tokens.size() - 1);
+					final ANNOTATION annotation = new ANNOTATION(token.value);
+					annotation.index = index++;
+					annotation.line = token.line;
+					tokens.add(annotation);
+				}
 			}
 
 		}
@@ -379,6 +399,10 @@ public class Statement {
 					|| token instanceof PUBLIC || token instanceof STATIC
 					|| token instanceof STRICTFP || token instanceof TRANSIENT) {
 				// not used for making hash
+				continue;
+			}
+
+			else if (token instanceof ANNOTATION) {
 				continue;
 			}
 
