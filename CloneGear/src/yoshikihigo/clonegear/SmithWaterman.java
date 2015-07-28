@@ -428,6 +428,22 @@ class Cell implements Comparable<Cell> {
 		}
 	}
 
+	@Override
+	public boolean equals(final Object o) {
+
+		if (!(o instanceof Cell)) {
+			return false;
+		}
+
+		final Cell target = (Cell) o;
+		return (this.x == target.x) && (this.y == target.y);
+	}
+
+	@Override
+	public int hashCode() {
+		return this.x + this.y;
+	}
+
 	public void switchToChecked() {
 		this.checked = true;
 	}
