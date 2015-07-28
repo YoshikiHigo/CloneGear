@@ -117,8 +117,7 @@ public class CLineLexer implements LineLexer {
 			}
 
 		} catch (final Exception e) {
-			e.printStackTrace();
-			System.exit(0);
+			System.err.println(e.getMessage());
 		}
 
 		return tokens;
@@ -478,8 +477,7 @@ public class CLineLexer implements LineLexer {
 			}
 
 			else {
-				assert false : "unexpected situation: " + string;
-				System.exit(0);
+				System.err.println("unexpected situation: " + string);
 			}
 		}
 
