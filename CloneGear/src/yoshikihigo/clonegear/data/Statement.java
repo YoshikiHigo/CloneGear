@@ -50,7 +50,7 @@ public class Statement {
 		List<Token> tokens = new ArrayList<Token>();
 
 		final Stack<Integer> nestLevel = new Stack<>();
-		nestLevel.push(new Integer(1));
+		nestLevel.push(Integer.valueOf(1));
 		int inAnnotationDepth = 0;
 		int inParenDepth = 0;
 		int inTernaryOperationDepth = 0;
@@ -242,7 +242,8 @@ public class Statement {
 						}
 
 						if (isPYMethodDefinition(tokens)) {
-							methodDefinitionDepth.push(new Integer(nestLevel));
+							methodDefinitionDepth.push(Integer
+									.valueOf(nestLevel));
 						}
 
 						final int fromLine = tokens.get(0).line;
