@@ -11,4 +11,14 @@ public abstract class Token {
 		this.line = 0;
 		this.index = 0;
 	}
+
+	@Override
+	final public int hashCode() {
+		return this.getClass().hashCode();
+	}
+
+	@Override
+	final public boolean equals(final Object o) {
+		return this.getClass() == o.getClass();
+	}
 }

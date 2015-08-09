@@ -8,11 +8,11 @@ import yoshikihigo.clonegear.lexer.token.Token;
 
 public class ClonedFragment implements Comparable<ClonedFragment> {
 
-	final public byte[][] cloneID;
+	final public MD5[] cloneID;
 	final public String path;
 	final public List<Statement> statements;
 
-	public ClonedFragment(final byte[][] cloneID, final String path,
+	public ClonedFragment(final MD5[] cloneID, final String path,
 			final List<Statement> statements) {
 		this.cloneID = cloneID;
 		this.path = path;

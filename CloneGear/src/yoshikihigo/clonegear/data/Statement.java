@@ -1,15 +1,10 @@
 package yoshikihigo.clonegear.data;
 
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.EmptyStackException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 
 import yoshikihigo.clonegear.CGConfig;
@@ -19,7 +14,6 @@ import yoshikihigo.clonegear.lexer.token.CLASS;
 import yoshikihigo.clonegear.lexer.token.COLON;
 import yoshikihigo.clonegear.lexer.token.DEF;
 import yoshikihigo.clonegear.lexer.token.FINAL;
-import yoshikihigo.clonegear.lexer.token.IDENTIFIER;
 import yoshikihigo.clonegear.lexer.token.INTERFACE;
 import yoshikihigo.clonegear.lexer.token.LEFTBRACKET;
 import yoshikihigo.clonegear.lexer.token.LEFTPAREN;
@@ -107,7 +101,7 @@ public class Statement {
 
 						final int fromLine = tokens.get(0).line;
 						final int toLine = tokens.get(tokens.size() - 1).line;
-						final byte[] hash = makeJCHash(tokens);
+						final MD5 hash = MD5.makeJCHash(tokens);
 						final Statement statement = new Statement(fromLine,
 								toLine, nestDepth, 1 < nestDepth, tokens, hash);
 						statements.add(statement);
@@ -251,7 +245,7 @@ public class Statement {
 						final boolean isTarget = (!methodDefinitionDepth
 								.isEmpty() && (methodDefinitionDepth.peek()
 								.intValue() < nestLevel));
-						final byte[] hash = makePYHash(tokens);
+						final MD5 hash = MD5.makePYHash(tokens);
 						final Statement statement = new Statement(fromLine,
 								toLine, nestLevel, isTarget, tokens, hash);
 						statements.add(statement);
@@ -293,7 +287,8 @@ public class Statement {
 			Statement endStatement = statements.get(endIndex);
 			while ((endIndex + 1) < statements.size()) {
 				endStatement = statements.get(endIndex + 1);
-				if (!Arrays.equals(startStatement.hash, endStatement.hash)) {
+				if (!Arrays.equals(startStatement.hash.value,
+						endStatement.hash.value)) {
 					endStatement = statements.get(endIndex);
 					break;
 				}
@@ -326,90 +321,7 @@ public class Statement {
 		return folds;
 	}
 
-	private static byte[] makeJCHash(final List<Token> tokens) {
-
-		final List<Token> nonTrivialTokens = removeJCTrivialTokens(tokens);
-		final StringBuilder builder = new StringBuilder();
-		final Map<String, String> identifiers = new HashMap<>();
-
-		for (int index = 0; index < nonTrivialTokens.size(); index++) {
-
-			final Token token = nonTrivialTokens.get(index);
-
-			if (token instanceof IDENTIFIER) {
-
-				if (nonTrivialTokens.size() == (index + 1)
-						|| !(nonTrivialTokens.get(index + 1) instanceof LEFTPAREN)) {
-					final String name = token.value;
-					String normalizedName = identifiers.get(name);
-					if (null == normalizedName) {
-						normalizedName = "$" + identifiers.size();
-						identifiers.put(name, normalizedName);
-					}
-					builder.append(normalizedName);
-				}
-
-				// not normalize if identifier is method name
-				else {
-					builder.append(token.value);
-				}
-			}
-
-			else {
-				builder.append(token.value);
-			}
-
-			builder.append(" ");
-		}
-
-		final String text = builder.toString();
-		// System.out.println(text);
-		final byte[] md5 = getMD5(text);
-		return md5;
-	}
-
-	private static byte[] makePYHash(final List<Token> tokens) {
-
-		final List<Token> nonTrivialTokens = removePYTrivialTokens(tokens);
-		final StringBuilder builder = new StringBuilder();
-		final Map<String, String> identifiers = new HashMap<>();
-
-		for (int index = 0; index < nonTrivialTokens.size(); index++) {
-
-			final Token token = nonTrivialTokens.get(index);
-
-			if (token instanceof IDENTIFIER) {
-
-				if (nonTrivialTokens.size() == (index + 1)
-						|| !(nonTrivialTokens.get(index + 1) instanceof LEFTPAREN)) {
-					final String name = token.value;
-					String normalizedName = identifiers.get(name);
-					if (null == normalizedName) {
-						normalizedName = "$" + identifiers.size();
-						identifiers.put(name, normalizedName);
-					}
-					builder.append(normalizedName);
-				}
-
-				// not normalize if identifier is method name
-				else {
-					builder.append(token.value);
-				}
-			}
-
-			else {
-				builder.append(token.value);
-			}
-
-			builder.append(" ");
-		}
-
-		final String text = builder.toString();
-		final byte[] md5 = getMD5(text);
-		return md5;
-	}
-
-	private static List<Token> removeJCTrivialTokens(final List<Token> tokens) {
+	static List<Token> removeJCTrivialTokens(final List<Token> tokens) {
 		final List<Token> nonTrivialTokens = new ArrayList<>();
 		for (final Token token : tokens) {
 
@@ -433,7 +345,7 @@ public class Statement {
 		return nonTrivialTokens;
 	}
 
-	private static List<Token> removePYTrivialTokens(final List<Token> tokens) {
+	static List<Token> removePYTrivialTokens(final List<Token> tokens) {
 		final List<Token> nonTrivialTokens = new ArrayList<>();
 		for (final Token token : tokens) {
 			nonTrivialTokens.add(token);
@@ -442,21 +354,9 @@ public class Statement {
 		return nonTrivialTokens;
 	}
 
-	private static byte[] getMD5(final String text) {
-		try {
-			final MessageDigest md = MessageDigest.getInstance("MD5");
-			final byte[] data = text.getBytes("UTF-8");
-			md.update(data);
-			final byte[] digest = md.digest();
-			return digest;
-		} catch (final NoSuchAlgorithmException | UnsupportedEncodingException e) {
-			e.printStackTrace();
-			return new byte[0];
-		}
-	}
-
 	private static boolean isJCTypeDefinition(final List<Token> tokens) {
-		final List<Token> nonTrivialTokens = removeJCTrivialTokens(tokens);
+		final List<Token> nonTrivialTokens = Statement
+				.removeJCTrivialTokens(tokens);
 		final Token firstToken = nonTrivialTokens.get(0);
 		if (firstToken instanceof CLASS || firstToken instanceof INTERFACE) {
 			return true;
@@ -466,7 +366,8 @@ public class Statement {
 	}
 
 	private static boolean isPYMethodDefinition(final List<Token> tokens) {
-		final List<Token> nonTrivialTokens = removeJCTrivialTokens(tokens);
+		final List<Token> nonTrivialTokens = Statement
+				.removeJCTrivialTokens(tokens);
 		final Token firstToken = nonTrivialTokens.get(0);
 		if (firstToken instanceof DEF) {
 			return true;
@@ -480,10 +381,10 @@ public class Statement {
 	final public int nestLevel;
 	final public boolean isTarget;
 	final public List<Token> tokens;
-	final public byte[] hash;
+	final public MD5 hash;
 
 	public Statement(final int fromLine, final int toLine, final int nestLevel,
-			final boolean isTarget, final List<Token> tokens, final byte[] hash) {
+			final boolean isTarget, final List<Token> tokens, final MD5 hash) {
 		this.fromLine = fromLine;
 		this.toLine = toLine;
 		this.nestLevel = nestLevel;

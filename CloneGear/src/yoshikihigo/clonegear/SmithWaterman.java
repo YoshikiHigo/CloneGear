@@ -8,6 +8,7 @@ import java.util.TreeSet;
 import java.util.concurrent.atomic.AtomicLong;
 
 import yoshikihigo.clonegear.data.ClonedFragment;
+import yoshikihigo.clonegear.data.MD5;
 import yoshikihigo.clonegear.data.SourceFile;
 import yoshikihigo.clonegear.data.Statement;
 
@@ -64,8 +65,8 @@ public class SmithWaterman {
 				continue;
 			}
 
-			final boolean match = Arrays.equals(statements.get(0).hash,
-					statements.get(y).hash);
+			final boolean match = Arrays.equals(statements.get(0).hash.value,
+					statements.get(y).hash.value);
 			if (table[0][y - 1].value > 2) {
 				final Cell base = table[0][y - 1];
 				table[0][y] = new Cell(base.value - 1, match, 0, y, base);
@@ -82,8 +83,9 @@ public class SmithWaterman {
 					continue;
 				}
 
-				final boolean match = Arrays.equals(statements.get(x).hash,
-						statements.get(y).hash);
+				final boolean match = Arrays.equals(
+						statements.get(x).hash.value,
+						statements.get(y).hash.value);
 				final Cell left = table[x - 1][y];
 				final Cell up = table[x][y - 1];
 				final Cell upleft = table[x - 1][y - 1];
@@ -159,8 +161,8 @@ public class SmithWaterman {
 				continue;
 			}
 
-			final boolean match = Arrays.equals(statements1.get(x).hash,
-					statements2.get(0).hash);
+			final boolean match = Arrays.equals(statements1.get(x).hash.value,
+					statements2.get(0).hash.value);
 			if (table[x - 1][0].value > 2) {
 				final Cell base = table[x - 1][0];
 				table[x][0] = new Cell(base.value - 1, match, x, 0, base);
@@ -178,8 +180,8 @@ public class SmithWaterman {
 				continue;
 			}
 
-			final boolean match = Arrays.equals(statements1.get(0).hash,
-					statements2.get(y).hash);
+			final boolean match = Arrays.equals(statements1.get(0).hash.value,
+					statements2.get(y).hash.value);
 			if (table[0][y - 1].value > 2) {
 				final Cell base = table[0][y - 1];
 				table[0][y] = new Cell(base.value - 1, match, 0, y, base);
@@ -198,8 +200,9 @@ public class SmithWaterman {
 					continue;
 				}
 
-				final boolean match = Arrays.equals(statements1.get(x).hash,
-						statements2.get(y).hash);
+				final boolean match = Arrays.equals(
+						statements1.get(x).hash.value,
+						statements2.get(y).hash.value);
 				final Cell left = table[x - 1][y];
 				final Cell up = table[x][y - 1];
 				final Cell upleft = table[x - 1][y - 1];
@@ -250,7 +253,7 @@ public class SmithWaterman {
 				continue;
 			}
 			final Cell minCell = getMinCell(maxCell);
-			final byte[][] cloneHash = getCloneHash(minCell, maxCell);
+			final MD5[] cloneHash = getCloneHash(minCell, maxCell);
 
 			final ClonedFragment xClonedFragment = getClonedFragment(path1,
 					statements1, minCell.x, maxCell.x, cloneHash);
@@ -355,9 +358,9 @@ public class SmithWaterman {
 		return minCell;
 	}
 
-	private byte[][] getCloneHash(final Cell minCell, final Cell maxCell) {
+	private MD5[] getCloneHash(final Cell minCell, final Cell maxCell) {
 		Cell cell = maxCell;
-		final List<byte[]> list = new ArrayList<>();
+		final List<MD5> list = new ArrayList<>();
 		do {
 			if (cell.match) {
 				list.add(this.file1.getStatements().get(cell.x).hash);
@@ -365,12 +368,12 @@ public class SmithWaterman {
 			cell = cell.base;
 		} while ((null != cell) && (minCell.x <= cell.x)
 				&& (minCell.y <= cell.y));
-		return (byte[][]) list.toArray(new byte[][] {});
+		return (MD5[]) list.toArray(new MD5[] {});
 	}
 
 	public ClonedFragment getClonedFragment(final String path,
 			final List<Statement> statements, final int fromIndex,
-			final int toIndex, final byte[][] cloneHash) {
+			final int toIndex, final MD5[] cloneHash) {
 		final List<Statement> clonedStatements = new ArrayList<>();
 		for (int index = fromIndex; index <= toIndex; index++) {
 			clonedStatements.add(statements.get(index));

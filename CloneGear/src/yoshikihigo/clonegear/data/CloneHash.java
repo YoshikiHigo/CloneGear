@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class CloneHash {
 
-	final public byte[][] value;
+	final public MD5[] value;
 
-	public CloneHash(final byte[][] value) {
+	public CloneHash(final MD5[] value) {
 		this.value = value;
 	}
 
@@ -14,7 +14,7 @@ public class CloneHash {
 	public int hashCode() {
 		int hash = 0;
 		for (int index = 0; index < this.value.length; index++) {
-			hash += this.value[index][0];
+			hash += this.value[index].value[0];
 		}
 		return hash;
 	}
@@ -31,7 +31,8 @@ public class CloneHash {
 		}
 
 		for (int index = 0; index < this.value.length; index++) {
-			if (!Arrays.equals(this.value[index], target.value[index])) {
+			if (!Arrays.equals(this.value[index].value,
+					target.value[index].value)) {
 				return false;
 			}
 		}
