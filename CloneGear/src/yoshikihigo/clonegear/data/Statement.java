@@ -368,6 +368,9 @@ public class Statement {
 	private static boolean isPYMethodDefinition(final List<Token> tokens) {
 		final List<Token> nonTrivialTokens = Statement
 				.removeJCTrivialTokens(tokens);
+		if (nonTrivialTokens.isEmpty()) {
+			return false;
+		}
 		final Token firstToken = nonTrivialTokens.get(0);
 		if (firstToken instanceof DEF) {
 			return true;

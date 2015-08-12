@@ -42,13 +42,13 @@ public class CGFinder {
 		final long middleTime = System.nanoTime();
 		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = detectClones(files);
 		final long middleTime2 = System.nanoTime();
-		//final List<SortedSet<ClonedFragment>> filteredClonesets = filterClones(clonesets);
-		//print(filteredClonesets);
-		print(clonesets.values());
-		// printInCCFinderFormat(files, clonesets);
+		final List<SortedSet<ClonedFragment>> filteredClonesets = filterClones(clonesets);
+		print(filteredClonesets);
+		// print(clonesets.values());
+		// printInCCFinderFormat(files, filteredClonesets);
 		final long endTime = System.nanoTime();
 
-		if (CGConfig.getInstance().isVERBOSE()) {
+		{
 			final StringBuilder text = new StringBuilder();
 			text.append("execution time: ");
 			text.append(TimingUtility.getExecutionTime(startTime, endTime));
@@ -80,7 +80,7 @@ public class CGFinder {
 
 		{
 			if (!CGConfig.getInstance().isVERBOSE()) {
-				System.err.print("parsing source files ... ");
+				System.err.println("parsing source files ... ");
 			}
 
 			int number = 1;
@@ -108,7 +108,7 @@ public class CGFinder {
 				} catch (IOException e) {
 					System.err.print("file \"");
 					System.err.print(file.path);
-					System.err.println("\" is unreeadable.");
+					System.err.println("\" is unreadable.");
 					continue;
 				}
 
@@ -121,10 +121,6 @@ public class CGFinder {
 				file.setLOC(loc);
 			}
 
-			if (!CGConfig.getInstance().isVERBOSE()) {
-				System.err.println("done.");
-			}
-
 			return files;
 		}
 	}
@@ -133,7 +129,7 @@ public class CGFinder {
 			final List<SourceFile> files) {
 
 		if (!CGConfig.getInstance().isVERBOSE()) {
-			System.err.print("detecting clones ... ");
+			System.err.println("detecting clones ... ");
 		}
 
 		final ExecutorService executorService = Executors
@@ -169,7 +165,7 @@ public class CGFinder {
 			final Map<CloneHash, SortedSet<ClonedFragment>> clonesets) {
 
 		if (!CGConfig.getInstance().isVERBOSE()) {
-			System.err.print("filtering trivial clones ... ");
+			System.err.println("filtering trivial clones ... ");
 		}
 
 		final List<List<Token>> clones = new ArrayList<>();
@@ -192,13 +188,12 @@ public class CGFinder {
 		for (final List<Token> clone : clones) {
 			similarities.put(clone, new ArrayList<Double>());
 		}
+		final TFIDF tfidf = TFIDF.getInstance(clones);
 		for (int i = 0; i < clones.size(); i++) {
 			final List<Token> cloneI = clones.get(i);
-			System.out.println(Integer.toString(i) + "/"
-					+ Integer.toString(clones.size()));
 			for (int j = i + 1; j < clones.size(); j++) {
 				final List<Token> cloneJ = clones.get(j);
-				final double similarity = TFIDF.getNSIM(cloneI, cloneJ, clones);
+				final double similarity = tfidf.getNSIM(cloneI, cloneJ);
 				similarities.get(cloneI).add(similarity);
 				similarities.get(cloneJ).add(similarity);
 			}
@@ -223,8 +218,8 @@ public class CGFinder {
 	private static boolean isTrivial(
 			final Entry<List<Token>, List<Double>> entry) {
 
-		final int N = 2;
-		final double T = 0.5d;
+		final int N = 3;
+		final double T = 0.8d;
 
 		int count = 0;
 		for (final Double similarity : entry.getValue()) {
@@ -239,7 +234,8 @@ public class CGFinder {
 		return false;
 	}
 
-	private static void print(final Collection<SortedSet<ClonedFragment>> clonesets) {
+	private static void print(
+			final Collection<SortedSet<ClonedFragment>> clonesets) {
 
 		try (final PrintWriter writer = CGConfig.getInstance().hasOUTPUT() ? new PrintWriter(
 				new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
@@ -268,7 +264,7 @@ public class CGFinder {
 	}
 
 	private static void printInCCFinderFormat(final List<SourceFile> files,
-			final Map<CloneHash, SortedSet<ClonedFragment>> clonesets) {
+			final Collection<SortedSet<ClonedFragment>> clonesets) {
 
 		try (final PrintWriter writer = CGConfig.getInstance().hasOUTPUT() ? new PrintWriter(
 				new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
@@ -303,7 +299,7 @@ public class CGFinder {
 			writer.println("#end{syntax error}");
 
 			writer.println("#begin{clone}");
-			for (final SortedSet<ClonedFragment> cloneset : clonesets.values()) {
+			for (final SortedSet<ClonedFragment> cloneset : clonesets) {
 				writer.println("#begin{set}");
 				for (final ClonedFragment fragment : cloneset) {
 					final Integer id = map.get(fragment.path);
