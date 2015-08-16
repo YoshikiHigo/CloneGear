@@ -33,12 +33,12 @@ public class CGConfig {
 		}
 
 		{
-			final Option output = new Option("o", "output", true,
-					"output file for detection results");
-			output.setArgName("file");
-			output.setArgs(1);
-			output.setRequired(false);
-			options.addOption(output);
+			final Option similarityOutput = new Option("sml", "similarity",
+					true, "output file for similarities between clone sets");
+			similarityOutput.setArgName("file");
+			similarityOutput.setArgs(1);
+			similarityOutput.setRequired(false);
+			options.addOption(similarityOutput);
 		}
 
 		{
@@ -173,16 +173,16 @@ public class CGConfig {
 		return this.commandLine.getOptionValue("src");
 	}
 
-	public boolean hasOUTPUT() {
-		return this.commandLine.hasOption("o");
+	public boolean hasSIMILARITY() {
+		return this.commandLine.hasOption("sml");
 	}
 
-	public String getOUTPUT() {
-		if (!this.commandLine.hasOption("o")) {
-			System.err.println("option \"o\" is not specified.");
+	public String getSIMILARITY() {
+		if (!this.commandLine.hasOption("sml")) {
+			System.err.println("option \"sml\" is not specified.");
 			System.exit(0);
 		}
-		return this.commandLine.getOptionValue("o");
+		return this.commandLine.getOptionValue("sml");
 	}
 
 	public int getTHRESHOLD() {
@@ -197,6 +197,10 @@ public class CGConfig {
 
 	public boolean isVERBOSE() {
 		return this.commandLine.hasOption("v");
+	}
+
+	public boolean hasRESULT() {
+		return this.commandLine.hasOption("result");
 	}
 
 	public String getRESULT() {

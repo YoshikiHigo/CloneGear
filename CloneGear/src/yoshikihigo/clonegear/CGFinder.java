@@ -24,8 +24,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import yoshikihigo.clonegear.data.CloneHash;
+import yoshikihigo.clonegear.data.CloneSet;
 import yoshikihigo.clonegear.data.ClonedFragment;
-import yoshikihigo.clonegear.data.MD5;
 import yoshikihigo.clonegear.data.SourceFile;
 import yoshikihigo.clonegear.data.Statement;
 import yoshikihigo.clonegear.lexer.token.Token;
@@ -40,16 +40,29 @@ public class CGFinder {
 		final long startTime = System.nanoTime();
 		final List<SourceFile> files = getFiles();
 		final long middleTime = System.nanoTime();
-		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = detectClones(files);
+		final List<CloneSet> clonesets = detectClones(files);
 		final long middleTime2 = System.nanoTime();
-		final List<SortedSet<ClonedFragment>> filteredClonesets = filterClones(clonesets);
+		final Map<CloneSet, Map<CloneSet, Double>> similarities = new HashMap<>();
+		final List<CloneSet> filteredClonesets = filterClones(clonesets,
+				similarities);
 		print(filteredClonesets);
+
+		if (CGConfig.getInstance().hasSIMILARITY()) {
+			print(similarities);
+		}
+
 		// print(clonesets.values());
 		// printInCCFinderFormat(files, filteredClonesets);
 		final long endTime = System.nanoTime();
 
 		{
 			final StringBuilder text = new StringBuilder();
+			text.append(Integer.toString(clonesets.size()));
+			text.append(" clone sets have been detected.");
+			text.append(System.lineSeparator());
+			text.append(Integer.toString(filteredClonesets.size()));
+			text.append(" clone sets have passed through filtering");
+			text.append(System.lineSeparator());
 			text.append("execution time: ");
 			text.append(TimingUtility.getExecutionTime(startTime, endTime));
 			text.append(System.lineSeparator());
@@ -125,8 +138,7 @@ public class CGFinder {
 		}
 	}
 
-	private static Map<CloneHash, SortedSet<ClonedFragment>> detectClones(
-			final List<SourceFile> files) {
+	private static List<CloneSet> detectClones(final List<SourceFile> files) {
 
 		if (!CGConfig.getInstance().isVERBOSE()) {
 			System.err.println("detecting clones ... ");
@@ -134,7 +146,7 @@ public class CGFinder {
 
 		final ExecutorService executorService = Executors
 				.newFixedThreadPool(CGConfig.getInstance().getTHREAD());
-		final Map<CloneHash, SortedSet<ClonedFragment>> clonesets = new HashMap<CloneHash, SortedSet<ClonedFragment>>();
+		final Map<CloneHash, CloneSet> clonesets = new HashMap<>();
 		final List<Future<?>> futures = new ArrayList<>();
 		for (int i = 0; i < files.size(); i++) {
 			final SourceFile iFile = files.get(i);
@@ -158,57 +170,57 @@ public class CGFinder {
 			executorService.shutdown();
 		}
 
-		return clonesets;
+		final List<CloneSet> sets = new ArrayList<>();
+		sets.addAll(clonesets.values());
+		return sets;
 	}
 
-	private static List<SortedSet<ClonedFragment>> filterClones(
-			final Map<CloneHash, SortedSet<ClonedFragment>> clonesets) {
+	private static List<CloneSet> filterClones(final List<CloneSet> clonesets,
+			final Map<CloneSet, Map<CloneSet, Double>> similarities) {
 
 		if (!CGConfig.getInstance().isVERBOSE()) {
 			System.err.println("filtering trivial clones ... ");
 		}
 
-		final List<List<Token>> clones = new ArrayList<>();
-		final Map<List<Token>, CloneHash> tokenToMD5 = new HashMap<>();
-		for (final Entry<CloneHash, SortedSet<ClonedFragment>> entry : clonesets
-				.entrySet()) {
+		// final List<List<Token>> clones = new ArrayList<>();
+		// final Map<List<Token>, CloneHash> tokenToMD5 = new HashMap<>();
+		// for (final Entry<CloneHash, CloneSet> entry : clonesets.entrySet()) {
+		//
+		// final CloneHash cloneHash = entry.getKey();
+		// final List<Token> clone = new ArrayList<>();
+		// for (final MD5 md5 : cloneHash.value) {
+		// final List<Token> statement = MD5.getTokens(md5);
+		// assert null != statement : "statement must not be null.";
+		// clone.addAll(statement);
+		// }
+		// clones.add(clone);
+		// tokenToMD5.put(clone, cloneHash);
+		// }
 
-			final CloneHash cloneHash = entry.getKey();
-			final List<Token> clone = new ArrayList<>();
-			for (final MD5 md5 : cloneHash.value) {
-				final List<Token> statement = MD5.getTokens(md5);
-				assert null != statement : "statement must not be null.";
-				clone.addAll(statement);
-			}
-			clones.add(clone);
-			tokenToMD5.put(clone, cloneHash);
+		for (final CloneSet cloneset : clonesets) {
+			similarities.put(cloneset, new HashMap<CloneSet, Double>());
 		}
-
-		final Map<List<Token>, List<Double>> similarities = new HashMap<>();
-		for (final List<Token> clone : clones) {
-			similarities.put(clone, new ArrayList<Double>());
-		}
-		final TFIDF tfidf = TFIDF.getInstance(clones);
-		for (int i = 0; i < clones.size(); i++) {
-			final List<Token> cloneI = clones.get(i);
-			for (int j = i + 1; j < clones.size(); j++) {
-				final List<Token> cloneJ = clones.get(j);
+		final TFIDF tfidf = TFIDF.getInstance(clonesets);
+		for (int i = 0; i < clonesets.size(); i++) {
+			final CloneSet cloneI = clonesets.get(i);
+			for (int j = i + 1; j < clonesets.size(); j++) {
+				final CloneSet cloneJ = clonesets.get(j);
 				final double similarity = tfidf.getNSIM(cloneI, cloneJ);
-				similarities.get(cloneI).add(similarity);
-				similarities.get(cloneJ).add(similarity);
+				if (0d < similarity) {
+					similarities.get(cloneI).put(cloneJ, similarity);
+					similarities.get(cloneJ).put(cloneI, similarity);
+				}
 			}
 		}
-		final List<SortedSet<ClonedFragment>> filtered = new ArrayList<>();
-		for (final Entry<List<Token>, List<Double>> entry : similarities
+		final List<CloneSet> filtered = new ArrayList<>();
+		for (final Entry<CloneSet, Map<CloneSet, Double>> entry : similarities
 				.entrySet()) {
 
-			if (isTrivial(entry)) {
+			if (!isTrivial(entry)) {
 				continue;
 			}
 
-			final List<Token> tokens = entry.getKey();
-			final CloneHash cloneHash = tokenToMD5.get(tokens);
-			final SortedSet<ClonedFragment> cloneset = clonesets.get(cloneHash);
+			final CloneSet cloneset = entry.getKey();
 			filtered.add(cloneset);
 		}
 
@@ -216,13 +228,13 @@ public class CGFinder {
 	}
 
 	private static boolean isTrivial(
-			final Entry<List<Token>, List<Double>> entry) {
+			final Entry<CloneSet, Map<CloneSet, Double>> entry) {
 
-		final int N = 3;
-		final double T = 0.8d;
+		final int N = 5;
+		final double T = 0.95d;
 
 		int count = 0;
-		for (final Double similarity : entry.getValue()) {
+		for (final Double similarity : entry.getValue().values()) {
 			if (T <= similarity) {
 				count++;
 			}
@@ -234,18 +246,25 @@ public class CGFinder {
 		return false;
 	}
 
-	private static void print(
-			final Collection<SortedSet<ClonedFragment>> clonesets) {
+	private static void print(final List<CloneSet> clonesets) {
 
-		try (final PrintWriter writer = CGConfig.getInstance().hasOUTPUT() ? new PrintWriter(
+		Collections.sort(clonesets, new Comparator<CloneSet>() {
+			@Override
+			public int compare(final CloneSet cloneset1,
+					final CloneSet cloneset2) {
+				return Integer.valueOf(cloneset1.id).compareTo(
+						Integer.valueOf(cloneset2.id));
+			}
+		});
+
+		try (final PrintWriter writer = CGConfig.getInstance().hasRESULT() ? new PrintWriter(
 				new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
-						CGConfig.getInstance().getOUTPUT()), "UTF-8")))
+						CGConfig.getInstance().getRESULT()), "UTF-8")))
 				: new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"))) {
 
-			int clonesetID = 0;
-			for (final SortedSet<ClonedFragment> cloneset : clonesets) {
-				for (final ClonedFragment clonedFragment : cloneset) {
-					writer.print(Integer.toString(clonesetID));
+			for (final CloneSet cloneset : clonesets) {
+				for (final ClonedFragment clonedFragment : cloneset.getClones()) {
+					writer.print(Integer.toString(cloneset.id));
 					writer.print("\t");
 					writer.print(clonedFragment.path);
 					writer.print("\t");
@@ -254,7 +273,6 @@ public class CGFinder {
 					writer.print(Integer.toString(clonedFragment.getToLine()));
 					writer.println();
 				}
-				clonesetID++;
 			}
 
 		} catch (IOException e) {
@@ -266,9 +284,9 @@ public class CGFinder {
 	private static void printInCCFinderFormat(final List<SourceFile> files,
 			final Collection<SortedSet<ClonedFragment>> clonesets) {
 
-		try (final PrintWriter writer = CGConfig.getInstance().hasOUTPUT() ? new PrintWriter(
+		try (final PrintWriter writer = CGConfig.getInstance().hasRESULT() ? new PrintWriter(
 				new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
-						CGConfig.getInstance().getOUTPUT()), "UTF-8")))
+						CGConfig.getInstance().getRESULT()), "UTF-8")))
 				: new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"))) {
 
 			writer.println("#begin{file description}");
@@ -325,6 +343,42 @@ public class CGFinder {
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(0);
+		}
+	}
+
+	private static void print(
+			final Map<CloneSet, Map<CloneSet, Double>> similarities) {
+
+		try (final PrintWriter writer = new PrintWriter(new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(CGConfig
+						.getInstance().getSIMILARITY()), "UTF-8")))) {
+
+			for (final Entry<CloneSet, Map<CloneSet, Double>> entry : similarities
+					.entrySet()) {
+
+				final CloneSet cloneset1 = entry.getKey();
+
+				for (final Entry<CloneSet, Double> entry2 : entry.getValue()
+						.entrySet()) {
+
+					final CloneSet cloneset2 = entry2.getKey();
+					final Double similarity = entry2.getValue();
+
+					if (cloneset1.id < cloneset2.id) {
+						final StringBuilder text = new StringBuilder();
+						text.append(Integer.toString(cloneset1.id));
+						text.append(", ");
+						text.append(Integer.toString(cloneset2.id));
+						text.append(", ");
+						text.append(Double.toString(similarity));
+						writer.println(text.toString());
+					}
+				}
+			}
+		}
+
+		catch (final IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

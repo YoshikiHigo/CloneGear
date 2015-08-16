@@ -2,12 +2,12 @@ package yoshikihigo.clonegear;
 
 import java.util.List;
 import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 import yoshikihigo.clonegear.data.CloneHash;
+import yoshikihigo.clonegear.data.CloneSet;
 import yoshikihigo.clonegear.data.ClonedFragment;
 import yoshikihigo.clonegear.data.SourceFile;
+import yoshikihigo.clonegear.lexer.token.Token;
 
 public class CloneDetectionThread implements Runnable {
 
@@ -15,10 +15,10 @@ public class CloneDetectionThread implements Runnable {
 
 	final private SourceFile iFile;
 	final private SourceFile jFile;
-	final private Map<CloneHash, SortedSet<ClonedFragment>> clonesets;
+	final private Map<CloneHash, CloneSet> clonesets;
 
 	public CloneDetectionThread(final SourceFile iFile, final SourceFile jFile,
-			Map<CloneHash, SortedSet<ClonedFragment>> clonesets) {
+			Map<CloneHash, CloneSet> clonesets) {
 		this.iFile = iFile;
 		this.jFile = jFile;
 		this.clonesets = clonesets;
@@ -32,12 +32,13 @@ public class CloneDetectionThread implements Runnable {
 		for (final ClonedFragment clonedFragment : clonedFragments) {
 			synchronized (LOCK) {
 				final CloneHash hash = new CloneHash(clonedFragment.cloneID);
-				SortedSet<ClonedFragment> cloneset = clonesets.get(hash);
+				CloneSet cloneset = this.clonesets.get(hash);
 				if (null == cloneset) {
-					cloneset = new TreeSet<ClonedFragment>();
-					clonesets.put(hash, cloneset);
+					final List<Token> tokens = CloneHash.getTokens(hash);
+					cloneset = new CloneSet(hash, tokens);
+					this.clonesets.put(hash, cloneset);
 				}
-				cloneset.add(clonedFragment);
+				cloneset.addClone(clonedFragment);
 			}
 		}
 
