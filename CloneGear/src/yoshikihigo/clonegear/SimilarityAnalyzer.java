@@ -1,8 +1,10 @@
 package yoshikihigo.clonegear;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.DisplayMode;
 import java.awt.GraphicsEnvironment;
+import java.awt.Paint;
 import java.awt.Shape;
 import java.awt.geom.Arc2D;
 import java.io.BufferedReader;
@@ -27,6 +29,8 @@ import edu.uci.ics.jung.visualization.BasicVisualizationServer;
 
 public class SimilarityAnalyzer {
 
+	static Color NO_COLOR = new Color(0, 0, 0, 0);
+
 	public static void main(final String[] args) {
 
 		CGConfig.initialize(args);
@@ -44,20 +48,41 @@ public class SimilarityAnalyzer {
 
 		final Dimension viewArea = new Dimension(width - 100, height - 100);
 		final Graph<MyNode, MyEdge> graph = createGraph(similarities);
-		final Layout<MyNode, MyEdge> layout = new SpringLayout<>(graph);
-
-		System.out.println(graph.getVertices().size());
+		final Layout<MyNode, MyEdge> layout = new SpringLayout<>(graph,
+				new Transformer<MyEdge, Integer>() {
+					@Override
+					public Integer transform(final MyEdge edge) {
+						return (int) (1d / (double) edge.similarity);
+					}
+				});
 
 		final BasicVisualizationServer<MyNode, MyEdge> panel = new BasicVisualizationServer<>(
 				layout, viewArea);
 		panel.getRenderContext().setVertexShapeTransformer(
 				new Transformer<MyNode, Shape>() {
 					@Override
-					public Shape transform(MyNode node) {
+					public Shape transform(final MyNode node) {
 						return new Arc2D.Double(-5, -5, 10, 10, 0, 360,
 								Arc2D.OPEN);
 					}
 				});
+
+		final Transformer<MyEdge, Paint> edgePaintTransformer = new Transformer<MyEdge, Paint>() {
+			@Override
+			public Paint transform(final MyEdge edge) {
+				if (0.98d <= edge.similarity) {
+					return Color.BLACK;
+				} else {
+					return NO_COLOR;
+				}
+			}
+		};
+		panel.getRenderContext().setArrowFillPaintTransformer(
+				edgePaintTransformer);
+		panel.getRenderContext().setArrowDrawPaintTransformer(
+				edgePaintTransformer);
+		panel.getRenderContext().setEdgeDrawPaintTransformer(
+				edgePaintTransformer);
 
 		JFrame frame = new JFrame("Graph View: Random Layout");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -121,7 +146,7 @@ public class SimilarityAnalyzer {
 				g.addVertex(node2);
 			}
 
-			if (0.99d < value.doubleValue()) {
+			if (0.96d < value.doubleValue()) {
 				g.addEdge(new MyEdge(value.doubleValue()), node1, node2);
 			}
 		}
