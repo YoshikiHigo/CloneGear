@@ -12,6 +12,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -21,7 +23,6 @@ import org.apache.commons.collections15.Transformer;
 
 import yoshikihigo.clonegear.jung.MyEdge;
 import yoshikihigo.clonegear.jung.MyNode;
-import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.algorithms.layout.SpringLayout;
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.UndirectedSparseGraph;
@@ -38,6 +39,8 @@ public class SimilarityAnalyzer {
 		final String similarityFile = CGConfig.getInstance().getSIMILARITY();
 
 		final List<Object[]> similarities = getSimilarities(similarityFile);
+		final double threshold = getThreshold(similarities);
+		System.out.println(threshold);
 
 		final GraphicsEnvironment env = GraphicsEnvironment
 				.getLocalGraphicsEnvironment();
@@ -47,14 +50,15 @@ public class SimilarityAnalyzer {
 		final int height = displayMode.getHeight();
 
 		final Dimension viewArea = new Dimension(width - 100, height - 100);
-		final Graph<MyNode, MyEdge> graph = createGraph(similarities);
-		final Layout<MyNode, MyEdge> layout = new SpringLayout<>(graph,
+		final Graph<MyNode, MyEdge> graph = createGraph(similarities, threshold);
+		final SpringLayout<MyNode, MyEdge> layout = new SpringLayout<>(graph,
 				new Transformer<MyEdge, Integer>() {
 					@Override
 					public Integer transform(final MyEdge edge) {
-						return (int) (1d / (double) edge.similarity);
+						return (int) (1d / edge.similarity);
 					}
 				});
+		layout.setRepulsionRange(10);
 
 		final BasicVisualizationServer<MyNode, MyEdge> panel = new BasicVisualizationServer<>(
 				layout, viewArea);
@@ -62,7 +66,9 @@ public class SimilarityAnalyzer {
 				new Transformer<MyNode, Shape>() {
 					@Override
 					public Shape transform(final MyNode node) {
-						return new Arc2D.Double(-5, -5, 10, 10, 0, 360,
+						// return new Arc2D.Double(-5, -5, 10, 10, 0, 360,
+						// Arc2D.OPEN);
+						return new Arc2D.Double(-2.5d, -2.5d, 5, 5, 0, 360,
 								Arc2D.OPEN);
 					}
 				});
@@ -70,7 +76,7 @@ public class SimilarityAnalyzer {
 		final Transformer<MyEdge, Paint> edgePaintTransformer = new Transformer<MyEdge, Paint>() {
 			@Override
 			public Paint transform(final MyEdge edge) {
-				if (0.98d <= edge.similarity) {
+				if (threshold <= edge.similarity) {
 					return Color.BLACK;
 				} else {
 					return NO_COLOR;
@@ -128,7 +134,7 @@ public class SimilarityAnalyzer {
 	}
 
 	private static Graph<MyNode, MyEdge> createGraph(
-			final List<Object[]> similarities) {
+			final List<Object[]> similarities, final double threshold) {
 
 		final Graph<MyNode, MyEdge> g = new UndirectedSparseGraph<>();
 
@@ -146,11 +152,35 @@ public class SimilarityAnalyzer {
 				g.addVertex(node2);
 			}
 
-			if (0.96d < value.doubleValue()) {
+			if (threshold <= value.doubleValue()) {
 				g.addEdge(new MyEdge(value.doubleValue()), node1, node2);
 			}
 		}
 
 		return g;
+	}
+
+	private static double getThreshold(final List<Object[]> similarities) {
+
+		Collections.sort(similarities, new Comparator<Object[]>() {
+			@Override
+			public int compare(final Object[] o1, final Object[] o2) {
+				return ((Double) o2[2]).compareTo((Double) o1[2]);
+			}
+		});
+
+		int cloneset = 0;
+		for (final Object[] similarity : similarities) {
+			if (cloneset < (Integer) similarity[1]) {
+				cloneset = (Integer) similarity[1];
+			}
+		}
+
+		final int total = (cloneset * (cloneset - 1)) / 2;
+		final int position = (int) (0.001d * total);
+
+		return (Double) similarities
+				.get((position < similarities.size()) ? position : similarities
+						.size() - 1)[2];
 	}
 }
