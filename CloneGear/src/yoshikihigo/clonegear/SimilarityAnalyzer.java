@@ -26,7 +26,9 @@ import yoshikihigo.clonegear.jung.MyNode;
 import edu.uci.ics.jung.algorithms.layout.SpringLayout;
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.UndirectedSparseGraph;
-import edu.uci.ics.jung.visualization.BasicVisualizationServer;
+import edu.uci.ics.jung.visualization.VisualizationViewer;
+import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
+import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 
 public class SimilarityAnalyzer {
 
@@ -58,18 +60,16 @@ public class SimilarityAnalyzer {
 						return (int) (1d / edge.similarity);
 					}
 				});
-		layout.setRepulsionRange(10);
+		layout.setRepulsionRange(20);
 
-		final BasicVisualizationServer<MyNode, MyEdge> panel = new BasicVisualizationServer<>(
+		final VisualizationViewer<MyNode, MyEdge> panel = new VisualizationViewer<>(
 				layout, viewArea);
 		panel.getRenderContext().setVertexShapeTransformer(
 				new Transformer<MyNode, Shape>() {
 					@Override
 					public Shape transform(final MyNode node) {
-						// return new Arc2D.Double(-5, -5, 10, 10, 0, 360,
-						// Arc2D.OPEN);
-						return new Arc2D.Double(-2.5d, -2.5d, 5, 5, 0, 360,
-								Arc2D.OPEN);
+						return new Arc2D.Double(-5, -5, 10, 10, 0, 360,
+						Arc2D.OPEN);
 					}
 				});
 
@@ -89,6 +89,10 @@ public class SimilarityAnalyzer {
 				edgePaintTransformer);
 		panel.getRenderContext().setEdgeDrawPaintTransformer(
 				edgePaintTransformer);
+
+		final DefaultModalGraphMouse<MyNode, MyEdge> mouse = new DefaultModalGraphMouse<MyNode, MyEdge>();
+		mouse.setMode(ModalGraphMouse.Mode.PICKING);
+		panel.setGraphMouse(mouse);
 
 		JFrame frame = new JFrame("Graph View: Random Layout");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
