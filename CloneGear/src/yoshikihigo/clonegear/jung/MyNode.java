@@ -3,9 +3,9 @@ package yoshikihigo.clonegear.jung;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MyNode {
+public class MyNode implements Comparable<MyNode> {
 
-	final static private Map<Integer, MyNode> NODES = new HashMap<>();
+	final static protected Map<Integer, MyNode> NODES = new HashMap<>();
 
 	final static public MyNode getMyNode(final int id) {
 
@@ -19,7 +19,12 @@ public class MyNode {
 
 	final public int id;
 
-	private MyNode(final int id) {
+	protected MyNode(final int id) {
 		this.id = id;
+	}
+
+	@Override
+	public int compareTo(final MyNode node) {
+		return Integer.valueOf(this.id).compareTo(Integer.valueOf(node.id));
 	}
 }
