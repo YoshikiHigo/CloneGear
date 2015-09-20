@@ -5,6 +5,7 @@ import java.io.File;
 import yoshikihigo.clonegear.data.CFile;
 import yoshikihigo.clonegear.data.CPPFile;
 import yoshikihigo.clonegear.data.JavaFile;
+import yoshikihigo.clonegear.data.JavascriptFile;
 import yoshikihigo.clonegear.data.PythonFile;
 import yoshikihigo.clonegear.data.SourceFile;
 
@@ -20,6 +21,21 @@ public enum LANGUAGE {
 		public SourceFile getSourceFile(final File file) {
 			if (this.isTarget(file)) {
 				return new JavaFile(file.getAbsolutePath());
+			}
+			return null;
+		}
+	},
+
+	JAVASCRIPT("JAVASCRIPT") {
+		@Override
+		public boolean isTarget(final File file) {
+			return file.isFile() && file.getName().endsWith(".js");
+		}
+
+		@Override
+		public SourceFile getSourceFile(final File file) {
+			if (this.isTarget(file)) {
+				return new JavascriptFile(file.getAbsolutePath());
 			}
 			return null;
 		}

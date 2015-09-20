@@ -8,7 +8,7 @@ import java.util.Stack;
 
 import yoshikihigo.clonegear.lexer.token.*;
 
-public class JavaLineLexer implements LineLexer {
+public class JavascriptLineLexer implements LineLexer {
 
 	enum STATE {
 		CODE, SINGLEQUOTELITERAL, DOUBLEQUOTELITERAL;
@@ -23,7 +23,7 @@ public class JavaLineLexer implements LineLexer {
 				new StringReader(text))) {
 
 			String line;
-			final JavaLineLexer lexer = new JavaLineLexer();
+			final JavascriptLineLexer lexer = new JavascriptLineLexer();
 			while (null != (line = reader.readLine())) {
 				for (final Token t : lexer.lexLine(line)) {
 					t.line = reader.getLineNumber();
@@ -40,7 +40,7 @@ public class JavaLineLexer implements LineLexer {
 
 	final private Stack<STATE> states;
 
-	public JavaLineLexer() {
+	public JavascriptLineLexer() {
 		this.states = new Stack<STATE>();
 		this.states.push(STATE.CODE);
 	}
@@ -68,6 +68,12 @@ public class JavaLineLexer implements LineLexer {
 				} else if (string.startsWith(">>=")) {
 					text.delete(0, 3);
 					tokenList.add(new RIGHTSHIFTEQUAL());
+				} else if (string.startsWith("===")) {
+					text.delete(0, 3);
+					tokenList.add(new EQUAL2());
+				} else if (string.startsWith("|==")) {
+					text.delete(0, 3);
+					tokenList.add(new NOTEQUAL3());
 				} else if (string.startsWith("-=")) {
 					text.delete(0, 2);
 					tokenList.add(new MINUSEQUAL());
@@ -83,6 +89,15 @@ public class JavaLineLexer implements LineLexer {
 				} else if (string.startsWith("%=")) {
 					text.delete(0, 2);
 					tokenList.add(new MODEQUAL());
+				} else if (string.startsWith("&=")) {
+					text.delete(0, 2);
+					tokenList.add(new ANDEQUAL());
+				} else if (string.startsWith("|=")) {
+					text.delete(0, 2);
+					tokenList.add(new OREQUAL());
+				} else if (string.startsWith("^=")) {
+					text.delete(0, 2);
+					tokenList.add(new EXCLUSIVEOREQUAL());
 				} else if (string.startsWith("++")) {
 					text.delete(0, 2);
 					tokenList.add(new INCREMENT());
@@ -101,15 +116,6 @@ public class JavaLineLexer implements LineLexer {
 				} else if (string.startsWith("!=")) {
 					text.delete(0, 2);
 					tokenList.add(new NOTEQUAL());
-				} else if (string.startsWith("&=")) {
-					text.delete(0, 2);
-					tokenList.add(new ANDEQUAL());
-				} else if (string.startsWith("|=")) {
-					text.delete(0, 2);
-					tokenList.add(new OREQUAL());
-				} else if (string.startsWith("^=")) {
-					text.delete(0, 2);
-					tokenList.add(new EXCLUSIVEOREQUAL());					
 				} else if (string.startsWith("&&")) {
 					text.delete(0, 2);
 					tokenList.add(new ANDAND());
@@ -171,7 +177,7 @@ public class JavaLineLexer implements LineLexer {
 					tokenList.add(new EXCLUSIVEOR());
 				} else if (string.startsWith("~")) {
 					text.delete(0, 1);
-					tokenList.add(new TILDA());					
+					tokenList.add(new TILDA());
 				} else if (string.startsWith("(")) {
 					text.delete(0, 1);
 					tokenList.add(new LEFTPAREN());
@@ -281,8 +287,6 @@ public class JavaLineLexer implements LineLexer {
 
 					if (identifier.equals("abstract")) {
 						tokenList.add(new ABSTRACT());
-					} else if (identifier.equals("assert")) {
-						tokenList.add(new ASSERT());
 					} else if (identifier.equals("boolean")) {
 						tokenList.add(new BOOLEAN());
 					} else if (identifier.equals("break")) {
@@ -323,6 +327,8 @@ public class JavaLineLexer implements LineLexer {
 						tokenList.add(new FLOAT());
 					} else if (identifier.equals("for")) {
 						tokenList.add(new FOR());
+					} else if (identifier.equals("function")) {
+						tokenList.add(new FUNCTION());
 					} else if (identifier.equals("goto")) {
 						tokenList.add(new GOTO());
 					} else if (identifier.equals("if")) {
@@ -331,14 +337,20 @@ public class JavaLineLexer implements LineLexer {
 						tokenList.add(new IMPLEMENTS());
 					} else if (identifier.equals("import")) {
 						tokenList.add(new IMPORT());
+					} else if (identifier.equals("in")) {
+						tokenList.add(new IN());
 					} else if (identifier.equals("instanceof")) {
 						tokenList.add(new INSTANCEOF());
 					} else if (identifier.equals("int")) {
 						tokenList.add(new INT());
 					} else if (identifier.equals("interface")) {
 						tokenList.add(new INTERFACE());
+					} else if (identifier.equals("is")) {
+						tokenList.add(new IS());
 					} else if (identifier.equals("long")) {
 						tokenList.add(new LONG());
+					} else if (identifier.equals("namespace")) {
+						tokenList.add(new NAMESPACE());
 					} else if (identifier.equals("native")) {
 						tokenList.add(new NATIVE());
 					} else if (identifier.equals("new")) {
@@ -359,8 +371,6 @@ public class JavaLineLexer implements LineLexer {
 						tokenList.add(new SHORT());
 					} else if (identifier.equals("static")) {
 						tokenList.add(new STATIC());
-					} else if (identifier.equals("strictfp")) {
-						tokenList.add(new STRICTFP());
 					} else if (identifier.equals("super")) {
 						tokenList.add(new SUPER());
 					} else if (identifier.equals("switch")) {
@@ -379,31 +389,21 @@ public class JavaLineLexer implements LineLexer {
 						tokenList.add(new TRUE());
 					} else if (identifier.equals("try")) {
 						tokenList.add(new TRY());
+					} else if (identifier.equals("typeof")) {
+						tokenList.add(new TYPEOF());
+					} else if (identifier.equals("var")) {
+						tokenList.add(new VAR());
 					} else if (identifier.equals("void")) {
 						tokenList.add(new VOID());
 					} else if (identifier.equals("volatile")) {
 						tokenList.add(new VOLATILE());
 					} else if (identifier.equals("while")) {
 						tokenList.add(new WHILE());
+					} else if (identifier.equals("with")) {
+						tokenList.add(new WITH());
 					} else {
 						tokenList.add(new IDENTIFIER(identifier));
 					}
-				}
-
-				else if ('@' == string.charAt(0)) {
-
-					int index = 1;
-					while (index < string.length()) {
-						if (' ' == string.charAt(index)
-								|| '\t' == string.charAt(index)
-								|| '(' == string.charAt(index)) {
-							break;
-						}
-						index++;
-					}
-					text.delete(0, index);
-					final String value = string.substring(0, index);
-					tokenList.add(new ANNOTATION(value));
 				}
 
 				else if (' ' == string.charAt(0) || '\t' == string.charAt(0)) {
