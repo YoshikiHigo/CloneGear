@@ -4,8 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import yoshikihigo.clonegear.data.HTMLFile;
 import yoshikihigo.clonegear.data.SourceFile;
+import yoshikihigo.clonegear.data.WebFile;
 
 public class FileUtility {
 
@@ -53,17 +53,18 @@ public class FileUtility {
 		return files;
 	}
 
-	public static List<HTMLFile> collectHTMLFiles(final File file) {
+	public static List<WebFile> collectWebFiles(final File file) {
 
-		final List<HTMLFile> files = new ArrayList<>();
+		final List<WebFile> files = new ArrayList<>();
 
 		if (file.isFile()) {
 
 			final LANGUAGE language = getLANGUAGE(file);
-			if ((null != language) && language.equals(LANGUAGE.HTML)) {
-				final HTMLFile htmlFile = (HTMLFile) language
-						.getSourceFile(file);
-				files.add(htmlFile);
+			if ((null != language)
+					&& (language.equals(LANGUAGE.HTML) || language
+							.equals(LANGUAGE.JSP))) {
+				final WebFile webFile = (WebFile) language.getSourceFile(file);
+				files.add(webFile);
 			}
 		}
 
@@ -72,7 +73,7 @@ public class FileUtility {
 			final File[] children = file.listFiles();
 			if (null != children) {
 				for (final File child : children) {
-					final List<HTMLFile> childFiles = collectHTMLFiles(child);
+					final List<WebFile> childFiles = collectWebFiles(child);
 					files.addAll(childFiles);
 				}
 			}

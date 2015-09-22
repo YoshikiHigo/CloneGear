@@ -26,11 +26,11 @@ import java.util.concurrent.Future;
 import yoshikihigo.clonegear.data.CloneHash;
 import yoshikihigo.clonegear.data.CloneSet;
 import yoshikihigo.clonegear.data.ClonedFragment;
-import yoshikihigo.clonegear.data.HTMLFile;
 import yoshikihigo.clonegear.data.JavascriptFile;
 import yoshikihigo.clonegear.data.Separator;
 import yoshikihigo.clonegear.data.SourceFile;
 import yoshikihigo.clonegear.data.Statement;
+import yoshikihigo.clonegear.data.WebFile;
 import yoshikihigo.clonegear.lexer.token.Token;
 import yoshikihigo.clonegear.tfidf.TFIDF;
 
@@ -135,10 +135,10 @@ public class CGFinder {
 			file.setLOC(loc);
 		}
 
-		final List<HTMLFile> htmlFiles = FileUtility.collectHTMLFiles(new File(
+		final List<WebFile> webFiles = FileUtility.collectWebFiles(new File(
 				CGConfig.getInstance().getSource()));
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JAVASCRIPT)) {
-			for (final HTMLFile f : htmlFiles) {
+			for (final WebFile f : webFiles) {
 				final List<String> codes = f.extractJavascript();
 				final JavascriptFile javascriptFile = new JavascriptFile(f.path);
 				for (final String code : codes) {

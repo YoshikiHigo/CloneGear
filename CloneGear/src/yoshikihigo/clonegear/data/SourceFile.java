@@ -12,7 +12,7 @@ public abstract class SourceFile {
 	final private List<Statement> statements;
 	private int loc;
 
-	public SourceFile(final String path) {
+	protected SourceFile(final String path) {
 		this.path = path;
 		this.statements = new ArrayList<>();
 		this.loc = 0;

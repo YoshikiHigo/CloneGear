@@ -153,6 +153,7 @@ public class CGConfig {
 				languages.add(language);
 			}
 			languages.remove(LANGUAGE.HTML);
+			languages.remove(LANGUAGE.JSP);
 		}
 
 		return languages;
