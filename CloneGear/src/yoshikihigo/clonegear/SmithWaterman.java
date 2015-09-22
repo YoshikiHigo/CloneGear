@@ -393,7 +393,7 @@ public class SmithWaterman {
 	}
 
 	private boolean isWithinFileDetection() {
-		return this.file1.path.equals(this.file2.path);
+		return this.file1.equals(this.file2);
 	}
 }
 

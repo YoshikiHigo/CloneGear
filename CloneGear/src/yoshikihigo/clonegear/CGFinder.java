@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -26,6 +27,8 @@ import java.util.concurrent.Future;
 import yoshikihigo.clonegear.data.CloneHash;
 import yoshikihigo.clonegear.data.CloneSet;
 import yoshikihigo.clonegear.data.ClonedFragment;
+import yoshikihigo.clonegear.data.HTMLFile;
+import yoshikihigo.clonegear.data.JSPFile;
 import yoshikihigo.clonegear.data.JavascriptFile;
 import yoshikihigo.clonegear.data.Separator;
 import yoshikihigo.clonegear.data.SourceFile;
@@ -94,6 +97,14 @@ public class CGFinder {
 		final List<SourceFile> files = FileUtility.collectSourceFiles(new File(
 				CGConfig.getInstance().getSource()));
 
+		for (final Iterator<SourceFile> iterator = files.iterator(); iterator
+				.hasNext();) {
+			final SourceFile file = iterator.next();
+			if (file instanceof HTMLFile || file instanceof JSPFile) {
+				iterator.remove();
+			}
+		}
+
 		if (!CGConfig.getInstance().isVERBOSE()) {
 			System.err.println("parsing source files ... ");
 		}
@@ -150,6 +161,21 @@ public class CGFinder {
 					javascriptFile.addStatement(new Separator());
 				}
 				files.add(javascriptFile);
+			}
+		}
+		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JSP)) {
+			for (final WebFile f : webFiles) {
+				final List<String> codes = f.getJSP();
+				final JSPFile jspFile = new JSPFile(f.path);
+				for (final String code : codes) {
+					final List<Statement> statements = StringUtility
+							.splitToStatements(code, LANGUAGE.JSP);
+					final List<Statement> foldedStatements = Statement
+							.getFoldedStatements(statements);
+					jspFile.addStatements(foldedStatements);
+					jspFile.addStatement(new Separator());
+				}
+				files.add(jspFile);
 			}
 		}
 

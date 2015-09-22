@@ -18,6 +18,23 @@ public abstract class SourceFile {
 		this.loc = 0;
 	}
 
+	@Override
+	public boolean equals(final Object o) {
+
+		if (!(o instanceof SourceFile)) {
+			return false;
+		}
+
+		final SourceFile target = (SourceFile) o;
+		return this.path.equals(target.path)
+				&& (this.getClass() == target.getClass());
+	}
+
+	@Override
+	public int hashCode() {
+		return this.path.hashCode();
+	}
+
 	public void addStatement(final Statement statement) {
 		this.statements.add(statement);
 	}

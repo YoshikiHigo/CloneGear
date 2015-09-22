@@ -26,7 +26,8 @@ public class StringUtility {
 		}
 
 		switch (language) {
-		case JAVA: {
+		case JAVA:
+		case JSP: {
 			final String[] args = new String[11];
 			args[0] = "-q";
 			args[1] = "-blankline";
