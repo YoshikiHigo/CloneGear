@@ -4,6 +4,7 @@ import java.io.File;
 
 import yoshikihigo.clonegear.data.CFile;
 import yoshikihigo.clonegear.data.CPPFile;
+import yoshikihigo.clonegear.data.HTMLFile;
 import yoshikihigo.clonegear.data.JavaFile;
 import yoshikihigo.clonegear.data.JavascriptFile;
 import yoshikihigo.clonegear.data.PythonFile;
@@ -73,6 +74,23 @@ public enum LANGUAGE {
 		public SourceFile getSourceFile(final File file) {
 			if (this.isTarget(file)) {
 				return new CPPFile(file.getAbsolutePath());
+			}
+			return null;
+		}
+	},
+
+	HTML("HTML") {
+		@Override
+		public boolean isTarget(final File file) {
+			return file.isFile()
+					&& (file.getName().endsWith(".html") || file.getName()
+							.endsWith(".htm"));
+		}
+
+		@Override
+		public SourceFile getSourceFile(final File file) {
+			if (this.isTarget(file)) {
+				return new HTMLFile(file.getAbsolutePath());
 			}
 			return null;
 		}

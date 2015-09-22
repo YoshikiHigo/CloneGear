@@ -152,6 +152,7 @@ public class CGConfig {
 			for (final LANGUAGE language : LANGUAGE.values()) {
 				languages.add(language);
 			}
+			languages.remove(LANGUAGE.HTML);
 		}
 
 		return languages;

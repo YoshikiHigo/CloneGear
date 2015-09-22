@@ -51,8 +51,7 @@ public class MD5 {
 		}
 
 		final String text = builder.toString();
-		final byte[] value = MD5.getMD5(text);
-		final MD5 md5 = new MD5(value);
+		final MD5 md5 = MD5.getMD5(text);
 		tokenToMD5.put(nonTrivialTokens, md5);
 		md5ToToken.put(md5, nonTrivialTokens);
 		return md5;
@@ -96,23 +95,22 @@ public class MD5 {
 		}
 
 		final String text = builder.toString();
-		final byte[] value = MD5.getMD5(text);
-		final MD5 md5 = new MD5(value);
+		final MD5 md5 = MD5.getMD5(text);
 		tokenToMD5.put(nonTrivialTokens, md5);
 		md5ToToken.put(md5, nonTrivialTokens);
 		return md5;
 	}
 
-	static private byte[] getMD5(final String text) {
+	static public MD5 getMD5(final String text) {
 		try {
 			final MessageDigest md = MessageDigest.getInstance("MD5");
 			final byte[] data = text.getBytes("UTF-8");
 			md.update(data);
 			final byte[] digest = md.digest();
-			return digest;
+			return new MD5(digest);
 		} catch (final NoSuchAlgorithmException | UnsupportedEncodingException e) {
 			e.printStackTrace();
-			return new byte[0];
+			return new MD5(new byte[0]);
 		}
 	}
 

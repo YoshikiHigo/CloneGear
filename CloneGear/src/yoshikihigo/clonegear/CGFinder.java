@@ -26,6 +26,9 @@ import java.util.concurrent.Future;
 import yoshikihigo.clonegear.data.CloneHash;
 import yoshikihigo.clonegear.data.CloneSet;
 import yoshikihigo.clonegear.data.ClonedFragment;
+import yoshikihigo.clonegear.data.HTMLFile;
+import yoshikihigo.clonegear.data.JavascriptFile;
+import yoshikihigo.clonegear.data.Separator;
 import yoshikihigo.clonegear.data.SourceFile;
 import yoshikihigo.clonegear.data.Statement;
 import yoshikihigo.clonegear.lexer.token.Token;
@@ -91,51 +94,66 @@ public class CGFinder {
 		final List<SourceFile> files = FileUtility.collectSourceFiles(new File(
 				CGConfig.getInstance().getSource()));
 
-		{
-			if (!CGConfig.getInstance().isVERBOSE()) {
-				System.err.println("parsing source files ... ");
-			}
-
-			int number = 1;
-			for (final SourceFile file : files) {
-
-				if (CGConfig.getInstance().isVERBOSE()) {
-					System.err.print(Integer.toString(number++));
-					System.err.print("/");
-					System.err.print(Integer.toString(files.size()));
-					System.err.print(": parsing ");
-					System.err.println(file.path);
-				}
-
-				int loc = 0;
-				final StringBuilder textBuilder = new StringBuilder();
-				try (final BufferedReader reader = new BufferedReader(
-						new InputStreamReader(new FileInputStream(file.path),
-								"JISAutoDetect"))) {
-					while (reader.ready()) {
-						final String line = reader.readLine();
-						textBuilder.append(line);
-						textBuilder.append(System.lineSeparator());
-						loc++;
-					}
-				} catch (IOException e) {
-					System.err.print("file \"");
-					System.err.print(file.path);
-					System.err.println("\" is unreadable.");
-					continue;
-				}
-
-				final List<Statement> statements = StringUtility
-						.splitToStatements(textBuilder.toString(),
-								file.getLanguage());
-				final List<Statement> foldedStatements = Statement
-						.getFoldedStatements(statements);
-				file.addStatements(foldedStatements);
-				file.setLOC(loc);
-			}
-
-			return files;
+		if (!CGConfig.getInstance().isVERBOSE()) {
+			System.err.println("parsing source files ... ");
 		}
+
+		int number = 1;
+		for (final SourceFile file : files) {
+
+			if (CGConfig.getInstance().isVERBOSE()) {
+				System.err.print(Integer.toString(number++));
+				System.err.print("/");
+				System.err.print(Integer.toString(files.size()));
+				System.err.print(": parsing ");
+				System.err.println(file.path);
+			}
+
+			int loc = 0;
+			final StringBuilder textBuilder = new StringBuilder();
+			try (final BufferedReader reader = new BufferedReader(
+					new InputStreamReader(new FileInputStream(file.path),
+							"JISAutoDetect"))) {
+				while (reader.ready()) {
+					final String line = reader.readLine();
+					textBuilder.append(line);
+					textBuilder.append(System.lineSeparator());
+					loc++;
+				}
+			} catch (IOException e) {
+				System.err.print("file \"");
+				System.err.print(file.path);
+				System.err.println("\" is unreadable.");
+				continue;
+			}
+
+			final List<Statement> statements = StringUtility.splitToStatements(
+					textBuilder.toString(), file.getLanguage());
+			final List<Statement> foldedStatements = Statement
+					.getFoldedStatements(statements);
+			file.addStatements(foldedStatements);
+			file.setLOC(loc);
+		}
+
+		final List<HTMLFile> htmlFiles = FileUtility.collectHTMLFiles(new File(
+				CGConfig.getInstance().getSource()));
+		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JAVASCRIPT)) {
+			for (final HTMLFile f : htmlFiles) {
+				final List<String> codes = f.extractJavascript();
+				final JavascriptFile javascriptFile = new JavascriptFile(f.path);
+				for (final String code : codes) {
+					final List<Statement> statements = StringUtility
+							.splitToStatements(code, LANGUAGE.JAVASCRIPT);
+					final List<Statement> foldedStatements = Statement
+							.getFoldedStatements(statements);
+					javascriptFile.addStatements(foldedStatements);
+					javascriptFile.addStatement(new Separator());
+				}
+				files.add(javascriptFile);
+			}
+		}
+
+		return files;
 	}
 
 	private static List<CloneSet> detectClones(final List<SourceFile> files) {
