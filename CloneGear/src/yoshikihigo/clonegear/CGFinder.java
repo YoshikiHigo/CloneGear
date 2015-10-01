@@ -30,7 +30,7 @@ import yoshikihigo.clonegear.data.ClonedFragment;
 import yoshikihigo.clonegear.data.HTMLFile;
 import yoshikihigo.clonegear.data.JSPFile;
 import yoshikihigo.clonegear.data.JavascriptFile;
-import yoshikihigo.clonegear.data.Separator;
+import yoshikihigo.clonegear.data.PHPFile;
 import yoshikihigo.clonegear.data.SourceFile;
 import yoshikihigo.clonegear.data.Statement;
 import yoshikihigo.clonegear.data.WebFile;
@@ -100,7 +100,8 @@ public class CGFinder {
 		for (final Iterator<SourceFile> iterator = files.iterator(); iterator
 				.hasNext();) {
 			final SourceFile file = iterator.next();
-			if (file instanceof HTMLFile || file instanceof JSPFile) {
+			if (file instanceof HTMLFile || file instanceof JSPFile
+					|| file instanceof PHPFile) {
 				iterator.remove();
 			}
 		}
@@ -150,32 +151,29 @@ public class CGFinder {
 				CGConfig.getInstance().getSource()));
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JAVASCRIPT)) {
 			for (final WebFile f : webFiles) {
-				final List<String> codes = f.extractJavascript();
+				final List<Statement> statements = f.getJavascriptStatements();
+				final List<Statement> foldedStatements = Statement
+						.getFoldedStatements(statements);
 				final JavascriptFile javascriptFile = new JavascriptFile(f.path);
-				for (final String code : codes) {
-					final List<Statement> statements = StringUtility
-							.splitToStatements(code, LANGUAGE.JAVASCRIPT);
-					final List<Statement> foldedStatements = Statement
-							.getFoldedStatements(statements);
-					javascriptFile.addStatements(foldedStatements);
-					javascriptFile.addStatement(new Separator());
-				}
-				files.add(javascriptFile);
+				javascriptFile.addStatements(foldedStatements);
 			}
 		}
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JSP)) {
 			for (final WebFile f : webFiles) {
-				final List<String> codes = f.getJSP();
+				final List<Statement> statements = f.getJSPStatements();
+				final List<Statement> foldedStatements = Statement
+						.getFoldedStatements(statements);
 				final JSPFile jspFile = new JSPFile(f.path);
-				for (final String code : codes) {
-					final List<Statement> statements = StringUtility
-							.splitToStatements(code, LANGUAGE.JSP);
-					final List<Statement> foldedStatements = Statement
-							.getFoldedStatements(statements);
-					jspFile.addStatements(foldedStatements);
-					jspFile.addStatement(new Separator());
-				}
-				files.add(jspFile);
+				jspFile.addStatements(foldedStatements);
+			}
+		}
+		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.PHP)) {
+			for (final WebFile f : webFiles) {
+				final List<Statement> statements = f.getPHPStatements();
+				final List<Statement> foldedStatements = Statement
+						.getFoldedStatements(statements);
+				final PHPFile phpFile = new PHPFile(f.path);
+				phpFile.addStatements(foldedStatements);
 			}
 		}
 

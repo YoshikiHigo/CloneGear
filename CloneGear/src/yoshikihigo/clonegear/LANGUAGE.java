@@ -8,6 +8,7 @@ import yoshikihigo.clonegear.data.HTMLFile;
 import yoshikihigo.clonegear.data.JSPFile;
 import yoshikihigo.clonegear.data.JavaFile;
 import yoshikihigo.clonegear.data.JavascriptFile;
+import yoshikihigo.clonegear.data.PHPFile;
 import yoshikihigo.clonegear.data.PythonFile;
 import yoshikihigo.clonegear.data.SourceFile;
 
@@ -107,6 +108,21 @@ public enum LANGUAGE {
 		public SourceFile getSourceFile(final File file) {
 			if (this.isTarget(file)) {
 				return new HTMLFile(file.getAbsolutePath());
+			}
+			return null;
+		}
+	},
+
+	PHP("PHP") {
+		@Override
+		public boolean isTarget(final File file) {
+			return file.isFile() && file.getName().endsWith(".php");
+		}
+
+		@Override
+		public SourceFile getSourceFile(final File file) {
+			if (this.isTarget(file)) {
+				return new PHPFile(file.getAbsolutePath());
 			}
 			return null;
 		}

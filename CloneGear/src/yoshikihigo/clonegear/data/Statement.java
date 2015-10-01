@@ -13,6 +13,7 @@ import yoshikihigo.clonegear.lexer.token.ANNOTATION;
 import yoshikihigo.clonegear.lexer.token.CLASS;
 import yoshikihigo.clonegear.lexer.token.COLON;
 import yoshikihigo.clonegear.lexer.token.DEF;
+import yoshikihigo.clonegear.lexer.token.Delimiter;
 import yoshikihigo.clonegear.lexer.token.FINAL;
 import yoshikihigo.clonegear.lexer.token.INTERFACE;
 import yoshikihigo.clonegear.lexer.token.LEFTBRACKET;
@@ -72,6 +73,10 @@ public class Statement {
 					} else {
 						nestLevel.pop();
 					}
+				}
+
+				if (token instanceof Delimiter) {
+					statements.add(new Separator());
 				}
 
 				if (token instanceof QUESTION) {
@@ -166,6 +171,85 @@ public class Statement {
 
 				token.index = index++;
 				tokens.add(token);
+
+				if (token instanceof Delimiter) {
+					statements.add(new Separator());
+				}
+
+				if (token instanceof RIGHTBRACKET) {
+					nestLevel.pop();
+				}
+
+				if (token instanceof QUESTION) {
+					inTernaryOperationDepth++;
+				}
+
+				if ((0 == inTernaryOperationDepth)
+						&& (token instanceof LEFTBRACKET
+								|| token instanceof RIGHTBRACKET
+								|| token instanceof SEMICOLON || token instanceof COLON)) {
+
+					if (1 < tokens.size()) {
+
+						final int nestDepth = nestLevel.peek().intValue();
+
+						final int fromLine = tokens.get(0).line;
+						final int toLine = tokens.get(tokens.size() - 1).line;
+						final MD5 hash = MD5.makeJCHash(tokens);
+						final Statement statement = new Statement(fromLine,
+								toLine, nestDepth, true, tokens, hash);
+						statements.add(statement);
+						tokens = new ArrayList<Token>();
+
+						if (isDebug) {
+							System.out.println(statement.toString());
+						}
+					}
+
+					else {
+						tokens.clear();
+					}
+				}
+
+				if (token instanceof LEFTBRACKET) {
+					nestLevel
+							.push(new Integer(nestLevel.peek().intValue() + 1));
+				}
+
+				if ((0 < inTernaryOperationDepth) && (token instanceof COLON)) {
+					inTernaryOperationDepth--;
+				}
+			}
+		}
+
+		catch (final EmptyStackException e) {
+			System.err.println("parsing error has happened.");
+		}
+
+		return statements;
+	}
+
+	public static List<Statement> getPHPStatements(final List<Token> allTokens)
+			throws EmptyStackException {
+
+		final List<Statement> statements = new ArrayList<Statement>();
+		List<Token> tokens = new ArrayList<Token>();
+
+		final Stack<Integer> nestLevel = new Stack<>();
+		nestLevel.push(Integer.valueOf(1));
+		int inTernaryOperationDepth = 0;
+		int index = 0;
+		final boolean isDebug = CGConfig.getInstance().isDEBUG();
+
+		try {
+			for (final Token token : allTokens) {
+
+				token.index = index++;
+				tokens.add(token);
+
+				if (token instanceof Delimiter) {
+					statements.add(new Separator());
+				}
 
 				if (token instanceof RIGHTBRACKET) {
 					nestLevel.pop();

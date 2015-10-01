@@ -1,6 +1,9 @@
 package yoshikihigo.clonegear;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,8 +64,9 @@ public class FileUtility {
 
 			final LANGUAGE language = getLANGUAGE(file);
 			if ((null != language)
-					&& (language.equals(LANGUAGE.HTML) || language
-							.equals(LANGUAGE.JSP))) {
+					&& (language.equals(LANGUAGE.HTML)
+							|| language.equals(LANGUAGE.JSP) || language
+								.equals(LANGUAGE.PHP))) {
 				final WebFile webFile = (WebFile) language.getSourceFile(file);
 				files.add(webFile);
 			}
@@ -84,5 +88,25 @@ public class FileUtility {
 		}
 
 		return files;
+	}
+
+	public static String readFile(final File file, final String encoding) {
+
+		final StringBuilder text = new StringBuilder();
+
+		try (final InputStreamReader reader = new InputStreamReader(
+				new FileInputStream(file), null != encoding ? encoding
+						: "JISAutoDetect")) {
+
+			while (reader.ready()) {
+				final int c = reader.read();
+				text.append((char) c);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return text.toString();
 	}
 }
