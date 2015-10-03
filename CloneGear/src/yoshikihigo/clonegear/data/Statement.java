@@ -270,7 +270,7 @@ public class Statement {
 
 						final int fromLine = tokens.get(0).line;
 						final int toLine = tokens.get(tokens.size() - 1).line;
-						final MD5 hash = MD5.makeJCHash(tokens);
+						final MD5 hash = MD5.makePHPHash(tokens);
 						final Statement statement = new Statement(fromLine,
 								toLine, nestDepth, true, tokens, hash);
 						statements.add(statement);

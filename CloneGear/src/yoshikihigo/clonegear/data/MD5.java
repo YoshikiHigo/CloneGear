@@ -101,6 +101,48 @@ public class MD5 {
 		return md5;
 	}
 
+	static MD5 makePHPHash(final List<Token> tokens) {
+
+		final StringBuilder builder = new StringBuilder();
+		final Map<String, String> identifiers = new HashMap<>();
+
+		for (int index = 0; index < tokens.size(); index++) {
+
+			final Token token = tokens.get(index);
+
+			if (token instanceof IDENTIFIER) {
+
+				if (tokens.size() == (index + 1)
+						|| !(tokens.get(index + 1) instanceof LEFTPAREN)) {
+					final String name = token.value;
+					String normalizedName = identifiers.get(name);
+					if (null == normalizedName) {
+						normalizedName = "$" + identifiers.size();
+						identifiers.put(name, normalizedName);
+					}
+					builder.append(normalizedName);
+				}
+
+				// not normalize if identifier is method name
+				else {
+					builder.append(token.value);
+				}
+			}
+
+			else {
+				builder.append(token.value);
+			}
+
+			builder.append(" ");
+		}
+
+		final String text = builder.toString();
+		final MD5 md5 = MD5.getMD5(text);
+		tokenToMD5.put(tokens, md5);
+		md5ToToken.put(md5, tokens);
+		return md5;
+	}
+
 	static public MD5 getMD5(final String text) {
 		try {
 			final MessageDigest md = MessageDigest.getInstance("MD5");

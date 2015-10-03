@@ -34,8 +34,10 @@ public class PHPLineLexer implements LineLexer {
 
 			if (CGConfig.getInstance().isDEBUG()) {
 				for (final Token t : tokens) {
-					System.out.println(t.getClass().toGenericString() + " : "
-							+ t.value);
+					final String name = t.getClass().getName();
+					final String className = name.substring(name
+							.lastIndexOf('.') + 1);
+					System.out.println(className + " : " + t.value);
 				}
 			}
 
