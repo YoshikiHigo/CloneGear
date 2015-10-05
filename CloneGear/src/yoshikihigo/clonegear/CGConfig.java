@@ -60,6 +60,15 @@ public class CGConfig {
 		}
 
 		{
+			final Option gap = new Option("gap", "gap", true,
+					"threshold of gap size allowed in clones");
+			gap.setArgName("gap");
+			gap.setArgs(1);
+			gap.setRequired(false);
+			options.addOption(gap);
+		}
+
+		{
 			final Option software = new Option("soft", "software", true,
 					"software name");
 			software.setArgName("software");
@@ -188,6 +197,11 @@ public class CGConfig {
 	public int getTHRESHOLD() {
 		return this.commandLine.hasOption("thrld") ? Integer
 				.parseInt(this.commandLine.getOptionValue("thrld")) : 50;
+	}
+
+	public int getGAP() {
+		return this.commandLine.hasOption("gap") ? Integer
+				.parseInt(this.commandLine.getOptionValue("gap")) : 2;
 	}
 
 	public int getTHREAD() {

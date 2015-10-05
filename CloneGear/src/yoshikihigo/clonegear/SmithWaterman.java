@@ -342,20 +342,41 @@ public class SmithWaterman {
 	}
 
 	private Cell getMinCell(final Cell maxCell) {
-		Cell minCell = maxCell;
+		final int gap = CGConfig.getInstance().getGAP();
+		int xGap = 0;
+		int yGap = 0;
+		Cell lastMatchedCell = maxCell;
+		Cell currentCell = maxCell;
 		while (true) {
-			if (null == minCell.base) {
+
+			if (null == currentCell.base) {
 				break;
 			}
-			if (0 == minCell.base.value) {
+
+			if (currentCell.base.isChecked()) {
 				break;
 			}
-			if (minCell.base.isChecked()) {
+
+			if (0 == currentCell.base.value) {
 				break;
 			}
-			minCell = minCell.base;
+
+			if (currentCell.base.match) {
+				lastMatchedCell = currentCell.base;
+				xGap = 0;
+				yGap = 0;
+			} else {
+				xGap += currentCell.x - currentCell.base.x;
+				yGap += currentCell.y - currentCell.base.y;
+				if ((gap < xGap) || (gap < yGap)) {
+					break;
+				}
+			}
+
+			currentCell = currentCell.base;
 		}
-		return minCell;
+
+		return lastMatchedCell;
 	}
 
 	private MD5[] getCloneHash(final Cell minCell, final Cell maxCell) {
