@@ -1,0 +1,440 @@
+476	6	cook/src/cook/builtin/boolean.c	213	224	cook/src/cook/builtin/wordlist.c	67	78	1	-	-
+496	6	cook/src/cook/opcode/recipe.c	175	180	cook/src/cook/stmt/return.c	95	100	2	-	-
+501	6	cook/src/cook/opcode/cascade.c	175	186	cook/src/cook/opcode/context.c	407	419	3	179, 180, 181, 182, 183	411, 412, 413, 414, 415, 416
+512	6	cook/src/cook/builtin/cando.c	51	59	cook/src/cook/builtin/subst.c	27	35	1	-	-
+761	6	cook/src/cook/opcode/assign_local.c	147	152	cook/src/cook/opcode/set.c	85	90	2	-	-
+763	6	cook/src/cook/builtin/relati_dirna.c	51	60	cook/src/cook/builtin/word.c	43	52	2	-	-
+925	6	cook/src/cook/opcode/setenv.c	71	114	cook/src/cook/opcode/setenv_appen.c	141	194	3	98	171, 172, 173, 174, 175, 176, 177, 178
+933	6	cook/src/cook/builtin/addprefix.c	36	47	cook/src/cook/builtin/execute.c	74	85	1	-	-
+939	6	cook/src/common/mprintf.c	355	367	cook/src/common/mprintf.c	407	419	2	-	-
+618	6	cook/src/cook/main.c	527	566	cook/src/cook/main.c	567	606	1	-	-
+619	6	cook/src/cook/stmt.c	173	194	cook/src/cook/stmt.c	195	218	3	-	202, 217
+620	6	cook/src/c_incl/lang.c	48	75	cook/src/make2cook/variable.c	114	141	2	-	-
+646	6	cook/src/cook/builtin/boolean.c	58	66	cook/src/cook/builtin/getenv.c	52	60	2	-	-
+649	6	cook/src/cookfp/main.c	95	100	cook/src/fstrcmp/main.c	78	83	2	-	-
+672	6	cook/src/common/error_intl/open.c	43	51	cook/src/common/error_intl/write.c	36	44	3	-	44
+688	6	cook/src/cook/builtin/cando.c	51	58	cook/src/cook/builtin/stringset.c	120	127	1	-	-
+690	6	cook/src/cook/graph/build.c	750	761	cook/src/cook/graph/build.c	1091	1102	2	-	-
+692	6	cook/src/cook/builtin/getenv.c	56	64	cook/src/cook/builtin/text.c	149	157	2	-	-
+712	6	cook/src/c_incl/main.c	231	236	cook/src/cookfp/main.c	125	130	2	-	-
+725	6	cook/src/cook/graph/file_list.c	208	216	cook/src/cook/graph/recipe_list.c	185	193	2	-	-
+732	6	cook/src/cook/builtin/findstring.c	58	65	cook/src/cook/builtin/wordlist.c	84	91	2	-	-
+733	6	cook/src/make2cook/stmt/rule.c	99	113	cook/src/make2cook/stmt/rule.c	177	191	2	-	-
+783	6	cook/src/cook/graph/leaf.c	171	176	cook/src/cook/graph/leaf.c	186	191	2	-	-
+784	6	cook/src/cook/cook.c	152	159	cook/src/cook/graph/run.c	536	543	2	-	-
+795	6	cook/src/c_incl/os.c	37	50	cook/src/find_libs/os.c	37	50	1	-	-
+797	6	cook/src/cook/builtin/cook.c	75	82	cook/src/cook/builtin/opsys.c	97	104	2	-	-
+805	6	cook/src/make2cook/gram.gen.c	277	614	cook/src/make2cook/vargram.gen.c	300	637	2	-	-
+828	6	cook/src/cook/builtin/interi_files.c	129	137	cook/src/cook/graph/run.c	254	262	2	-	-
+830	6	cook/src/cook/builtin/find_command.c	148	158	cook/src/cook/builtin/findstring.c	55	65	2	-	-
+845	6	cook/src/cook/builtin/match.c	154	206	cook/src/cook/builtin/match.c	230	290	3	-	269, 270, 271, 272, 273, 274, 275, 276
+863	6	cook/src/cook/builtin/dos.c	160	178	cook/src/cook/builtin/text.c	253	268	3	174, 175, 176, 177	267
+867	6	cook/src/cook/builtin/addprefix.c	26	35	cook/src/cook/builtin/suffix.c	26	35	2	-	-
+874	6	cook/src/cook/builtin/addprefix.c	26	33	cook/src/cook/builtin/filter_out.c	53	60	2	-	-
+877	6	cook/src/cook/builtin/home.c	30	37	cook/src/cook/builtin/stringset.c	120	127	2	-	-
+898	6	cook/src/cook/builtin/opsys.c	97	105	cook/src/cook/builtin/pathname.c	54	62	2	-	-
+917	6	cook/src/cook/builtin/execute.c	58	65	cook/src/cook/builtin/relati_dirna.c	51	58	1	-	-
+921	6	cook/src/cook/builtin/write.c	148	159	cook/src/cook/id/variable.c	84	95	2	-	-
+957	6	cook/src/cook/builtin/word.c	55	63	cook/src/cook/graph/run.c	254	262	2	-	-
+962	6	cook/src/cook/opcode/assign.c	156	189	cook/src/cook/opcode/jmpt.c	97	130	2	-	-
+964	6	cook/src/c_incl/cache.c	260	265	cook/src/cookfp/main.c	176	185	2	-	-
+984	6	cook/src/cook/builtin/getenv.c	54	80	cook/src/cook/builtin/text.c	102	123	3	65, 66, 68, 69, 70, 71, 72	113, 115
+990	6	cook/src/c_incl/lang.c	109	117	cook/src/cook/lex.c	1321	1328	2	-	-
+1007	6	cook/src/cook/stat.cache.c	201	208	cook/src/cook/stat.cache.c	531	538	2	-	-
+1015	6	cook/src/cook/builtin/subst.c	27	34	cook/src/cook/builtin/unsplit.c	27	34	2	-	-
+1027	6	cook/src/cook/builtin/text.c	159	169	cook/src/cook/builtin/word.c	54	64	1	-	-
+1037	6	cook/src/cook/main.c	240	248	cook/src/cook_bom/main.c	74	82	2	-	-
+1041	6	cook/src/common/page.c	84	96	cook/src/common/page.c	109	121	2	-	-
+1051	6	cook/src/cook/builtin/cook.c	75	82	cook/src/cook/builtin/split.c	27	34	2	-	-
+1062	6	cook/src/cook/os.c	923	933	cook/src/cooktime/main.c	112	127	3	923, 927	112
+1068	6	cook/src/cook/opcode/setenv.c	48	56	cook/src/cook/opcode/string.c	48	57	3	-	55
+1078	6	cook/src/cook/archive.c	397	404	cook/src/cook/archive.c	406	413	1	-	-
+1098	6	cook/src/cook/builtin/dos.c	160	168	cook/src/cook/builtin/stringset.c	120	128	2	-	-
+1104	6	cook/src/cook/builtin/word.c	71	77	cook/src/cook/graph/build.c	243	249	2	-	-
+1122	6	cook/src/cook/builtin/boolean.c	155	163	cook/src/cook/builtin/match.c	73	81	2	-	-
+1129	6	cook/src/cook/opcode/command.c	828	835	cook/src/cook/opcode/string.c	135	142	2	-	-
+1135	6	cook/src/common/help.c	83	89	cook/src/common/help.c	90	96	2	-	-
+1144	6	cook/src/cook/builtin/boolean.c	257	264	cook/src/cook/builtin/resolve.c	51	58	2	-	-
+1152	6	cook/src/cook/builtin/split.c	27	36	cook/src/cook/builtin/thread-id.c	28	37	2	-	-
+1154	6	cook/src/common/mprintf.c	326	338	cook/src/common/mprintf.c	355	367	2	-	-
+1170	6	cook/src/cook/opcode/assign_local.c	81	94	cook/src/cook/opcode/setenv_appen.c	155	168	1	-	-
+1179	6	cook/src/cook/opcode/string.c	135	142	cook/src/cook/opcode/unsetenv.c	179	186	2	-	-
+1187	6	cook/src/cook/builtin/expr_parse.gen.c	247	582	cook/src/cook/fingerprint/gram.gen.c	169	504	2	-	-
+1195	6	cook/src/make2cook/stmt/if.c	179	188	cook/src/make2cook/stmt/if.c	249	258	2	-	-
+1202	6	cook/src/cook/match/regex.c	278	290	cook/src/cook/match/regex.c	299	311	2	-	-
+1221	6	cook/src/cook/builtin/findstring.c	44	53	cook/src/cook/builtin/text.c	348	357	2	-	-
+1228	6	cook/src/cook/builtin/boolean.c	313	320	cook/src/cook/builtin/text.c	207	214	2	-	-
+1245	6	cook/src/cook/builtin/find_command.c	124	134	cook/src/cook/builtin/readlink.c	45	55	2	-	-
+1252	6	cook/src/make2cook/stmt/rule.c	258	264	cook/src/make2cook/stmt/rule.c	650	656	2	-	-
+1260	6	cook/src/cook/graph/run.c	197	203	cook/src/cook/main.c	485	491	2	-	-
+1277	6	cook/src/cook/builtin/execute.c	74	85	cook/src/cook/builtin/wordlist.c	67	78	2	-	-
+1278	6	cook/src/cook/fingerprint/lex.c	161	166	cook/src/make2cook/blob.c	88	93	1	-	-
+1288	6	cook/src/cook/opcode/assign_appen.c	210	217	cook/src/cook/opcode/string.c	135	142	2	-	-
+1297	6	cook/src/cook/flag.c	204	210	cook/src/cook/stat.cache.c	172	178	2	-	-
+1321	6	cook/src/cook/opcode/gosub.c	92	99	cook/src/cook/opcode/set.c	101	108	2	-	-
+1337	6	cook/src/cook/builtin/strip.c	48	56	cook/src/cook/builtin/thread-id.c	28	36	2	-	-
+1346	6	cook/src/cook/opcode/push.c	82	89	cook/src/cook/stmt/nop.c	84	91	2	-	-
+1347	6	cook/src/cook/builtin/interi_files.c	143	153	cook/src/cook/builtin/wordlist.c	68	78	2	-	-
+1352	6	cook/src/cook/graph/run.c	689	696	cook/src/file_check/file_check.c	83	92	3	-	91
+1357	6	cook/src/cook/builtin/split.c	35	48	cook/src/cook/builtin/wordlist.c	65	78	2	-	-
+1359	6	cook/src/cook/builtin/boolean.c	58	66	cook/src/cook/builtin/cando.c	51	59	2	-	-
+1367	6	cook/src/cook/opcode/cascade.c	128	142	cook/src/cook/opcode/unsetenv.c	154	168	3	135	161
+1380	6	cook/src/cook/graph/run.c	400	406	cook/src/cook/os.c	291	297	2	-	-
+1389	6	cook/src/cook/opcode/cascade.c	88	93	cook/src/cook/opcode/gosub.c	72	77	2	-	-
+1408	6	cook/src/cook/builtin/write.c	152	159	cook/src/cook/graph/run.c	512	519	2	-	-
+1411	6	cook/src/make2cook/stmt/assign.c	47	54	cook/src/make2cook/stmt/compound.c	59	66	2	-	-
+1414	6	cook/src/cook/opcode/assign_appen.c	91	99	cook/src/cook/opcode/assign_local.c	113	121	2	-	-
+1425	6	cook/src/cook/builtin/basename.c	25	54	cook/src/cook/builtin/suffix.c	26	56	3	46	38, 48
+1433	6	cook/src/common/trace.c	226	243	cook/src/common/trace.c	244	261	2	-	-
+1439	6	cook/src/cook/stmt/compound.c	26	56	cook/src/cook/stmt/set.c	30	62	3	-	57
+1440	6	cook/src/make2cook/stmt/rule.c	1178	1183	cook/src/make2cook/stmt/rule.c	1262	1267	1	-	-
+1444	6	cook/src/cooktime/date.gen.c	1278	1414	cook/src/make2cook/gram.gen.c	908	1044	2	-	-
+1463	6	cook/src/cook/opcode/command.c	58	63	cook/src/cook/stmt/return.c	51	56	2	-	-
+1471	6	cook/src/cook/builtin/positional.c	55	72	cook/src/cook/builtin/positional.c	111	128	1	-	-
+1480	6	cook/src/cook/builtin/opsys.c	45	54	cook/src/cook/builtin/opsys.c	58	67	2	-	-
+1487	6	cook/src/make2cook/stmt/rule.c	914	919	cook/src/make2cook/stmt/rule.c	921	926	2	-	-
+1495	6	cook/src/cook/opcode/cascade.c	175	186	cook/src/cook/opcode/jmpt.c	119	130	2	-	-
+1497	6	cook/src/cook/builtin/positional.c	102	111	cook/src/cook/builtin/unsplit.c	27	36	2	-	-
+1507	6	cook/src/cook/opcode/setenv_appen.c	49	55	cook/src/make2cook/stmt/if.c	35	41	2	-	-
+1534	6	cook/src/cook/builtin/pathname.c	54	79	cook/src/cook/builtin/pathname.c	158	183	2	-	-
+1537	6	cook/src/cook/fingerprint/lex.c	125	137	cook/src/make2cook/lex.c	159	171	2	-	-
+1550	6	cook/src/common/sub/expr_gram.gen.c	205	540	cook/src/cook/hashline.gen.c	838	1173	2	-	-
+1559	6	cook/src/cook/builtin/defined.c	55	61	cook/src/cook/builtin/execute.c	58	64	1	-	-
+1570	6	cook/src/common/sub.c	994	1006	cook/src/common/sub.c	1020	1033	2	-	-
+1572	6	cook/src/cook/stat.cache.c	454	467	cook/src/cook/stat.cache.c	547	560	1	-	-
+1588	6	cook/src/cook/builtin/collect.c	78	88	cook/src/cook/builtin/interi_files.c	143	153	2	-	-
+1597	6	cook/src/cook/graph/run.c	688	696	cook/src/cook/graph/run.c	705	713	2	-	-
+1603	6	cook/src/cook/builtin/addsuffix.c	36	47	cook/src/cook/builtin/collect.c	77	88	1	-	-
+1606	6	cook/src/cooktime/date.gen.c	772	1107	cook/src/make2cook/gram.gen.c	277	612	2	-	-
+1617	6	cook/src/cook/opcode/setenv.c	87	95	cook/src/cook/opcode/setenv.c	101	109	2	-	-
+1625	6	cook/src/cook/hashline.gen.c	838	1173	cook/src/cook/parse.gen.c	305	640	2	-	-
+1629	6	cook/src/cook/builtin/boolean.c	270	281	cook/src/cook/builtin/unsplit.c	37	48	2	-	-
+1648	6	cook/src/make2cook/stmt/rule.c	746	751	cook/src/make2cook/stmt/rule.c	811	816	2	-	-
+1655	6	cook/src/cook/builtin/exists.c	56	68	cook/src/cook/builtin/text.c	145	157	2	-	-
+1671	6	cook/src/common/error_intl/close.c	34	42	cook/src/common/error_intl/open.c	25	33	2	-	-
+1679	6	cook/src/cook/builtin/split.c	40	47	cook/src/cook/match/cook.c	132	139	2	-	-
+1683	6	cook/src/common/fp/md5.c	217	249	cook/src/common/fp/md5.c	251	283	2	-	-
+1693	6	cook/src/cook/stmt/command.c	159	165	cook/src/cook/stmt/unsetenv.c	129	135	2	-	-
+1696	6	cook/src/cook/opcode/function.c	76	81	cook/src/cook/opcode/goto.c	47	52	2	-	-
+1702	6	cook/src/cook/builtin/thread-id.c	41	48	cook/src/cook/opcode/assign_appen.c	111	118	2	-	-
+1712	6	cook/src/common/str_list.c	550	559	cook/src/cook/builtin/glob.c	234	243	1	-	-
+1746	6	cook/src/cook/builtin/boolean.c	313	321	cook/src/cook/builtin/text.c	56	64	2	-	-
+1747	6	cook/src/cook/opcode/jmpf.c	119	130	cook/src/cook/stmt/loop.c	258	269	3	127	266
+1775	6	cook/src/cook/graph/build.c	874	881	cook/src/cook/graph/build.c	1671	1678	3	-	1673
+1776	6	cook/src/cook/opcode/assign.c	178	189	cook/src/cook/opcode/jmpf.c	119	130	3	186	127
+1790	6	cook/src/cook/builtin/filter_out.c	53	61	cook/src/cook/builtin/wordlist.c	56	64	2	-	-
+1819	6	cook/src/cook/builtin/pathname.c	54	63	cook/src/cook/builtin/split.c	27	36	2	-	-
+1822	6	cook/src/cook/graph/run.c	254	262	cook/src/file_check/file_check.c	52	61	3	258, 260	58, 60
+1823	6	cook/src/cook/builtin/resolve.c	51	58	cook/src/cook/builtin/text.c	395	402	2	-	-
+1842	6	cook/src/cook/builtin/boolean.c	326	336	cook/src/cook/builtin/interi_files.c	143	153	2	-	-
+1850	6	cook/src/cook/builtin/find_command.c	124	132	cook/src/cook/builtin/positional.c	102	110	2	-	-
+1863	6	cook/src/cook/builtin/cook.c	75	83	cook/src/cook/builtin/find_command.c	124	132	2	-	-
+1870	6	cook/src/cook/builtin/boolean.c	200	212	cook/src/cook/builtin/mtime.c	92	104	2	-	-
+1871	6	cook/src/cookfp/main.c	73	83	cook/src/file_check/main.c	54	64	2	-	-
+1877	6	cook/src/cook/builtin/boolean.c	257	269	cook/src/cook/builtin/text.c	100	112	2	-	-
+1893	6	cook/src/cook/opcode/jmpf.c	119	130	cook/src/cook/stmt/touch.c	127	138	2	-	-
+1894	6	cook/src/cook/opcode/command.c	803	809	cook/src/cook/opcode/goto.c	71	77	2	-	-
+1901	6	cook/src/cooktime/main.c	105	128	cook/src/cooktime/main.c	129	152	2	-	-
+1927	6	cook/src/cook/builtin/execute.c	77	84	cook/src/cook/flag.c	233	240	2	-	-
+1928	6	cook/src/cook/builtin/expr_parse.gen.c	247	812	cook/src/make2cook/vargram.gen.c	300	944	3	584, 585, 586, 587, 588, 589, 590, 591, 592, 593, 594, 595, 596, 597, 598, 599, 600, 601, 602, 603, 604, 605, 606, 607, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 626, 627, 628, 629, 630, 631, 632, 633, 634, 635, 636, 637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 672, 673, 674	637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 672, 673, 674, 675, 676, 677, 678, 679, 680, 681, 682, 683, 684, 685, 686, 687, 688, 689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734, 735, 736, 737, 738, 739, 740, 741, 742, 743, 744, 745, 746, 747, 748, 749, 750, 751, 752, 753, 754, 755, 756, 757, 758, 759, 760, 761, 762, 763, 764, 765, 766, 767, 768, 769, 770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806
+1941	6	cook/src/make2cook/stmt/rule.c	732	737	cook/src/make2cook/stmt/rule.c	914	919	2	-	-
+1954	6	cook/src/cook/opcode/gosub.c	114	125	cook/src/cook/stmt/loop.c	258	269	2	-	-
+1957	6	cook/src/cook/builtin/interi_files.c	48	71	cook/src/cook/builtin/positional.c	102	127	3	-	110, 126
+1963	6	cook/src/make2cook/stmt/rule.c	797	802	cook/src/make2cook/stmt/rule.c	949	954	2	-	-
+1964	6	cook/src/cook/opcode/assign_appen.c	159	172	cook/src/cook/opcode/setenv_appen.c	181	194	1	-	-
+1970	6	cook/src/cook/builtin/boolean.c	257	265	cook/src/cook/builtin/substr.c	54	62	2	-	-
+1978	6	cook/src/cook/builtin/expr_parse.gen.c	247	582	cook/src/cook/parse.gen.c	305	640	2	-	-
+1983	6	cook/src/cook/builtin/cook.c	75	84	cook/src/cook/builtin/glob.c	261	270	2	-	-
+2004	6	cook/src/common/sub/expr_gram.gen.c	567	703	cook/src/cooktime/date.gen.c	1278	1414	2	-	-
+2006	6	cook/src/cook/opcode/jmpf.c	98	104	cook/src/cook/opcode/prelude.c	98	105	2	-	-
+2015	6	cook/src/make2cook/stmt/rule.c	565	570	cook/src/make2cook/variable.c	425	430	3	567	427
+2028	6	cook/src/cook/stmt/gosub.c	32	37	cook/src/cook/stmt/set.c	30	35	2	-	-
+2033	6	cook/src/cook/opcode/assign.c	178	189	cook/src/cook/opcode/setenv_appen.c	254	265	2	-	-
+2050	6	cook/src/cook/opcode/setenv.c	101	114	cook/src/cook/opcode/setenv_appen.c	181	194	1	-	-
+2055	6	cook/src/cook/graph/run.c	407	413	cook/src/cook/graph/run.c	595	601	2	-	-
+2070	6	cook/src/cook/opcode/recipe.c	123	129	cook/src/cook/opcode/setenv_appen.c	90	96	2	-	-
+2077	6	cook/src/cook/builtin/collect.c	138	147	cook/src/cook/graph/build.c	584	593	3	139	-
+2087	6	cook/src/common/error_intl/close.c	34	42	cook/src/common/error_intl/unlink.c	23	31	2	-	-
+2091	6	cook/src/make2cook/stmt/comment.c	92	100	cook/src/make2cook/stmt/define.c	62	68	3	98, 99	-
+2097	6	cook/src/cook/builtin/collect.c	102	112	cook/src/cookfp/main.c	177	187	3	108	-
+2114	6	cook/src/cook/graph/recipe.c	103	108	cook/src/cook/recipe.c	55	60	2	-	-
+2117	6	cook/src/cook/stmt/append.c	81	87	cook/src/cook/stmt/loop.c	76	82	2	-	-
+2130	6	cook/src/cook/opcode/function.c	301	308	cook/src/cook/opcode/string.c	135	142	2	-	-
+2134	6	cook/src/cook/main.c	240	245	cook/src/fstrcmp/main.c	67	72	2	-	-
+2138	6	cook/src/cook/graph/build.c	1553	1560	cook/src/cook/graph/run.c	788	795	2	-	-
+2151	6	cook/src/cook_bom/main.c	60	72	cook/src/cookfp/main.c	72	84	2	-	-
+2156	6	cook/src/cook/opcode/assign_local.c	71	79	cook/src/cook/opcode/setenv_appen.c	141	149	2	-	-
+2158	6	cook/src/cook/builtin/options.c	90	100	cook/src/cook/builtin/wordlist.c	80	91	3	-	83
+2182	6	cook/src/cook/builtin/home.c	30	37	cook/src/cook/builtin/substr.c	54	61	2	-	-
+2190	6	cook/src/cook/flag.c	230	242	cook/src/file_check/file_check.c	70	81	3	236, 242	80
+2192	6	cook/src/cook/graph/file_list.c	208	216	cook/src/cook/graph/recipe_list.c	38	46	2	-	-
+2207	6	cook/src/make2cook/lex.c	335	340	cook/src/make2cook/lex.c	367	372	1	-	-
+2250	6	cook/src/cook/builtin/dos.c	160	188	cook/src/cook/builtin/text.c	348	374	3	168, 173, 174, 175	356, 361
+2265	6	cook/src/cook/builtin/findstring.c	44	52	cook/src/cook/builtin/print.c	45	53	2	-	-
+2269	6	cook/src/common/input/crlf.c	32	38	cook/src/cook/opcode/setenv_appen.c	49	55	2	-	-
+2272	6	cook/src/cook/builtin/addsuffix.c	36	47	cook/src/cook/builtin/filter_out.c	69	80	2	-	-
+2280	6	cook/src/make2cook/lex.c	417	422	cook/src/make2cook/stmt/if.c	129	134	3	419, 420, 421, 422	131, 132, 133, 134
+2283	6	cook/src/c_incl/main.c	252	266	cook/src/c_incl/main.c	272	286	2	-	-
+2295	6	cook/src/cook/opcode/assign_appen.c	159	167	cook/src/cook/opcode/setenv_appen.c	160	168	2	-	-
+2297	6	cook/src/cook/builtin/boolean.c	313	321	cook/src/cook/builtin/positional.c	102	110	2	-	-
+2315	6	cook/src/cook/builtin/interi_files.c	79	85	cook/src/cook/builtin/substr.c	86	92	2	-	-
+2341	6	cook/src/cook/opcode/gosub.c	30	41	cook/src/cook/opcode/set.c	30	41	2	-	-
+2348	6	cook/src/common/sub/expr_gram.gen.c	338	540	cook/src/cook/hashline.gen.c	971	1173	2	-	-
+2352	6	cook/src/common/error_intl/close.c	34	42	cook/src/common/error_intl/read.c	23	31	2	-	-
+2364	6	cook/src/common/str.c	138	143	cook/src/common/wstr.c	107	112	1	-	-
+2365	6	cook/src/cook/builtin/sort_newest.c	73	79	cook/src/cook/builtin/stringset.c	120	126	1	-	-
+2383	6	cook/src/cook/stmt/return.c	30	35	cook/src/cook/stmt/set.c	30	35	2	-	-
+2384	6	cook/src/cook/builtin/substr.c	66	77	cook/src/cook/builtin/unsplit.c	36	47	2	-	-
+2407	6	cook/src/cook/opcode/cascade.c	153	160	cook/src/cook/opcode/recipe.c	207	214	2	-	-
+2411	6	cook/src/cook/builtin/interi_files.c	63	70	cook/src/cook/graph/build.c	528	535	2	-	-
+2413	6	cook/src/cook/graph/build.c	1650	1662	cook/src/cook/os.c	1026	1038	2	-	-
+2419	6	cook/src/cook/opcode/assign.c	178	189	cook/src/cook/opcode/assign_appen.c	232	243	2	-	-
+2434	6	cook/src/cook/builtin/home.c	56	63	cook/src/cook/flag.c	233	240	2	-	-
+2439	6	cook/src/cook/opcode/postlude.c	86	93	cook/src/cook/opcode/touch.c	153	160	2	-	-
+2444	6	cook/src/cook/builtin/subst.c	37	49	cook/src/cook/builtin/wordlist.c	66	78	2	-	-
+2473	6	cook/src/make2cook/stmt/assign.c	62	75	cook/src/make2cook/stmt/if.c	179	188	3	64, 67, 68, 69, 70, 71, 72, 73	181, 184, 185, 186
+2481	6	cook/src/cook/builtin/expr.c	32	44	cook/src/cook/builtin/mtime.c	49	61	2	-	-
+2489	6	cook/src/common/help.c	255	268	cook/src/common/help.c	274	287	2	-	-
+2505	6	cook/src/make2cook/stmt/rule.c	832	844	cook/src/make2cook/stmt/rule.c	963	976	2	-	-
+2506	6	cook/src/cook/graph/build.c	297	311	cook/src/cook/graph/build.c	1561	1573	3	300, 307	-
+2523	6	cook/src/cook/builtin/addsuffix.c	36	47	cook/src/cook/builtin/match.c	89	100	1	-	-
+2525	6	cook/src/cook/builtin/dos.c	116	125	cook/src/cook/builtin/opsys.c	97	106	2	-	-
+2531	6	cook/src/cook/opcode/command.c	828	835	cook/src/cook/opcode/touch.c	131	138	2	-	-
+2545	6	cook/src/cook/builtin/findstring.c	44	52	cook/src/cook/builtin/join.c	27	35	2	-	-
+2556	6	cook/src/c_incl/main.c	205	213	cook/src/cooktime/main.c	73	81	1	-	-
+2565	6	cook/src/cook/cook.c	152	158	cook/src/cook/opcode/assign.c	97	103	2	-	-
+2575	6	cook/src/common/help.c	183	190	cook/src/cooktime/main.c	139	146	2	-	-
+2576	6	cook/src/cook/graph/run.c	215	223	cook/src/cook/graph/run.c	335	343	2	-	-
+2590	6	cook/src/common/ac/wctype.c	36	47	cook/src/common/ac/wctype.c	64	75	3	47	75
+2608	6	cook/src/common/language.c	103	124	cook/src/common/language.c	138	159	2	-	-
+2624	6	cook/src/cook/id/variable.c	135	146	cook/src/cook/opcode/cascade.c	175	186	2	-	-
+2640	6	cook/src/cook/opcode/cascade.c	175	186	cook/src/cook/opcode/set.c	123	134	2	-	-
+2655	6	cook/src/cook/builtin/pathname.c	54	84	cook/src/cook/builtin/relati_dirna.c	51	81	2	-	-
+2664	6	cook/src/cook/opcode/assign_local.c	186	197	cook/src/cook/opcode/unsetenv.c	201	212	2	-	-
+2696	6	cook/src/cook/opcode/assign_appen.c	185	199	cook/src/cook/opcode/setenv.c	195	209	2	-	-
+2728	6	cook/src/common/error_intl/stat.c	24	32	cook/src/common/error_intl/unlink.c	23	31	2	-	-
+2760	6	cook/src/common/error_intl/stat.c	33	41	cook/src/common/error_intl/write.c	36	44	2	-	-
+2788	6	cook/src/cook/builtin/text.c	56	79	cook/src/cook/builtin/text.c	100	123	2	-	-
+5425	6	cook/src/make2cook/blob.c	59	78	cook/src/make2cook/blob.c	82	101	2	-	-
+5444	6	cook/src/cook/builtin/print.c	45	53	cook/src/cook/builtin/suffix.c	26	34	2	-	-
+5445	6	cook/src/cook/opcode/assign_local.c	186	197	cook/src/cook/stmt/compound.c	126	137	2	-	-
+5464	6	cook/src/cook/builtin/positional.c	116	125	cook/src/cook/builtin/word.c	54	63	2	-	-
+5484	6	cook/src/cook/builtin/filter_out.c	73	80	cook/src/cook/builtin/wordlist.c	97	104	2	-	-
+5487	6	cook/src/cook/builtin/subst.c	36	49	cook/src/cook/builtin/unsplit.c	35	48	2	-	-
+5500	6	cook/src/cook/opcode/assign.c	156	163	cook/src/cook/opcode/assign_appen.c	210	217	2	-	-
+5506	6	cook/src/make2cook/stmt/rule.c	690	695	cook/src/make2cook/stmt/rule.c	914	919	2	-	-
+5508	6	cook/src/cook/opcode/list.c	80	86	cook/src/make2cook/stmt/compound.c	51	57	2	-	-
+5527	6	cook/src/cook/builtin/find_command.c	148	158	cook/src/cook/builtin/interi_files.c	61	71	2	-	-
+5550	6	cook/src/make2cook/stmt/rule.c	797	802	cook/src/make2cook/stmt/rule.c	887	892	2	-	-
+5570	6	cook/src/cook/stmt/assign.c	209	216	cook/src/cook/stmt/recipe.c	266	273	2	-	-
+5571	6	cook/src/common/input/file.c	79	85	cook/src/common/input/stdin.c	71	77	2	-	-
+5575	6	cook/src/make2cook/stmt/rule.c	82	94	cook/src/make2cook/stmt/rule.c	177	189	2	-	-
+5599	6	cook/src/cook/opcode/setenv.c	71	76	cook/src/cook/opcode/touch.c	91	96	2	-	-
+5620	6	cook/src/cook/builtin/dos.c	116	123	cook/src/cook/builtin/text.c	207	214	2	-	-
+5624	6	cook/src/cook/builtin/addprefix.c	1	57	cook/src/cook/builtin/addsuffix.c	1	57	2	-	-
+5636	6	cook/src/common/sub/expr_gram.gen.c	92	112	cook/src/make2cook/gram.gen.c	74	94	2	-	-
+5638	6	cook/src/common/ac/time.c	204	210	cook/src/common/ac/time.c	220	227	2	-	-
+5640	6	cook/src/cook/expr/list.c	47	59	cook/src/cook/graph/file_list.c	78	91	3	51, 52, 53	82, 83, 84, 85
+5658	6	cook/src/cook/graph/build.c	619	625	cook/src/cook/main.c	631	637	2	-	-
+5660	6	cook/src/cook/graph/build.c	999	1006	cook/src/cook/stat.cache.c	363	370	2	-	-
+5671	6	cook/src/cook/hashline.gen.c	383	392	cook/src/cook/os.c	1042	1047	2	-	-
+5681	6	cook/src/cook/builtin/execute.c	58	65	cook/src/cook/builtin/text.c	100	107	2	-	-
+5688	6	cook/src/make2cook/stmt/rule.c	865	871	cook/src/make2cook/stmt/rule.c	986	991	2	-	-
+5706	6	cook/src/common/sub/expr_gram.gen.c	205	540	cook/src/cooktime/date.gen.c	772	1107	2	-	-
+5709	6	cook/src/make2cook/stmt/if.c	199	208	cook/src/make2cook/stmt/if.c	229	238	2	-	-
+5727	6	cook/src/cook/id/function.c	43	51	cook/src/cook/id/variable.c	44	52	2	-	-
+5733	6	cook/src/cook/expr/position.c	144	149	cook/src/make2cook/lex.c	101	106	1	-	-
+5756	6	cook/src/cook/opcode/setenv.c	244	250	cook/src/cook/stmt/recipe.c	266	272	2	-	-
+5757	6	cook/src/cook/id/variable.c	135	146	cook/src/cook/opcode/function.c	323	334	2	-	-
+5774	6	cook/src/cook/graph/build.c	368	376	cook/src/cook/graph/build.c	596	604	1	-	-
+5776	6	cook/src/cook/builtin/boolean.c	77	84	cook/src/cook/graph/build.c	357	364	2	-	-
+5793	6	cook/src/common/timing.c	109	115	cook/src/cook/fingerprint/find.c	327	333	2	-	-
+5800	6	cook/src/make2cook/stmt/rule.c	732	737	cook/src/make2cook/stmt/rule.c	971	976	2	-	-
+5826	6	cook/src/cook/builtin/collect.c	161	170	cook/src/cook/builtin/dos.c	179	188	2	-	-
+5832	6	cook/src/cook/opcode/list.c	80	86	cook/src/cook/recipe/list.c	69	75	2	-	-
+5833	6	cook/src/cook/builtin/boolean.c	200	209	cook/src/cook/builtin/findstring.c	44	53	2	-	-
+5839	6	cook/src/cook/builtin/pathname.c	119	126	cook/src/cook/match/wl.c	95	101	3	120, 121	96
+5844	6	cook/src/cook/graph/build.c	1336	1341	cook/src/cook/graph/build.c	1415	1420	1	-	-
+5869	6	cook/src/cook/builtin/glob.c	292	301	cook/src/cook/builtin/opsys.c	138	147	2	-	-
+5881	6	cook/src/cook/builtin/text.c	158	169	cook/src/cook/builtin/wordlist.c	67	78	2	-	-
+5900	6	cook/src/common/sub.c	981	993	cook/src/common/sub.c	1007	1019	2	-	-
+5907	6	cook/src/cook/builtin/exists.c	82	90	cook/src/cook/builtin/sort_newest.c	73	81	2	-	-
+5917	6	cook/src/cook/opcode/assign_local.c	186	197	cook/src/cook/stmt/fail.c	120	131	2	-	-
+5919	6	cook/src/cook/expr/function.c	50	57	cook/src/make2cook/stmt/export.c	31	37	2	-	-
+5931	6	cook/src/cook/builtin/boolean.c	209	224	cook/src/cook/builtin/interi_files.c	56	71	2	-	-
+5939	6	cook/src/make2cook/stmt/rule.c	880	885	cook/src/make2cook/stmt/rule.c	1020	1025	2	-	-
+5948	6	cook/src/cook/graph/run.c	479	485	cook/src/cook/match/cook.c	133	139	2	-	-
+5979	6	cook/src/cook/opcode/cascade.c	104	109	cook/src/cook/stmt/return.c	95	100	2	-	-
+5989	6	cook/src/cook/builtin/boolean.c	70	86	cook/src/cook/builtin/match.c	242	258	2	-	-
+5992	6	cook/src/cook/stmt/assign.c	209	215	cook/src/cook/stmt/touch.c	129	135	2	-	-
+6002	6	cook/src/cook/opcode/setenv_appen.c	49	57	cook/src/cook/opcode/unsetenv.c	48	56	2	-	-
+6020	6	cook/src/cook/fingerprint/subdir.c	342	347	cook/src/make2cook/stmt/rule.c	565	570	3	344, 345, 346	567, 568, 569
+6030	6	cook/src/common/fp/md5.c	217	232	cook/src/common/fp/md5.c	268	283	2	-	-
+6039	6	cook/src/cook/graph/build.c	241	249	cook/src/cook/graph/run.c	254	262	2	-	-
+6042	6	cook/src/cook/builtin/join.c	27	34	cook/src/cook/builtin/resolve.c	51	58	2	-	-
+6052	6	cook/src/make2cook/stmt/rule.c	169	174	cook/src/make2cook/stmt/rule.c	209	214	2	-	-
+6072	6	cook/src/cook/graph/file_pair.c	67	74	cook/src/cook/graph/recipe_list.c	147	153	3	67, 71, 72	150, 151
+6074	6	cook/src/cook/builtin/text.c	158	169	cook/src/cook/builtin/unsplit.c	37	48	2	-	-
+6079	6	cook/src/cook/graph/web.c	205	215	cook/src/cook/graph/web.c	216	226	2	-	-
+6083	6	cook/src/cook/graph/run.c	324	331	cook/src/cook/match/cook.c	118	125	2	-	-
+6094	6	cook/src/cook/graph/build.c	394	412	cook/src/cook/graph/build.c	520	538	1	-	-
+6108	6	cook/src/cook/builtin/positional.c	47	54	cook/src/cook/builtin/text.c	145	152	2	-	-
+6125	6	cook/src/make2cook/stmt/if.c	249	258	cook/src/make2cook/stmt/if.c	297	306	2	-	-
+6148	6	cook/src/cook/builtin/boolean.c	155	163	cook/src/cook/builtin/boolean.c	313	321	2	-	-
+6157	6	cook/src/common/fp/snefru.c	1445	1494	cook/src/common/fp/snefru.c	1496	1545	3	1445, 1447, 1450, 1453, 1456, 1459, 1462, 1465, 1468, 1471, 1474, 1477, 1480, 1483, 1486, 1489, 1492	1496, 1498, 1501, 1504, 1507, 1510, 1513, 1516, 1519, 1522, 1525, 1528, 1531, 1534, 1537, 1540, 1543
+6160	6	cook/src/cook/opcode/setenv_appen.c	254	265	cook/src/cook/stmt/touch.c	127	138	2	-	-
+6168	6	cook/src/make2cook/stmt/comment.c	92	100	cook/src/make2cook/stmt/include.c	90	98	2	-	-
+6172	6	cook/src/file_check/main.c	54	64	cook/src/make2cook/main.c	70	80	1	-	-
+6176	6	cook/src/cooktime/main.c	71	81	cook/src/fstrcmp/main.c	54	64	1	-	-
+6187	6	cook/src/cook/opcode/string.c	48	54	cook/src/cook/opcode/unsetenv.c	48	54	2	-	-
+6195	6	cook/src/cook/builtin/join.c	42	49	cook/src/cook/match/regex.c	64	71	2	-	-
+6206	6	cook/src/make2cook/lex.c	561	566	cook/src/make2cook/stmt/if.c	300	305	3	563, 565	303, 304
+6209	6	cook/src/cook/builtin/boolean.c	208	224	cook/src/cook/builtin/filter_out.c	64	80	2	-	-
+6213	6	cook/src/cook/opcode/function.c	323	334	cook/src/cook/opcode/setenv.c	242	253	2	-	-
+6219	6	cook/src/make2cook/stmt/rule.c	986	1002	cook/src/make2cook/stmt/rule.c	1027	1043	2	-	-
+6230	6	cook/src/cook/id/variable.c	135	146	cook/src/cook/stmt/unsetenv.c	127	138	2	-	-
+6237	6	cook/src/common/error_intl/close.c	43	49	cook/src/common/error_intl/write.c	45	51	2	-	-
+6247	6	cook/src/cook/opcode/assign_appen.c	232	243	cook/src/cook/stmt/touch.c	127	138	2	-	-
+6259	6	cook/src/cook/opcode/goto.c	90	97	cook/src/cook/opcode/prelude.c	98	105	2	-	-
+6268	6	cook/src/cook/builtin/relati_dirna.c	51	58	cook/src/cook/builtin/thread-id.c	28	35	2	-	-
+6293	6	cook/src/cook/opcode/setenv.c	195	201	cook/src/cook/opcode/unsetenv.c	154	160	2	-	-
+6302	6	cook/src/cook/builtin/execute.c	78	85	cook/src/cook/builtin/find_command.c	151	158	2	-	-
+6307	6	cook/src/cook/builtin/addprefix.c	37	46	cook/src/cook/builtin/positional.c	116	125	2	-	-
+6313	6	cook/src/cook/builtin/basename.c	25	33	cook/src/cook/builtin/word.c	43	51	2	-	-
+6324	6	cook/src/cook/opcode/assign_local.c	97	102	cook/src/cook/recipe.c	182	188	2	-	-
+6325	6	cook/src/cook/graph/file_list.c	282	307	cook/src/cook/graph/recipe_list.c	85	103	3	283, 286, 288, 293, 294, 295, 304, 305, 306	86, 94, 102
+6332	6	cook/src/cook/builtin/boolean.c	271	280	cook/src/cook/flag.c	177	186	2	-	-
+6343	6	cook/src/cook/builtin/interi_files.c	61	71	cook/src/cook/builtin/match.c	247	257	2	-	-
+6349	6	cook/src/cook/builtin/match.c	230	238	cook/src/cook/builtin/relati_dirna.c	51	59	2	-	-
+6371	6	cook/src/cook/builtin/addsuffix.c	26	34	cook/src/cook/builtin/glob.c	261	269	1	-	-
+6383	6	cook/src/cook/cook.c	152	159	cook/src/cook/graph/script.c	103	110	3	154, 156	105, 107
+6388	6	cook/src/make2cook/stmt/rule.c	818	830	cook/src/make2cook/stmt/rule.c	979	991	2	-	-
+6397	6	cook/src/cook/builtin/exists.c	56	70	cook/src/cook/builtin/pathname.c	106	120	2	-	-
+6406	6	cook/src/cook/builtin/boolean.c	70	85	cook/src/cook/builtin/execute.c	70	85	2	-	-
+6429	6	cook/src/cook/graph/run.c	465	471	cook/src/cook/os.c	272	278	2	-	-
+6439	6	cook/src/make2cook/vargram.gen.c	729	740	cook/src/make2cook/vargram.gen.c	760	771	2	-	-
+6442	6	cook/src/cook/builtin/basename.c	25	33	cook/src/cook/builtin/cando.c	51	59	2	-	-
+6455	6	cook/src/cook/builtin/addsuffix.c	40	46	cook/src/cook/builtin/substr.c	86	92	2	-	-
+6474	6	cook/src/cook/fingerprint/gram.gen.c	169	504	cook/src/cook/parse.gen.c	305	640	2	-	-
+6477	6	cook/src/make2cook/stmt/if.c	35	42	cook/src/make2cook/stmt/if.c	84	91	2	-	-
+6486	6	cook/src/cook/builtin/home.c	30	38	cook/src/cook/builtin/text.c	348	356	2	-	-
+6501	6	cook/src/cook/builtin/options.c	89	99	cook/src/cook/builtin/positional.c	59	69	1	-	-
+6521	6	cook/src/cooktime/date.gen.c	622	630	cook/src/make2cook/gram.gen.c	75	83	2	-	-
+6537	6	cook/src/cook/builtin/find_command.c	124	132	cook/src/cook/builtin/split.c	27	35	2	-	-
+6542	6	cook/src/cook/builtin/findstring.c	55	65	cook/src/cook/builtin/interi_files.c	61	71	2	-	-
+6544	6	cook/src/cook/builtin/match.c	171	181	cook/src/cook/builtin/thread-id.c	39	49	2	-	-
+6552	6	cook/src/cook/builtin/mtime.c	92	100	cook/src/cook/builtin/strip.c	48	56	2	-	-
+6561	6	cook/src/make2cook/stmt/rule.c	880	885	cook/src/make2cook/stmt/rule.c	956	961	2	-	-
+6566	6	cook/src/cook/opcode/jmpf.c	1	130	cook/src/cook/opcode/jmpt.c	1	130	2	-	-
+6589	6	cook/src/cook/opcode/assign_appen.c	33	58	cook/src/cook/opcode/assign_local.c	31	56	2	-	-
+6606	6	cook/src/cook/builtin/boolean.c	74	85	cook/src/cook/builtin/subst.c	38	49	2	-	-
+6610	6	cook/src/cook/builtin/readlink.c	45	52	cook/src/cook/builtin/thread-id.c	28	35	2	-	-
+6634	6	cook/src/cook/parse.gen.c	305	640	cook/src/cooktime/date.gen.c	772	1107	2	-	-
+6641	6	cook/src/cooktime/main.c	105	113	cook/src/roffpp/main.c	101	106	3	106, 107, 111, 112, 113	105, 106
+6643	6	cook/src/cook/graph/build.c	433	470	cook/src/cook/graph/build.c	557	594	1	-	-
+6652	6	cook/src/common/str/quote.c	86	111	cook/src/common/str/quote.c	205	219	2	-	-
+6658	6	cook/src/common/error_intl/open.c	25	33	cook/src/common/error_intl/unlink.c	23	31	2	-	-
+6671	6	cook/src/cook/lex.c	732	740	cook/src/make2cook/blob.c	85	93	2	-	-
+6674	6	cook/src/make2cook/gram.gen.c	908	1044	cook/src/make2cook/vargram.gen.c	808	944	2	-	-
+6675	6	cook/src/cook/opcode/string.c	48	55	cook/src/make2cook/stmt/if.c	35	42	2	-	-
+6695	6	cook/src/cook/builtin/boolean.c	326	336	cook/src/cook/builtin/interi_files.c	128	138	2	-	-
+6718	6	cook/src/common/page.c	39	50	cook/src/common/page.c	51	62	2	-	-
+6741	6	cook/src/c_incl/main.c	205	213	cook/src/cookfp/main.c	75	83	1	-	-
+6757	6	cook/src/cook/stmt/assign.c	56	67	cook/src/cook/stmt/set.c	51	62	2	-	-
+6760	6	cook/src/cook/opcode/assign.c	105	118	cook/src/cook/opcode/setenv_appen.c	113	126	1	-	-
+6777	6	cook/src/cook/opcode/fail.c	79	84	cook/src/cook/opcode/setenv.c	71	76	2	-	-
+6784	6	cook/src/cook/builtin/home.c	54	64	cook/src/cook/builtin/interi_files.c	128	138	2	-	-
+6792	6	cook/src/common/error_intl/open.c	25	32	cook/src/common/error_intl/unlink.c	32	39	2	-	-
+6804	6	cook/src/cook/match/regex.c	121	131	cook/src/cook/match/regex.c	132	142	3	125, 127, 129	136, 138, 140
+6821	6	cook/src/cook/graph/build.c	240	249	cook/src/cook/graph/build.c	1505	1513	3	245	-
+6822	6	cook/src/cook/flag.c	204	210	cook/src/cook/os.c	272	278	2	-	-
+6828	6	cook/src/cook/builtin/find_command.c	124	132	cook/src/cook/builtin/relati_dirna.c	51	59	1	-	-
+6863	6	cook/src/cook/builtin/interi_files.c	128	138	cook/src/cook/builtin/wordlist.c	68	78	2	-	-
+6869	6	cook/src/cook/opcode/cascade.c	33	58	cook/src/cook/opcode/setenv_appen.c	32	57	2	-	-
+6875	6	cook/src/cook/stmt/loop.c	258	269	cook/src/cook/stmt/unsetenv.c	127	138	2	-	-
+6884	6	cook/src/cook/builtin/print.c	45	52	cook/src/cook/builtin/stringset.c	120	127	1	-	-
+6886	6	cook/src/cook/builtin/addsuffix.c	26	34	cook/src/cook/builtin/text.c	100	108	2	-	-
+6913	6	cook/src/cook/opcode/unsetenv.c	201	212	cook/src/cook/stmt/compound.c	126	137	2	-	-
+6928	6	cook/src/make2cook/stmt/rule.c	921	926	cook/src/make2cook/stmt/rule.c	964	969	2	-	-
+6942	6	cook/src/cook/opcode/unsetenv.c	203	209	cook/src/cook/stmt/append.c	191	197	2	-	-
+6946	6	cook/src/cook/builtin/execute.c	75	85	cook/src/cook/builtin/interi_files.c	76	86	2	-	-
+6949	6	cook/src/cook/opcode/assign.c	49	55	cook/src/make2cook/stmt/if.c	35	41	2	-	-
+6959	6	cook/src/cook/builtin/cook.c	75	83	cook/src/cook/builtin/defined.c	55	63	2	-	-
+6974	6	cook/src/cook/builtin/findstring.c	57	64	cook/src/cook/graph/build.c	462	469	2	-	-
+6976	6	cook/src/cook/stmt/assign.c	181	186	cook/src/cook/stmt/touch.c	102	107	2	-	-
+6987	6	cook/src/cook/graph/recipe_list.c	242	248	cook/src/cook/match/stack.c	46	52	2	-	-
+6997	6	cook/src/cook/builtin/expr_parse.gen.c	682	687	cook/src/cook/builtin/expr_parse.gen.c	779	784	2	-	-
+7016	6	cook/src/cook/graph/build.c	1628	1634	cook/src/cook/graph/run.c	407	413	2	-	-
+7018	6	cook/src/cook/builtin/boolean.c	156	162	cook/src/cook/builtin/text.c	207	214	2	-	-
+7029	6	cook/src/cook/opcode/catenate.c	122	129	cook/src/cook/stmt/nop.c	84	91	2	-	-
+7038	6	cook/src/cook/graph/build.c	1650	1656	cook/src/cook/graph/run.c	505	511	2	-	-
+7051	6	cook/src/cook/graph/file_list.c	140	148	cook/src/cook/graph/recipe_list.c	230	238	2	-	-
+7062	6	cook/src/cook/opcode/recipe.c	96	103	cook/src/cook/opcode/unsetenv.c	112	119	2	-	-
+7063	6	cook/src/cook/archive.c	354	359	cook/src/cook/archive.c	370	375	2	-	-
+7084	6	cook/src/make2cook/stmt/rule.c	818	823	cook/src/make2cook/stmt/rule.c	907	912	2	-	-
+7090	6	cook/src/cook/builtin/addprefix.c	26	33	cook/src/cook/builtin/collect.c	59	66	2	-	-
+7104	6	cook/src/cook/builtin/expr_parse.gen.c	790	802	cook/src/cook/parse.gen.c	587	605	2	-	-
+7106	6	cook/src/cook/builtin/addprefix.c	26	33	cook/src/cook/builtin/text.c	348	355	2	-	-
+7112	6	cook/src/common/fp/md5.c	119	124	cook/src/common/fp/md5.c	125	130	2	-	-
+7123	6	cook/src/cook/builtin/basename.c	25	32	cook/src/cook/builtin/home.c	30	37	2	-	-
+7126	6	cook/src/make2cook/stmt/rule.c	746	751	cook/src/make2cook/stmt/rule.c	790	795	2	-	-
+7147	6	cook/src/cook/opcode/command.c	828	835	cook/src/cook/opcode/set.c	101	108	2	-	-
+7152	6	cook/src/cook/stmt/fail.c	95	131	cook/src/cook/stmt/touch.c	102	138	2	-	-
+7166	6	cook/src/cook/builtin/boolean.c	313	320	cook/src/cook/builtin/execute.c	58	65	2	-	-
+7176	6	cook/src/cook/builtin/addsuffix.c	36	52	cook/src/cook/builtin/boolean.c	325	345	3	48, 49	337, 338, 339, 340, 343
+7180	6	cook/src/common/sub/expr_gram.gen.c	205	540	cook/src/cook/fingerprint/gram.gen.c	169	504	2	-	-
+7186	6	cook/src/cook/os.c	67	75	cook/src/cook/os.c	76	84	2	-	-
+7212	6	cook/src/cook/builtin/findstring.c	57	64	cook/src/cook/match/regex.c	225	232	2	-	-
+7218	6	cook/src/cook/builtin/glob.c	160	166	cook/src/cook/builtin/wordlist.c	71	77	2	-	-
+7225	6	cook/src/cook/parse.gen.c	105	116	cook/src/cooktime/date.gen.c	621	632	2	-	-
+7237	6	cook/src/cook/builtin/match.c	73	81	cook/src/cook/builtin/text.c	100	108	2	-	-
+7240	6	cook/src/cook/builtin/boolean.c	322	336	cook/src/cook/builtin/collect.c	74	88	1	-	-
+7247	6	cook/src/cook/builtin/match.c	73	112	cook/src/cook/builtin/match.c	230	269	2	-	-
+7265	6	cook/src/cook/graph/run.c	287	299	cook/src/cook/graph/run.c	301	313	2	-	-
+7267	6	cook/src/make2cook/stmt/export.c	38	46	cook/src/make2cook/stmt/unexport.c	38	46	2	-	-
+7268	6	cook/src/make2cook/stmt/if.c	202	207	cook/src/make2cook/stmt/rule.c	565	570	3	204	567
+7287	6	cook/src/cook/builtin/text.c	145	152	cook/src/cook/builtin/unsplit.c	27	34	2	-	-
+7314	6	cook/src/cook/builtin/addprefix.c	26	33	cook/src/cook/builtin/positional.c	102	109	2	-	-
+7317	6	cook/src/c_incl/cache.c	249	266	cook/src/c_incl/cache.c	267	284	2	-	-
+7341	6	cook/src/common/error_intl/unlink.c	32	40	cook/src/common/error_intl/write.c	36	44	2	-	-
+7368	6	cook/src/cook/stmt/append.c	55	66	cook/src/cook/stmt/set.c	51	62	2	-	-
+7397	6	cook/src/common/error_intl/open.c	34	42	cook/src/common/error_intl/stat.c	33	41	2	-	-
+7428	6	cook/src/cook/opcode/jmpf.c	119	130	cook/src/cook/opcode/setenv.c	242	253	3	127	250
+7460	6	cook/src/cook/graph/build.c	293	311	cook/src/cook/graph/build.c	979	987	3	297, 300, 304, 305, 306, 307, 308, 309, 310	-
+7470	6	cook/src/common/error_intl/write.c	39	44	cook/src/common/help.c	278	285	3	41	281, 282
+7473	6	cook/src/cook/builtin/substr.c	67	112	cook/src/cook/builtin/wordlist.c	67	104	3	78, 79, 93, 94, 96, 97, 110, 111	-
+7480	6	cook/src/make2cook/lex.c	354	360	cook/src/make2cook/stmt/rule.c	564	570	3	354, 357, 358, 359	564, 567, 568, 569
+7486	6	cook/src/common/sub.c	886	899	cook/src/cook/fingerprint/calc_string.c	41	52	3	888, 889, 890, 891, 892, 893, 894	42, 44, 45, 46, 47
+7487	6	cook/src/cook/graph/build.c	280	289	cook/src/cook/graph/build.c	1648	1662	3	285	-
+7490	6	cook/src/cook/builtin/boolean.c	322	336	cook/src/cook/builtin/match.c	167	181	1	-	-
+7499	6	cook/src/cook/opcode/assign.c	178	189	cook/src/cook/opcode/function.c	323	334	2	-	-
+7509	6	cook/src/cook/opcode/gosub.c	117	125	cook/src/cook/stmt/return.c	143	156	3	-	149, 150, 151, 152
+7510	6	cook/src/cook/graph/build.c	1336	1410	cook/src/cook/graph/build.c	1415	1489	3	1342, 1410	1421, 1489
+7513	6	cook/src/make2cook/lex.c	354	360	cook/src/make2cook/lex.c	560	566	2	-	-
+7529	6	cook/src/cook/id/variable.c	135	146	cook/src/cook/opcode/assign_local.c	186	197	2	-	-
+7536	6	cook/src/cook/flag.c	230	242	cook/src/file_check/file_check.c	51	62	3	236	60
+7538	6	cook/src/common/sub.c	850	859	cook/src/cook/opcode/assign.c	181	189	3	852, 853, 854, 855, 856	183, 184, 185, 186
+7545	6	cook/src/cook/expr/function.c	177	184	cook/src/cook/stmt/assign.c	210	219	3	181	212, 217, 218
+7554	6	cook/src/cook/graph/build.c	640	649	cook/src/cook/graph/build.c	1552	1573	3	642, 645	1554, 1555, 1556, 1557, 1558, 1559, 1560, 1561, 1562, 1563, 1564, 1565, 1566, 1567, 1568, 1569
+7556	6	cook/src/cook/graph/build.c	1552	1573	cook/src/cook/graph/run.c	787	801	3	1552, 1561, 1567, 1568, 1569, 1570, 1571, 1572	787
+7561	6	cook/src/cook/builtin/write.c	54	118	cook/src/cook/builtin/write.c	137	197	3	81, 82, 83, 84, 85, 86, 91, 96, 97, 98, 99, 100, 104, 105, 106, 107, 108, 109, 110, 111	140, 164, 165, 166, 167, 168, 169, 170, 171, 175, 176, 177, 189, 190
+7568	6	cook/src/cook/opcode/assign_local.c	186	197	cook/src/cook/opcode/string.c	157	170	3	187	158, 159, 166
+7570	6	cook/src/cook/opcode/function.c	81	91	cook/src/cook/opcode/recipe.c	101	112	3	-	109, 111
+7572	6	cook/src/cook/opcode/assign.c	72	118	cook/src/cook/opcode/setenv_appen.c	72	126	3	97, 98, 99, 100, 101, 102, 103	103, 104, 105, 106, 107, 108, 109, 110, 111
+7576	6	cook/src/cook/expr/catenate.c	55	62	cook/src/cook/stmt/command.c	161	168	3	56, 59, 60, 61, 62	162, 163, 165, 166, 167, 168
+7580	6	cook/src/cook/main.c	219	248	cook/src/find_libs/main.c	103	120	3	221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 234, 235	-
+7582	6	cook/src/cook/graph/run.c	197	203	cook/src/cook/graph/run.c	536	542	1	-	-
+7587	6	cook/src/cook/stmt/assign.c	210	219	cook/src/cook/stmt/command.c	160	171	3	-	167, 168
+7592	6	cook/src/cook/builtin/execute.c	71	85	cook/src/cook/builtin/match.c	86	100	1	-	-
+7601	6	cook/src/cook/builtin/addsuffix.c	36	47	cook/src/cook/builtin/split.c	37	48	1	-	-
+7609	6	cook/src/cook/graph/build.c	240	249	cook/src/cook/graph/build.c	979	987	3	245	-
+7611	6	cook/src/cook/graph/build.c	979	987	cook/src/cook/graph/build.c	1505	1513	2	-	-
+7618	6	cook/src/common/sub.c	850	859	cook/src/cook/builtin/print.c	74	85	3	852, 853, 854, 857	76, 77, 78, 81, 82, 83
+7620	6	cook/src/cook/opcode/assign_appen.c	73	172	cook/src/cook/opcode/setenv.c	71	114	3	101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 135, 136, 137, 138, 139, 140, 141, 142, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157	97, 98, 99
+7624	6	cook/src/cook/opcode/context.c	634	643	cook/src/cook/opcode/list.c	188	200	3	637, 639, 640	190, 192, 194, 195, 196, 197
+7627	6	cook/src/common/sub/expr_gram.gen.c	205	703	cook/src/make2cook/vargram.gen.c	300	944	3	542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565	637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 672, 673, 674, 675, 676, 677, 678, 679, 680, 681, 682, 683, 684, 685, 686, 687, 688, 689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734, 735, 736, 737, 738, 739, 740, 741, 742, 743, 744, 745, 746, 747, 748, 749, 750, 751, 752, 753, 754, 755, 756, 757, 758, 759, 760, 761, 762, 763, 764, 765, 766, 767, 768, 769, 770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806
+7631	6	cook/src/cook/opcode/cascade.c	78	86	cook/src/cook/opcode/command.c	689	700	3	85, 86	-
+7634	6	cook/src/c_incl/cache.c	242	248	cook/src/cook/os/pathname.c	574	583	3	242, 245	574
+7642	6	cook/src/make2cook/stmt/rule.c	333	341	cook/src/make2cook/stmt/rule.c	342	350	2	-	-
+7643	6	cook/src/cook/builtin/execute.c	74	85	cook/src/cook/builtin/home.c	42	49	3	77, 78, 79, 80, 81, 82, 83	45, 46, 47
+7646	6	cook/src/cook/parse.gen.c	305	1124	cook/src/make2cook/vargram.gen.c	300	944	3	642, 643, 644, 645, 646, 650, 651, 652, 653, 654, 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 672, 673, 674, 675, 676, 677, 678, 679, 680, 681, 682, 683, 684, 685, 686, 687, 688, 689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734, 735, 736, 737, 738, 739, 740, 741, 742, 743, 744, 745, 746, 747, 748, 749, 750, 751, 752, 753, 754, 755, 756, 757, 758, 759, 760, 761, 762, 763, 764, 765, 766, 767, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 817, 818, 819, 820, 821, 822, 823, 824, 825, 826, 827, 828, 829, 830, 831, 832, 833, 834, 835, 836, 837, 838, 839, 840, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 854, 855, 856, 857, 858, 859, 860, 861, 862, 863, 864, 865, 866, 867, 868, 869, 870, 871, 872, 873, 874, 875, 876, 877, 878, 879, 880, 881, 882, 883, 884, 885, 886, 887, 888, 889, 890, 891, 892, 893, 894, 895, 896, 897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 909, 910, 911, 912, 913, 914, 915, 916, 917, 918, 919, 920, 921, 922, 923, 924, 925, 926, 927, 928, 929, 930, 931, 932, 933, 934, 935, 936, 937, 938, 939, 940, 941, 942, 943, 944, 945, 946, 947, 948, 949, 950, 951, 952, 953, 954, 955, 956, 957, 958, 959, 960, 961, 962, 963, 964, 965, 966, 967, 968, 969, 970, 971, 972, 973, 974, 975, 976, 977, 978, 979, 980, 981, 982, 983, 984, 985, 986	637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 672, 673, 674, 675, 676, 677, 678, 679, 680, 681, 682, 683, 684, 685, 686, 687, 688, 689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734, 735, 736, 737, 738, 739, 740, 741, 742, 743, 744, 745, 746, 747, 748, 749, 750, 751, 752, 753, 754, 755, 756, 757, 758, 759, 760, 761, 762, 763, 764, 765, 766, 767, 768, 769, 770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806

@@ -51,7 +51,12 @@ public class CGFinder {
 		final Map<CloneSet, Map<CloneSet, Double>> similarities = new HashMap<>();
 		final List<CloneSet> filteredClonesets = filterClones(clonesets,
 				similarities);
-		print(filteredClonesets);
+		// print(filteredClonesets);
+		if (CGConfig.getInstance().isBELLON()) {
+			printInBellonFomat(clonesets);
+		} else {
+			print(clonesets);
+		}
 
 		if (CGConfig.getInstance().hasSIMILARITY()) {
 			print(similarities);
@@ -314,6 +319,41 @@ public class CGFinder {
 					writer.print("\t");
 					writer.print(Integer.toString(clonedFragment.getToLine()));
 					writer.println();
+				}
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
+	}
+
+	private static void printInBellonFomat(final List<CloneSet> clonesets) {
+
+		try (final PrintWriter writer = CGConfig.getInstance().hasRESULT() ? new PrintWriter(
+				new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
+						CGConfig.getInstance().getRESULT()), "UTF-8")))
+				: new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"))) {
+
+			for (final CloneSet cloneset : clonesets) {
+				final ClonedFragment[] clones = cloneset.getClones().toArray(
+						new ClonedFragment[0]);
+				for (int i = 0; i < clones.length; i++) {
+					for (int j = i + 1; j < clones.length; j++) {
+						writer.print(clones[i].path);
+						writer.print("\t");
+						writer.print(clones[i].getFromLine());
+						writer.print("\t");
+						writer.print(clones[i].getToLine());
+						writer.print("\t");
+						writer.print(clones[j].path);
+						writer.print("\t");
+						writer.print(clones[j].getFromLine());
+						writer.print("\t");
+						writer.print(clones[j].getToLine());
+						writer.print("\t3");
+						writer.println();
+					}
 				}
 			}
 

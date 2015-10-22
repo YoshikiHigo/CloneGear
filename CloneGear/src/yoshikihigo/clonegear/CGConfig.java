@@ -109,6 +109,13 @@ public class CGConfig {
 			options.addOption(debug);
 		}
 
+		{
+			final Option bellon = new Option("bellon", "bellon", false,
+					"use bellon format for output file");
+			bellon.setRequired(false);
+			options.addOption(bellon);
+		}
+
 		try {
 			final CommandLineParser parser = new PosixParser();
 			final CommandLine commandLine = parser.parse(options, args);
@@ -227,5 +234,9 @@ public class CGConfig {
 
 	public boolean isDEBUG() {
 		return this.commandLine.hasOption("debug");
+	}
+	
+	public boolean isBELLON() {
+		return this.commandLine.hasOption("bellon");
 	}
 }
