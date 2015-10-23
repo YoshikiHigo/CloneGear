@@ -1,7 +1,10 @@
 package yoshikihigo.clonegear.bellon;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -16,7 +19,7 @@ public class Evaluator {
 
 		final Evaluator evaluator = new Evaluator();
 		final String oracleFile = EvalConfig.getInstance().getORACLE();
-		final String resultsFile = EvalConfig.getInstance().getRESULTS();
+		final String resultsFile = EvalConfig.getInstance().getCLONES();
 		final float threshold = EvalConfig.getInstance().getTHRESHOLD();
 		final List<ClonePair> oracles = evaluator.readFile(oracleFile, true);
 		final List<ClonePair> results = evaluator.readFile(resultsFile, false);
@@ -64,11 +67,11 @@ public class Evaluator {
 					final String id = tokenizer.nextToken();
 					final String project = tokenizer.nextToken();
 				}
-				final String leftPath = tokenizer.nextToken();
+				final String leftPath = getPath(tokenizer.nextToken());
 				final int leftStartLine = Integer.parseInt(tokenizer
 						.nextToken());
 				final int leftEndLine = Integer.parseInt(tokenizer.nextToken());
-				final String rightPath = tokenizer.nextToken();
+				final String rightPath = this.getPath(tokenizer.nextToken());
 				final int rightStartLine = Integer.parseInt(tokenizer
 						.nextToken());
 				final int rightEndLine = Integer
@@ -94,24 +97,57 @@ public class Evaluator {
 		return clonepairs;
 	}
 
+	private String getPath(final String oldpath) {
+		final char separator = File.separatorChar;
+		final String newpath = oldpath.replace('\\', separator);
+		return newpath;
+	}
+
 	private void print(final List<ClonePair> oracles,
 			final List<ClonePair> clonepairs, final List<ClonePair> goods,
 			final List<ClonePair> oks) {
-		System.out
-				.println("oracles, clonepairs, good, ok, good-type1, good-type2, good-type3, ok-type1, ok-type2, ok-type3");
-		System.out.println(oracles.size() + ", " + clonepairs.size() + ", "
-				+ goods.size() + ", " + oks.size() + ", "
-				+ this.getSpecifiedTypeClonePairs(goods, 1).size() + ", "
-				+ this.getSpecifiedTypeClonePairs(goods, 2).size() + ", "
-				+ this.getSpecifiedTypeClonePairs(goods, 3).size() + ", "
-				+ this.getSpecifiedTypeClonePairs(oks, 1).size() + ", "
-				+ this.getSpecifiedTypeClonePairs(oks, 2).size() + ", "
-				+ this.getSpecifiedTypeClonePairs(oks, 3).size());
 
+		final String clones = EvalConfig.getInstance().getCLONES();
+		final String results = EvalConfig.getInstance().getRESULTS();
+		final boolean newfile = EvalConfig.getInstance().isNEWFILE();
+
+		try (final BufferedWriter writer = new BufferedWriter(new FileWriter(
+				results, !newfile))) {
+
+			if (newfile) {
+				writer.write("tools, oracles, clonepairs, good, ");
+				writer.write("good-type1, good-type2, good-type3, ");
+				writer.write(", tools, oracles, clonepairs, ok, ");
+				writer.write("ok-type1, ok-type2, ok-type3, ");
+				writer.newLine();
+			}
+
+			writer.write(clones + ", ");
+			writer.write(oracles.size() + ", ");
+			writer.write(clonepairs.size() + ", ");
+			writer.write(goods.size() + ", ");
+			writer.write(this.getSpecifiedType(goods, 1).size() + ", ");
+			writer.write(this.getSpecifiedType(goods, 2).size() + ", ");
+			writer.write(this.getSpecifiedType(goods, 3).size() + ", ");
+			writer.write(", ");
+			writer.write(clones + ", ");
+			writer.write(oracles.size() + ", ");
+			writer.write(clonepairs.size() + ", ");
+			writer.write(oks.size() + ", ");
+			writer.write(this.getSpecifiedType(oks, 1).size() + ", ");
+			writer.write(this.getSpecifiedType(oks, 2).size() + ", ");
+			writer.write(this.getSpecifiedType(oks, 3).size() + ", ");
+			writer.newLine();
+			writer.flush();
+
+		} catch (final IOException e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
 	}
 
-	private List<ClonePair> getSpecifiedTypeClonePairs(
-			final List<ClonePair> clonepairs, final int type) {
+	private List<ClonePair> getSpecifiedType(final List<ClonePair> clonepairs,
+			final int type) {
 		final List<ClonePair> specified = new ArrayList<>();
 		for (final ClonePair clonepair : clonepairs) {
 			if (clonepair.type == type) {

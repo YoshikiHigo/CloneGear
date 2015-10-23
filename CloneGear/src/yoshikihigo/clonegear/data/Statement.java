@@ -546,7 +546,7 @@ public class Statement {
 		this.fromLine = fromLine;
 		this.toLine = toLine;
 		this.nestLevel = nestLevel;
-		this.isTarget = isTarget;
+		this.isTarget = CGConfig.getInstance().isMODULE() || isTarget;
 		this.tokens = Collections.unmodifiableList(tokens);
 		this.hash = hash;
 	}

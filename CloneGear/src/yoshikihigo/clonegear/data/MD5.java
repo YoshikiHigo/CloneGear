@@ -9,6 +9,7 @@ import java.util.Map;
 
 import yoshikihigo.clonegear.lexer.token.IDENTIFIER;
 import yoshikihigo.clonegear.lexer.token.LEFTPAREN;
+import yoshikihigo.clonegear.lexer.token.LITERAL;
 import yoshikihigo.clonegear.lexer.token.Token;
 
 public class MD5 {
@@ -18,31 +19,50 @@ public class MD5 {
 		final List<Token> nonTrivialTokens = Statement
 				.removeJCTrivialTokens(tokens);
 		final StringBuilder builder = new StringBuilder();
-		final Map<String, String> identifiers = new HashMap<>();
+		final Map<String, String> variables = new HashMap<>();
+		final Map<String, String> methods = new HashMap<>();
 
 		for (int index = 0; index < nonTrivialTokens.size(); index++) {
 
 			final Token token = nonTrivialTokens.get(index);
 
-			if (token instanceof IDENTIFIER) {
+			// in cases of literals
+			if (token instanceof LITERAL) {
+				final String value = token.value;
+				String normalizedValue = variables.get(value);
+				if (null == normalizedValue) {
+					normalizedValue = "$" + variables.size();
+					variables.put(value, normalizedValue);
+				}
+				builder.append(normalizedValue);
+			}
+
+			// in case of identifiers
+			else if (token instanceof IDENTIFIER) {
 
 				if (nonTrivialTokens.size() == (index + 1)
 						|| !(nonTrivialTokens.get(index + 1) instanceof LEFTPAREN)) {
 					final String name = token.value;
-					String normalizedName = identifiers.get(name);
+					String normalizedName = variables.get(name);
 					if (null == normalizedName) {
-						normalizedName = "$" + identifiers.size();
-						identifiers.put(name, normalizedName);
+						normalizedName = "$V" + variables.size();
+						variables.put(name, normalizedName);
 					}
 					builder.append(normalizedName);
 				}
 
-				// not normalize if identifier is method name
 				else {
-					builder.append(token.value);
+					final String name = token.value;
+					String normalizedName = methods.get(name);
+					if (null == normalizedName) {
+						normalizedName = "$F" + methods.size();
+						methods.put(name, normalizedName);
+					}
+					builder.append(normalizedName);
 				}
 			}
 
+			// for other tokens
 			else {
 				builder.append(token.value);
 			}

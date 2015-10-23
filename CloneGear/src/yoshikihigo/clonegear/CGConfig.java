@@ -110,6 +110,13 @@ public class CGConfig {
 		}
 
 		{
+			final Option debug = new Option("module", "module", false,
+					"do not consider module boundaries");
+			debug.setRequired(false);
+			options.addOption(debug);
+		}
+
+		{
 			final Option bellon = new Option("bellon", "bellon", false,
 					"use bellon format for output file");
 			bellon.setRequired(false);
@@ -235,8 +242,12 @@ public class CGConfig {
 	public boolean isDEBUG() {
 		return this.commandLine.hasOption("debug");
 	}
-	
+
 	public boolean isBELLON() {
 		return this.commandLine.hasOption("bellon");
+	}
+
+	public boolean isMODULE() {
+		return this.commandLine.hasOption("module");
 	}
 }

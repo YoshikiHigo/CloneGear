@@ -10,8 +10,14 @@ public class ClonePair {
 	final public int type;
 
 	public ClonePair(final Clone left, final Clone right, final int type) {
-		this.left = left;
-		this.right = right;
+		final int order = left.compareTo(right);
+		if (order < 0) {
+			this.left = left;
+			this.right = right;
+		} else {
+			this.left = right;
+			this.right = left;
+		}
 		this.type = type;
 	}
 
