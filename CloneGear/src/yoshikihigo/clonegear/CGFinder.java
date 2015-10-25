@@ -148,9 +148,13 @@ public class CGFinder {
 
 			final List<Statement> statements = StringUtility.splitToStatements(
 					textBuilder.toString(), file.getLanguage());
-			final List<Statement> foldedStatements = Statement
-					.getFoldedStatements(statements);
-			file.addStatements(foldedStatements);
+			if (!CGConfig.getInstance().isFOLDING()) {
+				final List<Statement> foldedStatements = Statement
+						.getFoldedStatements(statements);
+				file.addStatements(foldedStatements);
+			} else {
+				file.addStatements(statements);
+			}
 			file.setLOC(loc);
 		}
 
@@ -159,28 +163,40 @@ public class CGFinder {
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JAVASCRIPT)) {
 			for (final WebFile f : webFiles) {
 				final List<Statement> statements = f.getJavascriptStatements();
-				final List<Statement> foldedStatements = Statement
-						.getFoldedStatements(statements);
 				final JavascriptFile javascriptFile = new JavascriptFile(f.path);
-				javascriptFile.addStatements(foldedStatements);
+				if (!CGConfig.getInstance().isFOLDING()) {
+					final List<Statement> foldedStatements = Statement
+							.getFoldedStatements(statements);
+					javascriptFile.addStatements(foldedStatements);
+				} else {
+					javascriptFile.addStatements(statements);
+				}
 			}
 		}
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JSP)) {
 			for (final WebFile f : webFiles) {
 				final List<Statement> statements = f.getJSPStatements();
-				final List<Statement> foldedStatements = Statement
-						.getFoldedStatements(statements);
 				final JSPFile jspFile = new JSPFile(f.path);
-				jspFile.addStatements(foldedStatements);
+				if (!CGConfig.getInstance().isFOLDING()) {
+					final List<Statement> foldedStatements = Statement
+							.getFoldedStatements(statements);
+					jspFile.addStatements(foldedStatements);
+				} else {
+					jspFile.addStatements(statements);
+				}
 			}
 		}
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.PHP)) {
 			for (final WebFile f : webFiles) {
 				final List<Statement> statements = f.getPHPStatements();
-				final List<Statement> foldedStatements = Statement
-						.getFoldedStatements(statements);
 				final PHPFile phpFile = new PHPFile(f.path);
-				phpFile.addStatements(foldedStatements);
+				if (!CGConfig.getInstance().isFOLDING()) {
+					final List<Statement> foldedStatements = Statement
+							.getFoldedStatements(statements);
+					phpFile.addStatements(foldedStatements);
+				} else {
+					phpFile.addStatements(statements);
+				}
 			}
 		}
 

@@ -103,6 +103,13 @@ public class CGConfig {
 		}
 
 		{
+			final Option folding = new Option("folding", "folding", false,
+					"do folding preprocessing for clone detection");
+			folding.setRequired(false);
+			options.addOption(folding);
+		}
+
+		{
 			final Option debug = new Option("debug", "debug", false,
 					"print some informlation for debugging");
 			debug.setRequired(false);
@@ -237,6 +244,10 @@ public class CGConfig {
 			System.exit(0);
 		}
 		return this.commandLine.getOptionValue("result");
+	}
+
+	public boolean isFOLDING() {
+		return this.commandLine.hasOption("folding");
 	}
 
 	public boolean isDEBUG() {
