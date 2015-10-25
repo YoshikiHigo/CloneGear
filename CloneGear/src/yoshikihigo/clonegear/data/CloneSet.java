@@ -1,6 +1,5 @@
 package yoshikihigo.clonegear.data;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -8,19 +7,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import yoshikihigo.clonegear.lexer.token.Token;
 
-public class CloneSet {
+public class CloneSet extends CloneData {
 
 	final static private AtomicInteger ID_GENERATOR = new AtomicInteger(0);
 
 	final public int id;
-	final public CloneHash hash;
-	final public List<Token> tokens;
 	final private SortedSet<ClonedFragment> clones;
 
 	public CloneSet(final CloneHash hash, final List<Token> tokens) {
+		super(hash, tokens);
 		this.id = ID_GENERATOR.getAndIncrement();
-		this.hash = hash;
-		this.tokens = Collections.unmodifiableList(tokens);
 		this.clones = new TreeSet<>();
 	}
 
@@ -32,5 +28,10 @@ public class CloneSet {
 		final SortedSet<ClonedFragment> clones = new TreeSet<>();
 		clones.addAll(this.clones);
 		return clones;
+	}
+
+	@Override
+	public int getID() {
+		return this.id;
 	}
 }

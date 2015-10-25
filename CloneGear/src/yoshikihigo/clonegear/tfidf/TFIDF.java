@@ -6,35 +6,24 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import yoshikihigo.clonegear.data.CloneSet;
+import yoshikihigo.clonegear.data.CloneData;
 import yoshikihigo.clonegear.lexer.token.Token;
 
-public class TFIDF {
+public class TFIDF<T extends CloneData> {
 
-	static private final Map<List<CloneSet>, TFIDF> INSTANCES = new HashMap<>();
-
-	static public TFIDF getInstance(final List<CloneSet> clonesets) {
-		TFIDF instance = INSTANCES.get(clonesets);
-		if (null == instance) {
-			instance = new TFIDF(clonesets);
-			INSTANCES.put(clonesets, instance);
-		}
-		return instance;
-	}
-
-	private final List<CloneSet> clonesets;
+	private final List<T> clones;
 	private final Map<NGram, Double> IDFCACHE;
-	private final Map<CloneSet, Map<NGram, Double>> TFIDFVectorCACHE;
+	private final Map<T, Map<NGram, Double>> TFIDFVectorCACHE;
 	private final int N;
 
-	private TFIDF(final List<CloneSet> clonesets) {
-		this.clonesets = clonesets;
+	public TFIDF(final List<T> clones) {
+		this.clones = clones;
 		this.IDFCACHE = new HashMap<>();
 		this.TFIDFVectorCACHE = new HashMap<>();
 		this.N = 5;
 	}
 
-	public List<NGram> getNGrams(final CloneSet clone) {
+	public List<NGram> getNGrams(final T clone) {
 
 		final List<NGram> grams = new ArrayList<>();
 
@@ -49,7 +38,7 @@ public class TFIDF {
 		return grams;
 	}
 
-	public double getTF(final NGram ngram, final CloneSet clone) {
+	public double getTF(final NGram ngram, final T clone) {
 		assert ngram.tokens.length == N : "illegal state.";
 		final List<NGram> ngrams = this.getNGrams(clone);
 		int count = 0;
@@ -71,10 +60,10 @@ public class TFIDF {
 
 		int count = 0;
 		final int n = ngram.tokens.length;
-		for (final CloneSet cloneset : this.clonesets) {
-			CLONE: for (int index = 0; (index + n - 1) < cloneset.tokens.size(); index++) {
+		for (final T clone : this.clones) {
+			CLONE: for (int index = 0; (index + n - 1) < clone.tokens.size(); index++) {
 				for (int offset = 0; offset < n; offset++) {
-					if (ngram.tokens[offset].getClass() != cloneset.tokens.get(
+					if (ngram.tokens[offset].getClass() != clone.tokens.get(
 							index + offset).getClass()) {
 						continue CLONE;
 					}
@@ -84,20 +73,20 @@ public class TFIDF {
 		}
 
 		value = Double.valueOf(Math.log1p((double) count
-				/ (double) clonesets.size()));
+				/ (double) clones.size()));
 		this.IDFCACHE.put(ngram, value);
 
 		return value;
 	}
 
-	public double getTFIDF(final NGram ngram, final CloneSet clone) {
+	public double getTFIDF(final NGram ngram, final T clone) {
 
 		final double tf = this.getTF(ngram, clone);
 		final double idf = this.getIDF(ngram);
 		return tf * idf;
 	}
 
-	public Map<NGram, Double> getTFIDFVector(final CloneSet clone) {
+	public Map<NGram, Double> getTFIDFVector(final T clone) {
 
 		Map<NGram, Double> vector = TFIDFVectorCACHE.get(clone);
 		if (null != vector) {
@@ -117,7 +106,7 @@ public class TFIDF {
 		return vector;
 	}
 
-	public double getSIM(final CloneSet clone1, final CloneSet clone2) {
+	public double getSIM(final T clone1, final T clone2) {
 
 		final Map<NGram, Double> vector1 = this.getTFIDFVector(clone1);
 		final Map<NGram, Double> vector2 = this.getTFIDFVector(clone2);
@@ -135,7 +124,7 @@ public class TFIDF {
 		return sim;
 	}
 
-	public double getNSIM(final CloneSet clone1, final CloneSet clone2) {
+	public double getNSIM(final T clone1, final T clone2) {
 
 		final double sim = getSIM(clone1, clone2);
 		if (0d == sim) {

@@ -24,6 +24,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import yoshikihigo.clonegear.data.CloneData;
 import yoshikihigo.clonegear.data.CloneHash;
 import yoshikihigo.clonegear.data.ClonePair;
 import yoshikihigo.clonegear.data.CloneSet;
@@ -44,49 +45,64 @@ public class CGFinder {
 
 		CGConfig.initialize(args);
 
-		final long startTime = System.nanoTime();
+		final long timeToStart = System.nanoTime();
 		final List<SourceFile> files = getFiles();
-		final long middleTime = System.nanoTime();
+		final long timeToDetect = System.nanoTime();
 		final List<ClonePair> clonepairs = detectClones(files);
-		final List<CloneSet> clonesets = convert(clonepairs);
-		final long middleTime2 = System.nanoTime();
-		final Map<CloneSet, Map<CloneSet, Double>> similarities = new HashMap<>();
-		final List<CloneSet> filteredClonesets = filterClones(clonesets,
-				similarities);
-		// print(filteredClonesets);
+		final List<CloneSet> clonesets;
+		final List<ClonePair> remainingClonepairs;
+		final List<CloneSet> remainingClonesets;
+		final long timeToFilter;
 		if (CGConfig.getInstance().isBELLON()) {
-			printInBellonFomat(clonepairs);
+			clonesets = null;
+			timeToFilter = System.nanoTime();
+			final Map<ClonePair, Map<ClonePair, Double>> similarities = new HashMap<>();
+			remainingClonepairs = /*filterClones(clonepairs, similarities)*/clonepairs;
+			remainingClonesets = null;
+			printInBellonFomat(remainingClonepairs);
 		} else {
-			print(clonesets);
+			clonesets = convert(clonepairs);
+			timeToFilter = System.nanoTime();
+			final Map<CloneSet, Map<CloneSet, Double>> similarities = new HashMap<>();
+			remainingClonepairs = null;
+			remainingClonesets = /*filterClones(clonesets, similarities)*/clonesets;
+			print(remainingClonesets);
 		}
-
-		if (CGConfig.getInstance().hasSIMILARITY()) {
-			print(similarities);
-		}
-
-		// print(clonesets.values());
-		// printInCCFinderFormat(files, filteredClonesets);
-		final long endTime = System.nanoTime();
+		final long timeToEnd = System.nanoTime();
 
 		{
 			final StringBuilder text = new StringBuilder();
-			text.append(Integer.toString(clonesets.size()));
-			text.append(" clone sets have been detected.");
-			text.append(System.lineSeparator());
-			text.append(Integer.toString(filteredClonesets.size()));
-			text.append(" clone sets have passed through filtering");
-			text.append(System.lineSeparator());
+			if (CGConfig.getInstance().isBELLON()) {
+				text.append(Integer.toString(clonepairs.size()));
+				text.append(" clone pairs have been detected.");
+				text.append(System.lineSeparator());
+				// text.append(Integer.toString(remainingClonepairs.size()));
+				// text.append(" clone pairs have passed through filtering.");
+				// text.append(System.lineSeparator());
+			} else {
+				text.append(Integer.toString(clonesets.size()));
+				text.append(" clone sets (");
+				text.append(Integer.toString(clonepairs.size()));
+				text.append(" clone pairs) have been detected.");
+				text.append(System.lineSeparator());
+				// text.append(Integer.toString(remainingClonesets.size()));
+				// text.append(" clone sets have passed through filtering.");
+				// text.append(System.lineSeparator());
+			}
+
 			text.append("execution time: ");
-			text.append(TimingUtility.getExecutionTime(startTime, endTime));
+			text.append(TimingUtility.getExecutionTime(timeToStart, timeToEnd));
 			text.append(System.lineSeparator());
 			text.append(" file reading time: ");
-			text.append(TimingUtility.getExecutionTime(startTime, middleTime));
+			text.append(TimingUtility.getExecutionTime(timeToStart,
+					timeToDetect));
 			text.append(System.lineSeparator());
 			text.append(" clone detection time: ");
-			text.append(TimingUtility.getExecutionTime(middleTime, middleTime2));
+			text.append(TimingUtility.getExecutionTime(timeToDetect,
+					timeToFilter));
 			text.append(System.lineSeparator());
 			text.append(" clone filtering time: ");
-			text.append(TimingUtility.getExecutionTime(middleTime2, endTime));
+			text.append(TimingUtility.getExecutionTime(timeToFilter, timeToEnd));
 			text.append(System.lineSeparator());
 			text.append(" (for performance turning) matrix creation time for all the threads: ");
 			text.append(TimingUtility.getExecutionTime(SmithWaterman
@@ -271,36 +287,21 @@ public class CGFinder {
 		return list;
 	}
 
-	private static List<CloneSet> filterClones(final List<CloneSet> clonesets,
-			final Map<CloneSet, Map<CloneSet, Double>> similarities) {
+	private static <T extends CloneData> List<T> filterClones(
+			final List<T> clones, final Map<T, Map<T, Double>> similarities) {
 
 		if (!CGConfig.getInstance().isVERBOSE()) {
 			System.err.println("filtering trivial clones ... ");
 		}
 
-		// final List<List<Token>> clones = new ArrayList<>();
-		// final Map<List<Token>, CloneHash> tokenToMD5 = new HashMap<>();
-		// for (final Entry<CloneHash, CloneSet> entry : clonesets.entrySet()) {
-		//
-		// final CloneHash cloneHash = entry.getKey();
-		// final List<Token> clone = new ArrayList<>();
-		// for (final MD5 md5 : cloneHash.value) {
-		// final List<Token> statement = MD5.getTokens(md5);
-		// assert null != statement : "statement must not be null.";
-		// clone.addAll(statement);
-		// }
-		// clones.add(clone);
-		// tokenToMD5.put(clone, cloneHash);
-		// }
-
-		for (final CloneSet cloneset : clonesets) {
-			similarities.put(cloneset, new HashMap<CloneSet, Double>());
+		for (final T clone : clones) {
+			similarities.put(clone, new HashMap<T, Double>());
 		}
-		final TFIDF tfidf = TFIDF.getInstance(clonesets);
-		for (int i = 0; i < clonesets.size(); i++) {
-			final CloneSet cloneI = clonesets.get(i);
-			for (int j = i + 1; j < clonesets.size(); j++) {
-				final CloneSet cloneJ = clonesets.get(j);
+		final TFIDF<T> tfidf = new TFIDF<>(clones);
+		for (int i = 0; i < clones.size(); i++) {
+			final T cloneI = clones.get(i);
+			for (int j = i + 1; j < clones.size(); j++) {
+				final T cloneJ = clones.get(j);
 				final double similarity = tfidf.getNSIM(cloneI, cloneJ);
 				if (0d < similarity) {
 					similarities.get(cloneI).put(cloneJ, similarity);
@@ -308,30 +309,29 @@ public class CGFinder {
 				}
 			}
 		}
-		final List<CloneSet> filtered = new ArrayList<>();
-		for (final Entry<CloneSet, Map<CloneSet, Double>> entry : similarities
-				.entrySet()) {
+		final List<T> remaining = new ArrayList<>();
+		for (final Entry<T, Map<T, Double>> entry : similarities.entrySet()) {
 
-			if (!isTrivial(entry)) {
+			if (isTrivial(entry)) {
 				continue;
 			}
 
-			final CloneSet cloneset = entry.getKey();
-			filtered.add(cloneset);
+			final T cloneset = entry.getKey();
+			remaining.add(cloneset);
 		}
 
-		return filtered;
+		return remaining;
 	}
 
-	private static boolean isTrivial(
-			final Entry<CloneSet, Map<CloneSet, Double>> entry) {
+	private static <T extends CloneData> boolean isTrivial(
+			final Entry<T, Map<T, Double>> entry) {
 
-		final int N = 5;
-		final double T = 0.95d;
+		final int N = 10;
+		final double threshold = 0.96d;
 
 		int count = 0;
 		for (final Double similarity : entry.getValue().values()) {
-			if (T <= similarity) {
+			if (threshold <= similarity) {
 				count++;
 			}
 			if (N <= count) {
@@ -471,29 +471,28 @@ public class CGFinder {
 		}
 	}
 
-	private static void print(
-			final Map<CloneSet, Map<CloneSet, Double>> similarities) {
+	private static <T extends CloneData> void print(
+			final Map<T, Map<T, Double>> similarities) {
 
 		try (final PrintWriter writer = new PrintWriter(new BufferedWriter(
 				new OutputStreamWriter(new FileOutputStream(CGConfig
 						.getInstance().getSIMILARITY()), "UTF-8")))) {
 
-			for (final Entry<CloneSet, Map<CloneSet, Double>> entry : similarities
-					.entrySet()) {
+			for (final Entry<T, Map<T, Double>> entry : similarities.entrySet()) {
 
-				final CloneSet cloneset1 = entry.getKey();
+				final T clone1 = entry.getKey();
 
-				for (final Entry<CloneSet, Double> entry2 : entry.getValue()
+				for (final Entry<T, Double> entry2 : entry.getValue()
 						.entrySet()) {
 
-					final CloneSet cloneset2 = entry2.getKey();
+					final T clone2 = entry2.getKey();
 					final Double similarity = entry2.getValue();
 
-					if (cloneset1.id < cloneset2.id) {
+					if (clone1.getID() < clone2.getID()) {
 						final StringBuilder text = new StringBuilder();
-						text.append(Integer.toString(cloneset1.id));
+						text.append(Integer.toString(clone1.getID()));
 						text.append(", ");
-						text.append(Integer.toString(cloneset2.id));
+						text.append(Integer.toString(clone2.getID()));
 						text.append(", ");
 						text.append(Double.toString(similarity));
 						writer.println(text.toString());

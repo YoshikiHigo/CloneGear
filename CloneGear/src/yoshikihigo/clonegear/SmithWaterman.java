@@ -7,11 +7,13 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.concurrent.atomic.AtomicLong;
 
+import yoshikihigo.clonegear.data.CloneHash;
 import yoshikihigo.clonegear.data.ClonePair;
 import yoshikihigo.clonegear.data.ClonedFragment;
 import yoshikihigo.clonegear.data.MD5;
 import yoshikihigo.clonegear.data.SourceFile;
 import yoshikihigo.clonegear.data.Statement;
+import yoshikihigo.clonegear.lexer.token.Token;
 
 public class SmithWaterman {
 
@@ -119,7 +121,7 @@ public class SmithWaterman {
 
 		final long endMatrixCreation = System.nanoTime();
 		MATRIX_CREATION_TIME.addAndGet(endMatrixCreation - startMatrixCreation);
-		//printTable(table, statements, statements);
+		// printTable(table, statements, statements);
 		final long startCloneDetection = System.nanoTime();
 		final List<ClonePair> clonepairs = this.detectClones(table);
 		final long endCloneDetection = System.nanoTime();
@@ -292,8 +294,11 @@ public class SmithWaterman {
 			if ((threshold <= xClonedFragment.getNumberOfTokens())
 					&& (threshold <= yClonedFragment.getNumberOfTokens())
 					&& !xClonedFragment.isOverraped(yClonedFragment)) {
-				final ClonePair clonepair = new ClonePair(xClonedFragment,
-						yClonedFragment);
+
+				final CloneHash hash = new CloneHash(xClonedFragment.cloneID);
+				final List<Token> tokens = CloneHash.getTokens(hash);
+				final ClonePair clonepair = new ClonePair(hash, tokens,
+						xClonedFragment, yClonedFragment);
 				clonepairs.add(clonepair);
 				switchToChecked(table, minCell.x, maxCell.x, minCell.y,
 						maxCell.y);

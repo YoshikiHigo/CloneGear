@@ -1,8 +1,11 @@
 package yoshikihigo.clonegear.data;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ClonePair {
+import yoshikihigo.clonegear.lexer.token.Token;
+
+public class ClonePair extends CloneData {
 
 	final static private AtomicInteger ID_GENERATOR = new AtomicInteger(0);
 
@@ -10,7 +13,9 @@ public class ClonePair {
 	final public ClonedFragment left;
 	final public ClonedFragment right;
 
-	public ClonePair(final ClonedFragment left, final ClonedFragment right) {
+	public ClonePair(final CloneHash hash, final List<Token> tokens,
+			final ClonedFragment left, final ClonedFragment right) {
+		super(hash, tokens);
 		this.id = ID_GENERATOR.getAndIncrement();
 		final int order = left.compareTo(right);
 		if (order < 0) {
@@ -24,5 +29,10 @@ public class ClonePair {
 			this.right = null;
 			assert false : "invalid state.";
 		}
+	}
+
+	@Override
+	public int getID() {
+		return this.id;
 	}
 }
