@@ -7,6 +7,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.concurrent.atomic.AtomicLong;
 
+import yoshikihigo.clonegear.data.ClonePair;
 import yoshikihigo.clonegear.data.ClonedFragment;
 import yoshikihigo.clonegear.data.MD5;
 import yoshikihigo.clonegear.data.SourceFile;
@@ -16,6 +17,10 @@ public class SmithWaterman {
 
 	final private static AtomicLong MATRIX_CREATION_TIME = new AtomicLong(0);
 	final private static AtomicLong CLONE_DETECTION_TIME = new AtomicLong(0);
+
+	final private int MATCH = 2;
+	final private int MISMATCH = -1;
+	final private int GAP = -1;
 
 	public static long getMatrixCreationTime() {
 		return MATRIX_CREATION_TIME.get();
@@ -37,17 +42,17 @@ public class SmithWaterman {
 		this(file, file);
 	}
 
-	public List<ClonedFragment> getClonedFragments() {
+	public List<ClonePair> getClonedFragments() {
 		return this.isWithinFileDetection() ? getClonedFragmentsWithinFile()
 				: getClonedFragmentsAcrossFiles();
 	}
 
-	private List<ClonedFragment> getClonedFragmentsWithinFile() {
+	private List<ClonePair> getClonedFragmentsWithinFile() {
 
 		final List<Statement> statements = this.file1.getStatements();
 
 		if (statements.isEmpty()) {
-			return new ArrayList<ClonedFragment>();
+			return new ArrayList<ClonePair>();
 		}
 
 		final long startMatrixCreation = System.nanoTime();
@@ -69,9 +74,10 @@ public class SmithWaterman {
 					statements.get(y).hash.value);
 			if (table[0][y - 1].value > 2) {
 				final Cell base = table[0][y - 1];
-				table[0][y] = new Cell(base.value - 1, match, 0, y, base);
+				table[0][y] = new Cell(base.value + this.getGapValue(base),
+						match, 0, y, base);
 			} else {
-				table[0][y] = new Cell(match ? 2 : 0, match, 0, y, null);
+				table[0][y] = new Cell(match ? MATCH : 0, match, 0, y, null);
 			}
 		}
 
@@ -89,9 +95,10 @@ public class SmithWaterman {
 				final Cell left = table[x - 1][y];
 				final Cell up = table[x][y - 1];
 				final Cell upleft = table[x - 1][y - 1];
-				final int leftValue = left.value - 1;
-				final int upValue = up.value - 1;
-				final int upleftValue = upleft.value + (match ? 2 : -1);
+				final int leftValue = left.value + this.getGapValue(left);
+				final int upValue = up.value + this.getGapValue(up);
+				final int upleftValue = upleft.value
+						+ (match ? MATCH : this.getMismatchValue(upleft));
 
 				if ((leftValue <= upleftValue) && (upValue <= upleftValue)) {
 					table[x][y] = new Cell((upleftValue > 0 ? upleftValue : 0),
@@ -112,16 +119,16 @@ public class SmithWaterman {
 
 		final long endMatrixCreation = System.nanoTime();
 		MATRIX_CREATION_TIME.addAndGet(endMatrixCreation - startMatrixCreation);
-
+		//printTable(table, statements, statements);
 		final long startCloneDetection = System.nanoTime();
-		final List<ClonedFragment> clonedFragments = this.detectClones(table);
+		final List<ClonePair> clonepairs = this.detectClones(table);
 		final long endCloneDetection = System.nanoTime();
 		CLONE_DETECTION_TIME.addAndGet(endCloneDetection - startCloneDetection);
 
-		return clonedFragments;
+		return clonepairs;
 	}
 
-	private List<ClonedFragment> getClonedFragmentsAcrossFiles() {
+	private List<ClonePair> getClonedFragmentsAcrossFiles() {
 
 		final List<Statement> statements1 = this.file1.getStatements();
 		final List<Statement> statements2 = this.file2.getStatements();
@@ -133,7 +140,7 @@ public class SmithWaterman {
 				: language2 == LANGUAGE.CPP ? 2 : 1;
 
 		if (statements1.isEmpty() || statements2.isEmpty()) {
-			return new ArrayList<ClonedFragment>();
+			return new ArrayList<ClonePair>();
 		}
 
 		final long startCreatingMatrix = System.nanoTime();
@@ -146,7 +153,7 @@ public class SmithWaterman {
 			table[0][0] = new Cell(0, false, 0, 0, null);
 		} else {
 			if (statements1.get(0).hash == statements2.get(0).hash) {
-				table[0][0] = new Cell(2, true, 0, 0, null);
+				table[0][0] = new Cell(MATCH, true, 0, 0, null);
 			} else {
 				table[0][0] = new Cell(0, false, 0, 0, null);
 			}
@@ -165,9 +172,10 @@ public class SmithWaterman {
 					statements2.get(0).hash.value);
 			if (table[x - 1][0].value > 2) {
 				final Cell base = table[x - 1][0];
-				table[x][0] = new Cell(base.value - 1, match, x, 0, base);
+				table[x][0] = new Cell(base.value + this.getGapValue(base),
+						match, x, 0, base);
 			} else {
-				table[x][0] = new Cell(match ? 2 : 0, match, x, 0, null);
+				table[x][0] = new Cell(match ? MATCH : 0, match, x, 0, null);
 			}
 		}
 
@@ -184,9 +192,10 @@ public class SmithWaterman {
 					statements2.get(y).hash.value);
 			if (table[0][y - 1].value > 2) {
 				final Cell base = table[0][y - 1];
-				table[0][y] = new Cell(base.value - 1, match, 0, y, base);
+				table[0][y] = new Cell(base.value + this.getGapValue(base),
+						match, 0, y, base);
 			} else {
-				table[0][y] = new Cell(match ? 2 : 0, match, 0, y, null);
+				table[0][y] = new Cell(match ? MATCH : 0, match, 0, y, null);
 			}
 		}
 
@@ -206,9 +215,10 @@ public class SmithWaterman {
 				final Cell left = table[x - 1][y];
 				final Cell up = table[x][y - 1];
 				final Cell upleft = table[x - 1][y - 1];
-				final int leftValue = left.value - 1;
-				final int upValue = up.value - 1;
-				final int upleftValue = upleft.value + (match ? 2 : -1);
+				final int leftValue = left.value + this.getGapValue(left);
+				final int upValue = up.value + this.getGapValue(up);
+				final int upleftValue = upleft.value
+						+ (match ? MATCH : this.getMismatchValue(upleft));
 
 				if ((leftValue <= upleftValue) && (upValue <= upleftValue)) {
 					table[x][y] = new Cell((upleftValue > 0 ? upleftValue : 0),
@@ -229,17 +239,37 @@ public class SmithWaterman {
 
 		final long endCreatingMatrix = System.nanoTime();
 		MATRIX_CREATION_TIME.addAndGet(endCreatingMatrix - startCreatingMatrix);
-
+		// printTable(table, statements, statements);
 		final long startDetectingClones = System.nanoTime();
-		final List<ClonedFragment> clonedFragments = this.detectClones(table);
+		final List<ClonePair> clonepairs = this.detectClones(table);
 		final long endDetectingClones = System.nanoTime();
 		CLONE_DETECTION_TIME.addAndGet(endDetectingClones
 				- startDetectingClones);
 
-		return clonedFragments;
+		return clonepairs;
 	}
 
-	private List<ClonedFragment> detectClones(final Cell[][] table) {
+	private int getGapValue(final Cell cell) {
+		int value = GAP;
+		Cell currentCell = cell;
+		while ((null != currentCell) && !currentCell.match) {
+			value *= 3;
+			currentCell = currentCell.base;
+		}
+		return value;
+	}
+
+	private int getMismatchValue(final Cell cell) {
+		int value = MISMATCH;
+		Cell currentCell = cell;
+		while ((null != currentCell) && !currentCell.match) {
+			value *= 3;
+			currentCell = currentCell.base;
+		}
+		return value;
+	}
+
+	private List<ClonePair> detectClones(final Cell[][] table) {
 
 		final String path1 = this.file1.path;
 		final String path2 = this.file2.path;
@@ -247,7 +277,7 @@ public class SmithWaterman {
 		final List<Statement> statements2 = this.file2.getStatements();
 		final int threshold = CGConfig.getInstance().getTHRESHOLD();
 
-		final List<ClonedFragment> clonedFragments = new ArrayList<>();
+		final List<ClonePair> clonepairs = new ArrayList<>();
 		for (final Cell maxCell : this.getLocalMaximumCells(table)) {
 			if (maxCell.isChecked()) {
 				continue;
@@ -262,14 +292,15 @@ public class SmithWaterman {
 			if ((threshold <= xClonedFragment.getNumberOfTokens())
 					&& (threshold <= yClonedFragment.getNumberOfTokens())
 					&& !xClonedFragment.isOverraped(yClonedFragment)) {
-				clonedFragments.add(xClonedFragment);
-				clonedFragments.add(yClonedFragment);
+				final ClonePair clonepair = new ClonePair(xClonedFragment,
+						yClonedFragment);
+				clonepairs.add(clonepair);
 				switchToChecked(table, minCell.x, maxCell.x, minCell.y,
 						maxCell.y);
 			}
 		}
 
-		return clonedFragments;
+		return clonepairs;
 	}
 
 	private Cell[] getLocalMaximumCells(final Cell[][] table) {
@@ -415,6 +446,37 @@ public class SmithWaterman {
 
 	private boolean isWithinFileDetection() {
 		return this.file1.equals(this.file2);
+	}
+
+	private void printTable(final Cell[][] table,
+			final List<Statement> xStatements, final List<Statement> yStatements) {
+
+		System.out.print("\t");
+		for (int x = 0; x < table.length; x++) {
+			final int xLine = xStatements.get(x).fromLine;
+			System.out.print(x + "," + xLine + "\t");
+		}
+		System.out.println();
+		for (int y = 0; y < table[0].length; y++) {
+			final int yLine = yStatements.get(y).fromLine;
+			System.out.print(y + "," + yLine + "\t");
+			for (int x = 0; x < table.length; x++) {
+				if (x == y) {
+					System.out.print(" -\t");
+					continue;
+				}
+				final Cell cell = table[x][y];
+				final boolean maximum = this.isLocalMaximum(table, x, y);
+				if (maximum) {
+					System.out.print("<" + cell.value + ">");
+				} else {
+					System.out.print(" " + cell.value);
+				}
+				System.out.print(cell.match ? "(T)" : "(F)");
+				System.out.print("\t");
+			}
+			System.out.println();
+		}
 	}
 }
 

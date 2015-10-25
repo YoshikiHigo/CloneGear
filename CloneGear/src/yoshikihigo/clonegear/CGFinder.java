@@ -25,6 +25,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import yoshikihigo.clonegear.data.CloneHash;
+import yoshikihigo.clonegear.data.ClonePair;
 import yoshikihigo.clonegear.data.CloneSet;
 import yoshikihigo.clonegear.data.ClonedFragment;
 import yoshikihigo.clonegear.data.HTMLFile;
@@ -46,14 +47,15 @@ public class CGFinder {
 		final long startTime = System.nanoTime();
 		final List<SourceFile> files = getFiles();
 		final long middleTime = System.nanoTime();
-		final List<CloneSet> clonesets = detectClones(files);
+		final List<ClonePair> clonepairs = detectClones(files);
+		final List<CloneSet> clonesets = convert(clonepairs);
 		final long middleTime2 = System.nanoTime();
 		final Map<CloneSet, Map<CloneSet, Double>> similarities = new HashMap<>();
 		final List<CloneSet> filteredClonesets = filterClones(clonesets,
 				similarities);
 		// print(filteredClonesets);
 		if (CGConfig.getInstance().isBELLON()) {
-			printInBellonFomat(clonesets);
+			printInBellonFomat(clonepairs);
 		} else {
 			print(clonesets);
 		}
@@ -185,7 +187,7 @@ public class CGFinder {
 		return files;
 	}
 
-	private static List<CloneSet> detectClones(final List<SourceFile> files) {
+	private static List<ClonePair> detectClones(final List<SourceFile> files) {
 
 		if (!CGConfig.getInstance().isVERBOSE()) {
 			System.err.println("detecting clones ... ");
@@ -193,7 +195,7 @@ public class CGFinder {
 
 		final ExecutorService executorService = Executors
 				.newFixedThreadPool(CGConfig.getInstance().getTHREAD());
-		final Map<CloneHash, CloneSet> clonesets = new HashMap<>();
+		final List<ClonePair> clonepairs = new ArrayList<>();
 		final List<Future<?>> futures = new ArrayList<>();
 		for (int i = 0; i < files.size(); i++) {
 			final SourceFile iFile = files.get(i);
@@ -201,7 +203,7 @@ public class CGFinder {
 				final SourceFile jFile = files.get(j);
 				Future<?> future = executorService
 						.submit(new CloneDetectionThread(iFile, jFile,
-								clonesets));
+								clonepairs));
 				futures.add(future);
 			}
 		}
@@ -217,9 +219,40 @@ public class CGFinder {
 			executorService.shutdown();
 		}
 
-		final List<CloneSet> sets = new ArrayList<>();
-		sets.addAll(clonesets.values());
-		return sets;
+		return clonepairs;
+	}
+
+	private static List<CloneSet> convert(final List<ClonePair> clonepairs) {
+
+		final Map<CloneHash, CloneSet> clonesets = new HashMap<>();
+		for (final ClonePair clonepair : clonepairs) {
+
+			{
+				final CloneHash hash = new CloneHash(clonepair.left.cloneID);
+				CloneSet cloneset = clonesets.get(hash);
+				if (null == cloneset) {
+					final List<Token> tokens = CloneHash.getTokens(hash);
+					cloneset = new CloneSet(hash, tokens);
+					clonesets.put(hash, cloneset);
+				}
+				cloneset.addClone(clonepair.left);
+			}
+
+			{
+				final CloneHash hash = new CloneHash(clonepair.right.cloneID);
+				CloneSet cloneset = clonesets.get(hash);
+				if (null == cloneset) {
+					final List<Token> tokens = CloneHash.getTokens(hash);
+					cloneset = new CloneSet(hash, tokens);
+					clonesets.put(hash, cloneset);
+				}
+				cloneset.addClone(clonepair.right);
+			}
+		}
+
+		final List<CloneSet> list = new ArrayList<>();
+		list.addAll(clonesets.values());
+		return list;
 	}
 
 	private static List<CloneSet> filterClones(final List<CloneSet> clonesets,
@@ -328,33 +361,27 @@ public class CGFinder {
 		}
 	}
 
-	private static void printInBellonFomat(final List<CloneSet> clonesets) {
+	private static void printInBellonFomat(final List<ClonePair> clonepairs) {
 
 		try (final PrintWriter writer = CGConfig.getInstance().hasRESULT() ? new PrintWriter(
 				new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
 						CGConfig.getInstance().getRESULT()), "UTF-8")))
 				: new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"))) {
 
-			for (final CloneSet cloneset : clonesets) {
-				final ClonedFragment[] clones = cloneset.getClones().toArray(
-						new ClonedFragment[0]);
-				for (int i = 0; i < clones.length; i++) {
-					for (int j = i + 1; j < clones.length; j++) {
-						writer.print(clones[i].path);
-						writer.print("\t");
-						writer.print(clones[i].getFromLine());
-						writer.print("\t");
-						writer.print(clones[i].getToLine());
-						writer.print("\t");
-						writer.print(clones[j].path);
-						writer.print("\t");
-						writer.print(clones[j].getFromLine());
-						writer.print("\t");
-						writer.print(clones[j].getToLine());
-						writer.print("\t3");
-						writer.println();
-					}
-				}
+			for (final ClonePair clonepair : clonepairs) {
+				writer.print(clonepair.left.path);
+				writer.print("\t");
+				writer.print(clonepair.left.getFromLine());
+				writer.print("\t");
+				writer.print(clonepair.left.getToLine());
+				writer.print("\t");
+				writer.print(clonepair.right.path);
+				writer.print("\t");
+				writer.print(clonepair.right.getFromLine());
+				writer.print("\t");
+				writer.print(clonepair.right.getToLine());
+				writer.print("\t3");
+				writer.println();
 			}
 
 		} catch (IOException e) {

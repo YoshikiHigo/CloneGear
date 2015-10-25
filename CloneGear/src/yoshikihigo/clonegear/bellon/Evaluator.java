@@ -117,10 +117,24 @@ public class Evaluator {
 			if (newfile) {
 				writer.write("tools, oracles, clonepairs, good, ");
 				writer.write("good-type1, good-type2, good-type3, ");
+				writer.write("precison, recall, fmeasure, ");
 				writer.write(", tools, oracles, clonepairs, ok, ");
 				writer.write("ok-type1, ok-type2, ok-type3, ");
+				writer.write("precison, recall, fmeasure, ");
 				writer.newLine();
 			}
+
+			final float goodPrecision = (float) goods.size()
+					/ (float) clonepairs.size();
+			final float goodRecall = (float) goods.size()
+					/ (float) oracles.size();
+			final float goodFmeasure = 2 * goodPrecision * goodRecall
+					/ (goodPrecision + goodRecall);
+			final float okPrecision = (float) oks.size()
+					/ (float) clonepairs.size();
+			final float okRecall = (float) oks.size() / (float) oracles.size();
+			final float okFmeasure = 2 * okPrecision * okRecall
+					/ (okPrecision + okRecall);
 
 			writer.write(clones + ", ");
 			writer.write(oracles.size() + ", ");
@@ -129,6 +143,9 @@ public class Evaluator {
 			writer.write(this.getSpecifiedType(goods, 1).size() + ", ");
 			writer.write(this.getSpecifiedType(goods, 2).size() + ", ");
 			writer.write(this.getSpecifiedType(goods, 3).size() + ", ");
+			writer.write(Float.toString(goodPrecision) + ", ");
+			writer.write(Float.toString(goodRecall) + ", ");
+			writer.write(Float.toString(goodFmeasure) + ", ");
 			writer.write(", ");
 			writer.write(clones + ", ");
 			writer.write(oracles.size() + ", ");
@@ -137,6 +154,9 @@ public class Evaluator {
 			writer.write(this.getSpecifiedType(oks, 1).size() + ", ");
 			writer.write(this.getSpecifiedType(oks, 2).size() + ", ");
 			writer.write(this.getSpecifiedType(oks, 3).size() + ", ");
+			writer.write(Float.toString(okPrecision) + ", ");
+			writer.write(Float.toString(okRecall) + ", ");
+			writer.write(Float.toString(okFmeasure) + ", ");
 			writer.newLine();
 			writer.flush();
 
