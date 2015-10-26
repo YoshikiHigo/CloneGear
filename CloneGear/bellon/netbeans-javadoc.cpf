@@ -1,0 +1,55 @@
+499	9	netbeans-javadoc/src/comments/AutoCommentListCellRenderer.java	38	43	netbeans-javadoc/src/search/IndexListCellRenderer.java	25	30	1	-	-
+502	9	netbeans-javadoc/src/settings/JavadocSettingsService.java	94	121	netbeans-javadoc/src/settings/StdDocletSettingsService.java	235	262	2	-	-
+515	9	netbeans-javadoc/src/comments/ParamTagPanel.java	31	43	netbeans-javadoc/src/comments/StandardTagPanel.java	46	58	3	-	-
+520	9	netbeans-javadoc/src/comments/AutoCommentAction.java	38	58	netbeans-javadoc/src/comments/CorrectJavaDocAction.java	36	56	2	-	-
+522	9	netbeans-javadoc/src/search/environment/JavadocArchiveBeanInfo.java	21	38	netbeans-javadoc/src/search/environment/JavadocDirectoryBeanInfo.java	21	38	2	-	-
+575	9	netbeans-javadoc/src/settings/StdDocletSettingsService.java	82	87	netbeans-javadoc/src/settings/StdDocletSettingsService.java	94	99	1	-	-
+576	9	netbeans-javadoc/src/search/environment/JavadocProcessor.java	72	85	netbeans-javadoc/src/search/environment/JavadocProcessor.java	116	129	2	-	-
+577	9	netbeans-javadoc/src/comments/TagPanel.java	25	58	netbeans-javadoc/src/comments/TagPanel.java	59	92	2	-	-
+578	9	netbeans-javadoc/src/comments/AutoCommentPanel.java	78	89	netbeans-javadoc/src/comments/AutoCommentPanel.java	157	168	2	-	-
+579	9	netbeans-javadoc/src/settings/DocumentationSettings.java	75	88	netbeans-javadoc/src/settings/DocumentationSettings.java	192	201	3	78, 80, 83, 85	-
+580	9	netbeans-javadoc/src/ResourceUtils.java	26	36	netbeans-javadoc/src/ResourceUtils.java	38	48	3	34	45, 47
+581	9	netbeans-javadoc/src/comments/AutoCommentPanel.java	315	327	netbeans-javadoc/src/comments/AutoCommentPanel.java	360	371	3	321, 327	361
+582	9	netbeans-javadoc/src/EnvWrapper.java	131	149	netbeans-javadoc/src/RootDocImplWrapper.java	116	134	1	-	-
+583	9	netbeans-javadoc/src/httpfs/AddFSAction.java	63	105	netbeans-javadoc/src/httpfs/HTTPFileObject.java	750	792	1	-	-
+584	9	netbeans-javadoc/src/httpfs/HTTPFileObject.java	763	769	netbeans-javadoc/src/search/DocFSOffsetEditor.java	60	66	1	-	-
+585	9	netbeans-javadoc/src/settings/ResourceUtils.java	30	37	netbeans-javadoc/src/settings/StdDocletSettings.java	46	53	2	-	-
+586	9	netbeans-javadoc/src/comments/TagPanel.java	25	58	netbeans-javadoc/src/comments/ThrowsTagPanel.java	29	62	2	-	-
+587	9	netbeans-javadoc/src/comments/NewTagDialog.java	42	63	netbeans-javadoc/src/httpfs/HTTPFileObject.java	758	779	2	-	-
+588	9	netbeans-javadoc/src/ExternalJavadocExecutor.java	348	368	netbeans-javadoc/src/JavadocInvoker.java	259	280	3	366	269, 271
+589	9	netbeans-javadoc/src/settings/MembersPropertyEditor.java	21	47	netbeans-javadoc/src/settings/StdDocletSettings.java	22	53	3	-	33, 34, 47, 48
+590	9	netbeans-javadoc/src/ExternalJavadocOutputParser.java	50	58	netbeans-javadoc/src/ExternalOptionListProducer.java	40	50	3	53, 54, 56	43, 44, 45, 47, 48
+722	9	netbeans-javadoc/src/comments/SerialFieldTagPanel.java	109	115	netbeans-javadoc/src/comments/ThrowsTagPanel.java	108	114	2	-	-
+886	9	netbeans-javadoc/src/settings/ExternalJavadocSettingsService.java	149	165	netbeans-javadoc/src/settings/StdDocletSettingsService.java	135	152	2	-	-
+981	9	netbeans-javadoc/src/comments/ResourceUtils.java	1	36	netbeans-javadoc/src/httpfs/ResourceUtils.java	1	36	2	-	-
+1181	9	netbeans-javadoc/src/comments/NewTagDialog.java	230	238	netbeans-javadoc/src/search/IndexSearch.java	278	286	2	-	-
+1390	9	netbeans-javadoc/src/comments/NewTagDialog.java	71	77	netbeans-javadoc/src/comments/NewTagDialog.java	101	107	2	-	-
+1644	9	netbeans-javadoc/src/comments/JavaDocEditorPanel.java	100	105	netbeans-javadoc/src/comments/JavaDocEditorPanel.java	106	111	2	-	-
+1762	9	netbeans-javadoc/src/comments/SeeTagPanel.java	69	74	netbeans-javadoc/src/search/IndexSearch.java	281	286	2	-	-
+1911	9	netbeans-javadoc/src/comments/SerialFieldTagPanel.java	86	92	netbeans-javadoc/src/comments/StandardTagPanel.java	94	100	2	-	-
+2034	9	netbeans-javadoc/src/comments/JavaDocEditorPanel.java	638	649	netbeans-javadoc/src/comments/JavaDocEditorPanel.java	650	661	2	-	-
+2326	9	netbeans-javadoc/src/settings/JavadocSettingsService.java	104	111	netbeans-javadoc/src/settings/StdDocletSettingsService.java	225	232	2	-	-
+2343	9	netbeans-javadoc/src/JavadocTypeBeanInfo.java	1	41	netbeans-javadoc/src/search/JavadocSearchTypeBeanInfo.java	1	39	2	-	-
+2389	9	netbeans-javadoc/src/comments/JavaDocEditorPanel.java	238	249	netbeans-javadoc/src/comments/JavaDocEditorPanel.java	274	285	2	-	-
+2414	9	netbeans-javadoc/src/comments/AutoCommenter.java	390	430	netbeans-javadoc/src/comments/AutoCommenter.java	432	475	3	400	443, 444, 445
+2593	9	netbeans-javadoc/src/comments/ParamTagPanel.java	47	53	netbeans-javadoc/src/comments/ThrowsTagPanel.java	83	89	2	-	-
+2668	9	netbeans-javadoc/src/ExternalJavadocExecutor.java	151	167	netbeans-javadoc/src/JavadocInvoker.java	264	280	1	-	-
+5535	9	netbeans-javadoc/src/OptionListProducer.java	64	73	netbeans-javadoc/src/OptionListProducer.java	74	83	2	-	-
+5735	9	netbeans-javadoc/src/search/Jdk12SearchTypeBeanInfo.java	20	26	netbeans-javadoc/src/settings/JavadocSettingsServiceBeanInfo.java	24	30	2	-	-
+5822	9	netbeans-javadoc/src/comments/AutoCommentPanel.java	262	269	netbeans-javadoc/src/comments/AutoCommentPanel.java	274	281	2	-	-
+5849	9	netbeans-javadoc/src/settings/ExternalJavadocSettingsServiceBeanInfo.java	1	89	netbeans-javadoc/src/settings/StdDocletSettingsBeanInfo.java	1	110	3	72	-
+5866	9	netbeans-javadoc/src/settings/ExternalJavadocSettingsServiceBeanInfo.java	1	89	netbeans-javadoc/src/settings/JavadocSettingsBeanInfo.java	1	65	3	29, 30, 31, 32, 33, 38, 72	29
+5988	9	netbeans-javadoc/src/settings/ExternalJavadocSettingsService.java	119	136	netbeans-javadoc/src/settings/StdDocletSettingsService.java	225	242	3	136	242
+6061	9	netbeans-javadoc/src/settings/StdDocletSettingsBeanInfo.java	1	110	netbeans-javadoc/src/settings/StdDocletSettingsServiceBeanInfo.java	1	122	3	-	25, 26, 27, 28, 29
+6089	9	netbeans-javadoc/src/search/AddJavaDocFSAction.java	53	63	netbeans-javadoc/src/search/AddJavaDocJarAction.java	59	70	2	-	-
+6117	9	netbeans-javadoc/src/comments/ParamTagPanel.java	66	78	netbeans-javadoc/src/comments/SeeTagPanel.java	52	64	2	-	-
+6248	9	netbeans-javadoc/src/settings/ExternalJavadocSettingsServiceBeanInfo.java	37	84	netbeans-javadoc/src/settings/JavadocSettingsServiceBeanInfo.java	40	76	3	72	-
+6276	9	netbeans-javadoc/src/settings/ExternalJavadocSettingsService.java	149	166	netbeans-javadoc/src/settings/StdDocletSettingsService.java	255	272	2	-	-
+6299	9	netbeans-javadoc/src/comments/JavaDocEditorPanel.java	346	354	netbeans-javadoc/src/comments/JavaDocEditorPanel.java	393	401	2	-	-
+6444	9	netbeans-javadoc/src/settings/JavadocSettingsServiceBeanInfo.java	40	76	netbeans-javadoc/src/settings/StdDocletSettingsServiceBeanInfo.java	33	116	3	-	-
+6615	9	netbeans-javadoc/src/settings/JavadocSettingsServiceBeanInfo.java	40	76	netbeans-javadoc/src/settings/StdDocletSettingsBeanInfo.java	27	105	3	-	-
+6616	9	netbeans-javadoc/src/settings/JavadocSettingsBeanInfo.java	28	65	netbeans-javadoc/src/settings/StdDocletSettingsServiceBeanInfo.java	33	122	3	29	34
+6840	9	netbeans-javadoc/src/comments/AutoCommentPanel.java	299	305	netbeans-javadoc/src/comments/ParamTagPanel.java	82	88	2	-	-
+6973	9	netbeans-javadoc/src/comments/NewTagDialog.java	197	202	netbeans-javadoc/src/comments/NewTagDialog.java	260	265	2	-	-
+7119	9	netbeans-javadoc/src/settings/JavadocSettingsService.java	52	63	netbeans-javadoc/src/settings/StdDocletSettingsService.java	125	136	2	-	-
+7349	9	netbeans-javadoc/src/OptionListProducer.java	74	83	netbeans-javadoc/src/OptionListProducer.java	84	93	2	-	-

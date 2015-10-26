@@ -1,0 +1,555 @@
+478	8	postgresql/src/backend/nodes/equalfuncs.c	517	529	postgresql/src/backend/nodes/equalfuncs.c	1179	1187	3	527, 528	-
+480	8	postgresql/src/backend/parser/gram.c	7959	7964	postgresql/src/backend/parser/gram.c	7965	7970	2	-	-
+483	8	postgresql/src/backend/optimizer/util/clauses.c	846	889	postgresql/src/backend/optimizer/util/clauses.c	890	933	2	-	-
+486	8	postgresql/src/backend/storage/lmgr/lwlock.c	186	197	postgresql/src/backend/storage/lmgr/lwlock.c	272	283	1	-	-
+487	8	postgresql/src/backend/parser/gram.c	6305	6310	postgresql/src/backend/parser/gram.c	6335	6340	2	-	-
+506	8	postgresql/src/backend/nodes/equalfuncs.c	937	947	postgresql/src/backend/nodes/equalfuncs.c	1018	1028	3	-	-
+507	8	postgresql/src/backend/bootstrap/bootscanner.c	1094	1115	postgresql/src/backend/utils/misc/guc-file.c	906	927	2	-	-
+766	8	postgresql/src/backend/parser/gram.c	5951	5956	postgresql/src/backend/parser/gram.c	8309	8314	2	-	-
+771	8	postgresql/src/backend/nodes/readfuncs.c	729	735	postgresql/src/backend/nodes/readfuncs.c	773	779	2	-	-
+929	8	postgresql/src/backend/nodes/equalfuncs.c	446	496	postgresql/src/backend/nodes/equalfuncs.c	897	929	3	-	-
+940	8	postgresql/src/backend/nodes/readfuncs.c	172	184	postgresql/src/backend/nodes/readfuncs.c	717	740	3	-	736, 737, 738, 739
+944	8	postgresql/src/backend/commands/async.c	174	182	postgresql/src/backend/commands/async.c	244	251	2	-	-
+947	8	postgresql/src/backend/nodes/equalfuncs.c	626	642	postgresql/src/backend/nodes/equalfuncs.c	703	713	3	-	-
+624	8	postgresql/src/backend/catalog/heap.c	735	755	postgresql/src/backend/catalog/heap.c	1644	1664	2	-	-
+625	8	postgresql/src/backend/commands/dbcommands.c	435	445	postgresql/src/backend/commands/dbcommands.c	457	467	2	-	-
+638	8	postgresql/src/backend/utils/adt/formatting.c	911	916	postgresql/src/backend/utils/adt/formatting.c	944	950	2	-	-
+648	8	postgresql/src/backend/nodes/readfuncs.c	484	493	postgresql/src/backend/nodes/readfuncs.c	930	940	3	490	-
+660	8	postgresql/src/backend/nodes/equalfuncs.c	192	201	postgresql/src/backend/nodes/equalfuncs.c	432	441	2	-	-
+665	8	postgresql/src/backend/nodes/readfuncs.c	157	166	postgresql/src/backend/nodes/readfuncs.c	769	778	2	-	-
+676	8	postgresql/src/backend/nodes/readfuncs.c	503	533	postgresql/src/backend/nodes/readfuncs.c	1287	1321	3	-	-
+680	8	postgresql/src/backend/nodes/readfuncs.c	790	808	postgresql/src/backend/nodes/readfuncs.c	1287	1321	3	-	-
+686	8	postgresql/src/backend/nodes/equalfuncs.c	733	749	postgresql/src/backend/nodes/equalfuncs.c	1237	1247	3	-	-
+689	8	postgresql/src/backend/storage/smgr/md.c	184	205	postgresql/src/backend/storage/smgr/md.c	354	366	1	-	-
+696	8	postgresql/src/backend/nodes/readfuncs.c	212	237	postgresql/src/backend/nodes/readfuncs.c	747	760	3	212, 213, 237	747, 748, 749, 760
+701	8	postgresql/src/backend/utils/adt/inet_net_pton.c	148	153	postgresql/src/backend/utils/adt/inet_net_pton.c	221	226	2	-	-
+715	8	postgresql/src/backend/utils/adt/format_type.c	252	258	postgresql/src/backend/utils/adt/format_type.c	273	279	2	-	-
+717	8	postgresql/src/backend/utils/cache/syscache.c	199	207	postgresql/src/backend/utils/cache/syscache.c	307	315	2	-	-
+721	8	postgresql/src/backend/nodes/equalfuncs.c	426	442	postgresql/src/backend/nodes/equalfuncs.c	1122	1134	3	442	1134
+734	8	postgresql/src/backend/rewrite/rewriteManip.c	35	45	postgresql/src/backend/rewrite/rewriteManip.c	59	69	2	-	-
+737	8	postgresql/src/backend/catalog/pg_operator.c	261	285	postgresql/src/backend/catalog/pg_proc.c	212	237	3	-	215, 234, 235, 236, 237
+749	8	postgresql/src/backend/access/gist/gist.c	956	969	postgresql/src/backend/access/rtree/rtree.c	369	382	2	-	-
+753	8	postgresql/src/backend/nodes/equalfuncs.c	669	677	postgresql/src/backend/nodes/equalfuncs.c	733	749	3	-	-
+755	8	postgresql/src/backend/utils/adt/float.c	272	278	postgresql/src/backend/utils/adt/timestamp.c	827	833	2	-	-
+773	8	postgresql/src/backend/commands/command.c	805	817	postgresql/src/backend/commands/command.c	1276	1288	1	-	-
+782	8	postgresql/src/backend/catalog/pg_proc.c	212	237	postgresql/src/backend/catalog/pg_type.c	129	154	3	215, 234, 235	-
+793	8	postgresql/src/backend/utils/fmgr/fmgr.c	833	849	postgresql/src/backend/utils/fmgr/fmgr.c	1029	1045	2	-	-
+796	8	postgresql/src/backend/bootstrap/bootscanner.c	963	970	postgresql/src/backend/bootstrap/bootscanner.c	987	994	1	-	-
+811	8	postgresql/src/backend/utils/adt/formatting.c	917	922	postgresql/src/backend/utils/adt/formatting.c	944	949	2	-	-
+812	8	postgresql/src/backend/utils/adt/varchar.c	143	156	postgresql/src/backend/utils/adt/varchar.c	364	377	2	-	-
+814	8	postgresql/src/backend/utils/adt/pgstatfuncs.c	189	199	postgresql/src/backend/utils/adt/pgstatfuncs.c	222	232	2	-	-
+827	8	postgresql/src/backend/nodes/equalfuncs.c	86	95	postgresql/src/backend/nodes/equalfuncs.c	1200	1208	2	-	-
+832	8	postgresql/src/backend/optimizer/util/clauses.c	1652	1658	postgresql/src/backend/optimizer/util/clauses.c	1691	1697	2	-	-
+837	8	postgresql/src/backend/utils/adt/varchar.c	623	639	postgresql/src/backend/utils/adt/varlena.c	857	869	3	629, 633, 634, 635, 636, 639	863, 866, 869
+855	8	postgresql/src/backend/utils/adt/formatting.c	1408	1415	postgresql/src/backend/utils/adt/formatting.c	1819	1826	2	-	-
+857	8	postgresql/src/backend/nodes/copyfuncs.c	1618	1624	postgresql/src/backend/nodes/copyfuncs.c	1644	1650	2	-	-
+858	8	postgresql/src/backend/nodes/readfuncs.c	684	710	postgresql/src/backend/nodes/readfuncs.c	845	863	3	-	-
+862	8	postgresql/src/backend/nodes/equalfuncs.c	530	570	postgresql/src/backend/nodes/equalfuncs.c	897	929	3	-	-
+871	8	postgresql/src/backend/utils/cache/lsyscache.c	99	111	postgresql/src/backend/utils/cache/lsyscache.c	552	563	2	-	-
+872	8	postgresql/src/backend/utils/cache/syscache.c	163	171	postgresql/src/backend/utils/cache/syscache.c	307	315	2	-	-
+884	8	postgresql/src/backend/nodes/equalfuncs.c	643	657	postgresql/src/backend/nodes/equalfuncs.c	1218	1236	3	-	-
+890	8	postgresql/src/backend/nodes/readfuncs.c	155	167	postgresql/src/backend/nodes/readfuncs.c	1162	1188	3	-	-
+894	8	postgresql/src/backend/nodes/readfuncs.c	684	710	postgresql/src/backend/nodes/readfuncs.c	815	838	3	-	-
+915	8	postgresql/src/backend/utils/adt/like.c	191	212	postgresql/src/backend/utils/adt/like.c	290	311	2	-	-
+918	8	postgresql/src/backend/nodes/copyfuncs.c	1375	1380	postgresql/src/backend/nodes/copyfuncs.c	1663	1668	2	-	-
+922	8	postgresql/src/backend/tcop/utility.c	555	562	postgresql/src/backend/tcop/utility.c	566	573	2	-	-
+960	8	postgresql/src/backend/nodes/equalfuncs.c	174	189	postgresql/src/backend/nodes/equalfuncs.c	220	230	3	-	-
+966	8	postgresql/src/backend/utils/adt/nabstime.c	1074	1083	postgresql/src/backend/utils/adt/nabstime.c	1114	1123	3	1083	1123
+975	8	postgresql/src/backend/nodes/readfuncs.c	503	533	postgresql/src/backend/nodes/readfuncs.c	815	838	3	-	-
+977	8	postgresql/src/backend/nodes/readfuncs.c	503	533	postgresql/src/backend/nodes/readfuncs.c	747	760	3	520	759
+978	8	postgresql/src/backend/nodes/readfuncs.c	989	1000	postgresql/src/backend/nodes/readfuncs.c	1328	1338	3	997	1335
+986	8	postgresql/src/backend/nodes/equalfuncs.c	446	496	postgresql/src/backend/nodes/equalfuncs.c	937	947	3	-	-
+992	8	postgresql/src/backend/access/common/tupdesc.c	180	187	postgresql/src/backend/nodes/equalfuncs.c	428	435	2	-	-
+997	8	postgresql/src/backend/nodes/readfuncs.c	650	677	postgresql/src/backend/nodes/readfuncs.c	684	710	3	-	707
+1001	8	postgresql/src/backend/nodes/equalfuncs.c	393	415	postgresql/src/backend/nodes/equalfuncs.c	658	668	3	-	-
+1008	8	postgresql/src/backend/commands/user.c	787	793	postgresql/src/backend/rewrite/rewriteDefine.c	399	405	2	-	-
+1012	8	postgresql/src/backend/utils/adt/numeric.c	1317	1323	postgresql/src/backend/utils/adt/numeric.c	1398	1404	2	-	-
+1018	8	postgresql/src/backend/nodes/equalfuncs.c	508	516	postgresql/src/backend/nodes/equalfuncs.c	1135	1143	3	514	1141
+1030	8	postgresql/src/backend/utils/sort/tuplesort.c	1442	1460	postgresql/src/backend/utils/sort/tuplestore.c	532	550	3	1443, 1453, 1454, 1457	533, 543, 544, 547
+1044	8	postgresql/src/backend/catalog/pg_proc.c	216	237	postgresql/src/backend/catalog/pg_type.c	289	300	3	234, 235, 236, 237	299
+1056	8	postgresql/src/backend/nodes/readfuncs.c	189	207	postgresql/src/backend/nodes/readfuncs.c	930	940	3	197, 206	-
+1063	8	postgresql/src/backend/optimizer/path/indxpath.c	649	657	postgresql/src/backend/optimizer/path/indxpath.c	658	666	2	-	-
+1065	8	postgresql/src/backend/nodes/equalfuncs.c	446	496	postgresql/src/backend/nodes/equalfuncs.c	1218	1236	3	-	-
+1076	8	postgresql/src/backend/nodes/equalfuncs.c	426	442	postgresql/src/backend/nodes/equalfuncs.c	733	749	3	442	749
+1086	8	postgresql/src/backend/executor/nodeMergejoin.c	612	665	postgresql/src/backend/executor/nodeMergejoin.c	977	1033	2	-	-
+1118	8	postgresql/src/backend/nodes/readfuncs.c	790	796	postgresql/src/backend/nodes/readfuncs.c	978	984	2	-	-
+1125	8	postgresql/src/backend/nodes/equalfuncs.c	1159	1171	postgresql/src/backend/nodes/equalfuncs.c	1179	1187	3	1161, 1162	-
+1137	8	postgresql/src/backend/nodes/readfuncs.c	189	207	postgresql/src/backend/nodes/readfuncs.c	576	591	3	197, 206	590
+1142	8	postgresql/src/backend/utils/cache/syscache.c	226	233	postgresql/src/backend/utils/cache/syscache.c	244	251	2	-	-
+1145	8	postgresql/src/backend/nodes/readfuncs.c	123	128	postgresql/src/backend/nodes/readfuncs.c	1295	1300	2	-	-
+1146	8	postgresql/src/backend/utils/adt/numeric.c	881	910	postgresql/src/backend/utils/adt/numeric.c	952	980	2	-	-
+1157	8	postgresql/src/backend/catalog/aclchk.c	443	475	postgresql/src/backend/catalog/aclchk.c	479	515	3	444, 467, 468, 469, 470, 471, 472	480, 481, 482, 483, 506, 507, 508, 509, 510, 511, 512
+1165	8	postgresql/src/backend/nodes/equalfuncs.c	231	239	postgresql/src/backend/nodes/equalfuncs.c	383	392	3	-	-
+1175	8	postgresql/src/backend/nodes/readfuncs.c	660	677	postgresql/src/backend/nodes/readfuncs.c	1021	1038	2	-	-
+1205	8	postgresql/src/backend/executor/nodeMergejoin.c	855	869	postgresql/src/backend/executor/nodeNestloop.c	153	166	2	-	-
+1217	8	postgresql/src/backend/access/rtree/rtree.c	397	411	postgresql/src/backend/access/rtree/rtree.c	413	427	2	-	-
+1218	8	postgresql/src/backend/nodes/equalfuncs.c	446	496	postgresql/src/backend/nodes/equalfuncs.c	530	570	3	-	-
+1231	8	postgresql/src/backend/parser/gram.c	10275	10281	postgresql/src/backend/parser/gram.c	10296	10302	2	-	-
+1234	8	postgresql/src/backend/utils/fmgr/fmgr.c	599	609	postgresql/src/backend/utils/fmgr/fmgr.c	686	696	2	-	-
+1247	8	postgresql/src/backend/utils/adt/like.c	125	146	postgresql/src/backend/utils/adt/like.c	268	289	2	-	-
+1254	8	postgresql/src/backend/nodes/copyfuncs.c	1247	1253	postgresql/src/backend/nodes/copyfuncs.c	1676	1682	2	-	-
+1258	8	postgresql/src/backend/nodes/equalfuncs.c	174	189	postgresql/src/backend/nodes/equalfuncs.c	530	570	3	176	-
+1265	8	postgresql/src/backend/nodes/readfuncs.c	403	408	postgresql/src/backend/nodes/readfuncs.c	747	752	2	-	-
+1266	8	postgresql/src/backend/parser/gram.c	7947	7952	postgresql/src/backend/parser/gram.c	8126	8131	2	-	-
+1279	8	postgresql/src/backend/utils/fmgr/fmgr.c	917	926	postgresql/src/backend/utils/fmgr/fmgr.c	936	945	2	-	-
+1289	8	postgresql/src/backend/utils/cache/lsyscache.c	362	375	postgresql/src/backend/utils/cache/lsyscache.c	435	448	2	-	-
+1295	8	postgresql/src/backend/utils/adt/varchar.c	540	552	postgresql/src/backend/utils/adt/varchar.c	696	708	3	547, 548, 552	703, 704, 708
+1305	8	postgresql/src/backend/nodes/readfuncs.c	108	114	postgresql/src/backend/nodes/readfuncs.c	1011	1017	2	-	-
+1309	8	postgresql/src/backend/nodes/equalfuncs.c	376	382	postgresql/src/backend/nodes/equalfuncs.c	1172	1178	2	-	-
+1311	8	postgresql/src/backend/optimizer/util/var.c	66	71	postgresql/src/backend/rewrite/rewriteManip.c	94	99	2	-	-
+1312	8	postgresql/src/backend/access/index/istrat.c	379	385	postgresql/src/backend/parser/parse_type.c	136	141	2	-	-
+1325	8	postgresql/src/backend/nodes/readfuncs.c	527	532	postgresql/src/backend/nodes/readfuncs.c	824	829	2	-	-
+1326	8	postgresql/src/backend/nodes/readfuncs.c	747	758	postgresql/src/backend/nodes/readfuncs.c	947	958	2	-	-
+1328	8	postgresql/src/backend/utils/adt/ri_triggers.c	1603	1695	postgresql/src/backend/utils/adt/ri_triggers.c	2016	2106	3	1687	-
+1343	8	postgresql/src/backend/utils/adt/datetime.c	1129	1134	postgresql/src/backend/utils/adt/datetime.c	1543	1548	2	-	-
+1358	8	postgresql/src/backend/utils/adt/formatting.c	2052	2078	postgresql/src/backend/utils/adt/formatting.c	2187	2213	2	-	-
+1362	8	postgresql/src/backend/nodes/readfuncs.c	140	148	postgresql/src/backend/nodes/readfuncs.c	1015	1023	2	-	-
+1369	8	postgresql/src/backend/access/heap/heapam.c	1589	1594	postgresql/src/backend/access/heap/heapam.c	1711	1716	1	-	-
+1375	8	postgresql/src/backend/storage/lmgr/lmgr.c	116	123	postgresql/src/backend/storage/lmgr/lmgr.c	215	222	2	-	-
+1386	8	postgresql/src/backend/utils/adt/ri_triggers.c	1842	1875	postgresql/src/backend/utils/adt/ri_triggers.c	2257	2286	2	-	-
+1396	8	postgresql/src/backend/nodes/equalfuncs.c	831	841	postgresql/src/backend/nodes/equalfuncs.c	937	947	2	-	-
+1402	8	postgresql/src/backend/nodes/equalfuncs.c	446	496	postgresql/src/backend/nodes/equalfuncs.c	1029	1039	3	448, 452, 456, 458, 460, 462, 464	1031
+1416	8	postgresql/src/backend/utils/fmgr/fmgr.c	617	622	postgresql/src/backend/utils/fmgr/fmgr.c	962	967	2	-	-
+1417	8	postgresql/src/backend/nodes/readfuncs.c	124	131	postgresql/src/backend/nodes/readfuncs.c	142	149	2	-	-
+1427	8	postgresql/src/backend/utils/adt/geo_ops.c	2508	2524	postgresql/src/backend/utils/adt/geo_ops.c	2525	2541	2	-	-
+1431	8	postgresql/src/backend/utils/adt/date.c	765	773	postgresql/src/backend/utils/adt/date.c	774	782	2	-	-
+1441	8	postgresql/src/backend/utils/cache/lsyscache.c	343	356	postgresql/src/backend/utils/cache/lsyscache.c	362	375	2	-	-
+1446	8	postgresql/src/backend/catalog/pg_aggregate.c	108	114	postgresql/src/backend/catalog/pg_operator.c	517	523	2	-	-
+1452	8	postgresql/src/backend/optimizer/util/clauses.c	1659	1665	postgresql/src/backend/optimizer/util/clauses.c	1755	1762	3	-	-
+1455	8	postgresql/src/backend/nodes/equalfuncs.c	446	496	postgresql/src/backend/nodes/equalfuncs.c	599	609	3	-	-
+1468	8	postgresql/src/backend/catalog/pg_type.c	422	427	postgresql/src/backend/commands/vacuum.c	403	409	2	-	-
+1482	8	postgresql/src/backend/optimizer/util/clauses.c	318	325	postgresql/src/backend/rewrite/rewriteManip.c	70	77	2	-	-
+1483	8	postgresql/src/backend/nodes/equalfuncs.c	619	625	postgresql/src/backend/nodes/equalfuncs.c	1076	1082	2	-	-
+1516	8	postgresql/src/backend/nodes/equalfuncs.c	347	359	postgresql/src/backend/nodes/equalfuncs.c	517	529	3	349	-
+1523	8	postgresql/src/backend/utils/adt/geo_ops.c	987	994	postgresql/src/backend/utils/adt/geo_ops.c	1032	1039	2	-	-
+1538	8	postgresql/src/backend/utils/adt/timestamp.c	1562	1571	postgresql/src/backend/utils/adt/timestamp.c	1911	1920	1	-	-
+1540	8	postgresql/src/backend/nodes/readfuncs.c	845	863	postgresql/src/backend/nodes/readfuncs.c	1162	1188	3	853, 856	1170, 1173, 1176, 1178, 1181
+1552	8	postgresql/src/backend/nodes/outfuncs.c	85	92	postgresql/src/backend/nodes/outfuncs.c	258	265	2	-	-
+1554	8	postgresql/src/backend/parser/gram.c	8692	8703	postgresql/src/backend/parser/gram.c	8756	8767	2	-	-
+1560	8	postgresql/src/backend/nodes/readfuncs.c	513	519	postgresql/src/backend/nodes/readfuncs.c	1298	1304	2	-	-
+1567	8	postgresql/src/backend/optimizer/util/clauses.c	1676	1683	postgresql/src/backend/optimizer/util/clauses.c	1755	1762	2	-	-
+1579	8	postgresql/src/backend/nodes/copyfuncs.c	1644	1651	postgresql/src/backend/nodes/copyfuncs.c	1715	1720	3	-	-
+1580	8	postgresql/src/backend/catalog/index.c	257	262	postgresql/src/backend/utils/adt/ruleutils.c	2080	2085	2	-	-
+1584	8	postgresql/src/backend/nodes/equalfuncs.c	37	54	postgresql/src/backend/nodes/equalfuncs.c	426	442	3	54	442
+1595	8	postgresql/src/backend/nodes/equalfuncs.c	647	656	postgresql/src/backend/nodes/equalfuncs.c	1194	1203	2	-	-
+1604	8	postgresql/src/backend/access/gist/gist.c	160	182	postgresql/src/backend/access/rtree/rtree.c	115	137	1	-	-
+1610	8	postgresql/src/backend/nodes/equalfuncs.c	474	479	postgresql/src/backend/nodes/equalfuncs.c	501	506	2	-	-
+1611	8	postgresql/src/backend/nodes/equalfuncs.c	584	598	postgresql/src/backend/nodes/equalfuncs.c	897	929	3	-	-
+1627	8	postgresql/src/backend/executor/nodeMergejoin.c	135	140	postgresql/src/backend/optimizer/plan/subselect.c	224	229	2	-	-
+1630	8	postgresql/src/backend/parser/gram.c	6305	6310	postgresql/src/backend/parser/gram.c	6736	6741	2	-	-
+1637	8	postgresql/src/backend/optimizer/util/clauses.c	1624	1630	postgresql/src/backend/optimizer/util/clauses.c	1638	1651	3	-	-
+1638	8	postgresql/src/backend/commands/trigger.c	639	644	postgresql/src/backend/nodes/equalfuncs.c	1230	1235	2	-	-
+1647	8	postgresql/src/backend/parser/gram.c	5944	5950	postgresql/src/backend/parser/gram.c	6070	6077	3	-	6073
+1649	8	postgresql/src/backend/commands/command.c	1243	1253	postgresql/src/backend/commands/trigger.c	312	318	2	-	-
+1664	8	postgresql/src/backend/optimizer/util/clauses.c	1659	1665	postgresql/src/backend/optimizer/util/clauses.c	1698	1709	2	-	-
+1674	8	postgresql/src/backend/nodes/equalfuncs.c	771	781	postgresql/src/backend/nodes/equalfuncs.c	831	841	3	-	-
+1680	8	postgresql/src/backend/nodes/equalfuncs.c	720	725	postgresql/src/backend/nodes/equalfuncs.c	1152	1157	2	-	-
+1684	8	postgresql/src/backend/utils/adt/ri_triggers.c	1379	1404	postgresql/src/backend/utils/adt/ri_triggers.c	1554	1579	2	-	-
+1689	8	postgresql/src/backend/libpq/md5.c	104	136	postgresql/src/backend/libpq/md5.c	138	170	2	-	-
+1699	8	postgresql/src/backend/optimizer/path/joinrels.c	308	313	postgresql/src/backend/optimizer/path/joinrels.c	314	319	2	-	-
+1700	8	postgresql/src/backend/rewrite/rewriteManip.c	505	512	postgresql/src/backend/rewrite/rewriteManip.c	514	521	2	-	-
+1703	8	postgresql/src/backend/storage/lmgr/lock.c	243	254	postgresql/src/backend/storage/lmgr/lock.c	260	271	2	-	-
+1704	8	postgresql/src/backend/commands/user.c	516	525	postgresql/src/backend/commands/user.c	897	906	2	-	-
+1713	8	postgresql/src/backend/nodes/equalfuncs.c	571	583	postgresql/src/backend/nodes/equalfuncs.c	1211	1217	3	577, 579, 581	-
+1726	8	postgresql/src/backend/utils/adt/varchar.c	709	717	postgresql/src/backend/utils/adt/varlena.c	870	878	2	-	-
+1734	8	postgresql/src/backend/parser/analyze.c	2299	2307	postgresql/src/backend/utils/cache/lsyscache.c	403	410	2	-	-
+1742	8	postgresql/src/backend/utils/adt/varlena.c	818	829	postgresql/src/backend/utils/adt/varlena.c	857	868	2	-	-
+1744	8	postgresql/src/backend/utils/adt/ri_triggers.c	1265	1310	postgresql/src/backend/utils/adt/ri_triggers.c	1440	1485	2	-	-
+1752	8	postgresql/src/backend/parser/gram.c	6323	6328	postgresql/src/backend/parser/gram.c	7947	7952	2	-	-
+1756	8	postgresql/src/backend/nodes/equalfuncs.c	1115	1121	postgresql/src/backend/nodes/equalfuncs.c	1262	1268	3	-	1266
+1758	8	postgresql/src/backend/nodes/readfuncs.c	135	141	postgresql/src/backend/nodes/readfuncs.c	1181	1187	2	-	-
+1773	8	postgresql/src/backend/parser/gram.c	8892	8897	postgresql/src/backend/parser/gram.c	8898	8903	2	-	-
+1785	8	postgresql/src/backend/commands/trigger.c	637	642	postgresql/src/backend/nodes/equalfuncs.c	176	181	2	-	-
+1792	8	postgresql/src/backend/nodes/copyfuncs.c	1215	1223	postgresql/src/backend/nodes/copyfuncs.c	1644	1651	3	1220	-
+1794	8	postgresql/src/backend/catalog/pg_aggregate.c	134	142	postgresql/src/backend/catalog/pg_operator.c	495	503	2	-	-
+1795	8	postgresql/src/backend/nodes/equalfuncs.c	741	748	postgresql/src/backend/nodes/equalfuncs.c	899	906	2	-	-
+1803	8	postgresql/src/backend/nodes/equalfuncs.c	88	95	postgresql/src/backend/utils/adt/ruleutils.c	1214	1221	2	-	-
+1804	8	postgresql/src/backend/access/hash/hash.c	224	234	postgresql/src/backend/access/hash/hash.c	270	280	2	-	-
+1813	8	postgresql/src/backend/nodes/readfuncs.c	224	233	postgresql/src/backend/nodes/readfuncs.c	581	590	2	-	-
+1820	8	postgresql/src/backend/nodes/copyfuncs.c	1499	1508	postgresql/src/backend/nodes/copyfuncs.c	1525	1530	3	1502, 1503	-
+1830	8	postgresql/src/backend/nodes/equalfuncs.c	536	545	postgresql/src/backend/nodes/equalfuncs.c	692	701	2	-	-
+1841	8	postgresql/src/backend/nodes/readfuncs.c	521	526	postgresql/src/backend/nodes/readfuncs.c	527	532	2	-	-
+1849	8	postgresql/src/backend/utils/adt/varchar.c	641	656	postgresql/src/backend/utils/adt/varlena.c	784	800	3	653	784, 797
+1852	8	postgresql/src/backend/utils/time/tqual.c	264	306	postgresql/src/backend/utils/time/tqual.c	443	482	2	-	-
+1854	8	postgresql/src/backend/utils/adt/date.c	408	498	postgresql/src/backend/utils/adt/timestamp.c	722	813	2	-	-
+1860	8	postgresql/src/backend/access/hash/hash.c	224	231	postgresql/src/backend/access/nbtree/nbtree.c	375	382	2	-	-
+1876	8	postgresql/src/backend/access/heap/heapam.c	1831	1850	postgresql/src/backend/access/nbtree/nbtree.c	833	852	2	-	-
+1880	8	postgresql/src/backend/nodes/readfuncs.c	724	735	postgresql/src/backend/nodes/readfuncs.c	1298	1309	2	-	-
+1904	8	postgresql/src/backend/nodes/equalfuncs.c	266	271	postgresql/src/backend/nodes/equalfuncs.c	603	608	2	-	-
+1907	8	postgresql/src/backend/utils/adt/numeric.c	528	536	postgresql/src/backend/utils/adt/numeric.c	555	563	2	-	-
+1914	8	postgresql/src/backend/commands/indexcmds.c	432	441	postgresql/src/backend/commands/indexcmds.c	463	472	2	-	-
+1924	8	postgresql/src/backend/bootstrap/bootparse.c	899	1069	postgresql/src/backend/parser/gram.c	11203	11373	2	-	-
+1925	8	postgresql/src/backend/nodes/equalfuncs.c	1085	1090	postgresql/src/backend/nodes/equalfuncs.c	1222	1227	2	-	-
+1936	8	postgresql/src/backend/nodes/equalfuncs.c	174	189	postgresql/src/backend/nodes/equalfuncs.c	897	929	3	-	-
+1939	8	postgresql/src/backend/utils/adt/varchar.c	514	526	postgresql/src/backend/utils/adt/varchar.c	670	682	3	521, 522, 526	677, 678, 682
+1960	8	postgresql/src/backend/nodes/copyfuncs.c	1270	1276	postgresql/src/backend/nodes/copyfuncs.c	1319	1325	2	-	-
+1971	8	postgresql/src/backend/nodes/equalfuncs.c	39	44	postgresql/src/backend/nodes/equalfuncs.c	90	95	2	-	-
+1980	8	postgresql/src/backend/utils/adt/format_type.c	161	173	postgresql/src/backend/utils/adt/format_type.c	174	182	2	-	-
+1984	8	postgresql/src/backend/utils/adt/varlena.c	458	466	postgresql/src/backend/utils/adt/varlena.c	467	475	2	-	-
+1986	8	postgresql/src/backend/catalog/heap.c	735	755	postgresql/src/backend/catalog/heap.c	1515	1529	3	750, 751, 753	1526, 1527
+1998	8	postgresql/src/backend/nodes/equalfuncs.c	84	100	postgresql/src/backend/nodes/equalfuncs.c	979	985	3	-	981
+2010	8	postgresql/src/backend/nodes/equalfuncs.c	84	100	postgresql/src/backend/nodes/equalfuncs.c	220	230	3	-	222
+2011	8	postgresql/src/backend/nodes/equalfuncs.c	446	496	postgresql/src/backend/nodes/equalfuncs.c	1188	1210	3	-	-
+2027	8	postgresql/src/backend/utils/fmgr/fmgr.c	985	996	postgresql/src/backend/utils/fmgr/fmgr.c	1009	1020	2	-	-
+2035	8	postgresql/src/backend/nodes/equalfuncs.c	252	272	postgresql/src/backend/nodes/equalfuncs.c	733	749	3	-	-
+2046	8	postgresql/src/backend/nodes/equalfuncs.c	669	677	postgresql/src/backend/nodes/equalfuncs.c	847	863	3	-	-
+2058	8	postgresql/src/backend/nodes/readfuncs.c	255	260	postgresql/src/backend/nodes/readfuncs.c	540	545	2	-	-
+2059	8	postgresql/src/backend/nodes/readfuncs.c	540	550	postgresql/src/backend/nodes/readfuncs.c	845	855	2	-	-
+2072	8	postgresql/src/backend/nodes/equalfuncs.c	203	219	postgresql/src/backend/nodes/equalfuncs.c	530	570	3	219	570
+2081	8	postgresql/src/backend/libpq/auth.c	569	575	postgresql/src/backend/libpq/auth.c	609	615	2	-	-
+2083	8	postgresql/src/backend/nodes/equalfuncs.c	466	471	postgresql/src/backend/nodes/equalfuncs.c	484	489	2	-	-
+2094	8	postgresql/src/backend/nodes/readfuncs.c	138	144	postgresql/src/backend/nodes/readfuncs.c	199	205	2	-	-
+2099	8	postgresql/src/backend/nodes/readfuncs.c	271	283	postgresql/src/backend/nodes/readfuncs.c	978	988	3	277	-
+2112	8	postgresql/src/backend/utils/adt/geo_ops.c	2338	2350	postgresql/src/backend/utils/adt/varlena.c	467	475	3	2343	472
+2118	8	postgresql/src/backend/parser/gram.c	6329	6346	postgresql/src/backend/parser/gram.c	6718	6735	2	-	-
+2121	8	postgresql/src/backend/nodes/equalfuncs.c	530	570	postgresql/src/backend/nodes/equalfuncs.c	733	749	3	-	-
+2122	8	postgresql/src/backend/executor/execMain.c	172	179	postgresql/src/backend/executor/execMain.c	180	187	2	-	-
+2128	8	postgresql/src/backend/postmaster/pgstat.c	842	852	postgresql/src/backend/postmaster/postmaster.c	598	609	2	-	-
+2133	8	postgresql/src/backend/utils/time/tqual.c	264	286	postgresql/src/backend/utils/time/tqual.c	354	376	2	-	-
+2144	8	postgresql/src/backend/utils/adt/ri_triggers.c	118	158	postgresql/src/backend/utils/adt/ri_triggers.c	1811	1848	3	133, 135, 146, 147	1837
+2149	8	postgresql/src/backend/bootstrap/bootstrap.c	251	266	postgresql/src/backend/postmaster/pgstat.c	842	854	2	-	-
+2159	8	postgresql/src/backend/nodes/equalfuncs.c	690	701	postgresql/src/backend/nodes/equalfuncs.c	1188	1210	3	-	1210
+2162	8	postgresql/src/backend/nodes/readfuncs.c	172	184	postgresql/src/backend/nodes/readfuncs.c	1005	1038	3	-	1013, 1016, 1018, 1020, 1022, 1025, 1028, 1031
+2169	8	postgresql/src/backend/optimizer/plan/planner.c	412	437	postgresql/src/backend/optimizer/plan/planner.c	542	561	3	413, 421, 422, 423, 424, 427, 428, 429, 430	543, 551, 552, 553, 556, 557, 558
+2175	8	postgresql/src/backend/access/gist/gist.c	1168	1186	postgresql/src/backend/access/gist/gist.c	1222	1234	2	-	-
+2184	8	postgresql/src/backend/parser/gram.c	9876	9884	postgresql/src/backend/parser/gram.c	9946	9954	2	-	-
+2199	8	postgresql/src/backend/catalog/heap.c	1680	1685	postgresql/src/backend/commands/trigger.c	336	341	2	-	-
+2203	8	postgresql/src/backend/utils/adt/timestamp.c	1349	1366	postgresql/src/backend/utils/adt/timestamp.c	1389	1406	2	-	-
+2219	8	postgresql/src/backend/utils/adt/ri_triggers.c	118	158	postgresql/src/backend/utils/adt/ri_triggers.c	2016	2055	3	135, 146, 147	2044
+2223	8	postgresql/src/backend/optimizer/util/clauses.c	1698	1709	postgresql/src/backend/optimizer/util/clauses.c	1725	1735	2	-	-
+2230	8	postgresql/src/backend/executor/functions.c	126	132	postgresql/src/backend/parser/analyze.c	2247	2253	2	-	-
+2238	8	postgresql/src/backend/nodes/readfuncs.c	124	130	postgresql/src/backend/nodes/readfuncs.c	134	140	2	-	-
+2242	8	postgresql/src/backend/nodes/equalfuncs.c	252	272	postgresql/src/backend/nodes/equalfuncs.c	831	841	3	-	-
+2252	8	postgresql/src/backend/catalog/heap.c	1388	1397	postgresql/src/backend/catalog/heap.c	1420	1429	2	-	-
+2254	8	postgresql/src/backend/parser/gram.c	5937	5943	postgresql/src/backend/parser/gram.c	9649	9656	2	-	-
+2266	8	postgresql/src/backend/utils/adt/oracle_compat.c	343	351	postgresql/src/backend/utils/adt/oracle_compat.c	466	474	1	-	-
+2278	8	postgresql/src/backend/utils/adt/timestamp.c	662	667	postgresql/src/backend/utils/adt/timestamp.c	978	983	1	-	-
+2279	8	postgresql/src/backend/nodes/equalfuncs.c	393	415	postgresql/src/backend/nodes/equalfuncs.c	714	732	3	-	-
+2307	8	postgresql/src/backend/nodes/readfuncs.c	894	900	postgresql/src/backend/nodes/readfuncs.c	1005	1011	2	-	-
+2308	8	postgresql/src/backend/utils/adt/ri_triggers.c	118	158	postgresql/src/backend/utils/adt/ri_triggers.c	1603	1643	3	135, 146, 147	1619, 1632
+2317	8	postgresql/src/backend/utils/adt/float.c	340	347	postgresql/src/backend/utils/adt/timestamp.c	105	112	3	344, 345, 346, 347	109, 110, 111, 112
+2331	8	postgresql/src/backend/nodes/readfuncs.c	503	533	postgresql/src/backend/nodes/readfuncs.c	1005	1038	3	-	1018, 1025
+2334	8	postgresql/src/backend/nodes/equalfuncs.c	873	879	postgresql/src/backend/nodes/equalfuncs.c	1135	1143	3	-	11
+2345	8	postgresql/src/backend/nodes/readfuncs.c	723	735	postgresql/src/backend/nodes/readfuncs.c	1023	1035	2	-	-
+2350	8	postgresql/src/backend/storage/file/buffile.c	278	289	postgresql/src/backend/utils/sort/logtape.c	581	592	2	-	-
+2357	8	postgresql/src/backend/utils/adt/geo_ops.c	2451	2459	postgresql/src/backend/utils/adt/geo_ops.c	2460	2468	3	2457, 2458	2466, 2467
+2369	8	postgresql/src/backend/commands/user.c	977	985	postgresql/src/backend/rewrite/rewriteDefine.c	397	405	2	-	-
+2372	8	postgresql/src/backend/nodes/readfuncs.c	212	237	postgresql/src/backend/nodes/readfuncs.c	947	973	3	212, 213, 221, 233, 235, 236, 237	947, 948, 949, 952, 958, 962, 970, 972, 973
+2385	8	postgresql/src/backend/nodes/readfuncs.c	978	988	postgresql/src/backend/nodes/readfuncs.c	1328	1338	2	-	-
+2386	8	postgresql/src/backend/utils/adt/geo_ops.c	2595	2608	postgresql/src/backend/utils/adt/geo_ops.c	2609	2622	2	-	-
+2390	8	postgresql/src/backend/utils/fmgr/fmgr.c	566	574	postgresql/src/backend/utils/fmgr/fmgr.c	621	629	2	-	-
+2398	8	postgresql/src/backend/utils/adt/ri_triggers.c	226	239	postgresql/src/backend/utils/adt/ri_triggers.c	1872	1884	3	-	-
+2408	8	postgresql/src/backend/parser/parse_node.c	215	221	postgresql/src/backend/utils/adt/ruleutils.c	307	312	2	-	-
+2420	8	postgresql/src/backend/nodes/copyfuncs.c	1302	1308	postgresql/src/backend/nodes/copyfuncs.c	1542	1548	2	-	-
+2431	8	postgresql/src/backend/nodes/readfuncs.c	790	808	postgresql/src/backend/nodes/readfuncs.c	870	887	3	801, 804	880
+2433	8	postgresql/src/backend/nodes/equalfuncs.c	658	668	postgresql/src/backend/nodes/equalfuncs.c	757	763	3	662, 663	-
+2437	8	postgresql/src/backend/nodes/equalfuncs.c	174	189	postgresql/src/backend/nodes/equalfuncs.c	847	863	3	176	-
+2442	8	postgresql/src/backend/nodes/copyfuncs.c	1188	1194	postgresql/src/backend/nodes/copyfuncs.c	1669	1675	2	-	-
+2451	8	postgresql/src/backend/nodes/equalfuncs.c	847	863	postgresql/src/backend/nodes/equalfuncs.c	1218	1236	3	-	-
+2457	8	postgresql/src/backend/commands/define.c	455	464	postgresql/src/backend/commands/define.c	468	477	3	455, 464	475, 477
+2468	8	postgresql/src/backend/nodes/copyfuncs.c	1170	1177	postgresql/src/backend/nodes/copyfuncs.c	1707	1714	3	-	1712
+2476	8	postgresql/src/backend/commands/copy.c	711	722	postgresql/src/backend/optimizer/util/plancat.c	271	282	2	-	-
+2499	8	postgresql/src/backend/nodes/equalfuncs.c	252	272	postgresql/src/backend/nodes/equalfuncs.c	446	496	3	-	-
+2501	8	postgresql/src/backend/access/nbtree/nbtree.c	502	509	postgresql/src/backend/access/rtree/rtree.c	975	982	2	-	-
+2514	8	postgresql/src/backend/commands/variable.c	551	562	postgresql/src/backend/commands/variable.c	576	587	2	-	-
+2524	8	postgresql/src/backend/utils/adt/date.c	1094	1100	postgresql/src/backend/utils/adt/date.c	1133	1139	2	-	-
+2529	8	postgresql/src/backend/utils/adt/float.c	583	588	postgresql/src/backend/utils/adt/float.c	632	637	2	-	-
+2533	8	postgresql/src/backend/nodes/equalfuncs.c	37	54	postgresql/src/backend/nodes/equalfuncs.c	84	100	3	45	-
+2534	8	postgresql/src/backend/utils/adt/like.c	246	267	postgresql/src/backend/utils/adt/like.c	268	289	2	-	-
+2543	8	postgresql/src/backend/utils/adt/date.c	290	296	postgresql/src/backend/utils/adt/varbit.c	41	47	2	-	-
+2557	8	postgresql/src/backend/access/gist/gist.c	176	182	postgresql/src/backend/access/nbtree/nbtree.c	154	160	1	-	-
+2573	8	postgresql/src/backend/utils/adt/formatting.c	911	916	postgresql/src/backend/utils/adt/formatting.c	917	922	2	-	-
+2584	8	postgresql/src/backend/utils/adt/bool.c	132	138	postgresql/src/backend/utils/adt/bool.c	139	145	2	-	-
+2589	8	postgresql/src/backend/utils/adt/numeric.c	555	563	postgresql/src/backend/utils/adt/varbit.c	438	446	2	-	-
+2599	8	postgresql/src/backend/nodes/copyfuncs.c	169	177	postgresql/src/backend/nodes/copyfuncs.c	273	281	2	-	-
+2605	8	postgresql/src/backend/nodes/equalfuncs.c	190	202	postgresql/src/backend/nodes/equalfuncs.c	571	583	2	-	-
+2615	8	postgresql/src/backend/utils/adt/float.c	935	948	postgresql/src/backend/utils/adt/float.c	952	965	2	-	-
+2621	8	postgresql/src/backend/utils/adt/geo_ops.c	2242	2254	postgresql/src/backend/utils/adt/geo_ops.c	2278	2290	3	2247	2283
+2628	8	postgresql/src/backend/utils/adt/pgstatfuncs.c	49	59	postgresql/src/backend/utils/adt/pgstatfuncs.c	211	221	2	-	-
+2637	8	postgresql/src/backend/utils/adt/varlena.c	212	237	postgresql/src/backend/utils/adt/varlena.c	516	541	2	-	-
+2644	8	postgresql/src/backend/utils/adt/geo_ops.c	2260	2272	postgresql/src/backend/utils/adt/geo_ops.c	2296	2308	3	2265	2301
+2651	8	postgresql/src/backend/utils/adt/pgstatfuncs.c	71	81	postgresql/src/backend/utils/adt/pgstatfuncs.c	178	188	2	-	-
+2660	8	postgresql/src/backend/utils/adt/geo_ops.c	2338	2350	postgresql/src/backend/utils/adt/numeric.c	537	545	3	2340, 2341, 2343	539, 540, 542
+2665	8	postgresql/src/backend/nodes/list.c	410	417	postgresql/src/backend/nodes/list.c	421	428	2	-	-
+2679	8	postgresql/src/backend/utils/adt/varbit.c	447	455	postgresql/src/backend/utils/adt/varlena.c	449	457	2	-	-
+2691	8	postgresql/src/backend/storage/lmgr/lmgr.c	165	172	postgresql/src/backend/storage/lmgr/lmgr.c	226	233	3	166	227
+2704	8	postgresql/src/backend/utils/adt/nabstime.c	1094	1103	postgresql/src/backend/utils/adt/nabstime.c	1114	1123	2	-	-
+2717	8	postgresql/src/backend/utils/cache/lsyscache.c	477	490	postgresql/src/backend/utils/cache/lsyscache.c	497	510	2	-	-
+2744	8	postgresql/src/backend/utils/adt/float.c	348	355	postgresql/src/backend/utils/adt/float.c	1207	1214	2	-	-
+2756	8	postgresql/src/backend/nodes/list.c	237	244	postgresql/src/backend/nodes/list.c	245	252	2	-	-
+2768	8	postgresql/src/backend/utils/adt/nabstime.c	1014	1031	postgresql/src/backend/utils/adt/nabstime.c	1032	1049	2	-	-
+2792	8	postgresql/src/backend/nodes/equalfuncs.c	669	677	postgresql/src/backend/nodes/equalfuncs.c	864	872	3	-	-
+5426	8	postgresql/src/backend/parser/gram.c	5930	5936	postgresql/src/backend/parser/gram.c	6045	6051	2	-	-
+5440	8	postgresql/src/backend/utils/adt/ri_triggers.c	152	158	postgresql/src/backend/utils/adt/ri_triggers.c	426	432	2	-	-
+5470	8	postgresql/src/backend/nodes/equalfuncs.c	584	598	postgresql/src/backend/nodes/equalfuncs.c	733	749	3	-	-
+5481	8	postgresql/src/backend/utils/adt/arrayfuncs.c	668	678	postgresql/src/backend/utils/adt/arrayfuncs.c	759	769	2	-	-
+5483	8	postgresql/src/backend/access/heap/heapam.c	1533	1542	postgresql/src/backend/access/heap/heapam.c	1649	1658	2	-	-
+5492	8	postgresql/src/backend/parser/gram.c	6045	6051	postgresql/src/backend/parser/gram.c	10139	10145	2	-	-
+5495	8	postgresql/src/backend/utils/fmgr/fmgr.c	733	740	postgresql/src/backend/utils/fmgr/fmgr.c	750	757	2	-	-
+5499	8	postgresql/src/backend/nodes/equalfuncs.c	365	375	postgresql/src/backend/nodes/equalfuncs.c	446	496	3	367	452, 456, 458, 460, 462, 464
+5509	8	postgresql/src/backend/utils/cache/syscache.c	145	153	postgresql/src/backend/utils/cache/syscache.c	208	216	2	-	-
+5518	8	postgresql/src/backend/nodes/readfuncs.c	105	122	postgresql/src/backend/nodes/readfuncs.c	515	532	2	-	-
+5539	8	postgresql/src/backend/nodes/readfuncs.c	773	781	postgresql/src/backend/nodes/readfuncs.c	1300	1308	2	-	-
+5554	8	postgresql/src/backend/nodes/equalfuncs.c	182	187	postgresql/src/backend/nodes/equalfuncs.c	1198	1203	2	-	-
+5558	8	postgresql/src/backend/utils/adt/float.c	601	608	postgresql/src/backend/utils/adt/float.c	612	619	2	-	-
+5564	8	postgresql/src/backend/nodes/equalfuncs.c	299	310	postgresql/src/backend/nodes/equalfuncs.c	690	697	2	-	-
+5568	8	postgresql/src/backend/nodes/equalfuncs.c	347	359	postgresql/src/backend/nodes/equalfuncs.c	416	422	3	349, 351	-
+5569	8	postgresql/src/backend/nodes/equalfuncs.c	921	926	postgresql/src/backend/nodes/equalfuncs.c	1204	1209	2	-	-
+5579	8	postgresql/src/backend/utils/cache/lsyscache.c	79	84	postgresql/src/backend/utils/sort/tuplesort.c	1675	1680	2	-	-
+5585	8	postgresql/src/backend/catalog/pg_operator.c	650	655	postgresql/src/backend/catalog/pg_operator.c	785	790	2	-	-
+5591	8	postgresql/src/backend/nodes/readfuncs.c	503	533	postgresql/src/backend/nodes/readfuncs.c	1069	1101	3	511, 514, 517, 520, 523, 526	1077, 1080, 1083, 1085, 1087, 1089, 1092, 1094
+5595	8	postgresql/src/backend/parser/gram.c	7312	7321	postgresql/src/backend/parser/gram.c	7322	7331	2	-	-
+5614	8	postgresql/src/backend/access/nbtree/nbtstrat.c	23	29	postgresql/src/backend/access/nbtree/nbtstrat.c	37	43	2	-	-
+5615	8	postgresql/src/backend/access/gist/gistget.c	257	275	postgresql/src/backend/access/rtree/rtget.c	209	227	2	-	-
+5617	8	postgresql/src/backend/storage/large_object/inv_api.c	245	257	postgresql/src/backend/storage/large_object/inv_api.c	337	349	2	-	-
+5618	8	postgresql/src/backend/utils/adt/nabstime.c	892	897	postgresql/src/backend/utils/adt/nabstime.c	913	918	2	-	-
+5629	8	postgresql/src/backend/nodes/equalfuncs.c	901	906	postgresql/src/backend/nodes/equalfuncs.c	1163	1168	2	-	-
+5631	8	postgresql/src/backend/nodes/readfuncs.c	172	179	postgresql/src/backend/nodes/readfuncs.c	815	822	2	-	-
+5634	8	postgresql/src/backend/utils/adt/ri_triggers.c	784	814	postgresql/src/backend/utils/adt/ri_triggers.c	944	974	2	-	-
+5647	8	postgresql/src/backend/nodes/equalfuncs.c	462	471	postgresql/src/backend/nodes/equalfuncs.c	573	582	2	-	-
+5661	8	postgresql/src/backend/nodes/equalfuncs.c	395	406	postgresql/src/backend/nodes/equalfuncs.c	790	795	2	-	-
+5662	8	postgresql/src/backend/nodes/equalfuncs.c	252	272	postgresql/src/backend/nodes/equalfuncs.c	1122	1134	3	-	-
+5663	8	postgresql/src/backend/nodes/equalfuncs.c	790	795	postgresql/src/backend/nodes/equalfuncs.c	1190	1195	2	-	-
+5672	8	postgresql/src/backend/nodes/equalfuncs.c	448	453	postgresql/src/backend/nodes/equalfuncs.c	707	712	2	-	-
+5674	8	postgresql/src/backend/nodes/equalfuncs.c	1076	1082	postgresql/src/backend/nodes/equalfuncs.c	1262	1268	3	-	1266
+5679	8	postgresql/src/backend/nodes/outfuncs.c	605	611	postgresql/src/backend/nodes/outfuncs.c	1018	1024	2	-	-
+5693	8	postgresql/src/backend/nodes/equalfuncs.c	817	825	postgresql/src/backend/nodes/equalfuncs.c	1040	1046	3	-	1042
+5699	8	postgresql/src/backend/nodes/readfuncs.c	124	129	postgresql/src/backend/nodes/readfuncs.c	1221	1226	2	-	-
+5707	8	postgresql/src/backend/utils/adt/datetime.c	2142	2147	postgresql/src/backend/utils/adt/datetime.c	2154	2159	2	-	-
+5719	8	postgresql/src/backend/commands/user.c	259	293	postgresql/src/backend/commands/user.c	713	742	2	-	-
+5722	8	postgresql/src/backend/nodes/copyfuncs.c	1215	1223	postgresql/src/backend/nodes/copyfuncs.c	1519	1524	3	1220, 1221, 1222	-
+5730	8	postgresql/src/backend/nodes/equalfuncs.c	544	549	postgresql/src/backend/nodes/equalfuncs.c	833	838	2	-	-
+5737	8	postgresql/src/backend/nodes/equalfuncs.c	77	82	postgresql/src/backend/nodes/equalfuncs.c	554	559	2	-	-
+5739	8	postgresql/src/backend/access/transam/xact.c	1186	1200	postgresql/src/backend/access/transam/xact.c	1345	1358	3	1187	-
+5752	8	postgresql/src/backend/access/rtree/rtstrat.c	47	56	postgresql/src/backend/access/rtree/rtstrat.c	69	78	2	-	-
+5755	8	postgresql/src/backend/parser/gram.c	6341	6346	postgresql/src/backend/parser/gram.c	7989	7994	2	-	-
+5775	8	postgresql/src/backend/optimizer/util/clauses.c	1659	1665	postgresql/src/backend/optimizer/util/clauses.c	1684	1690	2	-	-
+5778	8	postgresql/src/backend/utils/adt/varlena.c	818	830	postgresql/src/backend/utils/adt/varlena.c	857	869	3	830	869
+5784	8	postgresql/src/backend/nodes/equalfuncs.c	497	507	postgresql/src/backend/nodes/equalfuncs.c	1159	1171	3	-	1161, 1162
+5785	8	postgresql/src/backend/utils/adt/ri_triggers.c	735	885	postgresql/src/backend/utils/adt/ri_triggers.c	892	1071	3	745, 746, 824, 837, 847, 854	899, 903, 904, 945, 978, 979, 980, 993, 1006, 1008, 1009, 1013, 1014, 1015, 1017, 1020, 1021, 1025, 1032, 1033, 1034, 1035, 1036, 1037, 1038, 1039, 1040
+5796	8	postgresql/src/backend/catalog/pg_operator.c	750	760	postgresql/src/backend/catalog/pg_operator.c	769	779	1	-	-
+5805	8	postgresql/src/backend/nodes/readfuncs.c	963	971	postgresql/src/backend/nodes/readfuncs.c	1015	1023	2	-	-
+5806	8	postgresql/src/backend/commands/async.c	174	186	postgresql/src/backend/commands/async.c	244	259	3	183	253
+5810	8	postgresql/src/backend/access/transam/xlog.c	685	692	postgresql/src/backend/access/transam/xlog.c	731	736	2	-	-
+5827	8	postgresql/src/backend/nodes/equalfuncs.c	458	463	postgresql/src/backend/nodes/equalfuncs.c	1230	1235	2	-	-
+5828	8	postgresql/src/backend/nodes/equalfuncs.c	1029	1039	postgresql/src/backend/nodes/equalfuncs.c	1218	1236	3	1031	1230, 1232, 1234
+5842	8	postgresql/src/backend/bootstrap/bootstrap.c	251	266	postgresql/src/backend/tcop/postgres.c	1130	1155	3	-	-
+5848	8	postgresql/src/backend/nodes/equalfuncs.c	508	513	postgresql/src/backend/nodes/equalfuncs.c	1135	1140	2	-	-
+5858	8	postgresql/src/backend/commands/comment.c	377	385	postgresql/src/backend/commands/comment.c	449	457	2	-	-
+5870	8	postgresql/src/backend/nodes/equalfuncs.c	292	298	postgresql/src/backend/nodes/equalfuncs.c	416	422	3	294	-
+5883	8	postgresql/src/backend/utils/adt/timestamp.c	820	826	postgresql/src/backend/utils/adt/timestamp.c	827	833	2	-	-
+5887	8	postgresql/src/backend/nodes/copyfuncs.c	1188	1194	postgresql/src/backend/nodes/copyfuncs.c	1381	1388	3	1193	-
+5888	8	postgresql/src/backend/nodes/equalfuncs.c	88	93	postgresql/src/backend/nodes/equalfuncs.c	921	926	2	-	-
+5899	8	postgresql/src/backend/commands/comment.c	266	273	postgresql/src/backend/commands/comment.c	274	281	2	-	-
+5903	8	postgresql/src/backend/nodes/readfuncs.c	503	519	postgresql/src/backend/nodes/readfuncs.c	650	666	2	-	-
+5909	8	postgresql/src/backend/parser/parse_type.c	152	157	postgresql/src/backend/utils/sort/tuplesort.c	1691	1697	2	-	-
+5920	8	postgresql/src/backend/nodes/readfuncs.c	178	184	postgresql/src/backend/nodes/readfuncs.c	881	887	2	-	-
+5933	8	postgresql/src/backend/nodes/equalfuncs.c	521	528	postgresql/src/backend/nodes/equalfuncs.c	1194	1201	2	-	-
+5944	8	postgresql/src/backend/utils/fmgr/fmgr.c	978	990	postgresql/src/backend/utils/fmgr/fmgr.c	1025	1037	2	-	-
+5951	8	postgresql/src/backend/nodes/equalfuncs.c	180	185	postgresql/src/backend/nodes/equalfuncs.c	448	453	2	-	-
+5957	8	postgresql/src/backend/executor/nodeIndexscan.c	124	140	postgresql/src/backend/executor/nodeTidscan.c	99	115	2	-	-
+5960	8	postgresql/src/backend/nodes/equalfuncs.c	741	746	postgresql/src/backend/nodes/equalfuncs.c	1085	1090	2	-	-
+5968	8	postgresql/src/backend/utils/adt/varchar.c	670	678	postgresql/src/backend/utils/adt/varlena.c	784	792	2	-	-
+5971	8	postgresql/src/backend/nodes/equalfuncs.c	930	935	postgresql/src/backend/nodes/equalfuncs.c	1218	1223	2	-	-
+5977	8	postgresql/src/backend/nodes/equalfuncs.c	266	271	postgresql/src/backend/nodes/equalfuncs.c	436	441	2	-	-
+5978	8	postgresql/src/backend/nodes/readfuncs.c	155	167	postgresql/src/backend/nodes/readfuncs.c	344	356	3	-	350
+5984	8	postgresql/src/backend/optimizer/util/clauses.c	1624	1630	postgresql/src/backend/optimizer/util/clauses.c	1698	1709	2	-	-
+6001	8	postgresql/src/backend/nodes/equalfuncs.c	224	229	postgresql/src/backend/utils/adt/ruleutils.c	1216	1221	2	-	-
+6014	8	postgresql/src/backend/nodes/equalfuncs.c	454	465	postgresql/src/backend/nodes/equalfuncs.c	1198	1209	2	-	-
+6015	8	postgresql/src/backend/utils/cache/syscache.c	199	207	postgresql/src/backend/utils/cache/syscache.c	253	261	2	-	-
+6017	8	postgresql/src/backend/access/common/printtup.c	37	43	postgresql/src/backend/utils/cache/lsyscache.c	418	424	2	-	-
+6019	8	postgresql/src/backend/nodes/copyfuncs.c	1367	1374	postgresql/src/backend/nodes/copyfuncs.c	1381	1388	2	-	-
+6035	8	postgresql/src/backend/utils/adt/date.c	968	981	postgresql/src/backend/utils/adt/timestamp.c	1290	1303	2	-	-
+6041	8	postgresql/src/backend/nodes/readfuncs.c	632	643	postgresql/src/backend/nodes/readfuncs.c	989	1000	3	639, 642	997, 999
+6046	8	postgresql/src/backend/nodes/equalfuncs.c	464	471	postgresql/src/backend/nodes/equalfuncs.c	1239	1246	2	-	-
+6053	8	postgresql/src/backend/nodes/equalfuncs.c	39	44	postgresql/src/backend/nodes/equalfuncs.c	86	91	2	-	-
+6067	8	postgresql/src/backend/utils/adt/oid.c	223	236	postgresql/src/backend/utils/adt/timestamp.c	1370	1383	3	225, 232	1372, 1379
+6073	8	postgresql/src/backend/nodes/equalfuncs.c	542	547	postgresql/src/backend/nodes/equalfuncs.c	1241	1246	2	-	-
+6080	8	postgresql/src/backend/nodes/equalfuncs.c	264	271	postgresql/src/backend/nodes/equalfuncs.c	645	652	2	-	-
+6093	8	postgresql/src/backend/executor/execQual.c	1062	1067	postgresql/src/backend/executor/execQual.c	1117	1122	2	-	-
+6097	8	postgresql/src/backend/nodes/equalfuncs.c	536	543	postgresql/src/backend/nodes/equalfuncs.c	575	582	2	-	-
+6110	8	postgresql/src/backend/nodes/equalfuncs.c	643	657	postgresql/src/backend/nodes/equalfuncs.c	1122	1134	3	-	-
+6116	8	postgresql/src/backend/utils/fmgr/fmgr.c	551	558	postgresql/src/backend/utils/fmgr/fmgr.c	567	574	2	-	-
+6124	8	postgresql/src/backend/nodes/equalfuncs.c	538	545	postgresql/src/backend/nodes/equalfuncs.c	1031	1038	2	-	-
+6137	8	postgresql/src/backend/utils/fmgr/fmgr.c	890	896	postgresql/src/backend/utils/fmgr/fmgr.c	1066	1072	2	-	-
+6141	8	postgresql/src/backend/nodes/equalfuncs.c	993	1001	postgresql/src/backend/nodes/equalfuncs.c	1106	1114	2	-	-
+6142	8	postgresql/src/backend/executor/functions.c	136	142	postgresql/src/backend/optimizer/plan/subselect.c	345	350	2	-	-
+6147	8	postgresql/src/backend/executor/execMain.c	172	179	postgresql/src/backend/executor/execMain.c	191	198	2	-	-
+6149	8	postgresql/src/backend/nodes/equalfuncs.c	45	50	postgresql/src/backend/nodes/equalfuncs.c	560	565	2	-	-
+6153	8	postgresql/src/backend/nodes/copyfuncs.c	1170	1177	postgresql/src/backend/nodes/copyfuncs.c	1567	1572	3	1175, 1176	-
+6163	8	postgresql/src/backend/nodes/equalfuncs.c	645	652	postgresql/src/backend/nodes/equalfuncs.c	737	744	2	-	-
+6164	8	postgresql/src/backend/utils/adt/geo_ops.c	1024	1031	postgresql/src/backend/utils/adt/geo_ops.c	1059	1066	2	-	-
+6174	8	postgresql/src/backend/utils/adt/numeric.c	815	827	postgresql/src/backend/utils/adt/numeric.c	993	1005	2	-	-
+6182	8	postgresql/src/backend/tcop/fastpath.c	145	153	postgresql/src/backend/utils/cache/lsyscache.c	525	532	2	-	-
+6188	8	postgresql/src/backend/storage/smgr/smgr.c	119	127	postgresql/src/backend/storage/smgr/smgr.c	422	430	2	-	-
+6191	8	postgresql/src/backend/nodes/equalfuncs.c	77	82	postgresql/src/backend/nodes/equalfuncs.c	211	216	2	-	-
+6198	8	postgresql/src/backend/utils/adt/ri_triggers.c	1259	1428	postgresql/src/backend/utils/adt/ri_triggers.c	1435	1596	3	1344, 1345, 1346, 1377, 1378, 1405, 1409, 1410, 1411, 1412, 1413, 1414	1540, 1541, 1547, 1548, 1549, 1550
+6216	8	postgresql/src/backend/utils/fmgr/fmgr.c	773	783	postgresql/src/backend/utils/fmgr/fmgr.c	794	804	2	-	-
+6233	8	postgresql/src/backend/utils/adt/numeric.c	158	164	postgresql/src/backend/utils/adt/varbit.c	41	47	2	-	-
+6239	8	postgresql/src/backend/nodes/readfuncs.c	522	533	postgresql/src/backend/nodes/readfuncs.c	876	887	2	-	-
+6240	8	postgresql/src/backend/nodes/readfuncs.c	690	701	postgresql/src/backend/nodes/readfuncs.c	1026	1037	2	-	-
+6250	8	postgresql/src/backend/utils/fmgr/fmgr.c	717	723	postgresql/src/backend/utils/fmgr/fmgr.c	831	837	2	-	-
+6258	8	postgresql/src/backend/commands/trigger.c	637	644	postgresql/src/backend/nodes/equalfuncs.c	222	229	2	-	-
+6260	8	postgresql/src/backend/utils/adt/like.c	425	484	postgresql/src/backend/utils/adt/like_match.h	131	190	2	-	-
+6265	8	postgresql/src/backend/nodes/equalfuncs.c	960	966	postgresql/src/backend/nodes/equalfuncs.c	993	1001	3	-	997, 998
+6275	8	postgresql/src/backend/catalog/pg_operator.c	517	523	postgresql/src/backend/commands/comment.c	497	503	2	-	-
+6278	8	postgresql/src/backend/executor/nodeSetOp.c	213	242	postgresql/src/backend/executor/nodeUnique.c	127	156	2	-	-
+6282	8	postgresql/src/backend/nodes/readfuncs.c	576	585	postgresql/src/backend/nodes/readfuncs.c	747	756	2	-	-
+6287	8	postgresql/src/backend/commands/user.c	877	907	postgresql/src/backend/commands/user.c	956	986	1	-	-
+6291	8	postgresql/src/backend/nodes/equalfuncs.c	630	635	postgresql/src/backend/nodes/equalfuncs.c	919	924	2	-	-
+6296	8	postgresql/src/backend/nodes/equalfuncs.c	873	879	postgresql/src/backend/nodes/equalfuncs.c	1115	1121	2	-	-
+6306	8	postgresql/src/backend/utils/adt/datetime.c	2579	2587	postgresql/src/backend/utils/adt/datetime.c	2632	2640	2	-	-
+6317	8	postgresql/src/backend/utils/adt/timestamp.c	1012	1020	postgresql/src/backend/utils/adt/timestamp.c	1021	1029	3	1018, 1019	1027, 1028
+6318	8	postgresql/src/backend/utils/fmgr/fmgr.c	545	558	postgresql/src/backend/utils/fmgr/fmgr.c	559	574	3	546	560, 561
+6323	8	postgresql/src/backend/utils/adt/varlena.c	458	466	postgresql/src/backend/utils/adt/varlena.c	476	484	3	463	481
+6327	8	postgresql/src/backend/access/hash/hashovfl.c	421	426	postgresql/src/backend/access/hash/hashovfl.c	489	494	1	-	-
+6352	8	postgresql/src/backend/nodes/copyfuncs.c	286	304	postgresql/src/backend/nodes/copyfuncs.c	309	328	3	-	321
+6353	8	postgresql/src/backend/utils/adt/ri_triggers.c	892	1071	postgresql/src/backend/utils/adt/ri_triggers.c	1435	1596	3	903, 904, 978, 979, 980, 993, 1009, 1011, 1020, 1025, 1032, 1033, 1034, 1035, 1036, 1037, 1038, 1039, 1040	1445, 1446, 1527, 1543, 1545, 1558, 1565
+6363	8	postgresql/src/backend/nodes/equalfuncs.c	552	565	postgresql/src/backend/nodes/equalfuncs.c	1190	1203	2	-	-
+6368	8	postgresql/src/backend/nodes/equalfuncs.c	833	840	postgresql/src/backend/nodes/equalfuncs.c	1194	1201	2	-	-
+6381	8	postgresql/src/backend/utils/adt/float.c	381	414	postgresql/src/backend/utils/adt/float.c	1159	1192	2	-	-
+6392	8	postgresql/src/backend/nodes/readfuncs.c	660	673	postgresql/src/backend/nodes/readfuncs.c	1298	1311	2	-	-
+6395	8	postgresql/src/backend/utils/adt/numeric.c	537	545	postgresql/src/backend/utils/adt/numeric.c	546	554	2	-	-
+6400	8	postgresql/src/backend/executor/functions.c	126	132	postgresql/src/backend/optimizer/util/plancat.c	92	98	2	-	-
+6401	8	postgresql/src/backend/nodes/readfuncs.c	83	93	postgresql/src/backend/nodes/readfuncs.c	155	165	2	-	-
+6414	8	postgresql/src/backend/utils/adt/numeric.c	2133	2161	postgresql/src/backend/utils/adt/numeric.c	2169	2197	2	-	-
+6420	8	postgresql/src/backend/nodes/equalfuncs.c	192	201	postgresql/src/backend/nodes/equalfuncs.c	462	471	2	-	-
+6421	8	postgresql/src/backend/utils/adt/datetime.c	1497	1502	postgresql/src/backend/utils/adt/datetime.c	2163	2168	2	-	-
+6433	8	postgresql/src/backend/parser/gram.c	7771	7777	postgresql/src/backend/parser/gram.c	10139	10145	2	-	-
+6437	8	postgresql/src/backend/nodes/equalfuncs.c	764	770	postgresql/src/backend/nodes/equalfuncs.c	887	892	3	-	892
+6460	8	postgresql/src/backend/nodes/equalfuncs.c	556	561	postgresql/src/backend/nodes/equalfuncs.c	716	721	2	-	-
+6467	8	postgresql/src/backend/utils/adt/like.c	147	168	postgresql/src/backend/utils/adt/like.c	246	267	2	-	-
+6468	8	postgresql/src/backend/utils/adt/pgstatfuncs.c	60	70	postgresql/src/backend/utils/adt/pgstatfuncs.c	82	92	2	-	-
+6469	8	postgresql/src/backend/optimizer/prep/prepqual.c	286	297	postgresql/src/backend/optimizer/prep/prepqual.c	363	374	2	-	-
+6481	8	postgresql/src/backend/commands/creatinh.c	657	663	postgresql/src/backend/rewrite/rewriteSupport.c	91	97	1	-	-
+6484	8	postgresql/src/backend/nodes/equalfuncs.c	190	202	postgresql/src/backend/nodes/equalfuncs.c	383	392	3	-	-
+6490	8	postgresql/src/backend/utils/adt/selfuncs.c	2534	2544	postgresql/src/backend/utils/adt/selfuncs.c	2613	2623	1	-	-
+6503	8	postgresql/src/backend/utils/adt/numeric.c	1606	1614	postgresql/src/backend/utils/adt/numeric.c	1631	1639	1	-	-
+6522	8	postgresql/src/backend/nodes/readfuncs.c	540	547	postgresql/src/backend/nodes/readfuncs.c	989	996	2	-	-
+6534	8	postgresql/src/backend/nodes/equalfuncs.c	478	485	postgresql/src/backend/nodes/equalfuncs.c	694	701	2	-	-
+6535	8	postgresql/src/backend/executor/execMain.c	180	187	postgresql/src/backend/executor/execMain.c	191	198	2	-	-
+6541	8	postgresql/src/backend/utils/adt/float.c	969	975	postgresql/src/backend/utils/adt/float.c	985	991	2	-	-
+6549	8	postgresql/src/backend/utils/adt/timestamp.c	1783	1790	postgresql/src/backend/utils/adt/timestamp.c	2085	2092	2	-	-
+6550	8	postgresql/src/backend/nodes/readfuncs.c	111	117	postgresql/src/backend/nodes/readfuncs.c	729	735	2	-	-
+6564	8	postgresql/src/backend/nodes/equalfuncs.c	714	725	postgresql/src/backend/nodes/equalfuncs.c	1218	1229	2	-	-
+6567	8	postgresql/src/backend/nodes/readfuncs.c	790	803	postgresql/src/backend/nodes/readfuncs.c	1162	1175	2	-	-
+6572	8	postgresql/src/backend/parser/parse_oper.c	193	207	postgresql/src/backend/parser/parse_oper.c	225	240	1	-	-
+6575	8	postgresql/src/backend/nodes/readfuncs.c	694	702	postgresql/src/backend/nodes/readfuncs.c	1021	1029	2	-	-
+6584	8	postgresql/src/backend/nodes/readfuncs.c	461	466	postgresql/src/backend/nodes/readfuncs.c	1287	1292	2	-	-
+6591	8	postgresql/src/backend/nodes/equalfuncs.c	538	545	postgresql/src/backend/nodes/equalfuncs.c	546	553	2	-	-
+6597	8	postgresql/src/backend/utils/adt/nabstime.c	1064	1073	postgresql/src/backend/utils/adt/nabstime.c	1094	1103	2	-	-
+6613	8	postgresql/src/backend/nodes/copyfuncs.c	1375	1380	postgresql/src/backend/nodes/copyfuncs.c	1550	1555	2	-	-
+6624	8	postgresql/src/backend/optimizer/util/clauses.c	1652	1658	postgresql/src/backend/optimizer/util/clauses.c	1659	1665	2	-	-
+6644	8	postgresql/src/backend/nodes/equalfuncs.c	603	608	postgresql/src/backend/nodes/equalfuncs.c	741	746	2	-	-
+6653	8	postgresql/src/backend/nodes/readfuncs.c	223	228	postgresql/src/backend/nodes/readfuncs.c	830	835	2	-	-
+6667	8	postgresql/src/backend/nodes/equalfuncs.c	86	91	postgresql/src/backend/nodes/equalfuncs.c	224	229	2	-	-
+6672	8	postgresql/src/backend/bootstrap/bootscanner.c	1083	1404	postgresql/src/backend/parser/scan.c	1416	1737	2	-	-
+6673	8	postgresql/src/backend/access/gist/gist.c	1152	1158	postgresql/src/backend/access/rtree/rtree.c	915	921	2	-	-
+6679	8	postgresql/src/backend/nodes/readfuncs.c	900	907	postgresql/src/backend/nodes/readfuncs.c	1301	1308	2	-	-
+6682	8	postgresql/src/backend/nodes/readfuncs.c	1025	1030	postgresql/src/backend/nodes/readfuncs.c	1031	1036	2	-	-
+6684	8	postgresql/src/backend/nodes/equalfuncs.c	318	325	postgresql/src/backend/nodes/equalfuncs.c	450	457	2	-	-
+6698	8	postgresql/src/backend/nodes/equalfuncs.c	937	947	postgresql/src/backend/nodes/equalfuncs.c	1065	1075	3	-	-
+6715	8	postgresql/src/backend/nodes/equalfuncs.c	1200	1207	postgresql/src/backend/utils/adt/ruleutils.c	1214	1221	2	-	-
+6719	8	postgresql/src/backend/utils/cache/lsyscache.c	99	111	postgresql/src/backend/utils/cache/lsyscache.c	499	510	2	-	-
+6722	8	postgresql/src/backend/nodes/equalfuncs.c	499	506	postgresql/src/backend/nodes/equalfuncs.c	720	727	2	-	-
+6724	8	postgresql/src/backend/nodes/equalfuncs.c	915	920	postgresql/src/backend/nodes/equalfuncs.c	1085	1090	2	-	-
+6728	8	postgresql/src/backend/nodes/equalfuncs.c	1056	1064	postgresql/src/backend/nodes/equalfuncs.c	1211	1217	3	1058, 1060	-
+6733	8	postgresql/src/backend/utils/adt/bool.c	125	131	postgresql/src/backend/utils/adt/bool.c	132	138	2	-	-
+6739	8	postgresql/src/backend/nodes/readfuncs.c	632	638	postgresql/src/backend/nodes/readfuncs.c	1136	1142	2	-	-
+6740	8	postgresql/src/backend/nodes/readfuncs.c	900	907	postgresql/src/backend/nodes/readfuncs.c	1021	1028	2	-	-
+6754	8	postgresql/src/backend/parser/parse_type.c	172	177	postgresql/src/backend/utils/sort/tuplesort.c	1691	1697	2	-	-
+6756	8	postgresql/src/backend/nodes/readfuncs.c	824	832	postgresql/src/backend/nodes/readfuncs.c	953	961	2	-	-
+6759	8	postgresql/src/backend/utils/adt/ri_triggers.c	649	701	postgresql/src/backend/utils/adt/ri_triggers.c	1165	1217	2	-	-
+6764	8	postgresql/src/backend/bootstrap/bootparse.c	1026	1038	postgresql/src/backend/parser/gram.c	5835	5853	2	-	-
+6771	8	postgresql/src/backend/utils/adt/formatting.c	1598	1617	postgresql/src/backend/utils/adt/formatting.c	1618	1637	2	-	-
+6775	8	postgresql/src/backend/nodes/equalfuncs.c	351	358	postgresql/src/backend/nodes/equalfuncs.c	634	641	2	-	-
+6780	8	postgresql/src/backend/parser/parse_type.c	136	141	postgresql/src/backend/utils/adt/ruleutils.c	307	312	2	-	-
+6781	8	postgresql/src/backend/utils/adt/like.c	169	190	postgresql/src/backend/utils/adt/like.c	312	333	2	-	-
+6800	8	postgresql/src/backend/nodes/equalfuncs.c	456	465	postgresql/src/backend/nodes/equalfuncs.c	849	858	2	-	-
+6803	8	postgresql/src/backend/utils/adt/varchar.c	540	552	postgresql/src/backend/utils/adt/varchar.c	566	578	3	552	578
+6806	8	postgresql/src/backend/parser/gram.c	7183	7190	postgresql/src/backend/parser/gram.c	7199	7206	2	-	-
+6811	8	postgresql/src/backend/utils/adt/datetime.c	2266	2272	postgresql/src/backend/utils/adt/datetime.c	2391	2396	1	-	-
+6816	8	postgresql/src/backend/commands/trigger.c	639	648	postgresql/src/backend/nodes/equalfuncs.c	456	465	2	-	-
+6818	8	postgresql/src/backend/utils/fmgr/fmgr.c	659	672	postgresql/src/backend/utils/fmgr/fmgr.c	683	696	2	-	-
+6823	8	postgresql/src/backend/parser/parse_oper.c	247	261	postgresql/src/backend/parser/parse_oper.c	281	293	1	-	-
+6825	8	postgresql/src/backend/nodes/equalfuncs.c	953	958	postgresql/src/backend/nodes/equalfuncs.c	1056	1061	2	-	-
+6829	8	postgresql/src/backend/parser/gram.c	7240	7246	postgresql/src/backend/parser/gram.c	8294	8300	2	-	-
+6833	8	postgresql/src/backend/nodes/outfuncs.c	207	219	postgresql/src/backend/nodes/outfuncs.c	257	269	2	-	-
+6834	8	postgresql/src/backend/nodes/equalfuncs.c	508	513	postgresql/src/backend/nodes/equalfuncs.c	714	719	2	-	-
+6844	8	postgresql/src/backend/nodes/equalfuncs.c	480	489	postgresql/src/backend/nodes/equalfuncs.c	1220	1229	2	-	-
+6853	8	postgresql/src/backend/parser/gram.c	6086	6091	postgresql/src/backend/parser/gram.c	7953	7958	2	-	-
+6854	8	postgresql/src/backend/nodes/equalfuncs.c	476	481	postgresql/src/backend/nodes/equalfuncs.c	556	561	2	-	-
+6860	8	postgresql/src/backend/utils/adt/formatting.c	1416	1432	postgresql/src/backend/utils/adt/formatting.c	1762	1779	3	1418	1764, 1765
+6864	8	postgresql/src/backend/nodes/equalfuncs.c	658	668	postgresql/src/backend/nodes/equalfuncs.c	771	781	2	-	-
+6870	8	postgresql/src/backend/nodes/equalfuncs.c	365	375	postgresql/src/backend/nodes/equalfuncs.c	1018	1028	3	367	1020
+6874	8	postgresql/src/backend/nodes/equalfuncs.c	122	127	postgresql/src/backend/nodes/equalfuncs.c	921	926	2	-	-
+6880	8	postgresql/src/backend/executor/functions.c	192	200	postgresql/src/backend/executor/functions.c	214	222	2	-	-
+6883	8	postgresql/src/backend/parser/gram.c	6311	6322	postgresql/src/backend/parser/gram.c	6718	6729	2	-	-
+6893	8	postgresql/src/backend/nodes/equalfuncs.c	873	879	postgresql/src/backend/nodes/equalfuncs.c	986	992	2	-	-
+6910	8	postgresql/src/backend/nodes/equalfuncs.c	636	641	postgresql/src/backend/nodes/equalfuncs.c	716	721	2	-	-
+6916	8	postgresql/src/backend/utils/cache/lsyscache.c	580	585	postgresql/src/backend/utils/fmgr/fmgr.c	135	141	2	-	-
+6919	8	postgresql/src/backend/parser/gram.c	5970	5975	postgresql/src/backend/parser/gram.c	5988	5993	2	-	-
+6926	8	postgresql/src/backend/postmaster/pgstat.c	1644	1654	postgresql/src/backend/postmaster/pgstat.c	1724	1734	1	-	-
+6937	8	postgresql/src/backend/utils/cache/lsyscache.c	324	337	postgresql/src/backend/utils/cache/lsyscache.c	343	356	2	-	-
+6954	8	postgresql/src/backend/utils/fmgr/fmgr.c	551	558	postgresql/src/backend/utils/fmgr/fmgr.c	643	650	2	-	-
+6960	8	postgresql/src/backend/nodes/equalfuncs.c	464	471	postgresql/src/backend/nodes/equalfuncs.c	1192	1199	2	-	-
+6968	8	postgresql/src/backend/parser/gram.c	6736	6741	postgresql/src/backend/parser/gram.c	8001	8006	2	-	-
+6971	8	postgresql/src/backend/nodes/outfuncs.c	83	92	postgresql/src/backend/nodes/outfuncs.c	96	105	2	-	-
+6977	8	postgresql/src/backend/nodes/readfuncs.c	696	704	postgresql/src/backend/nodes/readfuncs.c	824	832	2	-	-
+6983	8	postgresql/src/backend/commands/command.c	614	620	postgresql/src/backend/commands/rename.c	468	474	2	-	-
+6984	8	postgresql/src/backend/nodes/equalfuncs.c	1135	1140	postgresql/src/backend/nodes/equalfuncs.c	1172	1177	2	-	-
+7001	8	postgresql/src/backend/optimizer/path/indxpath.c	520	528	postgresql/src/backend/optimizer/path/indxpath.c	530	538	2	-	-
+7002	8	postgresql/src/backend/utils/adt/float.c	381	388	postgresql/src/backend/utils/adt/float.c	1167	1174	3	386	1172
+7011	8	postgresql/src/backend/nodes/equalfuncs.c	476	483	postgresql/src/backend/nodes/equalfuncs.c	519	526	2	-	-
+7028	8	postgresql/src/backend/nodes/readfuncs.c	445	450	postgresql/src/backend/nodes/readfuncs.c	978	983	2	-	-
+7031	8	postgresql/src/backend/commands/define.c	484	498	postgresql/src/backend/tcop/postgres.c	1065	1079	3	497, 498	1078, 1079
+7043	8	postgresql/src/backend/executor/nodeMergejoin.c	534	542	postgresql/src/backend/executor/nodeMergejoin.c	632	640	2	-	-
+7050	8	postgresql/src/backend/regex/regcomp.c	402	407	postgresql/src/backend/regex/regcomp.c	927	932	2	-	-
+7054	8	postgresql/src/backend/nodes/readfuncs.c	503	510	postgresql/src/backend/nodes/readfuncs.c	815	822	2	-	-
+7060	8	postgresql/src/backend/utils/adt/varbit.c	429	437	postgresql/src/backend/utils/adt/varbit.c	438	446	2	-	-
+7070	8	postgresql/src/backend/utils/adt/nabstime.c	960	977	postgresql/src/backend/utils/adt/nabstime.c	978	995	2	-	-
+7080	8	postgresql/src/backend/utils/adt/geo_ops.c	2956	2970	postgresql/src/backend/utils/adt/timestamp.c	1330	1343	3	2958, 2959, 2960, 2963, 2964, 2965, 2966, 2967, 2969	1333, 1335, 1336, 1337, 1338, 1340, 1341
+7083	8	postgresql/src/backend/nodes/equalfuncs.c	209	218	postgresql/src/backend/nodes/equalfuncs.c	573	582	2	-	-
+7087	8	postgresql/src/backend/nodes/equalfuncs.c	299	310	postgresql/src/backend/nodes/equalfuncs.c	1237	1244	2	-	-
+7095	8	postgresql/src/backend/nodes/readfuncs.c	111	123	postgresql/src/backend/nodes/readfuncs.c	690	702	2	-	-
+7097	8	postgresql/src/backend/nodes/readfuncs.c	632	638	postgresql/src/backend/nodes/readfuncs.c	1234	1240	2	-	-
+7116	8	postgresql/src/backend/nodes/equalfuncs.c	340	346	postgresql/src/backend/nodes/equalfuncs.c	1040	1046	3	342	1042
+7118	8	postgresql/src/backend/utils/adt/formatting.c	1450	1468	postgresql/src/backend/utils/adt/formatting.c	1481	1499	2	-	-
+7127	8	postgresql/src/backend/nodes/equalfuncs.c	484	496	postgresql/src/backend/nodes/equalfuncs.c	1241	1247	2	-	-
+7144	8	postgresql/src/backend/nodes/copyfuncs.c	169	176	postgresql/src/backend/nodes/copyfuncs.c	228	235	2	-	-
+7146	8	postgresql/src/backend/nodes/readfuncs.c	123	132	postgresql/src/backend/nodes/readfuncs.c	1014	1023	2	-	-
+7160	8	postgresql/src/backend/nodes/readfuncs.c	1136	1142	postgresql/src/backend/nodes/readfuncs.c	1344	1350	2	-	-
+7175	8	postgresql/src/backend/nodes/equalfuncs.c	84	93	postgresql/src/backend/nodes/equalfuncs.c	426	435	2	-	-
+7190	8	postgresql/src/backend/parser/parse_type.c	93	99	postgresql/src/backend/parser/parse_type.c	100	107	2	-	-
+7195	8	postgresql/src/backend/bootstrap/bootparse.c	826	834	postgresql/src/backend/bootstrap/bootparse.c	835	843	2	-	-
+7199	8	postgresql/src/backend/utils/adt/ruleutils.c	1340	1345	postgresql/src/backend/utils/cache/lsyscache.c	580	585	2	-	-
+7200	8	postgresql/src/backend/utils/adt/geo_ops.c	2338	2350	postgresql/src/backend/utils/adt/varlena.c	440	448	3	2343	445
+7217	8	postgresql/src/backend/nodes/equalfuncs.c	643	656	postgresql/src/backend/nodes/equalfuncs.c	897	910	2	-	-
+7235	8	postgresql/src/backend/nodes/readfuncs.c	172	183	postgresql/src/backend/nodes/readfuncs.c	1045	1056	2	-	-
+7242	8	postgresql/src/backend/nodes/equalfuncs.c	122	127	postgresql/src/backend/utils/cache/relcache.c	733	738	2	-	-
+7245	8	postgresql/src/backend/optimizer/path/indxpath.c	1437	1460	postgresql/src/backend/optimizer/path/indxpath.c	1461	1482	3	-	-
+7250	8	postgresql/src/backend/nodes/readfuncs.c	598	603	postgresql/src/backend/nodes/readfuncs.c	1162	1167	2	-	-
+7251	8	postgresql/src/backend/nodes/readfuncs.c	845	854	postgresql/src/backend/nodes/readfuncs.c	1269	1278	2	-	-
+7255	8	postgresql/src/backend/nodes/readfuncs.c	632	642	postgresql/src/backend/nodes/readfuncs.c	1287	1297	2	-	-
+7264	8	postgresql/src/backend/access/index/istrat.c	379	384	postgresql/src/backend/commands/cluster.c	82	87	2	-	-
+7280	8	postgresql/src/backend/nodes/readfuncs.c	83	93	postgresql/src/backend/nodes/readfuncs.c	1045	1055	2	-	-
+7282	8	postgresql/src/backend/nodes/readfuncs.c	403	408	postgresql/src/backend/nodes/readfuncs.c	915	920	2	-	-
+7292	8	postgresql/src/backend/nodes/readfuncs.c	226	235	postgresql/src/backend/nodes/readfuncs.c	1217	1226	2	-	-
+7297	8	postgresql/src/backend/nodes/readfuncs.c	344	352	postgresql/src/backend/nodes/readfuncs.c	445	453	2	-	-
+7304	8	postgresql/src/backend/utils/adt/date.c	333	340	postgresql/src/backend/utils/adt/float.c	389	396	3	338, 339	394, 395
+7306	8	postgresql/src/backend/optimizer/plan/setrefs.c	391	399	postgresql/src/backend/optimizer/util/clauses.c	814	821	2	-	-
+7308	8	postgresql/src/backend/nodes/equalfuncs.c	349	358	postgresql/src/backend/nodes/equalfuncs.c	534	543	2	-	-
+7312	8	postgresql/src/backend/utils/fmgr/fmgr.c	445	450	postgresql/src/backend/utils/fmgr/fmgr.c	489	494	2	-	-
+7313	8	postgresql/src/backend/nodes/equalfuncs.c	771	778	postgresql/src/backend/nodes/equalfuncs.c	1106	1113	2	-	-
+7320	8	postgresql/src/backend/parser/gram.c	9885	9893	postgresql/src/backend/parser/gram.c	9946	9954	2	-	-
+7329	8	postgresql/src/backend/nodes/equalfuncs.c	70	83	postgresql/src/backend/nodes/equalfuncs.c	1056	1064	3	-	-
+7340	8	postgresql/src/backend/nodes/equalfuncs.c	299	311	postgresql/src/backend/nodes/equalfuncs.c	1083	1091	3	301	-
+7352	8	postgresql/src/backend/utils/adt/varbit.c	429	437	postgresql/src/backend/utils/adt/varlena.c	467	475	2	-	-
+7364	8	postgresql/src/backend/utils/adt/nabstime.c	1074	1083	postgresql/src/backend/utils/adt/nabstime.c	1094	1103	2	-	-
+7374	8	postgresql/src/backend/utils/cache/lsyscache.c	249	262	postgresql/src/backend/utils/cache/lsyscache.c	550	563	3	249, 257, 258	550, 558, 559
+7387	8	postgresql/src/backend/utils/adt/numeric.c	546	554	postgresql/src/backend/utils/adt/varlena.c	449	457	2	-	-
+7399	8	postgresql/src/backend/utils/adt/oid.c	196	204	postgresql/src/backend/utils/adt/oid.c	205	213	2	-	-
+7413	8	postgresql/src/backend/utils/adt/acl.c	611	620	postgresql/src/backend/utils/adt/acl.c	670	679	3	617, 618, 619	676, 677, 678
+7425	8	postgresql/src/backend/utils/adt/geo_ops.c	341	348	postgresql/src/backend/utils/adt/geo_ops.c	405	412	2	-	-
+7439	8	postgresql/src/backend/utils/adt/pgstatfuncs.c	49	59	postgresql/src/backend/utils/adt/pgstatfuncs.c	178	188	2	-	-
+7452	8	postgresql/src/backend/nodes/equalfuncs.c	669	677	postgresql/src/backend/nodes/equalfuncs.c	1179	1187	3	671	-

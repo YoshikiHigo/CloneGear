@@ -1,0 +1,1036 @@
+474	7	snns/src/xgui/sources/ui_mainP.c	1115	1123	snns/src/xgui/sources/ui_xWidgets.c	1436	1455	2	-	-
+479	7	snns/src/kernel/sources/learn_f.c	4422	4428	snns/src/kernel/sources/learn_f.c	6004	6009	1	-	-
+484	7	snns/src/xgui/sources/bn_bighop.c	310	316	snns/src/xgui/sources/bn_bignet.c	1361	1367	1	-	-
+490	7	snns/src/xgui/sources/ui_action.c	813	820	snns/src/xgui/sources/ui_action.c	973	980	2	-	-
+492	7	snns/src/kernel/sources/kr_art1.c	952	965	snns/src/kernel/sources/kr_art1.c	976	989	2	-	-
+494	7	snns/src/kernel/sources/learn_f.c	3259	3282	snns/src/kernel/sources/update_f.c	1487	1506	3	3275	-
+503	7	snns/src/kernel/sources/kr_amap.c	2121	2134	snns/src/kernel/sources/kr_amap.c	2145	2158	2	-	-
+511	7	snns/src/kernel/sources/update_f.c	182	188	snns/src/kernel/sources/update_f.c	1500	1506	1	-	-
+519	7	snns/src/kernel/sources/kr_amap.c	2480	2555	snns/src/kernel/sources/kr_art1.c	1247	1322	2	-	-
+760	7	snns/src/kernel/sources/kr_amap.c	101	384	snns/src/kernel/sources/kr_art2.c	45	330	3	102, 131, 132, 133, 134, 141, 142, 143, 144, 145, 146, 147, 151, 152, 153, 154, 155, 156, 157, 158, 161, 165, 166, 167, 197, 217, 218, 219, 220, 221, 222, 223, 225, 226, 227, 255, 256, 260, 261, 262, 266, 274, 289, 290, 291, 292, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 381, 382	75, 78, 79, 86, 97, 108, 113, 119, 130, 141, 152, 163, 164, 171, 172, 256, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327
+769	7	snns/src/xgui/sources/net_analyzer.c	161	169	snns/src/xgui/sources/ui_control.c	148	154	3	-	-
+770	7	snns/src/xgui/sources/bn_TD_bignet.c	959	974	snns/src/xgui/sources/bn_bignet.c	1036	1047	3	966, 973	-
+923	7	snns/src/kernel/sources/kr_amap.c	572	578	snns/src/kernel/sources/kr_amap.c	1495	1501	2	-	-
+927	7	snns/src/xgui/sources/net_analyzer.c	823	834	snns/src/xgui/sources/ui_displmap.c	401	412	2	-	-
+932	7	snns/src/xgui/sources/ui_displmap.c	127	143	snns/src/xgui/sources/ui_xWidgets.c	1435	1456	3	131, 132	-
+936	7	snns/src/kernel/sources/cc_learn.c	660	697	snns/src/kernel/sources/tacoma_learn.c	304	340	3	660, 661, 665, 666, 667, 671, 672, 673, 674, 680, 683, 684, 685, 686, 687, 688, 689, 690, 691, 692, 693, 694, 695, 696	304, 309, 313, 314, 320, 321, 322, 323, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339
+941	7	snns/src/xgui/sources/ui_displmap.c	401	412	snns/src/xgui/sources/ui_mainP.c	430	438	3	411, 412	437, 438
+622	7	snns/src/tools/sources/ic_snns.c	113	119	snns/src/tools/sources/ictab.c	178	184	1	-	-
+623	7	snns/src/kernel/sources/art_ui.c	127	141	snns/src/kernel/sources/arttr_f.c	61	75	3	129	63
+632	7	snns/src/xgui/sources/cc_main.c	353	363	snns/src/xgui/sources/cc_main.c	364	374	2	-	-
+634	7	snns/src/xgui/sources/net_analyzer.c	239	248	snns/src/xgui/sources/ui_mainP.c	1113	1122	2	-	-
+637	7	snns/src/xgui/sources/d3_move.c	128	136	snns/src/xgui/sources/net_analyzer.c	824	832	2	-	-
+640	7	snns/src/kernel/sources/learn_f.c	288	294	snns/src/kernel/sources/learn_f.c	1398	1403	2	-	-
+642	7	snns/src/kernel/sources/learn_f.c	3706	3718	snns/src/kernel/sources/learn_f.c	5005	5019	2	-	-
+645	7	snns/src/kernel/sources/trans_f.c	146	154	snns/src/kernel/sources/trans_f.c	280	288	1	-	-
+651	7	snns/src/kernel/sources/kr_amap.c	283	383	snns/src/kernel/sources/kr_art2.c	98	329	3	283, 289, 295, 298, 304, 310, 382	98, 102, 103, 104, 105, 108, 109, 113, 114, 115, 116, 119, 120, 121, 122, 123, 124, 125, 126, 127, 130, 131, 135, 136, 137, 138, 141, 142, 146, 147, 148, 149, 152, 153, 157, 158, 159, 160, 163, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327
+654	7	snns/src/xgui/sources/d3_xUtils.c	310	319	snns/src/xgui/sources/ui_xWidgets.c	394	405	2	-	-
+655	7	snns/src/xgui/sources/net_analyzer.c	823	834	snns/src/xgui/sources/ui_displmap.c	111	126	3	-	-
+667	7	snns/src/kernel/sources/scaled_conj_grad.c	93	100	snns/src/kernel/sources/update_f.c	1474	1480	1	-	-
+670	7	snns/src/kernel/sources/learn_f.c	5644	5677	snns/src/kernel/sources/learn_f.c	5735	5768	3	5675, 5676	5767
+671	7	snns/src/xgui/sources/bn_art1.c	49	75	snns/src/xgui/sources/bn_art1.c	111	137	2	-	-
+675	7	snns/src/xgui/sources/net_analyzer.c	552	557	snns/src/xgui/sources/net_analyzer.c	580	585	1	-	-
+678	7	snns/src/xgui/sources/bn_TD_bignet.c	391	418	snns/src/xgui/sources/bn_TD_bignet.c	419	442	3	400, 401, 402, 415, 416, 417	428, 441
+687	7	snns/src/xgui/sources/bn_artmap.c	442	465	snns/src/xgui/sources/bn_artmap.c	635	658	2	-	-
+691	7	snns/src/xgui/sources/ui_mainP.c	600	605	snns/src/xgui/sources/ui_mainP.c	1118	1123	2	-	-
+694	7	snns/src/kernel/sources/kr_amap.c	101	384	snns/src/kernel/sources/kr_art1.c	72	210	3	102, 126, 127, 128, 131, 132, 133, 134, 138, 141, 142, 143, 144, 145, 146, 147, 151, 152, 153, 154, 155, 156, 157, 158, 161, 162, 163, 164, 165, 166, 167, 168, 171, 175, 176, 177, 193, 194, 195, 196, 197, 198, 199, 200, 203, 207, 208, 209, 210, 213, 214, 215, 216, 217, 218, 219, 255, 256, 257, 258, 259, 260, 261, 262, 263, 266, 267, 268, 269, 270, 271, 272, 273, 274, 334, 335, 336, 337, 340, 341, 342, 343, 346, 347, 348, 349, 352, 353, 354, 355, 358, 359, 360, 361, 364, 365, 366, 367, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379	100, 117, 124
+699	7	snns/src/xgui/sources/bn_TD_bignet.c	1445	1460	snns/src/xgui/sources/bn_bignet.c	1568	1583	2	-	-
+705	7	snns/src/xgui/sources/bn_artmap.c	464	472	snns/src/xgui/sources/bn_artmap.c	524	532	2	-	-
+708	7	snns/src/kernel/sources/kernel.c	2119	2127	snns/src/kernel/sources/kernel.c	2182	2190	1	-	-
+710	7	snns/src/kernel/sources/kr_amap.c	1276	1281	snns/src/kernel/sources/kr_art2.c	1052	1057	2	-	-
+711	7	snns/src/xgui/sources/bn_artmap.c	570	580	snns/src/xgui/sources/bn_artmap.c	640	650	2	-	-
+726	7	snns/src/kernel/sources/kr_amap.c	1605	1629	snns/src/kernel/sources/kr_amap.c	1932	1962	3	-	-
+729	7	snns/src/xgui/sources/ui_displwght.c	424	438	snns/src/xgui/sources/ui_inversion.c	162	174	3	438	165, 166, 172, 173, 174
+730	7	snns/src/kernel/sources/trans_f.c	89	101	snns/src/kernel/sources/trans_f.c	326	338	2	-	-
+741	7	snns/src/kernel/sources/kr_td.c	563	577	snns/src/kernel/sources/learn_f.c	3667	3675	3	568, 574, 575, 576, 577	3672, 3674, 3675
+742	7	snns/src/kernel/sources/kr_td.c	563	568	snns/src/kernel/sources/stochastic_learn_f.c	100	106	2	-	-
+744	7	snns/src/xgui/sources/d3_xUtils.c	80	222	snns/src/xgui/sources/ui_xWidgets.c	1168	1423	3	-	-
+748	7	snns/src/kernel/sources/kr_art1.c	477	497	snns/src/kernel/sources/kr_art2.c	1096	1117	3	477, 481	1096, 1100, 1109
+752	7	snns/src/kernel/sources/kr_amap.c	3615	3624	snns/src/kernel/sources/kr_amap.c	3760	3769	2	-	-
+754	7	snns/src/xgui/sources/bn_artmap.c	559	580	snns/src/xgui/sources/bn_artmap.c	637	658	2	-	-
+776	7	snns/src/xgui/sources/d3_xUtils.c	80	222	snns/src/xgui/sources/net_analyzer.c	92	170	3	221, 222	170
+777	7	snns/src/xgui/sources/ui_displmap.c	127	143	snns/src/xgui/sources/ui_displwght.c	74	88	3	131, 132	-
+785	7	snns/src/kernel/sources/kr_amap.c	1419	1428	snns/src/kernel/sources/kr_amap.c	1529	1538	2	-	-
+787	7	snns/src/kernel/sources/trans_f.c	304	312	snns/src/kernel/sources/trans_f.c	971	978	2	-	-
+790	7	snns/src/kernel/sources/learn_f.c	1478	1508	snns/src/kernel/sources/learn_f.c	2079	2089	3	1482, 1483, 1485, 1486, 1487, 1488, 1489, 1490, 1491, 1492, 1493, 1494, 1495, 1496, 1497, 1498, 1499, 1500, 1501, 1502, 1503, 1504, 1505, 1506, 1507, 1508	2082, 2084, 2085, 2086, 2087, 2088, 2089
+794	7	snns/src/kernel/sources/kr_amap.c	2779	2785	snns/src/kernel/sources/kr_amap.c	3413	3419	2	-	-
+803	7	snns/src/kernel/sources/kr_amap.c	1883	1890	snns/src/kernel/sources/kr_art1.c	521	528	2	-	-
+807	7	snns/src/kernel/sources/learn_f.c	2635	2726	snns/src/kernel/sources/learn_f.c	4997	5063	3	2641, 2642, 2645, 2646, 2647, 2648, 2649, 2650, 2666, 2668, 2669, 2670, 2671, 2672, 2673, 2674, 2675, 2676, 2677, 2679, 2680, 2681, 2682, 2683, 2684, 2685, 2686, 2687, 2688, 2689, 2690, 2691, 2692, 2698, 2700, 2701, 2702, 2703, 2704, 2705, 2706, 2707, 2708, 2709, 2710, 2711, 2712, 2713, 2714, 2715, 2716, 2717, 2718, 2719, 2720, 2721, 2722, 2723, 2724, 2725	5003, 5018, 5019, 5022, 5026, 5027, 5028, 5029, 5034, 5035, 5036, 5037, 5038, 5039, 5040, 5041, 5042, 5043, 5048, 5053, 5055, 5056, 5060, 5061, 5062
+819	7	snns/src/xgui/sources/ui_displwght.c	399	410	snns/src/xgui/sources/ui_funcdispl.c	202	214	3	-	-
+821	7	snns/src/kernel/sources/init_f.c	1340	1349	snns/src/kernel/sources/init_f.c	1368	1377	2	-	-
+822	7	snns/src/kernel/sources/kr_amap.c	1477	1483	snns/src/kernel/sources/kr_art2.c	755	761	2	-	-
+826	7	snns/src/kernel/sources/learn_f.c	1306	1330	snns/src/kernel/sources/learn_f.c	1398	1422	1	-	-
+829	7	snns/src/kernel/sources/kr_amap.c	3229	3238	snns/src/kernel/sources/kr_amap.c	3615	3624	2	-	-
+836	7	snns/src/kernel/sources/kr_amap.c	459	464	snns/src/kernel/sources/kr_amap.c	572	577	2	-	-
+838	7	snns/src/xgui/sources/ui_displmap.c	459	473	snns/src/xgui/sources/ui_displwght.c	74	88	2	-	-
+841	7	snns/src/kernel/sources/kr_td.c	297	302	snns/src/kernel/sources/learn_f.c	5094	5101	2	-	-
+844	7	snns/src/kernel/sources/kr_pat_scan.c	5	218	snns/src/tools/sources/lex.yyz.c	22	235	1	-	-
+847	7	snns/src/tools/sources/ic_snns.c	1095	1103	snns/src/tools/sources/ic_snns.c	1104	1112	2	-	-
+854	7	snns/src/kernel/sources/kr_art1.c	661	666	snns/src/kernel/sources/kr_art2.c	1101	1106	2	-	-
+856	7	snns/src/kernel/sources/kr_amap.c	2645	2675	snns/src/kernel/sources/kr_amap.c	3758	3788	2	-	-
+861	7	snns/src/kernel/sources/tacoma_learn.c	931	948	snns/src/kernel/sources/tacoma_learn.c	985	1000	1	-	-
+864	7	snns/src/xgui/sources/d3_model.c	99	113	snns/src/xgui/sources/d3_setup.c	112	125	2	-	-
+865	7	snns/src/xgui/sources/ui_displmap.c	459	473	snns/src/xgui/sources/ui_xWidgets.c	480	498	3	-	482, 483, 484, 485, 486, 487, 488
+876	7	snns/src/kernel/sources/arttr_f.c	80	99	snns/src/kernel/sources/arttr_f.c	256	275	2	-	-
+880	7	snns/src/kernel/sources/kr_amap.c	3340	3350	snns/src/kernel/sources/kr_art1.c	1439	1449	2	-	-
+882	7	snns/src/kernel/sources/kr_amap.c	3522	3558	snns/src/kernel/sources/kr_amap.c	3562	3590	3	3545, 3546, 3547, 3548, 3549, 3550, 3551, 3556	3588
+891	7	snns/src/kernel/sources/kr_amap.c	1276	1283	snns/src/kernel/sources/kr_art1.c	825	832	2	-	-
+892	7	snns/src/kernel/sources/kr_art1.c	398	403	snns/src/kernel/sources/kr_art2.c	965	970	2	-	-
+899	7	snns/src/xgui/sources/ui_displwght.c	74	88	snns/src/xgui/sources/ui_main.c	180	187	3	-	-
+900	7	snns/src/kernel/sources/kr_inversion.c	53	60	snns/src/kernel/sources/update_f.c	329	335	1	-	-
+906	7	snns/src/xgui/sources/bn_TD_bignet.c	391	418	snns/src/xgui/sources/bn_TD_bignet.c	449	472	3	395, 396, 397, 410, 411, 412	453, 466
+909	7	snns/src/kernel/sources/kr_amap.c	2558	2813	snns/src/kernel/sources/kr_amap.c	3451	3854	3	2580, 2587, 2588, 2593, 2598, 2599, 2604, 2605, 2607, 2614, 2620, 2624, 2626, 2631, 2637, 2638, 2639, 2640, 2679, 2680, 2681, 2682, 2700, 2701, 2702, 2721, 2725, 2727, 2730, 2738, 2742, 2743, 2745, 2746, 2747, 2748, 2750, 2751, 2752, 2754, 2764, 2770, 2773, 2775, 2780, 2782, 2790, 2796, 2800, 2802, 2804, 2808, 2811	3452, 3458, 3459, 3460, 3461, 3462, 3463, 3464, 3465, 3466, 3467, 3489, 3490, 3491, 3492, 3493, 3494, 3495, 3496, 3497, 3498, 3502, 3503, 3507, 3508, 3509, 3510, 3511, 3512, 3513, 3514, 3515, 3516, 3517, 3518, 3525, 3526, 3527, 3528, 3532, 3534, 3539, 3541, 3542, 3543, 3546, 3548, 3556, 3562, 3563, 3564, 3569, 3570, 3571, 3572, 3573, 3576, 3577, 3578, 3580, 3581, 3583, 3584, 3585, 3586, 3587, 3588, 3597, 3600, 3601, 3602, 3640, 3643, 3644, 3645, 3647, 3672, 3673, 3674, 3682, 3683, 3688, 3689, 3690, 3700, 3701, 3702, 3707, 3708, 3709, 3710, 3712, 3713, 3715, 3716, 3717, 3719, 3720, 3722, 3723, 3731, 3732, 3736, 3737, 3738, 3739, 3740, 3741, 3742, 3743, 3744, 3745, 3752, 3753, 3754, 3755, 3756, 3757, 3758, 3762, 3763, 3764, 3765, 3766, 3772, 3773, 3774, 3775, 3776, 3784, 3785, 3786, 3793, 3794, 3795, 3796, 3797, 3798, 3799, 3804, 3805, 3806, 3807, 3809, 3810, 3811, 3812, 3813, 3814, 3815, 3816, 3817, 3818, 3819, 3820, 3821, 3822, 3823, 3824, 3825, 3826, 3827, 3828, 3829, 3830, 3831, 3832, 3833, 3834, 3835, 3836, 3837, 3838, 3839, 3840, 3841, 3842, 3843, 3847, 3848, 3849, 3850
+910	7	snns/src/kernel/sources/learn_f.c	5653	5659	snns/src/kernel/sources/learn_f.c	5938	5944	1	-	-
+914	7	snns/src/kernel/sources/init_f.c	1692	1703	snns/src/kernel/sources/init_f.c	1754	1765	1	-	-
+919	7	snns/src/kernel/sources/kernel.c	273	282	snns/src/kernel/sources/kr_ui.c	1128	1137	1	-	-
+948	7	snns/src/kernel/sources/learn_f.c	3936	3944	snns/src/kernel/sources/learn_f.c	5837	5844	1	-	-
+951	7	snns/src/xgui/sources/d3_move.c	127	137	snns/src/xgui/sources/ui_xWidgets.c	1435	1456	3	137	1456
+959	7	snns/src/kernel/sources/kr_amap.c	3227	3257	snns/src/kernel/sources/kr_amap.c	3758	3788	2	-	-
+968	7	snns/src/kernel/sources/kr_art1.c	125	207	snns/src/kernel/sources/kr_art2.c	172	254	3	129, 135, 136, 139, 140, 141, 142, 143, 147, 148, 149, 150, 153, 154, 159, 165, 171	176, 182, 183, 188, 194, 197, 198, 203, 209, 215, 216, 217, 218
+969	7	snns/src/xgui/sources/d3_xUtils.c	212	221	snns/src/xgui/sources/ui_mainP.c	1113	1125	3	221	1124, 1125
+970	7	snns/src/kernel/sources/kr_amap.c	1219	1226	snns/src/kernel/sources/kr_amap.c	1832	1839	2	-	-
+971	7	snns/src/xgui/sources/d3_links.c	157	173	snns/src/xgui/sources/d3_setup.c	112	127	2	-	-
+973	7	snns/src/kernel/sources/learn_f.c	984	989	snns/src/kernel/sources/stochastic_learn_f.c	463	469	1	-	-
+983	7	snns/src/xgui/sources/ui_displwght.c	75	88	snns/src/xgui/sources/ui_xWidgets.c	1412	1422	3	-	-
+993	7	snns/src/tools/sources/icopjmp.c	430	441	snns/src/tools/sources/icopjmp.c	451	470	3	437	458, 459, 460, 461, 462, 463, 464, 465
+994	7	snns/src/kernel/sources/kr_amap.c	3026	3037	snns/src/kernel/sources/kr_amap.c	3507	3518	2	-	-
+998	7	snns/src/kernel/sources/kernel.c	1244	1262	snns/src/kernel/sources/learn_f.c	1244	1262	1	-	-
+1002	7	snns/src/xgui/sources/ui_control.c	147	156	snns/src/xgui/sources/ui_displwght.c	74	88	3	-	-
+1004	7	snns/src/kernel/sources/learn_f.c	5074	5131	snns/src/kernel/sources/learn_f.c	5218	5282	3	5116, 5130	5260, 5261, 5262, 5278, 5279, 5280, 5281
+1014	7	snns/src/kernel/sources/learn_f.c	6056	6065	snns/src/kernel/sources/update_f.c	142	151	1	-	-
+1019	7	snns/src/xgui/sources/bn_bignet.c	158	166	snns/src/xgui/sources/d3_setup.c	236	247	2	-	-
+1021	7	snns/src/kernel/sources/kr_amap.c	4125	4134	snns/src/kernel/sources/kr_art2.c	644	653	2	-	-
+1023	7	snns/src/kernel/sources/learn_f.c	2043	2090	snns/src/kernel/sources/learn_f.c	5218	5282	3	2048, 2061, 2062, 2082, 2084, 2086, 2087	5223, 5224, 5225, 5226, 5227, 5247, 5248, 5249, 5250, 5258, 5259, 5260, 5261, 5262, 5269, 5274, 5277, 5278, 5279
+1025	7	snns/src/xgui/sources/bn_bighop.c	39	107	snns/src/xgui/sources/bn_bignet.c	45	139	3	-	-
+1035	7	snns/src/xgui/sources/ui_displmap.c	111	126	snns/src/xgui/sources/ui_displmap.c	459	473	3	-	-
+1036	7	snns/src/kernel/sources/kr_amap.c	3990	4002	snns/src/kernel/sources/kr_amap.c	4181	4193	2	-	-
+1038	7	snns/src/kernel/sources/learn_f.c	766	777	snns/src/kernel/sources/stochastic_learn_f.c	128	139	3	769, 772, 776	130, 134, 138
+1039	7	snns/src/xgui/sources/bn_art1.c	80	87	snns/src/xgui/sources/bn_art1.c	390	397	2	-	-
+1045	7	snns/src/kernel/sources/kr_td.c	344	407	snns/src/kernel/sources/learn_f.c	1797	1846	3	345, 349, 350, 351, 361, 362, 364, 365, 377, 378, 379, 380, 381, 382, 383, 384, 405, 406	1798, 1841, 1843, 1844, 1845
+1046	7	snns/src/xgui/sources/ui_xWidgets.c	406	422	snns/src/xgui/sources/ui_xWidgets.c	1436	1456	3	407, 408, 409, 410, 411, 412	-
+1050	7	snns/src/kernel/sources/kr_amap.c	2558	2813	snns/src/kernel/sources/kr_art1.c	1325	1566	3	2614, 2771, 2772, 2773, 2774, 2775, 2776, 2777, 2778, 2779, 2780, 2785, 2786, 2787, 2788, 2790, 2811	1379, 1382, 1536, 1537, 1538, 1544
+1054	7	snns/src/xgui/sources/bn_art1.c	193	201	snns/src/xgui/sources/bn_art1.c	276	284	2	-	-
+1058	7	snns/src/kernel/sources/kr_amap.c	1832	1837	snns/src/kernel/sources/kr_art2.c	814	819	2	-	-
+1059	7	snns/src/kernel/sources/kr_amap.c	893	900	snns/src/kernel/sources/kr_amap.c	1276	1283	2	-	-
+1066	7	snns/src/tools/sources/lex.yyz.c	616	625	snns/src/tools/sources/lex.yyz.c	626	635	2	-	-
+1069	7	snns/src/kernel/sources/kr_td.c	270	333	snns/src/kernel/sources/learn_f.c	4997	5063	3	271, 274, 275, 287, 288, 290, 291, 294, 295, 297, 298, 299, 303, 305, 306, 307, 308, 309, 310, 323, 329, 330, 331, 332	4998, 5002, 5003, 5004, 5026, 5027, 5028, 5029, 5038, 5039, 5040, 5041, 5048, 5053, 5055, 5056, 5060, 5061, 5062
+1070	7	snns/src/kernel/sources/kr_amap.c	3119	3127	snns/src/kernel/sources/kr_amap.c	3240	3248	2	-	-
+1072	7	snns/src/xgui/sources/ui_displmap.c	111	126	snns/src/xgui/sources/ui_displwght.c	424	438	3	-	-
+1081	7	snns/src/xgui/sources/bn_artmap.c	578	594	snns/src/xgui/sources/bn_artmap.c	622	638	2	-	-
+1082	7	snns/src/xgui/sources/d3_xUtils.c	80	94	snns/src/xgui/sources/ui_xWidgets.c	389	405	2	-	-
+1083	7	snns/src/xgui/sources/d3_anageo.c	93	101	snns/src/xgui/sources/d3_anageo.c	108	116	2	-	-
+1087	7	snns/src/kernel/sources/kr_td.c	270	333	snns/src/kernel/sources/kr_td.c	344	407	2	-	-
+1088	7	snns/src/kernel/sources/kr_amap.c	2895	2912	snns/src/kernel/sources/kr_art1.c	1253	1271	2	-	-
+1091	7	snns/src/kernel/sources/learn_f.c	2205	2229	snns/src/kernel/sources/learn_f.c	2237	2259	1	-	-
+1095	7	snns/src/kernel/sources/kr_amap.c	316	373	snns/src/kernel/sources/kr_art2.c	197	254	2	-	-
+1099	7	snns/src/xgui/sources/d3_xUtils.c	230	361	snns/src/xgui/sources/net_analyzer.c	178	249	3	230, 232, 360, 361	178, 179, 249
+1105	7	snns/src/xgui/sources/bn_art1.c	112	119	snns/src/xgui/sources/bn_art1.c	171	178	2	-	-
+1106	7	snns/src/xgui/sources/o_graph.c	580	605	snns/src/xgui/sources/o_graph.c	719	744	2	-	-
+1112	7	snns/src/kernel/sources/prun_f.c	456	465	snns/src/kernel/sources/prun_f.c	645	654	2	-	-
+1113	7	snns/src/xgui/sources/ui_displmap.c	464	473	snns/src/xgui/sources/ui_xWidgets.c	456	465	2	-	-
+1120	7	snns/src/xgui/sources/ui_displwght.c	89	100	snns/src/xgui/sources/ui_funcdispl.c	202	214	3	97	-
+1128	7	snns/src/kernel/sources/learn_f.c	4423	4430	snns/src/kernel/sources/learn_f.c	5955	5961	1	-	-
+1130	7	snns/src/kernel/sources/kr_art2.c	906	942	snns/src/kernel/sources/kr_art2.c	1028	1070	3	918, 923, 924	1042, 1043, 1044, 1045, 1046, 1051, 1064
+1132	7	snns/src/kernel/sources/kr_amap.c	2703	2718	snns/src/kernel/sources/kr_amap.c	3616	3633	2	-	-
+1136	7	snns/src/kernel/sources/kr_io.c	925	976	snns/src/kernel/sources/kr_io.c	984	1035	2	-	-
+1139	7	snns/src/kernel/sources/learn_f.c	1802	1824	snns/src/kernel/sources/learn_f.c	3708	3728	2	-	-
+1149	7	snns/src/tools/sources/ff_bignet.c	102	123	snns/src/tools/sources/ff_bignet.c	129	150	2	-	-
+1150	7	snns/src/kernel/sources/learn_f.c	5814	5854	snns/src/kernel/sources/learn_f.c	5868	5907	3	5847, 5848, 5849, 5850, 5851, 5852, 5853	5900, 5901, 5902, 5903, 5904, 5905, 5906
+1151	7	snns/src/kernel/sources/learn_f.c	6168	6173	snns/src/kernel/sources/update_f.c	1501	1506	1	-	-
+1155	7	snns/src/xgui/sources/ui_displwght.c	424	438	snns/src/xgui/sources/ui_mainP.c	599	607	3	-	-
+1164	7	snns/src/kernel/sources/kr_amap.c	3107	3114	snns/src/kernel/sources/kr_amap.c	3120	3127	1	-	-
+1172	7	snns/src/kernel/sources/learn_f.c	5266	5274	snns/src/kernel/sources/stochastic_learn_f.c	586	592	3	5269, 5274	589, 592
+1173	7	snns/src/kernel/sources/kr_amap.c	927	936	snns/src/kernel/sources/kr_amap.c	1556	1566	2	-	-
+1176	7	snns/src/xgui/sources/d3_xUtils.c	350	360	snns/src/xgui/sources/ui_displwght.c	428	438	2	-	-
+1178	7	snns/src/kernel/sources/kr_amap.c	2620	2642	snns/src/kernel/sources/kr_amap.c	2721	2743	2	-	-
+1189	7	snns/src/xgui/sources/ui_displmap.c	403	412	snns/src/xgui/sources/ui_xWidgets.c	1151	1159	2	-	-
+1191	7	snns/src/xgui/sources/cc_main.c	353	359	snns/src/xgui/sources/ui_info.c	349	356	2	-	-
+1197	7	snns/src/xgui/sources/d3_pannels.c	106	120	snns/src/xgui/sources/d3_units.c	176	183	2	-	-
+1198	7	snns/src/kernel/sources/kr_amap.c	2264	2319	snns/src/kernel/sources/kr_amap.c	2322	2381	3	2267, 2268, 2269, 2288, 2290, 2291, 2292, 2302, 2305, 2311	2325, 2326, 2327, 2328, 2357, 2358, 2359, 2360, 2361, 2362, 2363, 2364, 2366, 2373
+1204	7	snns/src/kernel/sources/learn_f.c	4165	4173	snns/src/kernel/sources/learn_f.c	6004	6011	2	-	-
+1208	7	snns/src/xgui/sources/d3_pannels.c	121	126	snns/src/xgui/sources/ui_displmap.c	459	464	2	-	-
+1210	7	snns/src/xgui/sources/ui_colEdit.c	128	138	snns/src/xgui/sources/ui_control.c	147	156	3	-	-
+1215	7	snns/src/kernel/sources/learn_f.c	898	918	snns/src/kernel/sources/learn_f.c	3641	3659	2	-	-
+1222	7	snns/src/kernel/sources/kr_art2.c	1211	1238	snns/src/kernel/sources/kr_art2.c	1271	1306	3	1214, 1233	1274, 1289, 1290, 1291, 1292, 1293, 1294, 1295, 1301
+1223	7	snns/src/xgui/sources/ui_config.c	656	684	snns/src/xgui/sources/ui_config.c	717	745	2	-	-
+1224	7	snns/src/kernel/sources/kr_art1.c	859	865	snns/src/kernel/sources/kr_art2.c	755	761	2	-	-
+1225	7	snns/src/tools/sources/lex.yyy.c	350	1192	snns/src/tools/sources/lex.yyz.c	428	1491	3	528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552	606, 607, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 626, 627, 628, 629, 630, 631, 632, 633, 634, 635, 636, 637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 672, 673, 674, 675, 676, 677, 678, 679, 680, 681, 682, 683, 684, 685, 686, 687, 688, 689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734, 735, 736, 737, 738, 739, 740, 741, 742, 743, 744, 745, 746, 747, 748, 749, 750, 751, 752, 753, 754, 755, 756, 757, 758, 759, 760, 761, 762, 763, 764, 765, 766, 767, 768, 769, 770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 817, 818, 819, 820, 821, 822, 823, 824, 825, 826, 827, 828, 829, 830, 831, 832, 833, 834, 835, 836, 837, 838, 839, 840, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853
+1229	7	snns/src/xgui/sources/bn_TD_bignet.c	1205	1211	snns/src/xgui/sources/bn_bighop.c	276	282	2	-	-
+1232	7	snns/src/xgui/sources/d3_move.c	88	97	snns/src/xgui/sources/ui_xWidgets.c	456	465	2	-	-
+1241	7	snns/src/kernel/sources/learn_f.c	3936	3944	snns/src/kernel/sources/learn_f.c	5890	5897	1	-	-
+1242	7	snns/src/xgui/sources/ui_mainP.c	600	607	snns/src/xgui/sources/ui_xWidgets.c	416	422	2	-	-
+1246	7	snns/src/kernel/sources/kr_amap.c	612	618	snns/src/kernel/sources/kr_amap.c	1664	1670	2	-	-
+1249	7	snns/src/tools/sources/ic_snns.c	424	435	snns/src/tools/sources/ic_snns.c	943	954	2	-	-
+1253	7	snns/src/kernel/sources/kr_amap.c	3063	3138	snns/src/kernel/sources/kr_art1.c	1031	1086	3	3066, 3067, 3068, 3069, 3070, 3071, 3087, 3088, 3089, 3093, 3094, 3095, 3096, 3097, 3102, 3107, 3108, 3109, 3110, 3111, 3112, 3113, 3120, 3121, 3122, 3123, 3124, 3125, 3126	1034, 1035, 1036, 1052, 1055, 1057, 1062
+1256	7	snns/src/kernel/sources/kr_art1.c	776	782	snns/src/kernel/sources/kr_art2.c	813	819	2	-	-
+1257	7	snns/src/kernel/sources/learn_f.c	282	325	snns/src/kernel/sources/learn_f.c	3700	3739	3	288, 289, 290, 299, 303, 306, 309, 310, 311, 321, 322, 323, 324	3706, 3707, 3708, 3712, 3717, 3719, 3722, 3723, 3725, 3726, 3737, 3738
+1263	7	snns/src/xgui/sources/ui_displwght.c	400	410	snns/src/xgui/sources/ui_xWidgets.c	539	548	2	-	-
+1270	7	snns/src/kernel/sources/kr_amap.c	527	533	snns/src/kernel/sources/kr_amap.c	1529	1535	2	-	-
+1274	7	snns/src/tools/sources/ic_snns.c	988	994	snns/src/tools/sources/ic_snns.c	1006	1012	2	-	-
+1275	7	snns/src/xgui/sources/bn_artmap.c	640	649	snns/src/xgui/sources/bn_artmap.c	775	784	2	-	-
+1285	7	snns/src/kernel/sources/kr_td.c	371	385	snns/src/kernel/sources/update_f.c	1100	1108	3	377, 379, 380, 381, 382, 383, 384	-
+1286	7	snns/src/kernel/sources/scaled_conj_grad.c	93	99	snns/src/kernel/sources/stochastic_learn_f.c	389	395	2	-	-
+1300	7	snns/src/xgui/sources/pr_main.c	199	204	snns/src/xgui/sources/ui_info.c	349	356	2	-	-
+1301	7	snns/src/tools/sources/td_bignet.c	408	416	snns/src/xgui/sources/bn_bignet.c	642	648	2	-	-
+1303	7	snns/src/kernel/sources/kr_mem.c	96	108	snns/src/kernel/sources/kr_mem.c	245	257	2	-	-
+1306	7	snns/src/kernel/sources/dlvq_learn.c	74	81	snns/src/kernel/sources/learn_f.c	4422	4430	2	-	-
+1307	7	snns/src/xgui/sources/bn_artmap.c	463	475	snns/src/xgui/sources/bn_artmap.c	637	649	2	-	-
+1308	7	snns/src/kernel/sources/trans_f.c	383	392	snns/src/kernel/sources/trans_f.c	402	411	1	-	-
+1317	7	snns/src/kernel/sources/kr_amap.c	639	646	snns/src/kernel/sources/kr_amap.c	1495	1502	2	-	-
+1318	7	snns/src/kernel/sources/kr_amap.c	4043	4066	snns/src/kernel/sources/kr_art1.c	289	312	2	-	-
+1324	7	snns/src/kernel/sources/kr_td.c	392	407	snns/src/kernel/sources/learn_f.c	260	274	2	-	-
+1332	7	snns/src/xgui/sources/bn_TD_bignet.c	266	275	snns/src/xgui/sources/d3_pannels.c	158	167	2	-	-
+1338	7	snns/src/tools/sources/td_bignet.c	82	217	snns/src/xgui/sources/bn_bignet.c	369	497	2	-	-
+1340	7	snns/src/kernel/sources/kr_amap.c	2558	2813	snns/src/kernel/sources/kr_amap.c	3141	3387	3	2614, 2779, 2780, 2781, 2782, 2783, 2784, 2785, 2790	3196, 3364
+1341	7	snns/src/xgui/sources/ui_colEdit.c	81	90	snns/src/xgui/sources/ui_xWidgets.c	1151	1160	2	-	-
+1350	7	snns/src/xgui/sources/cc_main.c	249	270	snns/src/xgui/sources/pr_main.c	199	216	2	-	-
+1356	7	snns/src/kernel/sources/learn_f.c	730	747	snns/src/kernel/sources/learn_f.c	5266	5282	3	733, 736, 737, 742, 743, 744, 745, 746	5274, 5276, 5277, 5278, 5279, 5280, 5281
+1360	7	snns/src/xgui/sources/cc_main.c	354	363	snns/src/xgui/sources/ui_info.c	347	356	2	-	-
+1363	7	snns/src/kernel/sources/learn_f.c	896	907	snns/src/kernel/sources/stochastic_learn_f.c	59	69	3	902	65
+1368	7	snns/src/kernel/sources/kr_art1.c	458	463	snns/src/kernel/sources/kr_art2.c	755	760	2	-	-
+1372	7	snns/src/kernel/sources/kr_amap.c	1085	1150	snns/src/kernel/sources/kr_art1.c	414	474	3	1094, 1096, 1097, 1098, 1099, 1117, 1119, 1129, 1143, 1144, 1146	424, 440, 441, 442, 447, 464
+1379	7	snns/src/tools/sources/icopjmp.c	410	416	snns/src/tools/sources/icopjmp.c	538	544	2	-	-
+1388	7	snns/src/kernel/sources/update_f.c	1031	1039	snns/src/kernel/sources/update_f.c	1405	1411	2	-	-
+1391	7	snns/src/tools/sources/analyze.c	487	499	snns/src/tools/sources/analyze.c	501	517	2	-	-
+1399	7	snns/src/xgui/sources/ui_info.c	207	217	snns/src/xgui/sources/ui_setup.c	148	160	2	-	-
+1403	7	snns/src/xgui/sources/ui_controlP.c	1753	1759	snns/src/xgui/sources/ui_controlP.c	1784	1790	2	-	-
+1404	7	snns/src/xgui/sources/ui_displwght.c	89	100	snns/src/xgui/sources/ui_displwght.c	399	410	3	97	-
+1409	7	snns/src/xgui/sources/bn_art1.c	142	149	snns/src/xgui/sources/bn_art1.c	303	310	2	-	-
+1412	7	snns/src/kernel/sources/kr_amap.c	1526	1536	snns/src/kernel/sources/kr_amap.c	1880	1890	2	-	-
+1419	7	snns/src/kernel/sources/kr_amap.c	1510	1519	snns/src/kernel/sources/kr_art1.c	776	785	2	-	-
+1423	7	snns/src/xgui/sources/d3_xUtils.c	351	360	snns/src/xgui/sources/ui_displmap.c	402	412	2	-	-
+1424	7	snns/src/xgui/sources/bn_artmap.c	783	809	snns/src/xgui/sources/bn_artmap.c	826	852	2	-	-
+1443	7	snns/src/xgui/sources/net_analyzer.c	240	249	snns/src/xgui/sources/ui_xWidgets.c	489	499	3	249	498, 499
+1448	7	snns/src/xgui/sources/net_analyzer.c	824	834	snns/src/xgui/sources/ui_xWidgets.c	539	548	2	-	-
+1450	7	snns/src/kernel/sources/update_f.c	431	442	snns/src/kernel/sources/update_f.c	805	815	2	-	-
+1456	7	snns/src/kernel/sources/learn_f.c	695	747	snns/src/kernel/sources/learn_f.c	1230	1283	3	701, 728, 733, 736	1236, 1243, 1263, 1269, 1276, 1277, 1278, 1279
+1457	7	snns/src/kernel/sources/kr_amap.c	1419	1427	snns/src/kernel/sources/kr_art1.c	859	867	2	-	-
+1458	7	snns/src/xgui/sources/bn_artmap.c	445	456	snns/src/xgui/sources/bn_artmap.c	507	518	2	-	-
+1464	7	snns/src/kernel/sources/kr_amap.c	1495	1501	snns/src/kernel/sources/kr_art1.c	398	404	2	-	-
+1465	7	snns/src/xgui/sources/d3_setup.c	112	125	snns/src/xgui/sources/d3_units.c	144	157	2	-	-
+1470	7	snns/src/xgui/sources/ui_key.c	325	330	snns/src/xgui/sources/ui_key.c	530	536	3	-	531
+1475	7	snns/src/xgui/sources/net_analyzer.c	161	170	snns/src/xgui/sources/ui_inversion.c	163	174	3	170	163, 164, 165, 166, 172, 173, 174
+1477	7	snns/src/xgui/sources/ui_file.c	427	439	snns/src/xgui/sources/ui_xWidgets.c	537	548	2	-	-
+1485	7	snns/src/kernel/sources/trans_f.c	181	190	snns/src/kernel/sources/trans_f.c	365	374	1	-	-
+1488	7	snns/src/kernel/sources/kr_art1.c	842	848	snns/src/kernel/sources/kr_art2.c	755	761	2	-	-
+1490	7	snns/src/kernel/sources/kr_amap.c	3706	3788	snns/src/kernel/sources/kr_art1.c	1356	1441	3	3725, 3731, 3732, 3737, 3738, 3739, 3752, 3755, 3756, 3757	1359, 1360, 1361, 1362, 1363, 1364, 1374, 1382, 1388, 1392, 1394, 1397, 1405, 1406, 1407, 1408
+1499	7	snns/src/xgui/sources/pr_main.c	189	198	snns/src/xgui/sources/ui_setup.c	195	210	2	-	-
+1504	7	snns/src/xgui/sources/bn_art2.c	162	169	snns/src/xgui/sources/bn_artmap.c	438	445	3	168	444
+1506	7	snns/src/kernel/sources/kr_amap.c	2647	2656	snns/src/kernel/sources/kr_amap.c	2657	2666	2	-	-
+1511	7	snns/src/xgui/sources/bn_artmap.c	526	532	snns/src/xgui/sources/bn_artmap.c	648	654	2	-	-
+1515	7	snns/src/xgui/sources/ui_colEdit.c	128	136	snns/src/xgui/sources/ui_displwght.c	74	82	2	-	-
+1517	7	snns/src/xgui/sources/ui_colEdit.c	128	138	snns/src/xgui/sources/ui_mainP.c	430	438	3	-	-
+1520	7	snns/src/kernel/sources/learn_f.c	1263	1275	snns/src/kernel/sources/learn_f.c	2312	2326	3	1269, 1270, 1274, 1275	2315, 2316, 2324, 2325, 2326
+1528	7	snns/src/xgui/sources/ui_displmap.c	112	126	snns/src/xgui/sources/ui_xWidgets.c	456	465	3	-	-
+1529	7	snns/src/xgui/sources/ui_colEdit.c	77	89	snns/src/xgui/sources/ui_displmap.c	459	473	3	-	-
+1531	7	snns/src/kernel/sources/kr_td.c	270	333	snns/src/kernel/sources/learn_f.c	2270	2338	3	271, 276, 277, 288, 290, 291, 303, 304, 305, 306, 307, 308, 309, 310, 314, 330, 331, 332	2271, 2276, 2288, 2289, 2290, 2310, 2316, 2324, 2325, 2326, 2327, 2328, 2329, 2330, 2331, 2332, 2333, 2334, 2335, 2336, 2337
+1532	7	snns/src/kernel/sources/learn_f.c	4422	4430	snns/src/kernel/sources/learn_f.c	5890	5897	1	-	-
+1536	7	snns/src/kernel/sources/kr_amap.c	2671	2683	snns/src/kernel/sources/kr_amap.c	2790	2800	2	-	-
+1544	7	snns/src/xgui/sources/ui_control.c	147	156	snns/src/xgui/sources/ui_funcdispl.c	202	214	3	1	-
+1547	7	snns/src/kernel/sources/kr_td.c	312	332	snns/src/kernel/sources/learn_f.c	5252	5278	3	323, 329, 330, 331, 332	5259, 5260, 5261, 5262, 5263, 5264, 5269, 5274, 5276, 5277, 5278
+1548	7	snns/src/xgui/sources/ui_displmap.c	459	473	snns/src/xgui/sources/ui_displwght.c	89	100	3	-	97
+1553	7	snns/src/kernel/sources/kr_art1.c	733	744	snns/src/kernel/sources/kr_art1.c	842	853	2	-	-
+1556	7	snns/src/kernel/sources/kr_amap.c	629	658	snns/src/kernel/sources/kr_amap.c	688	714	3	631, 634, 635, 636, 637, 638	692, 693, 708
+1566	7	snns/src/xgui/sources/bn_TD_bignet.c	54	65	snns/src/xgui/sources/bn_TD_bignet.c	162	173	2	-	-
+1573	7	snns/src/kernel/sources/arttr_f.c	81	93	snns/src/kernel/sources/arttr_f.c	235	247	1	-	-
+1576	7	snns/src/kernel/sources/kr_amap.c	1067	1072	snns/src/kernel/sources/kr_amap.c	1832	1837	2	-	-
+1577	7	snns/src/xgui/sources/bn_art1.c	193	198	snns/src/xgui/sources/bn_art1.c	209	214	2	-	-
+1583	7	snns/src/xgui/sources/ui_action.c	120	128	snns/src/xgui/sources/ui_action.c	175	183	1	-	-
+1585	7	snns/src/xgui/sources/ui_key.c	435	442	snns/src/xgui/sources/ui_key.c	674	680	3	436	-
+1592	7	snns/src/xgui/sources/ui_mainP.c	397	409	snns/src/xgui/sources/ui_mainP.c	508	520	2	-	-
+1593	7	snns/src/kernel/sources/prun_f.c	752	760	snns/src/kernel/sources/prun_f.c	885	890	2	-	-
+1594	7	snns/src/kernel/sources/learn_f.c	1478	1516	snns/src/kernel/sources/learn_f.c	5045	5063	3	1482, 1485, 1486, 1487, 1488, 1489, 1490, 1491, 1492, 1493, 1494, 1495, 1496, 1497, 1498, 1499, 1500, 1502, 1503, 1504, 1505, 1506, 1507, 1508, 1509, 1510, 1511, 1512, 1514, 1515	5053, 5055, 5056, 5060, 5061, 5062
+1596	7	snns/src/xgui/sources/d3_move.c	85	97	snns/src/xgui/sources/ui_xWidgets.c	1434	1456	3	97	1456
+1602	7	snns/src/xgui/sources/bn_artmap.c	582	591	snns/src/xgui/sources/bn_artmap.c	617	626	2	-	-
+1608	7	snns/src/kernel/sources/kr_amap.c	1437	1442	snns/src/kernel/sources/kr_art2.c	1052	1057	2	-	-
+1609	7	snns/src/kernel/sources/kr_amap.c	2185	2243	snns/src/kernel/sources/kr_art1.c	949	1012	3	2187, 2196, 2199, 2208, 2209, 2211, 2212, 2213, 2214, 2215, 2216, 2230, 2232, 2233, 2234, 2236, 2237	951, 952, 961, 964, 965, 966, 967, 968, 977, 979, 981, 982, 983, 985, 997, 998, 1000, 1001, 1003, 1005, 1006, 1007
+1615	7	snns/src/xgui/sources/ui_key.c	293	299	snns/src/xgui/sources/ui_key.c	387	393	2	-	-
+1618	7	snns/src/xgui/sources/d3_xUtils.c	80	222	snns/src/xgui/sources/d3_xUtils.c	230	361	3	-	-
+1619	7	snns/src/xgui/sources/ui_funcdispl.c	236	346	snns/src/xgui/sources/ui_funcdispl.c	347	457	2	-	-
+1626	7	snns/src/xgui/sources/net_analyzer.c	121	128	snns/src/xgui/sources/ui_xWidgets.c	436	447	2	-	-
+1628	7	snns/src/kernel/sources/learn_f.c	1802	1841	snns/src/kernel/sources/learn_f.c	2278	2326	3	1828, 1840, 1841	2287, 2288, 2289, 2290, 2310, 2316, 2324, 2325, 2326
+1631	7	snns/src/xgui/sources/net_analyzer.c	97	169	snns/src/xgui/sources/ui_xWidgets.c	1317	1420	2	-	-
+1636	7	snns/src/tools/sources/snnsbat.c	573	591	snns/src/tools/sources/snnsbat.c	702	720	2	-	-
+1643	7	snns/src/tools/sources/lex.yyy.c	786	1192	snns/src/tools/sources/lex.yyz.c	1085	1491	1	-	-
+1645	7	snns/src/kernel/sources/kr_amap.c	141	148	snns/src/kernel/sources/kr_art2.c	142	149	2	-	-
+1650	7	snns/src/kernel/sources/update_f.c	476	505	snns/src/kernel/sources/update_f.c	660	711	3	483, 484, 503	669, 671, 672, 673, 675, 676, 677, 678, 679, 680, 692, 697, 702, 705, 707, 709
+1653	7	snns/src/kernel/sources/kr_amap.c	126	178	snns/src/kernel/sources/kr_amap.c	220	273	3	135, 155, 165	227, 247, 255, 260
+1654	7	snns/src/kernel/sources/kr_amap.c	947	971	snns/src/kernel/sources/kr_amap.c	1271	1292	3	947, 949, 964, 967	1271, 1284
+1663	7	snns/src/xgui/sources/bn_artmap.c	241	251	snns/src/xgui/sources/bn_artmap.c	346	356	2	-	-
+1667	7	snns/src/kernel/sources/learn_f.c	3550	3605	snns/src/kernel/sources/learn_f.c	3809	3850	3	3556, 3562, 3563, 3564, 3565, 3566, 3567, 3568, 3569, 3588, 3589, 3590, 3591, 3599, 3602, 3604	3815, 3820, 3846, 3849
+1668	7	snns/src/tools/sources/snnsbat.c	796	802	snns/src/tools/sources/snnsbat.c	803	809	2	-	-
+1676	7	snns/src/xgui/sources/ui_displmap.c	111	126	snns/src/xgui/sources/ui_xWidgets.c	1435	1456	3	-	-
+1686	7	snns/src/kernel/sources/learn_f.c	891	943	snns/src/kernel/sources/learn_f.c	2270	2338	3	922, 938, 939, 940, 941, 942	2276, 2277, 2287, 2288, 2289, 2290, 2310, 2316, 2324, 2325, 2326, 2327, 2328, 2329, 2330, 2331, 2332, 2333, 2334, 2335, 2336, 2337
+1687	7	snns/src/xgui/sources/bn_bighop.c	95	107	snns/src/xgui/sources/bn_bignet.c	276	297	2	-	-
+1690	7	snns/src/kernel/sources/kr_amap.c	817	822	snns/src/kernel/sources/kr_art2.c	1101	1106	2	-	-
+1695	7	snns/src/kernel/sources/kr_art2.c	886	891	snns/src/kernel/sources/kr_art2.c	1078	1083	2	-	-
+1698	7	snns/src/xgui/sources/o_graph.c	326	335	snns/src/xgui/sources/ui_displwght.c	74	88	3	-	-
+1708	7	snns/src/kernel/sources/learn_f.c	2297	2303	snns/src/kernel/sources/learn_f.c	5162	5169	2	-	-
+1711	7	snns/src/xgui/sources/cc_main.c	360	367	snns/src/xgui/sources/ui_setup.c	201	210	2	-	-
+1716	7	snns/src/xgui/sources/bn_art1.c	80	87	snns/src/xgui/sources/bn_artmap.c	72	79	2	-	-
+1717	7	snns/src/kernel/sources/kr_newpattern.c	3119	3126	snns/src/kernel/sources/kr_newpattern.c	3179	3186	2	-	-
+1722	7	snns/src/kernel/sources/trans_f.c	124	135	snns/src/kernel/sources/trans_f.c	345	356	1	-	-
+1723	7	snns/src/kernel/sources/kr_amap.c	4075	4087	snns/src/kernel/sources/kr_art1.c	289	301	2	-	-
+1729	7	snns/src/xgui/sources/ui_displwght.c	424	438	snns/src/xgui/sources/ui_file.c	425	439	3	-	-
+1732	7	snns/src/xgui/sources/d3_pannels.c	169	175	snns/src/xgui/sources/ui_xWidgets.c	1063	1068	2	-	-
+1735	7	snns/src/kernel/sources/learn_f.c	2312	2326	snns/src/kernel/sources/learn_f.c	2694	2712	3	2315, 2316, 2323, 2324, 2325, 2326	2700, 2701, 2702, 2703, 2704, 2705, 2706, 2707, 2708, 2709, 2710, 2711, 2712
+1739	7	snns/src/kernel/sources/learn_f.c	5226	5238	snns/src/kernel/sources/learn_f.c	5449	5460	2	-	-
+1749	7	snns/src/kernel/sources/arttr_f.c	305	315	snns/src/kernel/sources/trans_f.c	403	411	3	305, 306, 308, 309, 310, 311, 313, 314, 315	403, 404, 406, 407, 408, 409, 411
+1750	7	snns/src/xgui/sources/ui_config.c	472	486	snns/src/xgui/sources/ui_config.c	488	502	2	-	-
+1751	7	snns/src/xgui/sources/ui_xWidgets.c	436	447	snns/src/xgui/sources/ui_xWidgets.c	1197	1208	2	-	-
+1754	7	snns/src/xgui/sources/ui_controlP.c	519	527	snns/src/xgui/sources/ui_controlP.c	543	551	2	-	-
+1760	7	snns/src/kernel/sources/kr_amap.c	3269	3300	snns/src/kernel/sources/kr_amap.c	3758	3788	3	3282, 3283, 3284	-
+1765	7	snns/src/kernel/sources/update_f.c	1089	1141	snns/src/kernel/sources/update_f.c	1463	1521	3	1089, 1090, 1095, 1111, 1112, 1115, 1116, 1117, 1118, 1119, 1120, 1121, 1128, 1129, 1130, 1131, 1132, 1133, 1135, 1140	1463, 1471, 1472, 1474, 1487, 1489, 1490, 1492, 1494, 1495, 1497, 1500, 1508, 1509, 1511, 1515, 1517, 1518, 1520
+1771	7	snns/src/xgui/sources/bn_art1.c	233	238	snns/src/xgui/sources/bn_artmap.c	72	77	2	-	-
+1774	7	snns/src/xgui/sources/ui_xWidgets.c	448	466	snns/src/xgui/sources/ui_xWidgets.c	481	499	2	-	-
+1783	7	snns/src/kernel/sources/kr_io.c	409	421	snns/src/kernel/sources/kr_io.c	472	484	2	-	-
+1784	7	snns/src/tools/sources/ic_snns.c	1441	1449	snns/src/tools/sources/ic_snns.c	1471	1479	2	-	-
+1786	7	snns/src/kernel/sources/kr_amap.c	694	699	snns/src/kernel/sources/kr_art2.c	1052	1057	2	-	-
+1787	7	snns/src/kernel/sources/learn_f.c	1202	1218	snns/src/kernel/sources/learn_f.c	5266	5282	3	1206, 1209, 1211, 1212, 1213, 1214, 1215, 1216, 1217	5269, 5274, 5276, 5277, 5278, 5279, 5280, 5281
+1793	7	snns/src/xgui/sources/ui_inversion.c	204	224	snns/src/xgui/sources/ui_mainP.c	483	505	3	204, 209, 224	483, 488, 505
+1798	7	snns/src/xgui/sources/d3_pannels.c	166	173	snns/src/xgui/sources/ui_displwght.c	88	94	2	-	-
+1801	7	snns/src/kernel/sources/learn_f.c	707	747	snns/src/kernel/sources/learn_f.c	3570	3605	3	713, 717, 720, 721, 723, 724, 725, 726, 728, 734, 736, 742, 743, 744, 745, 746	3572, 3577, 3582, 3583, 3585, 3586, 3588, 3590, 3591, 3601, 3602, 3604
+1805	7	snns/src/kernel/sources/kr_io.c	1135	1142	snns/src/kernel/sources/kr_io.c	1230	1236	2	-	-
+1807	7	snns/src/kernel/sources/tbl_func.c	35	44	snns/src/kernel/sources/trans_f.c	347	356	2	-	-
+1810	7	snns/src/kernel/sources/trans_f.c	216	231	snns/src/kernel/sources/trans_f.c	546	565	3	218, 219, 220, 221, 223, 224, 225, 226, 228, 229, 231	548, 549, 550, 552, 553, 554, 555, 557, 558, 559, 560, 562, 563, 564, 565
+1818	7	snns/src/kernel/sources/kr_amap.c	1724	1737	snns/src/kernel/sources/kr_amap.c	1758	1771	2	-	-
+1829	7	snns/src/xgui/sources/bn_bighop.c	52	58	snns/src/xgui/sources/d3_setup.c	213	226	2	-	-
+1831	7	snns/src/kernel/sources/kr_amap.c	3909	3916	snns/src/kernel/sources/kr_amap.c	4080	4087	2	-	-
+1832	7	snns/src/kernel/sources/arttr_f.c	169	180	snns/src/kernel/sources/trans_f.c	265	274	2	-	-
+1837	7	snns/src/kernel/sources/kr_amap.c	2925	2941	snns/src/kernel/sources/kr_amap.c	3708	3724	3	-	-
+1843	7	snns/src/kernel/sources/kr_amap.c	4005	4014	snns/src/kernel/sources/kr_amap.c	4194	4203	2	-	-
+1847	7	snns/src/kernel/sources/kr_ui.c	244	252	snns/src/kernel/sources/kr_ui.c	1130	1137	2	-	-
+1853	7	snns/src/xgui/sources/ui_colEdit.c	79	90	snns/src/xgui/sources/ui_xWidgets.c	1412	1423	2	-	-
+1855	7	snns/src/kernel/sources/kr_amap.c	1219	1224	snns/src/kernel/sources/kr_art2.c	965	970	2	-	-
+1856	7	snns/src/kernel/sources/kr_td.c	270	333	snns/src/kernel/sources/learn_f.c	5443	5503	3	275, 287, 288, 290, 291, 292, 293, 297, 298, 299, 303, 304, 305, 306, 307, 308, 309, 310, 323, 330, 331, 332	5461, 5462, 5467, 5468, 5478, 5479, 5480, 5481, 5482, 5483, 5484, 5485, 5486, 5487, 5488, 5495, 5497, 5498, 5499, 5500, 5501, 5502
+1864	7	snns/src/kernel/sources/init_f.c	576	590	snns/src/kernel/sources/init_f.c	1834	1848	2	-	-
+1865	7	snns/src/kernel/sources/learn_f.c	2055	2071	snns/src/kernel/sources/learn_f.c	3824	3839	2	-	-
+1869	7	snns/src/xgui/sources/ui_colEdit.c	128	138	snns/src/xgui/sources/ui_mainP.c	599	607	3	137, 138	606, 607
+1874	7	snns/src/xgui/sources/bn_TD_bignet.c	1311	1319	snns/src/xgui/sources/bn_bignet.c	1450	1458	2	-	-
+1879	7	snns/src/tools/sources/ic_snns.c	376	383	snns/src/tools/sources/ic_snns.c	1347	1354	2	-	-
+1884	7	snns/src/xgui/sources/bn_bighop.c	50	57	snns/src/xgui/sources/d3_setup.c	125	137	2	-	-
+1886	7	snns/src/tools/sources/snns2c.c	975	985	snns/src/tools/sources/snns2c.c	1039	1049	2	-	-
+1889	7	snns/src/kernel/sources/arttr_f.c	279	289	snns/src/kernel/sources/trans_f.c	252	260	3	279, 280, 282, 283, 284, 285, 287, 288, 289	252, 253, 255, 256, 257, 258, 260
+1892	7	snns/src/xgui/sources/d3_move.c	128	137	snns/src/xgui/sources/d3_xUtils.c	212	221	2	-	-
+1906	7	snns/src/kernel/sources/kr_amap.c	1899	1904	snns/src/kernel/sources/kr_art2.c	925	930	2	-	-
+1912	7	snns/src/xgui/sources/ui_displmap.c	401	412	snns/src/xgui/sources/ui_displmap.c	459	473	3	-	-
+1913	7	snns/src/kernel/sources/learn_f.c	898	943	snns/src/kernel/sources/learn_f.c	3570	3605	3	919, 922, 937, 938, 939, 940, 941, 942	3588, 3590, 3601, 3602, 3604
+1916	7	snns/src/xgui/sources/ui_colEdit.c	77	89	snns/src/xgui/sources/ui_displmap.c	401	412	3	-	-
+1921	7	snns/src/xgui/sources/ui_xWidgets.c	436	447	snns/src/xgui/sources/ui_xWidgets.c	1011	1022	3	436, 442	1011, 1017
+1922	7	snns/src/xgui/sources/ui_displwght.c	79	88	snns/src/xgui/sources/ui_xWidgets.c	456	465	2	-	-
+1930	7	snns/src/tools/sources/icopjmp.c	253	261	snns/src/tools/sources/icopjmp.c	284	292	2	-	-
+1932	7	snns/src/xgui/sources/ui_file.c	425	439	snns/src/xgui/sources/ui_xWidgets.c	480	498	3	-	482, 483, 484, 485, 486, 487, 488
+1934	7	snns/src/xgui/sources/pr_main.c	137	152	snns/src/xgui/sources/ui_inversion.c	233	244	2	-	-
+1942	7	snns/src/kernel/sources/kr_amap.c	2523	2531	snns/src/kernel/sources/kr_amap.c	3606	3614	2	-	-
+1945	7	snns/src/xgui/sources/bn_art1.c	207	214	snns/src/xgui/sources/bn_art1.c	303	310	2	-	-
+1956	7	snns/src/kernel/sources/kr_amap.c	1723	1732	snns/src/kernel/sources/kr_art1.c	808	816	2	-	-
+1958	7	snns/src/kernel/sources/trans_f.c	145	154	snns/src/kernel/sources/trans_f.c	201	210	1	-	-
+1962	7	snns/src/kernel/sources/learn_f.c	93	123	snns/src/kernel/sources/update_f.c	1494	1520	1	-	-
+1965	7	snns/src/kernel/sources/arttr_f.c	221	231	snns/src/kernel/sources/trans_f.c	202	210	3	221, 222, 224, 225, 226, 227, 229, 230, 231	202, 203, 205, 206, 207, 208, 210
+1972	7	snns/src/xgui/sources/d3_move.c	86	96	snns/src/xgui/sources/ui_displmap.c	459	469	2	-	-
+1979	7	snns/src/xgui/sources/d3_xUtils.c	85	164	snns/src/xgui/sources/ui_xWidgets.c	1317	1411	2	-	-
+1981	7	snns/src/xgui/sources/d3_xUtils.c	180	189	snns/src/xgui/sources/ui_xWidgets.c	394	405	2	-	-
+1982	7	snns/src/kernel/sources/kr_amap.c	3595	3745	snns/src/kernel/sources/kr_art1.c	1409	1564	3	3597, 3600, 3601, 3602, 3640, 3643, 3644, 3645, 3647, 3672, 3673, 3674, 3682, 3683, 3688, 3689, 3690, 3700, 3701, 3702, 3707, 3708, 3709, 3710, 3712, 3713, 3715, 3716, 3717, 3719, 3720, 3722, 3723, 3732	1445, 1446, 1447, 1448, 1466, 1467, 1468, 1487, 1491, 1493, 1496, 1504, 1508, 1509, 1511, 1512, 1513, 1514, 1516, 1517, 1518, 1520, 1530, 1531, 1532, 1533, 1535, 1536, 1537, 1538, 1539, 1540, 1541, 1542, 1543, 1544, 1545, 1546, 1547, 1548, 1549, 1550, 1554
+1988	7	snns/src/kernel/sources/kr_amap.c	3603	3633	snns/src/kernel/sources/kr_art1.c	1413	1441	2	-	-
+1989	7	snns/src/kernel/sources/trans_f.c	566	585	snns/src/kernel/sources/trans_f.c	1035	1048	3	569, 570, 572, 573, 574, 575, 576, 577, 578, 579	1038, 1039, 1040, 1042
+1990	7	snns/src/kernel/sources/kr_td.c	350	356	snns/src/kernel/sources/learn_f.c	5449	5456	2	-	-
+1995	7	snns/src/xgui/sources/ui_displmap.c	402	412	snns/src/xgui/sources/ui_xWidgets.c	539	548	2	-	-
+2002	7	snns/src/xgui/sources/ui_displwght.c	428	438	snns/src/xgui/sources/ui_xWidgets.c	1412	1422	2	-	-
+2005	7	snns/src/xgui/sources/pr_main.c	202	212	snns/src/xgui/sources/ui_info.c	399	416	2	-	-
+2007	7	snns/src/kernel/sources/trans_f.c	166	174	snns/src/kernel/sources/trans_f.c	266	274	1	-	-
+2014	7	snns/src/kernel/sources/learn_f.c	1832	1841	snns/src/kernel/sources/stochastic_learn_f.c	160	170	3	1839, 1840, 1841	168, 169, 170
+2020	7	snns/src/xgui/sources/ui_displwght.c	431	438	snns/src/xgui/sources/ui_xWidgets.c	413	422	2	-	-
+2021	7	snns/src/kernel/sources/kr_amap.c	2384	2477	snns/src/kernel/sources/kr_art1.c	1151	1244	2	-	-
+2024	7	snns/src/xgui/sources/net_analyzer.c	97	160	snns/src/xgui/sources/ui_xWidgets.c	1293	1387	2	-	-
+2032	7	snns/src/kernel/sources/kr_art1.c	777	790	snns/src/kernel/sources/kr_art1.c	859	872	2	-	-
+2037	7	snns/src/kernel/sources/kr_amap.c	954	959	snns/src/kernel/sources/kr_art2.c	886	891	2	-	-
+2043	7	snns/src/xgui/sources/net_analyzer.c	811	822	snns/src/xgui/sources/ui_displwght.c	89	100	3	812, 813	97
+2051	7	snns/src/xgui/sources/bn_TD_bignet.c	217	230	snns/src/xgui/sources/ui_control.c	91	100	2	-	-
+2053	7	snns/src/kernel/sources/kr_amap.c	1883	1888	snns/src/kernel/sources/kr_art2.c	965	970	2	-	-
+2062	7	snns/src/xgui/sources/ui_xWidgets.c	436	447	snns/src/xgui/sources/ui_xWidgets.c	1179	1190	2	-	-
+2063	7	snns/src/xgui/sources/ui_displwght.c	399	410	snns/src/xgui/sources/ui_mainP.c	599	607	2	-	-
+2066	7	snns/src/kernel/sources/kernel.c	270	284	snns/src/kernel/sources/kernel.c	1956	1967	3	270, 281, 283	1956, 1964, 1966
+2074	7	snns/src/kernel/sources/kr_amap.c	1304	1311	snns/src/kernel/sources/kr_amap.c	1865	1872	2	-	-
+2076	7	snns/src/tools/sources/ic_snns.c	250	256	snns/src/tools/sources/ic_snns.c	878	884	2	-	-
+2082	7	snns/src/kernel/sources/learn_f.c	2312	2326	snns/src/kernel/sources/learn_f.c	3730	3738	3	2316, 2323, 2324, 2325, 2326	3737, 3738
+2093	7	snns/src/xgui/sources/pr_main.c	193	203	snns/src/xgui/sources/pr_main.c	205	216	2	-	-
+2096	7	snns/src/kernel/sources/kr_td.c	312	321	snns/src/kernel/sources/learn_f.c	2072	2082	2	-	-
+2102	7	snns/src/xgui/sources/d3_xUtils.c	235	361	snns/src/xgui/sources/ui_xWidgets.c	1275	1423	2	-	-
+2105	7	snns/src/xgui/sources/d3_move.c	127	137	snns/src/xgui/sources/net_analyzer.c	811	822	2	-	-
+2113	7	snns/src/xgui/sources/bn_artmap.c	142	174	snns/src/xgui/sources/bn_artmap.c	241	272	2	-	-
+2119	7	snns/src/kernel/sources/trans_f.c	74	85	snns/src/kernel/sources/trans_f.c	90	101	1	-	-
+2123	7	snns/src/kernel/sources/kr_amap.c	3269	3297	snns/src/kernel/sources/kr_amap.c	3646	3675	3	3282, 3283, 3284	3647, 3671, 3672, 3673
+2135	7	snns/src/kernel/sources/arttr_f.c	128	138	snns/src/kernel/sources/arttr_f.c	193	203	1	-	-
+2136	7	snns/src/kernel/sources/arttr_f.c	128	138	snns/src/kernel/sources/arttr_f.c	237	247	1	-	-
+2137	7	snns/src/tools/sources/snnsbat.c	609	627	snns/src/tools/sources/snnsbat.c	702	720	2	-	-
+2143	7	snns/src/xgui/sources/d3_move.c	86	97	snns/src/xgui/sources/ui_displwght.c	74	88	3	97	88
+2150	7	snns/src/xgui/sources/ui_displmap.c	117	126	snns/src/xgui/sources/ui_xWidgets.c	489	498	2	-	-
+2154	7	snns/src/kernel/sources/cc_glob.c	598	610	snns/src/kernel/sources/kr_JordElm.c	226	240	3	607	234, 236, 238
+2160	7	snns/src/xgui/sources/ui_displwght.c	399	410	snns/src/xgui/sources/ui_mainP.c	1112	1125	3	-	-
+2170	7	snns/src/kernel/sources/kr_td.c	350	356	snns/src/kernel/sources/learn_f.c	5150	5157	1	-	-
+2171	7	snns/src/xgui/sources/ui_colEdit.c	128	138	snns/src/xgui/sources/ui_displmap.c	127	143	3	-	131, 132
+2172	7	snns/src/kernel/sources/learn_f.c	1182	1199	snns/src/kernel/sources/learn_f.c	1405	1422	1	-	-
+2180	7	snns/src/xgui/sources/bn_art1.c	175	183	snns/src/xgui/sources/bn_art1.c	360	368	2	-	-
+2189	7	snns/src/kernel/sources/kr_amap.c	1219	1226	snns/src/kernel/sources/kr_amap.c	1437	1444	2	-	-
+2196	7	snns/src/xgui/sources/d3_move.c	128	137	snns/src/xgui/sources/ui_xWidgets.c	1413	1422	2	-	-
+2201	7	snns/src/kernel/sources/init_f.c	772	783	snns/src/kernel/sources/init_f.c	1696	1703	2	-	-
+2204	7	snns/src/kernel/sources/kr_art1.c	1116	1122	snns/src/kernel/sources/kr_art2.c	1391	1397	2	-	-
+2210	7	snns/src/kernel/sources/learn_f.c	1202	1209	snns/src/kernel/sources/stochastic_learn_f.c	463	469	2	-	-
+2211	7	snns/src/xgui/sources/net_analyzer.c	92	170	snns/src/xgui/sources/net_analyzer.c	178	249	3	92, 93	178, 179
+2213	7	snns/src/tools/sources/ff_bignet.c	635	653	snns/src/tools/sources/td_bignet.c	685	700	3	-	-
+2220	7	snns/src/kernel/sources/learn_f.c	315	325	snns/src/kernel/sources/learn_f.c	5266	5282	3	318, 320, 321, 322, 323, 324	5269, 5274, 5276, 5277, 5278, 5279, 5280, 5281
+2221	7	snns/src/xgui/sources/bn_TD_bignet.c	238	244	snns/src/xgui/sources/bn_bighop.c	84	89	2	-	-
+2222	7	snns/src/tools/sources/ic_snns.c	346	355	snns/src/tools/sources/ic_snns.c	357	366	2	-	-
+2225	7	snns/src/tools/sources/td_bignet.c	624	655	snns/src/xgui/sources/bn_bignet.c	1086	1117	2	-	-
+2231	7	snns/src/xgui/sources/bn_assoz.c	47	52	snns/src/xgui/sources/ui_displwght.c	405	410	2	-	-
+2233	7	snns/src/xgui/sources/bn_JordElm.c	267	276	snns/src/xgui/sources/ui_mainP.c	1004	1010	2	-	-
+2244	7	snns/src/xgui/sources/ui_displmap.c	132	143	snns/src/xgui/sources/ui_funcdispl.c	203	214	2	-	-
+2245	7	snns/src/kernel/sources/update_f.c	115	122	snns/src/kernel/sources/update_f.c	1514	1521	1	-	-
+2247	7	snns/src/xgui/sources/net_analyzer.c	1140	1148	snns/src/xgui/sources/net_analyzer.c	1234	1242	2	-	-
+2248	7	snns/src/xgui/sources/bn_artmap.c	379	384	snns/src/xgui/sources/bn_artmap.c	563	568	2	-	-
+2255	7	snns/src/xgui/sources/d3_xUtils.c	212	221	snns/src/xgui/sources/ui_displwght.c	429	438	2	-	-
+2260	7	snns/src/xgui/sources/d3_xUtils.c	353	360	snns/src/xgui/sources/ui_inversion.c	165	174	2	-	-
+2262	7	snns/src/kernel/sources/kr_amap.c	639	646	snns/src/kernel/sources/kr_amap.c	817	824	2	-	-
+2263	7	snns/src/xgui/sources/bn_artmap.c	775	786	snns/src/xgui/sources/bn_artmap.c	843	854	2	-	-
+2270	7	snns/src/xgui/sources/ui_fileP.c	280	285	snns/src/xgui/sources/ui_result.c	134	139	2	-	-
+2271	7	snns/src/xgui/sources/bn_artmap.c	481	486	snns/src/xgui/sources/bn_artmap.c	745	750	2	-	-
+2274	7	snns/src/kernel/sources/scaled_conj_grad.c	93	100	snns/src/kernel/sources/update_f.c	1405	1411	1	-	-
+2281	7	snns/src/xgui/sources/bn_TD_bignet.c	223	230	snns/src/xgui/sources/bn_bignet.c	118	123	2	-	-
+2286	7	snns/src/xgui/sources/ui_xWidgets.c	539	548	snns/src/xgui/sources/ui_xWidgets.c	1436	1456	2	-	-
+2293	7	snns/src/kernel/sources/kr_inversion.c	94	109	snns/src/kernel/sources/update_f.c	1487	1506	1	-	-
+2299	7	snns/src/xgui/sources/ui_displmap.c	134	143	snns/src/xgui/sources/ui_xWidgets.c	456	465	2	-	-
+2301	7	snns/src/xgui/sources/bn_bighop.c	49	55	snns/src/xgui/sources/bn_bignet.c	156	165	2	-	-
+2309	7	snns/src/kernel/sources/kr_amap.c	1067	1072	snns/src/kernel/sources/kr_amap.c	1276	1281	2	-	-
+2318	7	snns/src/xgui/sources/net_analyzer.c	94	160	snns/src/xgui/sources/ui_xWidgets.c	1169	1268	2	-	-
+2319	7	snns/src/kernel/sources/learn_f.c	2312	2326	snns/src/kernel/sources/learn_f.c	5490	5502	3	2316, 2324, 2325, 2326	5495, 5497, 5498, 5499, 5500, 5501, 5502
+2323	7	snns/src/kernel/sources/learn_f.c	958	982	snns/src/kernel/sources/learn_f.c	1800	1824	1	-	-
+2325	7	snns/src/xgui/sources/d3_xUtils.c	212	221	snns/src/xgui/sources/ui_file.c	429	439	2	-	-
+2327	7	snns/src/kernel/sources/kernel.c	275	282	snns/src/kernel/sources/kr_ui.c	244	252	2	-	-
+2330	7	snns/src/xgui/sources/ui_inversion.c	205	226	snns/src/xgui/sources/ui_inversion.c	298	318	2	-	-
+2333	7	snns/src/kernel/sources/kr_amap.c	666	673	snns/src/kernel/sources/kr_art1.c	521	528	2	-	-
+2351	7	snns/src/kernel/sources/learn_f.c	147	155	snns/src/kernel/sources/learn_f.c	482	492	1	-	-
+2356	7	snns/src/kernel/sources/learn_f.c	4363	4378	snns/src/kernel/sources/update_f.c	853	862	1	-	-
+2358	7	snns/src/xgui/sources/ui_displwght.c	92	100	snns/src/xgui/sources/ui_xWidgets.c	1151	1159	2	-	-
+2362	7	snns/src/kernel/sources/kr_amap.c	3106	3114	snns/src/kernel/sources/kr_amap.c	3660	3668	2	-	-
+2368	7	snns/src/xgui/sources/bn_bighop.c	137	142	snns/src/xgui/sources/ui_displwght.c	405	410	2	-	-
+2373	7	snns/src/xgui/sources/d3_xUtils.c	212	221	snns/src/xgui/sources/ui_displmap.c	402	412	2	-	-
+2376	7	snns/src/xgui/sources/ui_key.c	435	442	snns/src/xgui/sources/ui_key.c	627	633	3	436	-
+2379	7	snns/src/kernel/sources/kr_io.c	1435	1442	snns/src/kernel/sources/kr_io.c	1449	1456	2	-	-
+2381	7	snns/src/kernel/sources/learn_f.c	282	325	snns/src/kernel/sources/learn_f.c	1167	1218	3	295, 309, 322, 323, 324	1182, 1196, 1212, 1213, 1214, 1215, 1216, 1217
+2387	7	snns/src/tools/sources/ff_bignet.c	151	168	snns/src/xgui/sources/bn_TD_bignet.c	473	492	2	-	-
+2394	7	snns/src/xgui/sources/ui_config.c	668	681	snns/src/xgui/sources/ui_config.c	687	700	2	-	-
+2400	7	snns/src/kernel/sources/kr_amap.c	181	188	snns/src/kernel/sources/kr_art2.c	131	138	2	-	-
+2401	7	snns/src/kernel/sources/kr_amap.c	694	701	snns/src/kernel/sources/kr_amap.c	1899	1906	2	-	-
+2402	7	snns/src/tools/sources/ic_snns.c	432	448	snns/src/tools/sources/ic_snns.c	922	939	2	-	-
+2406	7	snns/src/xgui/sources/ui_setupP.c	154	159	snns/src/xgui/sources/ui_setupP.c	160	165	2	-	-
+2409	7	snns/src/xgui/sources/bn_artmap.c	466	475	snns/src/xgui/sources/bn_artmap.c	570	579	2	-	-
+2412	7	snns/src/kernel/sources/trans_f.c	179	190	snns/src/kernel/sources/trans_f.c	217	228	1	-	-
+2416	7	snns/src/tools/sources/symtab.c	51	87	snns/src/tools/sources/symtab.c	90	121	3	84	119
+2418	7	snns/src/kernel/sources/kr_td.c	289	333	snns/src/kernel/sources/learn_f.c	3576	3605	3	290, 291, 303, 305, 306, 307, 308, 309, 310, 312, 314, 329, 330, 331, 332	3588, 3590, 3601, 3602, 3604
+2422	7	snns/src/kernel/sources/kr_art1.c	808	814	snns/src/kernel/sources/kr_art2.c	813	819	2	-	-
+2427	7	snns/src/kernel/sources/kr_amap.c	3930	3942	snns/src/kernel/sources/kr_amap.c	4043	4055	2	-	-
+2428	7	snns/src/kernel/sources/learn_f.c	2051	2090	snns/src/kernel/sources/learn_f.c	3570	3605	3	2061, 2072, 2075, 2084, 2086, 2087, 2088, 2089	3579, 3588, 3590, 3599, 3602, 3604
+2432	7	snns/src/xgui/sources/d3_xUtils.c	350	361	snns/src/xgui/sources/ui_funcdispl.c	204	215	2	-	-
+2436	7	snns/src/kernel/sources/kr_amap.c	1276	1283	snns/src/kernel/sources/kr_amap.c	1915	1922	2	-	-
+2443	7	snns/src/xgui/sources/ui_xWidgets.c	390	405	snns/src/xgui/sources/ui_xWidgets.c	1169	1184	2	-	-
+2446	7	snns/src/kernel/sources/arttr_f.c	237	247	snns/src/kernel/sources/arttr_f.c	305	315	1	-	-
+2448	7	snns/src/kernel/sources/kr_amap.c	2772	2778	snns/src/kernel/sources/kr_amap.c	3430	3436	2	-	-
+2452	7	snns/src/tools/sources/ic_snns.c	1021	1035	snns/src/tools/sources/ic_snns.c	1049	1063	2	-	-
+2458	7	snns/src/kernel/sources/learn_f.c	260	274	snns/src/kernel/sources/learn_f.c	5118	5131	3	263, 265, 270, 271, 272, 273	5121, 5126, 5128, 5129, 5130
+2459	7	snns/src/kernel/sources/kr_amap.c	1898	1906	snns/src/kernel/sources/kr_art1.c	841	849	2	-	-
+2464	7	snns/src/xgui/sources/ui_displmap.c	402	412	snns/src/xgui/sources/ui_mainP.c	1115	1125	2	-	-
+2470	7	snns/src/xgui/sources/ui_displmap.c	120	126	snns/src/xgui/sources/ui_main.c	181	187	2	-	-
+2471	7	snns/src/kernel/sources/learn_f.c	664	683	snns/src/kernel/sources/stochastic_learn_f.c	128	138	3	665, 669, 670, 671, 674, 675, 676, 677, 678, 680, 681, 682, 683	130, 133, 134, 135, 136, 137, 138
+2472	7	snns/src/kernel/sources/kr_amap.c	3230	3238	snns/src/kernel/sources/kr_art1.c	1290	1298	2	-	-
+2477	7	snns/src/xgui/sources/ui_funcdispl.c	208	214	snns/src/xgui/sources/ui_mainP.c	528	535	2	-	-
+2480	7	snns/src/kernel/sources/kr_amap.c	763	1027	snns/src/kernel/sources/kr_amap.c	1373	1630	3	798, 799, 801, 802, 804, 805, 806, 807, 809, 810, 811, 831	1407, 1409, 1410, 1413, 1433
+2486	7	snns/src/xgui/sources/d3_pannels.c	91	97	snns/src/xgui/sources/ui_main.c	180	187	3	-	-
+2487	7	snns/src/kernel/sources/kernel.c	2181	2241	snns/src/kernel/sources/kr_JordElm.c	211	278	3	2183, 2185, 2190, 2201, 2202, 2206, 2208, 2211, 2219, 2220, 2221, 2222, 2232, 2235	215, 216, 217, 221, 222, 223, 224, 234, 236, 238, 255, 256, 257, 258, 259, 260, 265, 266, 267, 268, 273
+2488	7	snns/src/kernel/sources/trans_f.c	526	545	snns/src/kernel/sources/trans_f.c	586	605	2	-	-
+2491	7	snns/src/kernel/sources/kr_amap.c	2732	2742	snns/src/kernel/sources/kr_amap.c	3364	3374	2	-	-
+2494	7	snns/src/kernel/sources/kr_art1.c	793	798	snns/src/kernel/sources/kr_art2.c	813	819	2	-	-
+2498	7	snns/src/xgui/sources/d3_pannels.c	169	175	snns/src/xgui/sources/ui_file.c	433	439	2	-	-
+2507	7	snns/src/kernel/sources/kr_amap.c	3638	3678	snns/src/kernel/sources/kr_amap.c	3750	3788	3	3647, 3672, 3673, 3674	-
+2511	7	snns/src/xgui/sources/ui_displmap.c	415	427	snns/src/xgui/sources/ui_inversion.c	233	247	2	-	-
+2515	7	snns/src/xgui/sources/bn_art1.c	169	188	snns/src/xgui/sources/bn_art1.c	205	224	2	-	-
+2517	7	snns/src/xgui/sources/d3_move.c	127	137	snns/src/xgui/sources/ui_inversion.c	162	174	3	137	163, 164, 165, 166, 172, 173, 174
+2521	7	snns/src/xgui/sources/ui_displwght.c	399	410	snns/src/xgui/sources/ui_mainP.c	831	840	3	409, 410	832, 833, 839, 840
+2528	7	snns/src/xgui/sources/cc_main.c	257	272	snns/src/xgui/sources/ui_setup.c	104	119	2	-	-
+2532	7	snns/src/xgui/sources/net_analyzer.c	161	170	snns/src/xgui/sources/ui_displwght.c	400	410	2	-	-
+2538	7	snns/src/xgui/sources/ui_key.c	856	864	snns/src/xgui/sources/ui_key.c	865	873	2	-	-
+2542	7	snns/src/kernel/sources/learn_f.c	975	981	snns/src/kernel/sources/learn_f.c	5238	5245	2	-	-
+2551	7	snns/src/kernel/sources/dlvq_learn.c	74	81	snns/src/kernel/sources/learn_f.c	5954	5961	2	-	-
+2552	7	snns/src/kernel/sources/kr_ui.c	938	944	snns/src/kernel/sources/kr_ui.c	988	994	2	-	-
+2554	7	snns/src/xgui/sources/bn_art2.c	201	206	snns/src/xgui/sources/bn_artmap.c	563	568	2	-	-
+2558	7	snns/src/kernel/sources/arttr_f.c	128	138	snns/src/kernel/sources/arttr_f.c	221	231	1	-	-
+2563	7	snns/src/tools/sources/ff_bignet.c	548	580	snns/src/xgui/sources/bn_bignet.c	1086	1117	1	-	-
+2569	7	snns/src/kernel/sources/kr_td.c	392	407	snns/src/kernel/sources/learn_f.c	984	999	2	-	-
+2571	7	snns/src/kernel/sources/learn_f.c	2297	2303	snns/src/kernel/sources/learn_f.c	5094	5101	2	-	-
+2574	7	snns/src/xgui/sources/ui_xWidgets.c	456	465	snns/src/xgui/sources/ui_xWidgets.c	1436	1456	2	-	-
+2580	7	snns/src/xgui/sources/d3_xUtils.c	212	221	snns/src/xgui/sources/ui_displmap.c	112	126	3	-	-
+2582	7	snns/src/kernel/sources/dlvq_learn.c	74	81	snns/src/kernel/sources/learn_f.c	6004	6011	2	-	-
+2583	7	snns/src/tools/sources/ic_snns.c	389	396	snns/src/tools/sources/ic_snns.c	1104	1111	2	-	-
+2587	7	snns/src/xgui/sources/bn_bignet.c	1433	1441	snns/src/xgui/sources/bn_bignet.c	1450	1458	2	-	-
+2613	7	snns/src/tools/sources/td_bignet.c	685	700	snns/src/xgui/sources/bn_TD_bignet.c	1445	1460	2	-	-
+2635	7	snns/src/tools/sources/icopjmp.c	480	499	snns/src/tools/sources/icopjmp.c	538	557	3	487, 493	545, 551
+2658	7	snns/src/xgui/sources/bn_TD_bignet.c	1220	1231	snns/src/xgui/sources/bn_bighop.c	291	302	2	-	-
+2662	7	snns/src/kernel/sources/kr_amap.c	387	405	snns/src/kernel/sources/kr_art2.c	612	631	3	388, 397, 400, 403	613, 622, 623, 626, 629
+2709	7	snns/src/kernel/sources/kr_ui.c	283	293	snns/src/kernel/sources/kr_ui.c	431	441	2	-	-
+2752	7	snns/src/xgui/sources/bn_bighop.c	196	204	snns/src/xgui/sources/bn_bignet.c	511	519	1	-	-
+2794	7	snns/src/kernel/sources/trans_f.c	1049	1062	snns/src/kernel/sources/trans_f.c	1081	1094	3	1057, 1058, 1060	1089, 1090, 1092
+5409	7	snns/src/kernel/sources/kr_amap.c	3364	3384	snns/src/kernel/sources/kr_art1.c	1382	1401	3	3364, 3376, 3377, 3378	1382, 1394, 1397
+5410	7	snns/src/xgui/sources/bn_art1.c	142	149	snns/src/xgui/sources/bn_art1.c	374	381	2	-	-
+5420	7	snns/src/xgui/sources/ui_file.c	429	439	snns/src/xgui/sources/ui_xWidgets.c	1059	1068	2	-	-
+5421	7	snns/src/kernel/sources/learn_f.c	5162	5169	snns/src/kernel/sources/stochastic_learn_f.c	389	395	1	-	-
+5427	7	snns/src/xgui/sources/d3_xUtils.c	81	204	snns/src/xgui/sources/ui_xWidgets.c	1169	1316	2	-	-
+5431	7	snns/src/xgui/sources/d3_xUtils.c	231	244	snns/src/xgui/sources/ui_xWidgets.c	390	405	2	-	-
+5432	7	snns/src/kernel/sources/kr_amap.c	3106	3114	snns/src/kernel/sources/kr_amap.c	3771	3779	2	-	-
+5437	7	snns/src/kernel/sources/init_f.c	162	221	snns/src/kernel/sources/init_f.c	1538	1597	3	167, 168, 169, 177, 178, 179, 180, 181, 183, 184, 190, 191, 193, 196, 197, 198, 199, 200, 201, 203, 207, 208, 209, 210, 215, 216, 217, 218, 219, 220	1543, 1544, 1546, 1550, 1551, 1552, 1557, 1558, 1561, 1562, 1563, 1567, 1568, 1569, 1570, 1571, 1573, 1574, 1576, 1577, 1578, 1579, 1580, 1581, 1582, 1586, 1591, 1592, 1593, 1594, 1595, 1596
+5446	7	snns/src/tools/sources/icopjmp.c	538	544	snns/src/tools/sources/icopjmp.c	596	602	2	-	-
+5448	7	snns/src/xgui/sources/net_analyzer.c	239	249	snns/src/xgui/sources/ui_funcdispl.c	203	215	3	249	214, 215
+5452	7	snns/src/kernel/sources/learn_f.c	1332	1357	snns/src/kernel/sources/learn_f.c	1476	1516	3	1350, 1351, 1356	1488, 1489, 1490, 1491, 1492, 1493, 1494, 1495, 1496, 1497, 1500, 1502, 1503, 1504, 1509, 1510, 1515
+5454	7	snns/src/kernel/sources/learn_f.c	3550	3605	snns/src/kernel/sources/learn_f.c	3614	3689	3	3555, 3567, 3568, 3569, 3599, 3602	3619, 3620, 3621, 3628, 3629, 3630, 3631, 3637, 3638, 3639, 3640, 3659, 3664, 3672, 3675, 3676, 3677, 3679, 3680, 3681, 3682, 3683, 3684, 3685, 3686
+5457	7	snns/src/kernel/sources/arttr_f.c	83	93	snns/src/kernel/sources/arttr_f.c	305	315	1	-	-
+5461	7	snns/src/kernel/sources/kr_amap.c	3616	3624	snns/src/kernel/sources/kr_art1.c	1303	1311	2	-	-
+5466	7	snns/src/kernel/sources/kr_pat_parse.c	648	660	snns/src/kernel/sources/kr_pat_parse.c	664	677	3	650, 651	666, 667, 668
+5467	7	snns/src/tools/sources/ff_bignet.c	467	540	snns/src/tools/sources/td_bignet.c	526	616	3	478, 479, 481, 482, 483, 484, 485, 486, 487, 489, 490, 491, 492, 493, 494, 495	539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 584, 585, 586, 590, 591, 614, 615
+5477	7	snns/src/kernel/sources/kr_amap.c	1832	1839	snns/src/kernel/sources/kr_amap.c	1883	1890	2	-	-
+5485	7	snns/src/xgui/sources/bn_art1.c	280	286	snns/src/xgui/sources/bn_art2.c	82	88	3	282, 283	84, 85
+5489	7	snns/src/xgui/sources/d3_move.c	89	97	snns/src/xgui/sources/o_graph.c	327	335	2	-	-
+5498	7	snns/src/kernel/sources/kr_amap.c	283	383	snns/src/kernel/sources/kr_art1.c	100	209	3	283, 289, 295, 298, 299, 300, 301, 310, 316, 322, 328, 329, 330, 331, 334, 340	100, 104, 107, 111, 112, 113, 114, 121, 124, 125, 129, 130, 131, 132, 135, 139, 140, 141, 142, 143, 147, 148, 149, 150, 153, 154, 155, 156, 159, 165, 171
+5502	7	snns/src/xgui/sources/bn_bignet.c	132	139	snns/src/xgui/sources/ui_control.c	189	198	2	-	-
+5504	7	snns/src/kernel/sources/kr_ui.c	2363	2370	snns/src/kernel/sources/kr_ui.c	2379	2386	2	-	-
+5512	7	snns/src/xgui/sources/bn_art1.c	142	147	snns/src/xgui/sources/bn_assoz.c	138	143	2	-	-
+5515	7	snns/src/kernel/sources/kr_td.c	318	332	snns/src/kernel/sources/learn_f.c	5266	5278	3	321, 323, 329, 330, 331, 332	5269, 5274, 5276, 5277, 5278
+5517	7	snns/src/tools/sources/ic_snns.c	250	258	snns/src/tools/sources/ic_snns.c	302	310	1	-	-
+5525	7	snns/src/kernel/sources/learn_f.c	2049	2060	snns/src/kernel/sources/learn_f.c	5007	5019	1	-	-
+5526	7	snns/src/kernel/sources/learn_f.c	2049	2060	snns/src/kernel/sources/learn_f.c	5084	5096	1	-	-
+5528	7	snns/src/kernel/sources/tbl_func.c	35	44	snns/src/kernel/sources/trans_f.c	76	85	1	-	-
+5538	7	snns/src/kernel/sources/learn_f.c	6219	6225	snns/src/kernel/sources/stochastic_learn_f.c	100	105	1	-	-
+5542	7	snns/src/xgui/sources/bn_art2.c	200	206	snns/src/xgui/sources/bn_artmap.c	455	461	2	-	-
+5548	7	snns/src/kernel/sources/kr_amap.c	690	701	snns/src/kernel/sources/kr_amap.c	950	962	2	-	-
+5551	7	snns/src/kernel/sources/arttr_f.c	305	315	snns/src/kernel/sources/tbl_func.c	36	44	1	-	-
+5552	7	snns/src/tools/sources/ic_snns.c	1442	1449	snns/src/tools/sources/ic_snns.c	1501	1508	1	-	-
+5555	7	snns/src/xgui/sources/d3_move.c	127	137	snns/src/xgui/sources/o_graph.c	326	335	3	37	335
+5557	7	snns/src/kernel/sources/kr_amap.c	660	714	snns/src/kernel/sources/kr_amap.c	1548	1607	3	661, 674, 683, 684, 685, 686, 688, 689, 690, 694, 695, 702	1549, 1551, 1566, 1568, 1574, 1579, 1580, 1584, 1585, 1591, 1592, 1600, 1601, 1602, 1603
+5560	7	snns/src/kernel/sources/stochastic_learn_f.c	207	214	snns/src/kernel/sources/stochastic_learn_f.c	261	268	1	-	-
+5566	7	snns/src/kernel/sources/kr_art1.c	482	487	snns/src/kernel/sources/kr_art1.c	809	814	2	-	-
+5572	7	snns/src/xgui/sources/d3_move.c	86	97	snns/src/xgui/sources/net_analyzer.c	811	822	3	97	812, 813, 821, 822
+5576	7	snns/src/xgui/sources/d3_light.c	68	83	snns/src/xgui/sources/d3_links.c	157	173	2	-	-
+5577	7	snns/src/kernel/sources/learn_f.c	5118	5131	snns/src/kernel/sources/learn_f.c	5190	5206	3	5130	5202, 5204, 5205
+5581	7	snns/src/xgui/sources/net_analyzer.c	824	834	snns/src/xgui/sources/ui_xWidgets.c	489	498	2	-	-
+5586	7	snns/src/xgui/sources/ui_xWidgets.c	406	422	snns/src/xgui/sources/ui_xWidgets.c	528	548	3	408	529, 531, 534
+5594	7	snns/src/xgui/sources/pr_main.c	189	206	snns/src/xgui/sources/ui_setup.c	134	160	2	-	-
+5597	7	snns/src/xgui/sources/ui_displmap.c	519	551	snns/src/xgui/sources/ui_displwght.c	478	510	3	550	504, 505, 508, 509
+5601	7	snns/src/xgui/sources/ui_xWidgets.c	448	465	snns/src/xgui/sources/ui_xWidgets.c	528	548	3	451	534
+5607	7	snns/src/kernel/sources/stochastic_learn_f.c	55	64	snns/src/kernel/sources/stochastic_learn_f.c	375	384	2	-	-
+5610	7	snns/src/kernel/sources/learn_f.c	1202	1209	snns/src/kernel/sources/stochastic_learn_f.c	100	106	1	-	-
+5612	7	snns/src/kernel/sources/tbl_func.c	36	44	snns/src/kernel/sources/trans_f.c	569	579	1	-	-
+5619	7	snns/src/kernel/sources/stochastic_learn_f.c	235	248	snns/src/kernel/sources/stochastic_learn_f.c	295	308	1	-	-
+5623	7	snns/src/xgui/sources/ui_colEdit.c	129	138	snns/src/xgui/sources/ui_xWidgets.c	1437	1456	2	-	-
+5628	7	snns/src/kernel/sources/learn_f.c	2280	2338	snns/src/kernel/sources/learn_f.c	3641	3689	3	2287, 2288, 2289, 2290, 2305, 2310, 2316, 2318, 2323, 2324, 2325, 2326, 2327, 2328, 2329, 2330, 2331, 2332, 2333, 2334, 2335, 2336, 2337	3660, 3662, 3664, 3665, 3672, 3674, 3675, 3676, 3677, 3679, 3680, 3681, 3682, 3683, 3684, 3685, 3686, 3688
+5633	7	snns/src/xgui/sources/bn_artmap.c	745	750	snns/src/xgui/sources/bn_artmap.c	830	835	2	-	-
+5635	7	snns/src/kernel/sources/init_f.c	245	288	snns/src/kernel/sources/init_f.c	318	364	3	256	331, 335, 338, 342
+5642	7	snns/src/tools/sources/ic_snns.c	402	409	snns/src/tools/sources/ic_snns.c	472	479	2	-	-
+5644	7	snns/src/kernel/sources/kr_ui.c	1692	1700	snns/src/kernel/sources/kr_ui.c	1714	1723	2	-	-
+5648	7	snns/src/xgui/sources/bn_art1.c	171	176	snns/src/xgui/sources/bn_art1.c	233	238	2	-	-
+5652	7	snns/src/xgui/sources/cc_main.c	265	272	snns/src/xgui/sources/ui_setup.c	201	210	2	-	-
+5655	7	snns/src/kernel/sources/kr_amap.c	3884	3906	snns/src/kernel/sources/kr_amap.c	4017	4036	3	3902, 3903, 3904	-
+5659	7	snns/src/xgui/sources/ui_mainP.c	832	840	snns/src/xgui/sources/ui_xWidgets.c	413	422	2	-	-
+5673	7	snns/src/xgui/sources/bn_art1.c	532	541	snns/src/xgui/sources/bn_artmap.c	614	623	2	-	-
+5676	7	snns/src/xgui/sources/net_analyzer.c	163	169	snns/src/xgui/sources/ui_mainP.c	832	838	2	-	-
+5692	7	snns/src/xgui/sources/net_analyzer.c	811	822	snns/src/xgui/sources/ui_mainP.c	527	535	3	812, 813, 821, 822	534, 535
+5698	7	snns/src/kernel/sources/arttr_f.c	128	138	snns/src/kernel/sources/trans_f.c	166	174	1	-	-
+5702	7	snns/src/kernel/sources/kr_amap.c	1663	1675	snns/src/kernel/sources/kr_art1.c	660	672	2	-	-
+5704	7	snns/src/kernel/sources/kr_amap.c	316	349	snns/src/kernel/sources/kr_art1.c	174	207	2	-	-
+5710	7	snns/src/kernel/sources/kr_art2.c	1211	1238	snns/src/kernel/sources/kr_art2.c	1411	1442	3	1214, 1233	1414, 1422, 1423, 1424, 1437
+5714	7	snns/src/xgui/sources/d3_xUtils.c	230	304	snns/src/xgui/sources/net_analyzer.c	178	238	2	-	-
+5717	7	snns/src/xgui/sources/ui_key.c	623	633	snns/src/xgui/sources/ui_key.c	790	800	2	-	-
+5723	7	snns/src/kernel/sources/cc_learn.c	668	690	snns/src/kernel/sources/dlvq_learn.c	570	581	3	668, 669, 674, 675, 678, 679, 680, 682, 683, 684, 685, 686, 687, 688, 689	570, 574, 579, 580
+5724	7	snns/src/xgui/sources/bn_TD_bignet.c	64	73	snns/src/xgui/sources/bn_TD_bignet.c	89	99	2	-	-
+5729	7	snns/src/xgui/sources/ui_controlP.c	1143	1148	snns/src/xgui/sources/ui_controlP.c	1185	1190	1	-	-
+5732	7	snns/src/xgui/sources/bn_art2.c	113	136	snns/src/xgui/sources/bn_art2.c	138	158	2	-	-
+5738	7	snns/src/xgui/sources/bn_bighop.c	146	152	snns/src/xgui/sources/bn_bignet.c	128	137	2	-	-
+5740	7	snns/src/kernel/sources/learn_f.c	3653	3658	snns/src/kernel/sources/learn_f.c	5162	5169	2	-	-
+5745	7	snns/src/xgui/sources/bn_art1.c	538	547	snns/src/xgui/sources/bn_artmap.c	732	741	2	-	-
+5749	7	snns/src/kernel/sources/trans_f.c	93	101	snns/src/kernel/sources/trans_f.c	266	274	1	-	-
+5751	7	snns/src/kernel/sources/learn_f.c	282	325	snns/src/kernel/sources/learn_f.c	1230	1283	3	321, 322, 323, 324	1243, 1263, 1269, 1270, 1273, 1274, 1275, 1276, 1277, 1278, 1279, 1281, 1282
+5754	7	snns/src/xgui/sources/d3_xUtils.c	351	360	snns/src/xgui/sources/ui_displwght.c	400	410	2	-	-
+5760	7	snns/src/xgui/sources/bn_artmap.c	171	183	snns/src/xgui/sources/bn_artmap.c	261	272	2	-	-
+5765	7	snns/src/xgui/sources/ui_displwght.c	424	438	snns/src/xgui/sources/ui_mainP.c	831	840	3	438	832, 833, 839, 840
+5770	7	snns/src/kernel/sources/arttr_f.c	170	180	snns/src/kernel/sources/arttr_f.c	259	269	1	-	-
+5777	7	snns/src/xgui/sources/o_graph.c	327	335	snns/src/xgui/sources/ui_xWidgets.c	540	548	2	-	-
+5782	7	snns/src/kernel/sources/learn_f.c	960	989	snns/src/kernel/sources/learn_f.c	3708	3735	2	-	-
+5786	7	snns/src/xgui/sources/ui_displwght.c	90	100	snns/src/xgui/sources/ui_xWidgets.c	538	548	2	-	-
+5790	7	snns/src/xgui/sources/cc_main.c	368	378	snns/src/xgui/sources/ui_control.c	162	170	2	-	-
+5791	7	snns/src/kernel/sources/kr_amap.c	639	644	snns/src/kernel/sources/kr_art2.c	1078	1083	2	-	-
+5795	7	snns/src/xgui/sources/bn_art1.c	360	365	snns/src/xgui/sources/bn_artmap.c	665	672	2	-	-
+5801	7	snns/src/kernel/sources/learn_f.c	385	408	snns/src/kernel/sources/learn_f.c	3413	3431	3	386, 387, 388, 389, 391, 395, 402, 408	3414, 3415, 3419, 3423, 3427, 3431
+5803	7	snns/src/kernel/sources/kr_amap.c	1276	1283	snns/src/kernel/sources/kr_art1.c	733	740	2	-	-
+5808	7	snns/src/kernel/sources/kr_amap.c	745	751	snns/src/kernel/sources/kr_amap.c	954	961	2	-	-
+5811	7	snns/src/kernel/sources/kr_amap.c	645	652	snns/src/kernel/sources/kr_amap.c	1254	1261	2	-	-
+5814	7	snns/src/kernel/sources/arttr_f.c	120	140	snns/src/kernel/sources/arttr_f.c	162	182	2	-	-
+5819	7	snns/src/kernel/sources/learn_f.c	5824	5854	snns/src/kernel/sources/learn_f.c	5938	5968	3	5833, 5846, 5847, 5848, 5849, 5850, 5851	5947, 5950, 5951, 5963, 5964, 5967
+5831	7	snns/src/kernel/sources/kr_amap.c	639	645	snns/src/kernel/sources/kr_amap.c	1131	1137	2	-	-
+5834	7	snns/src/kernel/sources/kr_amap.c	590	717	snns/src/kernel/sources/kr_art1.c	500	631	3	591, 594, 596, 600, 605, 620, 625, 633, 634, 638, 656, 657, 658, 661, 663, 664, 665, 666, 667, 668, 669, 670, 671, 674, 675, 683, 684, 685, 686, 689, 691, 692, 693, 694, 695, 696, 697, 698, 699, 702, 703, 715	503, 509, 529, 535, 545, 547, 548, 549, 550, 551, 552, 555, 565, 578, 579, 581, 582, 583, 584, 585, 586, 590, 592, 593, 601, 602, 604, 605, 606, 607, 608, 609, 613, 615, 616, 621, 622, 623, 624, 625
+5838	7	snns/src/kernel/sources/init_f.c	1510	1516	snns/src/kernel/sources/update_f.c	210	216	1	-	-
+5843	7	snns/src/xgui/sources/bn_bignet.c	742	779	snns/src/xgui/sources/bn_bignet.c	813	850	2	-	-
+5847	7	snns/src/tools/sources/ff_bignet.c	661	668	snns/src/tools/sources/td_bignet.c	708	714	2	-	-
+5851	7	snns/src/kernel/sources/kr_amap.c	572	578	snns/src/kernel/sources/kr_amap.c	1741	1748	2	-	-
+5859	7	snns/src/xgui/sources/bn_bignet.c	57	68	snns/src/xgui/sources/bn_bignet.c	164	172	2	-	-
+5861	7	snns/src/kernel/sources/learn_f.c	3730	3739	snns/src/kernel/sources/learn_f.c	5118	5131	3	3733, 3735, 3737, 3738	5121, 5126, 5128, 5129, 5130
+5864	7	snns/src/xgui/sources/bn_bighop.c	84	89	snns/src/xgui/sources/bn_bignet.c	291	297	2	-	-
+5874	7	snns/src/kernel/sources/kr_amap.c	2502	2508	snns/src/kernel/sources/kr_amap.c	3265	3271	2	-	-
+5876	7	snns/src/xgui/sources/d3_xUtils.c	215	221	snns/src/xgui/sources/ui_mainP.c	431	438	2	-	-
+5878	7	snns/src/kernel/sources/learn_f.c	3594	3602	snns/src/kernel/sources/stochastic_learn_f.c	100	110	3	3601, 3602	108, 109, 110
+5880	7	snns/src/xgui/sources/bn_artmap.c	150	164	snns/src/xgui/sources/bn_artmap.c	270	285	2	-	-
+5885	7	snns/src/kernel/sources/learn_f.c	4139	4163	snns/src/kernel/sources/update_f.c	669	686	1	-	-
+5893	7	snns/src/xgui/sources/o_graph.c	128	136	snns/src/xgui/sources/ui_setup.c	134	153	2	-	-
+5894	7	snns/src/kernel/sources/learn_f.c	896	907	snns/src/kernel/sources/learn_f.c	5152	5164	2	-	-
+5895	7	snns/src/kernel/sources/learn_f.c	896	907	snns/src/kernel/sources/learn_f.c	5228	5240	2	-	-
+5902	7	snns/src/xgui/sources/ui_displmap.c	402	412	snns/src/xgui/sources/ui_xWidgets.c	413	422	3	-	-
+5905	7	snns/src/xgui/sources/ui_colEdit.c	79	89	snns/src/xgui/sources/ui_displwght.c	90	100	2	-	-
+5910	7	snns/src/xgui/sources/ui_displwght.c	81	88	snns/src/xgui/sources/ui_xWidgets.c	413	422	2	-	-
+5913	7	snns/src/kernel/sources/learn_f.c	1797	1846	snns/src/kernel/sources/learn_f.c	3809	3850	3	1825, 1828, 1829, 1830, 1837, 1839, 1840, 1841, 1843, 1844, 1845	3815, 3816, 3817, 3820, 3846, 3848, 3849
+5915	7	snns/src/kernel/sources/cc_glob.c	525	540	snns/src/kernel/sources/kr_JordElm.c	163	178	2	-	-
+5918	7	snns/src/xgui/sources/d3_xUtils.c	80	89	snns/src/xgui/sources/ui_xWidgets.c	572	582	2	-	-
+5923	7	snns/src/kernel/sources/learn_f.c	138	156	snns/src/kernel/sources/learn_f.c	794	812	1	-	-
+5924	7	snns/src/kernel/sources/kr_newpattern.c	2666	2694	snns/src/kernel/sources/kr_newpattern.c	2706	2734	2	-	-
+5926	7	snns/src/xgui/sources/bn_art1.c	144	149	snns/src/xgui/sources/bn_artmap.c	662	669	2	-	-
+5929	7	snns/src/xgui/sources/ui_mainP.c	1116	1125	snns/src/xgui/sources/ui_xWidgets.c	1151	1159	2	-	-
+5934	7	snns/src/xgui/sources/net_analyzer.c	163	168	snns/src/xgui/sources/ui_main.c	181	186	2	-	-
+5942	7	snns/src/tools/sources/error.c	184	209	snns/src/tools/sources/snnsbat.c	256	275	3	184, 185, 194, 208, 209	256
+5947	7	snns/src/xgui/sources/ui_displwght.c	74	88	snns/src/xgui/sources/ui_file.c	425	439	3	-	-
+5953	7	snns/src/xgui/sources/bn_TD_bignet.c	1025	1044	snns/src/xgui/sources/bn_TD_bignet.c	1066	1094	2	-	-
+5956	7	snns/src/kernel/sources/learn_f.c	2270	2338	snns/src/kernel/sources/learn_f.c	3809	3850	3	2276, 2277, 2287, 2288, 2289, 2290, 2305, 2308, 2309, 2310, 2316, 2318, 2323, 2324, 2325, 2326, 2327, 2328, 2329, 2330, 2331, 2332, 2333, 2334, 2335, 2336, 2337	3815, 3816, 3817, 3820, 3846, 3848, 3849
+5959	7	snns/src/kernel/sources/kr_amap.c	2716	2725	snns/src/kernel/sources/kr_art1.c	1399	1409	3	2716	1399
+5961	7	snns/src/xgui/sources/bn_bighop.c	324	335	snns/src/xgui/sources/bn_bignet.c	1375	1386	1	-	-
+5965	7	snns/src/xgui/sources/bn_art1.c	192	198	snns/src/xgui/sources/bn_artmap.c	657	666	2	-	-
+5969	7	snns/src/xgui/sources/bn_art1.c	111	140	snns/src/xgui/sources/bn_art1.c	141	170	2	-	-
+5970	7	snns/src/xgui/sources/bn_bignet.c	787	805	snns/src/xgui/sources/bn_bignet.c	858	876	2	-	-
+5983	7	snns/src/xgui/sources/bn_bighop.c	93	98	snns/src/xgui/sources/ui_main.c	161	167	2	-	-
+5991	7	snns/src/xgui/sources/bn_artmap.c	610	620	snns/src/xgui/sources/bn_artmap.c	656	666	2	-	-
+5993	7	snns/src/xgui/sources/ui_file.c	428	439	snns/src/xgui/sources/ui_xWidgets.c	1412	1422	2	-	-
+5998	7	snns/src/xgui/sources/ui_displwght.c	89	95	snns/src/xgui/sources/ui_main.c	180	186	2	-	-
+6003	7	snns/src/kernel/sources/kr_amap.c	908	916	snns/src/kernel/sources/kr_amap.c	1831	1839	2	-	-
+6004	7	snns/src/kernel/sources/cc_glob.c	183	192	snns/src/kernel/sources/tacoma_learn.c	153	163	3	185, 186, 187, 188	155, 156, 157, 158, 159, 160
+6007	7	snns/src/xgui/sources/bn_TD_bignet.c	234	243	snns/src/xgui/sources/ui_control.c	97	103	2	-	-
+6021	7	snns/src/xgui/sources/ui_file.c	425	436	snns/src/xgui/sources/ui_funcdispl.c	202	213	2	-	-
+6023	7	snns/src/kernel/sources/kr_td.c	314	332	snns/src/kernel/sources/learn_f.c	2688	2711	3	316, 321, 329, 330, 331, 332	2688, 2691, 2692, 2700, 2701, 2702, 2703, 2704, 2705, 2706, 2707, 2708, 2709, 2710, 2711
+6037	7	snns/src/xgui/sources/ui_displmap.c	111	126	snns/src/xgui/sources/ui_displmap.c	127	143	3	-	131, 132
+6045	7	snns/src/xgui/sources/cc_main.c	422	430	snns/src/xgui/sources/pr_main.c	124	132	2	-	-
+6048	7	snns/src/xgui/sources/ui_action.c	905	924	snns/src/xgui/sources/ui_action.c	927	945	2	-	-
+6049	7	snns/src/kernel/sources/arttr_f.c	149	159	snns/src/kernel/sources/trans_f.c	549	559	1	-	-
+6051	7	snns/src/kernel/sources/kr_amap.c	694	701	snns/src/kernel/sources/kr_amap.c	1849	1856	2	-	-
+6056	7	snns/src/xgui/sources/bn_bignet.c	331	336	snns/src/xgui/sources/ui_control.c	91	98	2	-	-
+6060	7	snns/src/kernel/sources/trans_f.c	220	228	snns/src/kernel/sources/trans_f.c	631	641	1	-	-
+6064	7	snns/src/xgui/sources/ui_displwght.c	400	410	snns/src/xgui/sources/ui_xWidgets.c	1413	1422	2	-	-
+6081	7	snns/src/kernel/sources/kr_amap.c	1664	1670	snns/src/kernel/sources/kr_art1.c	556	562	2	-	-
+6088	7	snns/src/tools/sources/ic_snns.c	302	308	snns/src/tools/sources/ic_snns.c	894	900	2	-	-
+6090	7	snns/src/kernel/sources/trans_f.c	249	260	snns/src/kernel/sources/trans_f.c	277	288	1	-	-
+6091	7	snns/src/kernel/sources/kr_amap.c	2426	2440	snns/src/kernel/sources/kr_amap.c	2456	2470	2	-	-
+6099	7	snns/src/xgui/sources/ui_fileP.c	311	318	snns/src/xgui/sources/ui_result.c	130	139	3	-	132
+6101	7	snns/src/kernel/sources/kr_newpattern.c	191	223	snns/src/kernel/sources/kr_newpattern.c	494	527	3	192, 197, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222	495, 496, 499, 506, 507, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526
+6106	7	snns/src/xgui/sources/ui_mainP.c	1115	1125	snns/src/xgui/sources/ui_xWidgets.c	1059	1068	2	-	-
+6111	7	snns/src/xgui/sources/d3_xUtils.c	214	222	snns/src/xgui/sources/ui_xWidgets.c	413	423	2	-	-
+6118	7	snns/src/xgui/sources/bn_bignet.c	1125	1151	snns/src/xgui/sources/bn_bignet.c	1159	1189	3	1126	1160, 1181, 1182, 1186, 1187
+6122	7	snns/src/xgui/sources/d3_move.c	88	96	snns/src/xgui/sources/net_analyzer.c	161	169	2	-	-
+6126	7	snns/src/xgui/sources/ui_xWidgets.c	432	447	snns/src/xgui/sources/ui_xWidgets.c	1169	1184	2	-	-
+6130	7	snns/src/tools/sources/ff_bignet.c	548	580	snns/src/xgui/sources/bn_TD_bignet.c	1022	1053	2	-	-
+6133	7	snns/src/kernel/sources/cc_glob.c	588	652	snns/src/kernel/sources/kernel.c	2182	2239	3	589, 591, 592, 618, 619, 620, 638, 639, 640, 641, 643, 648	2183, 2185, 2235
+6134	7	snns/src/xgui/sources/ui_control.c	105	122	snns/src/xgui/sources/ui_kohonen.c	146	161	2	-	-
+6140	7	snns/src/xgui/sources/bn_TD_bignet.c	756	764	snns/src/xgui/sources/bn_bignet.c	858	876	3	-	-
+6144	7	snns/src/kernel/sources/arttr_f.c	279	289	snns/src/kernel/sources/arttr_f.c	305	315	1	-	-
+6150	7	snns/src/xgui/sources/net_analyzer.c	161	169	snns/src/xgui/sources/ui_xWidgets.c	539	547	2	-	-
+6152	7	snns/src/kernel/sources/learn_f.c	5868	5907	snns/src/kernel/sources/learn_f.c	5982	6016	3	5875, 5881, 5882, 5883, 5884, 5899, 5900, 5901, 5902, 5903, 5904, 5905, 5906	5987, 5991, 5997, 5998, 5999, 6013, 6014, 6015
+6154	7	snns/src/kernel/sources/learn_f.c	5118	5129	snns/src/kernel/sources/learn_f.c	5266	5277	1	-	-
+6161	7	snns/src/xgui/sources/cc_main.c	353	367	snns/src/xgui/sources/pr_main.c	202	213	2	-	-
+6170	7	snns/src/kernel/sources/kr_art1.c	104	209	snns/src/kernel/sources/kr_art2.c	138	329	3	117, 118, 119, 120, 121, 124, 129, 135, 139, 140, 141, 165, 208	141, 152, 157, 163, 164, 171, 197, 203, 204, 205, 206, 245, 246, 247, 248, 251, 252, 253, 254, 256, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327
+6177	7	snns/src/kernel/sources/kr_art2.c	814	821	snns/src/kernel/sources/kr_art2.c	1078	1085	2	-	-
+6178	7	snns/src/xgui/sources/d3_move.c	127	134	snns/src/xgui/sources/ui_mainP.c	831	838	2	-	-
+6184	7	snns/src/kernel/sources/learn_f.c	4790	4796	snns/src/kernel/sources/update_f.c	192	197	1	-	-
+6186	7	snns/src/xgui/sources/ui_displwght.c	80	88	snns/src/xgui/sources/ui_xWidgets.c	1151	1159	2	-	-
+6190	7	snns/src/tools/sources/linknets.c	91	100	snns/src/tools/sources/snns2c.c	102	111	1	-	-
+6194	7	snns/src/xgui/sources/bn_art1.c	142	149	snns/src/xgui/sources/bn_artmap.c	72	79	2	-	-
+6197	7	snns/src/kernel/sources/trans_f.c	145	154	snns/src/kernel/sources/trans_f.c	1098	1107	1	-	-
+6199	7	snns/src/xgui/sources/ui_main.c	181	187	snns/src/xgui/sources/ui_xWidgets.c	416	422	2	-	-
+6200	7	snns/src/kernel/sources/learn_f.c	1265	1275	snns/src/kernel/sources/learn_f.c	3667	3675	3	1269, 1270, 1272, 1273, 1274, 1275	3670, 3672, 3674, 3675
+6202	7	snns/src/tools/sources/td_bignet.c	142	165	snns/src/tools/sources/td_bignet.c	172	195	3	-	-
+6205	7	snns/src/kernel/sources/kr_amap.c	639	644	snns/src/kernel/sources/kr_art2.c	814	819	2	-	-
+6215	7	snns/src/xgui/sources/ui_file.c	425	439	snns/src/xgui/sources/ui_mainP.c	1112	1125	3	438	1124
+6221	7	snns/src/kernel/sources/learn_f.c	1334	1349	snns/src/kernel/sources/learn_f.c	3667	3675	3	1338, 1339, 1341, 1342, 1343, 1344, 1345, 1346, 1347, 1348, 1349	3670, 3672, 3674, 3675
+6222	7	snns/src/kernel/sources/trans_f.c	217	228	snns/src/kernel/sources/trans_f.c	306	317	1	-	-
+6225	7	snns/src/kernel/sources/kr_amap.c	1067	1072	snns/src/kernel/sources/kr_amap.c	1477	1482	2	-	-
+6231	7	snns/src/xgui/sources/ui_key.c	449	456	snns/src/xgui/sources/ui_key.c	834	841	2	-	-
+6235	7	snns/src/kernel/sources/learn_f.c	1804	1846	snns/src/kernel/sources/learn_f.c	3570	3605	3	1825, 1828, 1839, 1840, 1841, 1843, 1844, 1845	3588, 3590, 3601, 3602, 3604
+6238	7	snns/src/kernel/sources/trans_f.c	235	246	snns/src/kernel/sources/trans_f.c	1096	1107	1	-	-
+6242	7	snns/src/kernel/sources/kr_amap.c	1883	1890	snns/src/kernel/sources/kr_art1.c	793	800	2	-	-
+6255	7	snns/src/kernel/sources/cc_learn.c	642	651	snns/src/kernel/sources/tacoma_learn.c	510	520	3	646, 647, 649, 650, 651	513, 514, 515, 517, 519, 520
+6264	7	snns/src/xgui/sources/ui_action.c	89	106	snns/src/xgui/sources/ui_action.c	143	160	1	-	-
+6267	7	snns/src/kernel/sources/learn_f.c	5644	5677	snns/src/kernel/sources/learn_f.c	5814	5854	3	5671, 5672, 5673, 5674	5831, 5832, 5833, 5834, 5846, 5847, 5848, 5849, 5850, 5851
+6269	7	snns/src/kernel/sources/kr_amap.c	2716	2725	snns/src/kernel/sources/kr_amap.c	2790	2800	2	-	-
+6272	7	snns/src/xgui/sources/ui_config.c	687	703	snns/src/xgui/sources/ui_config.c	759	775	2	-	-
+6274	7	snns/src/xgui/sources/bn_artmap.c	253	272	snns/src/xgui/sources/bn_artmap.c	294	314	2	-	-
+6277	7	snns/src/kernel/sources/kr_amap.c	639	646	snns/src/kernel/sources/kr_art1.c	825	832	2	-	-
+6283	7	snns/src/kernel/sources/kr_amap.c	527	533	snns/src/kernel/sources/kr_amap.c	1865	1871	2	-	-
+6289	7	snns/src/kernel/sources/kr_amap.c	1304	1311	snns/src/kernel/sources/kr_amap.c	1529	1536	2	-	-
+6290	7	snns/src/kernel/sources/kr_amap.c	1002	1027	snns/src/kernel/sources/kr_amap.c	1938	1963	2	-	-
+6294	7	snns/src/kernel/sources/kr_td.c	192	260	snns/src/kernel/sources/kr_td.c	474	543	1	-	-
+6295	7	snns/src/xgui/sources/bn_artmap.c	501	515	snns/src/xgui/sources/bn_artmap.c	518	532	2	-	-
+6300	7	snns/src/xgui/sources/d3_xUtils.c	212	222	snns/src/xgui/sources/ui_xWidgets.c	456	466	2	-	-
+6305	7	snns/src/tools/sources/lex.yyy.c	22	235	snns/src/tools/sources/lex.yyz.c	22	235	1	-	-
+6310	7	snns/src/xgui/sources/cc_main.c	107	116	snns/src/xgui/sources/ui_controlP.c	1357	1366	2	-	-
+6312	7	snns/src/kernel/sources/kr_td.c	344	407	snns/src/kernel/sources/learn_f.c	5443	5503	3	349, 361, 362, 364, 365, 366, 367, 371, 372, 373, 377, 379, 380, 381, 382, 383, 384, 397, 403, 404, 405, 406	5461, 5462, 5467, 5468, 5478, 5479, 5480, 5481, 5482, 5483, 5484, 5485, 5486, 5487, 5488, 5495, 5496, 5497, 5498, 5499, 5500, 5501, 5502
+6316	7	snns/src/xgui/sources/cc_main.c	91	97	snns/src/xgui/sources/ui_controlP.c	1357	1366	2	-	-
+6321	7	snns/src/kernel/sources/kr_amap.c	3025	3037	snns/src/kernel/sources/kr_art1.c	1534	1546	2	-	-
+6331	7	snns/src/tools/sources/lex.yyy.c	308	318	snns/src/tools/sources/lex.yyz.c	384	394	1	-	-
+6333	7	snns/src/xgui/sources/d3_pannels.c	111	120	snns/src/xgui/sources/ui_file.c	482	491	2	-	-
+6340	7	snns/src/xgui/sources/d3_move.c	127	137	snns/src/xgui/sources/ui_displwght.c	74	88	3	137	88
+6344	7	snns/src/kernel/sources/kr_amap.c	1511	1518	snns/src/kernel/sources/kr_amap.c	1758	1766	2	-	-
+6346	7	snns/src/kernel/sources/kr_amap.c	954	961	snns/src/kernel/sources/kr_art1.c	661	667	2	-	-
+6350	7	snns/src/xgui/sources/bn_artmap.c	425	430	snns/src/xgui/sources/bn_artmap.c	641	646	2	-	-
+6358	7	snns/src/kernel/sources/init_f.c	1834	1840	snns/src/kernel/sources/init_f.c	1939	1945	2	-	-
+6360	7	snns/src/xgui/sources/ui_mainP.c	832	840	snns/src/xgui/sources/ui_xWidgets.c	1152	1159	2	-	-
+6366	7	snns/src/kernel/sources/kr_amap.c	1419	1427	snns/src/kernel/sources/kr_art1.c	777	785	2	-	-
+6369	7	snns/src/kernel/sources/kr_amap.c	3973	3983	snns/src/kernel/sources/kr_art1.c	289	299	2	-	-
+6370	7	snns/src/kernel/sources/kr_amap.c	2322	2381	snns/src/kernel/sources/kr_art1.c	1247	1322	3	2344, 2357, 2358, 2359, 2360, 2361, 2362, 2363, 2364, 2365, 2366, 2373, 2374, 2375	1250, 1251, 1252, 1271, 1272, 1273, 1277, 1278, 1279, 1280, 1281, 1282, 1283, 1291, 1292, 1293, 1294, 1295, 1296, 1297, 1300, 1301, 1302, 1303, 1304, 1305, 1306, 1307, 1308, 1309, 1316
+6373	7	snns/src/kernel/sources/kr_amap.c	600	714	snns/src/kernel/sources/kr_amap.c	782	1004	3	605, 606, 607, 608, 609, 610, 611, 620, 621, 624, 625, 626, 629, 630, 631, 633, 634, 635, 636, 637, 638, 647, 649, 651, 652, 653, 654, 655, 656, 657, 658, 660, 661, 662, 663, 664, 674, 679, 680, 684, 685, 689, 702	785, 786, 787, 788, 789, 790, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 826, 827, 829, 830, 831, 832, 833, 834, 835, 836, 837, 838, 839, 840, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 852, 853, 854, 855, 857, 858, 859, 860, 861, 862, 863, 864, 865, 866, 867, 868, 869, 870, 871, 872, 873, 874, 884, 885, 886, 887, 888, 889, 890, 891, 892, 893, 894, 895, 896, 897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 909, 910, 911, 912, 913, 914, 915, 916, 917, 918, 919, 920, 921, 922, 923, 924, 925, 935, 936, 940, 947, 949, 963, 964, 971, 972, 973, 974, 975, 976, 977, 978, 979, 980, 981, 982, 983, 984, 986, 987, 988, 989, 990, 991, 992, 993, 994, 995, 997, 998, 999, 1000
+6382	7	snns/src/xgui/sources/bn_TD_bignet.c	731	748	snns/src/xgui/sources/bn_bignet.c	742	779	3	-	-
+6386	7	snns/src/xgui/sources/d3_move.c	127	137	snns/src/xgui/sources/ui_mainP.c	1112	1125	3	137	1124, 1125
+6394	7	snns/src/kernel/sources/kr_amap.c	3106	3114	snns/src/kernel/sources/kr_amap.c	3240	3248	2	-	-
+6396	7	snns/src/kernel/sources/kr_amap.c	1131	1137	snns/src/kernel/sources/kr_art1.c	398	404	2	-	-
+6399	7	snns/src/kernel/sources/learn_f.c	4997	5063	snns/src/kernel/sources/learn_f.c	5074	5131	3	5039, 5040, 5041, 5060, 5061, 5062	5116, 5130
+6404	7	snns/src/xgui/sources/bn_art1.c	80	87	snns/src/xgui/sources/bn_art1.c	358	365	2	-	-
+6413	7	snns/src/kernel/sources/kr_art1.c	276	288	snns/src/kernel/sources/kr_art1.c	289	301	2	-	-
+6418	7	snns/src/kernel/sources/kr_td.c	392	406	snns/src/kernel/sources/learn_f.c	2312	2326	3	403, 404, 405, 406	2316, 2323, 2324, 2325, 2326
+6419	7	snns/src/xgui/sources/d3_xUtils.c	212	221	snns/src/xgui/sources/ui_xWidgets.c	1436	1456	2	-	-
+6426	7	snns/src/kernel/sources/kr_amap.c	927	934	snns/src/kernel/sources/kr_amap.c	1865	1872	2	-	-
+6430	7	snns/src/xgui/sources/bn_artmap.c	631	638	snns/src/xgui/sources/bn_artmap.c	837	844	2	-	-
+6432	7	snns/src/xgui/sources/bn_artmap.c	475	486	snns/src/xgui/sources/bn_artmap.c	521	532	2	-	-
+6440	7	snns/src/kernel/sources/learn_f.c	1202	1216	snns/src/kernel/sources/learn_f.c	5118	5129	3	1206, 1209, 1211, 1212, 1213, 1214, 1215, 1216	5121, 5126, 5128, 5129
+6441	7	snns/src/xgui/sources/d3_pannels.c	121	126	snns/src/xgui/sources/ui_xWidgets.c	1435	1451	2	-	-
+6451	7	snns/src/kernel/sources/kr_amap.c	2703	2711	snns/src/kernel/sources/kr_amap.c	3106	3114	2	-	-
+6452	7	snns/src/kernel/sources/learn_f.c	3276	3282	snns/src/kernel/sources/update_f.c	346	352	1	-	-
+6457	7	snns/src/xgui/sources/ui_file.c	429	439	snns/src/xgui/sources/ui_xWidgets.c	456	465	2	-	-
+6473	7	snns/src/xgui/sources/d3_move.c	90	96	snns/src/xgui/sources/ui_control.c	148	154	2	-	-
+6476	7	snns/src/kernel/sources/kr_amap.c	267	273	snns/src/kernel/sources/kr_art2.c	173	179	2	-	-
+6487	7	snns/src/xgui/sources/net_analyzer.c	161	169	snns/src/xgui/sources/ui_file.c	426	434	2	-	-
+6493	7	snns/src/kernel/sources/trans_f.c	365	374	snns/src/kernel/sources/trans_f.c	402	411	1	-	-
+6494	7	snns/src/kernel/sources/kr_art1.c	521	526	snns/src/kernel/sources/kr_art2.c	925	930	2	-	-
+6498	7	snns/src/xgui/sources/net_analyzer.c	823	834	snns/src/xgui/sources/ui_colEdit.c	128	138	3	-	-
+6502	7	snns/src/xgui/sources/net_analyzer.c	811	820	snns/src/xgui/sources/ui_displwght.c	424	433	2	-	-
+6507	7	snns/src/kernel/sources/kr_amap.c	927	932	snns/src/kernel/sources/kr_art2.c	1052	1057	2	-	-
+6514	7	snns/src/xgui/sources/d3_zValue.c	87	92	snns/src/xgui/sources/ui_displwght.c	399	404	2	-	-
+6515	7	snns/src/xgui/sources/bn_art1.c	519	535	snns/src/xgui/sources/bn_art1.c	547	563	2	-	-
+6518	7	snns/src/kernel/sources/kr_amap.c	3285	3293	snns/src/kernel/sources/kr_amap.c	3761	3769	2	-	-
+6520	7	snns/src/kernel/sources/kr_amap.c	3063	3138	snns/src/kernel/sources/kr_art1.c	1247	1322	2	-	-
+6524	7	snns/src/kernel/sources/arttr_f.c	277	289	snns/src/kernel/sources/trans_f.c	587	599	1	-	-
+6525	7	snns/src/kernel/sources/kr_mem.c	310	318	snns/src/kernel/sources/stochastic_learn_f.c	128	138	3	310, 311, 312, 314, 315, 316, 318	128, 129, 130, 131, 132, 134, 135, 136, 138
+6533	7	snns/src/xgui/sources/bn_TD_bignet.c	449	472	snns/src/xgui/sources/bn_bignet.c	428	450	3	467	-
+6553	7	snns/src/xgui/sources/bn_artmap.c	424	436	snns/src/xgui/sources/bn_artmap.c	536	548	2	-	-
+6556	7	snns/src/xgui/sources/bn_artmap.c	591	602	snns/src/xgui/sources/bn_artmap.c	765	776	2	-	-
+6558	7	snns/src/kernel/sources/kr_amap.c	745	750	snns/src/kernel/sources/kr_amap.c	1067	1072	2	-	-
+6568	7	snns/src/xgui/sources/bn_TD_bignet.c	1138	1147	snns/src/xgui/sources/bn_bignet.c	1260	1269	2	-	-
+6576	7	snns/src/kernel/sources/kr_amap.c	660	714	snns/src/kernel/sources/kr_amap.c	946	1004	3	661, 674, 683, 684, 685, 686, 688, 689, 690, 691, 692, 702	947, 949, 963, 964, 972, 974, 975, 977, 978, 988, 989, 997, 998, 999, 1000
+6577	7	snns/src/kernel/sources/kr_amap.c	4057	4063	snns/src/kernel/sources/kr_art1.c	267	273	2	-	-
+6581	7	snns/src/kernel/sources/kernel.c	487	492	snns/src/kernel/sources/kernel.c	501	506	3	487	501
+6582	7	snns/src/kernel/sources/kr_amap.c	1304	1311	snns/src/kernel/sources/kr_amap.c	1741	1749	2	-	-
+6586	7	snns/src/kernel/sources/arttr_f.c	83	93	snns/src/kernel/sources/arttr_f.c	128	138	1	-	-
+6588	7	snns/src/xgui/sources/bn_bignet.c	219	238	snns/src/xgui/sources/bn_bignet.c	239	257	2	-	-
+6593	7	snns/src/kernel/sources/learn_f.c	386	391	snns/src/kernel/sources/learn_f.c	1041	1047	2	-	-
+6603	7	snns/src/xgui/sources/d3_xUtils.c	212	221	snns/src/xgui/sources/ui_displwght.c	79	88	2	-	-
+6607	7	snns/src/xgui/sources/ui_inversion.c	165	171	snns/src/xgui/sources/ui_xWidgets.c	1415	1421	2	-	-
+6619	7	snns/src/kernel/sources/kr_amap.c	3989	3999	snns/src/kernel/sources/kr_art2.c	643	653	2	-	-
+6621	7	snns/src/kernel/sources/kr_amap.c	835	841	snns/src/kernel/sources/kr_amap.c	1176	1182	2	-	-
+6622	7	snns/src/xgui/sources/o_graph.c	581	605	snns/src/xgui/sources/o_graph.c	764	788	1	-	-
+6626	7	snns/src/kernel/sources/kr_amap.c	1608	1616	snns/src/kernel/sources/kr_art1.c	621	629	2	-	-
+6629	7	snns/src/xgui/sources/bn_art1.c	303	310	snns/src/xgui/sources/bn_artmap.c	72	79	2	-	-
+6631	7	snns/src/kernel/sources/trans_f.c	906	914	snns/src/kernel/sources/trans_f.c	915	923	2	-	-
+6638	7	snns/src/xgui/sources/bn_bighop.c	310	316	snns/src/xgui/sources/bn_bignet.c	787	793	2	-	-
+6640	7	snns/src/kernel/sources/arttr_f.c	237	247	snns/src/kernel/sources/trans_f.c	280	288	1	-	-
+6642	7	snns/src/kernel/sources/kr_art2.c	1241	1268	snns/src/kernel/sources/kr_art2.c	1445	1472	2	-	-
+6647	7	snns/src/kernel/sources/kr_art1.c	556	563	snns/src/kernel/sources/kr_art1.c	825	832	2	-	-
+6656	7	snns/src/xgui/sources/d3_xUtils.c	81	94	snns/src/xgui/sources/ui_xWidgets.c	432	447	2	-	-
+6659	7	snns/src/kernel/sources/learn_f.c	1832	1837	snns/src/kernel/sources/stochastic_learn_f.c	586	592	1	-	-
+6666	7	snns/src/xgui/sources/ui_displmap.c	446	458	snns/src/xgui/sources/ui_inversion.c	233	247	2	-	-
+6668	7	snns/src/tools/sources/ic_snns.c	424	435	snns/src/tools/sources/ic_snns.c	877	888	2	-	-
+6683	7	snns/src/kernel/sources/kr_amap.c	1437	1444	snns/src/kernel/sources/kr_amap.c	1832	1839	2	-	-
+6687	7	snns/src/xgui/sources/bn_art1.c	488	494	snns/src/xgui/sources/bn_artmap.c	409	415	2	-	-
+6693	7	snns/src/xgui/sources/d3_move.c	86	97	snns/src/xgui/sources/ui_mainP.c	1112	1125	3	97	1124, 1125
+6704	7	snns/src/xgui/sources/d3_move.c	88	97	snns/src/xgui/sources/ui_xWidgets.c	1059	1068	2	-	-
+6705	7	snns/src/kernel/sources/kr_amap.c	909	916	snns/src/kernel/sources/kr_amap.c	1849	1856	2	-	-
+6713	7	snns/src/kernel/sources/learn_f.c	3398	3431	snns/src/kernel/sources/update_f.c	1419	1454	1	-	-
+6714	7	snns/src/kernel/sources/kr_amap.c	2758	2770	snns/src/kernel/sources/kr_amap.c	3314	3326	3	2758	3314
+6726	7	snns/src/kernel/sources/kr_amap.c	572	578	snns/src/kernel/sources/kr_amap.c	694	700	2	-	-
+6731	7	snns/src/xgui/sources/ui_config.c	719	739	snns/src/xgui/sources/ui_config.c	740	760	2	-	-
+6735	7	snns/src/xgui/sources/ui_displmap.c	459	473	snns/src/xgui/sources/ui_main.c	180	187	3	-	-
+6738	7	snns/src/kernel/sources/kernel.c	2004	2030	snns/src/kernel/sources/kernel.c	2039	2065	2	-	-
+6742	7	snns/src/kernel/sources/kr_amap.c	3281	3296	snns/src/kernel/sources/kr_art1.c	1299	1314	2	-	-
+6750	7	snns/src/kernel/sources/kr_amap.c	3085	3092	snns/src/kernel/sources/kr_amap.c	3223	3230	2	-	-
+6763	7	snns/src/tools/sources/ic_snns.c	580	590	snns/src/tools/sources/ic_snns.c	810	820	2	-	-
+6768	7	snns/src/kernel/sources/kr_art1.c	715	720	snns/src/kernel/sources/kr_art2.c	1101	1106	2	-	-
+6769	7	snns/src/kernel/sources/kr_amap.c	1849	1855	snns/src/kernel/sources/kr_art1.c	398	404	2	-	-
+6770	7	snns/src/kernel/sources/kr_ui.c	957	964	snns/src/kernel/sources/kr_ui.c	1076	1083	1	-	-
+6782	7	snns/src/kernel/sources/learn_f.c	2110	2130	snns/src/kernel/sources/learn_f.c	3236	3255	1	-	-
+6788	7	snns/src/kernel/sources/kr_amap.c	1067	1072	snns/src/kernel/sources/kr_amap.c	1304	1309	2	-	-
+6793	7	snns/src/xgui/sources/bn_art1.c	276	281	snns/src/xgui/sources/bn_artmap.c	665	672	2	-	-
+6796	7	snns/src/kernel/sources/trans_f.c	217	230	snns/src/kernel/sources/trans_f.c	345	357	1	-	-
+6805	7	snns/src/kernel/sources/learn_f.c	2135	2148	snns/src/kernel/sources/learn_f.c	3258	3271	1	-	-
+6810	7	snns/src/xgui/sources/ui_display.c	168	174	snns/src/xgui/sources/ui_display.c	183	189	2	-	-
+6812	7	snns/src/kernel/sources/kr_ui.c	181	187	snns/src/kernel/sources/kr_ui.c	219	225	2	-	-
+6817	7	snns/src/kernel/sources/kr_td.c	344	407	snns/src/kernel/sources/learn_f.c	3700	3739	3	344, 345, 346, 349, 361, 362, 364, 365, 377, 378, 379, 380, 381, 382, 383, 384, 386, 387, 388, 389, 390, 403, 404, 405, 406	3700, 3701, 3702, 3737, 3738
+6820	7	snns/src/tools/sources/td_bignet.c	624	655	snns/src/xgui/sources/bn_TD_bignet.c	1022	1053	1	-	-
+6826	7	snns/src/kernel/sources/arttr_f.c	107	117	snns/src/kernel/sources/arttr_f.c	170	180	1	-	-
+6827	7	snns/src/xgui/sources/ui_inversion.c	162	174	snns/src/xgui/sources/ui_mainP.c	831	840	2	-	-
+6838	7	snns/src/xgui/sources/net_analyzer.c	825	834	snns/src/xgui/sources/ui_xWidgets.c	1151	1159	2	-	-
+6839	7	snns/src/kernel/sources/trans_f.c	567	579	snns/src/kernel/sources/trans_f.c	629	641	2	-	-
+6843	7	snns/src/kernel/sources/kr_amap.c	2690	2698	snns/src/kernel/sources/kr_amap.c	2703	2711	2	-	-
+6848	7	snns/src/kernel/sources/kr_amap.c	1740	1756	snns/src/kernel/sources/kr_amap.c	1848	1863	2	-	-
+6849	7	snns/src/kernel/sources/kr_io.c	602	609	snns/src/kernel/sources/kr_io.c	718	725	2	-	-
+6855	7	snns/src/xgui/sources/d3_move.c	127	137	snns/src/xgui/sources/ui_displmap.c	401	412	2	-	-
+6866	7	snns/src/kernel/sources/learn_f.c	955	999	snns/src/kernel/sources/learn_f.c	5074	5131	3	959, 969, 970, 971, 972, 973, 989, 995, 996, 997, 998	5079, 5080, 5081, 5082, 5083, 5103, 5104, 5105, 5106, 5108, 5109, 5110, 5111, 5112, 5113, 5115, 5116, 5121, 5126, 5128, 5129, 5130
+6867	7	snns/src/tools/sources/ff_bignet.c	182	190	snns/src/xgui/sources/bn_bighop.c	196	204	1	-	-
+6877	7	snns/src/kernel/sources/kr_amap.c	4080	4086	snns/src/kernel/sources/kr_amap.c	4149	4155	2	-	-
+6879	7	snns/src/kernel/sources/kr_amap.c	4022	4034	snns/src/kernel/sources/kr_amap.c	4075	4087	2	-	-
+6882	7	snns/src/kernel/sources/kr_td.c	344	407	snns/src/kernel/sources/learn_f.c	891	943	3	344, 345, 346, 349, 350, 351, 361, 362, 364, 365, 377, 379, 380, 381, 382, 383, 384, 403, 404, 405, 406	891, 892, 893, 937, 938, 939, 940, 941, 942
+6890	7	snns/src/kernel/sources/kr_amap.c	1529	1537	snns/src/kernel/sources/kr_art1.c	777	785	2	-	-
+6896	7	snns/src/kernel/sources/prun_f.c	451	465	snns/src/kernel/sources/prun_f.c	626	639	3	454, 455	-
+6898	7	snns/src/tools/sources/ic_snns.c	822	838	snns/src/tools/sources/ic_snns.c	858	874	2	-	-
+6900	7	snns/src/kernel/sources/update_f.c	1249	1259	snns/src/kernel/sources/update_f.c	1261	1270	3	1250, 1258	1262, 1269
+6908	7	snns/src/tools/sources/ff_bignet.c	551	570	snns/src/xgui/sources/bn_TD_bignet.c	1066	1094	2	-	-
+6911	7	snns/src/xgui/sources/ui_xWidgets.c	540	548	snns/src/xgui/sources/ui_xWidgets.c	1151	1159	2	-	-
+6912	7	snns/src/xgui/sources/ui_key.c	331	346	snns/src/xgui/sources/ui_key.c	744	757	3	334, 342	-
+6917	7	snns/src/kernel/sources/kr_amap.c	1968	2018	snns/src/kernel/sources/kr_art2.c	1120	1156	3	1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014	1121, 1122, 1123, 1124, 1125, 1126, 1127, 1128, 1129, 1130, 1131, 1142, 1143, 1144, 1145, 1146, 1147, 1148, 1149, 1150, 1151, 1152
+6921	7	snns/src/xgui/sources/bn_TD_bignet.c	215	230	snns/src/xgui/sources/bn_bighop.c	99	107	2	-	-
+6925	7	snns/src/kernel/sources/kr_td.c	344	407	snns/src/kernel/sources/learn_f.c	4997	5063	3	344, 345, 346, 348, 361, 362, 363, 364, 365, 366, 367, 368, 369, 377, 379, 380, 381, 382, 383, 384, 397, 403, 404, 405, 406	4997, 4998, 4999, 5002, 5003, 5026, 5027, 5028, 5029, 5038, 5039, 5040, 5041, 5048, 5053, 5055, 5056, 5060, 5061, 5062
+6929	7	snns/src/xgui/sources/bn_TD_bignet.c	116	126	snns/src/xgui/sources/bn_TD_bignet.c	219	231	2	-	-
+6931	7	snns/src/kernel/sources/kr_td.c	350	357	snns/src/kernel/sources/learn_f.c	5005	5013	1	-	-
+6939	7	snns/src/xgui/sources/d3_xUtils.c	135	220	snns/src/xgui/sources/net_analyzer.c	183	247	2	-	-
+6943	7	snns/src/xgui/sources/d3_move.c	86	92	snns/src/xgui/sources/ui_mainP.c	430	436	2	-	-
+6947	7	snns/src/kernel/sources/update_f.c	369	381	snns/src/kernel/sources/update_f.c	515	530	2	-	-
+6948	7	snns/src/xgui/sources/ui_displwght.c	402	410	snns/src/xgui/sources/ui_xWidgets.c	413	422	2	-	-
+6950	7	snns/src/kernel/sources/learn_f.c	916	924	snns/src/kernel/sources/learn_f.c	5469	5477	2	-	-
+6953	7	snns/src/kernel/sources/kernel.c	2484	2496	snns/src/kernel/sources/kr_JordElm.c	125	137	2	-	-
+6958	7	snns/src/xgui/sources/bn_artmap.c	560	571	snns/src/xgui/sources/bn_artmap.c	827	838	2	-	-
+6969	7	snns/src/kernel/sources/trans_f.c	93	101	snns/src/kernel/sources/trans_f.c	294	302	1	-	-
+6972	7	snns/src/xgui/sources/ui_displwght.c	401	410	snns/src/xgui/sources/ui_xWidgets.c	1151	1159	2	-	-
+6979	7	snns/src/xgui/sources/d3_move.c	86	97	snns/src/xgui/sources/ui_file.c	425	439	3	97	438, 439
+6989	7	snns/src/xgui/sources/d3_xUtils.c	212	221	snns/src/xgui/sources/net_analyzer.c	824	834	2	-	-
+6991	7	snns/src/kernel/sources/kernel.c	1285	1301	snns/src/kernel/sources/learn_f.c	5118	5126	3	1285, 1286, 1287, 1288, 1289, 1301	5118, 5119, 5121, 5126
+6992	7	snns/src/kernel/sources/kr_amap.c	816	824	snns/src/kernel/sources/kr_amap.c	1723	1732	2	-	-
+6995	7	snns/src/xgui/sources/net_analyzer.c	239	248	snns/src/xgui/sources/ui_xWidgets.c	1412	1421	2	-	-
+6998	7	snns/src/xgui/sources/bn_TD_bignet.c	619	645	snns/src/xgui/sources/bn_bignet.c	630	652	2	-	-
+7004	7	snns/src/kernel/sources/learn_f.c	4997	5063	snns/src/kernel/sources/learn_f.c	5218	5282	3	5060, 5061	5279, 5280, 5281
+7005	7	snns/src/xgui/sources/d3_xUtils.c	350	360	snns/src/xgui/sources/ui_displmap.c	116	126	2	-	-
+7019	7	snns/src/kernel/sources/kr_amap.c	3364	3384	snns/src/kernel/sources/kr_art1.c	1524	1546	3	3364, 3376	1524, 1536, 1537, 1538
+7020	7	snns/src/kernel/sources/kr_td.c	386	406	snns/src/kernel/sources/learn_f.c	5176	5202	3	397, 403, 404, 405, 406	5183, 5184, 5185, 5186, 5193, 5198, 5200, 5201, 5202
+7025	7	snns/src/xgui/sources/bn_bignet.c	428	450	snns/src/xgui/sources/bn_bignet.c	478	495	3	432, 433, 434, 443, 444, 445, 446, 447	482, 491, 492
+7030	7	snns/src/xgui/sources/cc_main.c	350	365	snns/src/xgui/sources/ui_info.c	393	416	2	-	-
+7034	7	snns/src/tools/sources/ic_snns.c	1096	1102	snns/src/tools/sources/ic_snns.c	1552	1558	2	-	-
+7040	7	snns/src/xgui/sources/bn_TD_bignet.c	223	230	snns/src/xgui/sources/bn_bignet.c	261	266	2	-	-
+7042	7	snns/src/xgui/sources/bn_art2.c	172	178	snns/src/xgui/sources/bn_art2.c	180	186	2	-	-
+7057	7	snns/src/kernel/sources/learn_f.c	482	492	snns/src/kernel/sources/learn_f.c	1573	1583	1	-	-
+7058	7	snns/src/xgui/sources/ui_xWidgets.c	413	423	snns/src/xgui/sources/ui_xWidgets.c	1152	1160	2	-	-
+7061	7	snns/src/kernel/sources/kr_amap.c	2758	2769	snns/src/kernel/sources/kr_amap.c	3213	3224	3	2758	3213
+7064	7	snns/src/kernel/sources/stochastic_learn_f.c	389	395	snns/src/kernel/sources/update_f.c	1031	1038	1	-	-
+7065	7	snns/src/kernel/sources/kr_amap.c	1373	1630	snns/src/kernel/sources/kr_art1.c	500	631	3	1374, 1378, 1387, 1388, 1389, 1390, 1391, 1392, 1394, 1395, 1396, 1397, 1398, 1399, 1400, 1406, 1407, 1408, 1409, 1410, 1413, 1414, 1415, 1416, 1417, 1418, 1428, 1429, 1430, 1431, 1432, 1433, 1437, 1438, 1439, 1440, 1441, 1442, 1443, 1444, 1446, 1447, 1449, 1452, 1453, 1454, 1455, 1459, 1460, 1461, 1462, 1463, 1464, 1465, 1466, 1468, 1469, 1471, 1472, 1476, 1485, 1486, 1487, 1488, 1490, 1491, 1492, 1493, 1494, 1495, 1496, 1497, 1498, 1499, 1500, 1501, 1502, 1504, 1507, 1508, 1510, 1511, 1512, 1514, 1515, 1517, 1518, 1519, 1520, 1521, 1522, 1524, 1526, 1527, 1529, 1530, 1531, 1532, 1533, 1534, 1537, 1538, 1541, 1542, 1543, 1551, 1553, 1556, 1557, 1558, 1559, 1560, 1561, 1562, 1565, 1566, 1570, 1571, 1572, 1573, 1574, 1575, 1576, 1577, 1578, 1579, 1580, 1581, 1582, 1583, 1584, 1585, 1586, 1589, 1590, 1591, 1592, 1594, 1595, 1596, 1597, 1598, 1599, 1600, 1601	503, 504, 514, 516, 517, 520, 530, 539, 540, 541, 542, 546, 547, 549, 550, 551, 555, 566, 571, 577, 578, 579, 580, 581, 584, 585, 589, 592, 593, 594, 602, 604, 605, 606, 607, 615
+7068	7	snns/src/xgui/sources/bn_artmap.c	521	532	snns/src/xgui/sources/bn_artmap.c	795	806	2	-	-
+7074	7	snns/src/xgui/sources/ui_displwght.c	399	408	snns/src/xgui/sources/ui_mainP.c	1112	1121	2	-	-
+7075	7	snns/src/kernel/sources/arttr_f.c	170	180	snns/src/kernel/sources/trans_f.c	631	641	1	-	-
+7077	7	snns/src/xgui/sources/bn_TD_bignet.c	732	748	snns/src/xgui/sources/bn_bignet.c	743	759	2	-	-
+7086	7	snns/src/xgui/sources/ui_control.c	147	154	snns/src/xgui/sources/ui_displmap.c	459	466	2	-	-
+7091	7	snns/src/kernel/sources/learn_f.c	1797	1846	snns/src/kernel/sources/learn_f.c	2043	2090	3	1814, 1837, 1839, 1840, 1841, 1843, 1844, 1845	2061, 2084, 2085, 2086, 2087, 2088, 2089
+7094	7	snns/src/kernel/sources/learn_f.c	1398	1403	snns/src/kernel/sources/learn_f.c	6205	6210	1	-	-
+7098	7	snns/src/xgui/sources/bn_bignet.c	105	114	snns/src/xgui/sources/ui_info.c	383	395	2	-	-
+7099	7	snns/src/kernel/sources/trans_f.c	201	210	snns/src/kernel/sources/trans_f.c	365	374	1	-	-
+7101	7	snns/src/xgui/sources/d3_move.c	86	95	snns/src/xgui/sources/ui_displmap.c	401	410	2	-	-
+7103	7	snns/src/kernel/sources/trans_f.c	266	274	snns/src/kernel/sources/trans_f.c	330	338	1	-	-
+7108	7	snns/src/kernel/sources/kr_pat_scan.c	1046	1452	snns/src/tools/sources/lex.yyz.c	1085	1491	1	-	-
+7109	7	snns/src/kernel/sources/kr_amap.c	459	464	snns/src/kernel/sources/kr_art1.c	859	864	2	-	-
+7120	7	snns/src/xgui/sources/ui_xWidgets.c	993	1069	snns/src/xgui/sources/ui_xWidgets.c	1083	1160	3	993	1083, 1149, 1150
+7121	7	snns/src/xgui/sources/bn_art2.c	244	249	snns/src/xgui/sources/bn_artmap.c	713	718	2	-	-
+7125	7	snns/src/kernel/sources/kr_amap.c	1176	1182	snns/src/kernel/sources/kr_amap.c	1556	1563	2	-	-
+7132	7	snns/src/tools/sources/ff_bignet.c	635	653	snns/src/xgui/sources/bn_TD_bignet.c	1445	1460	3	-	-
+7137	7	snns/src/xgui/sources/ui_config.c	538	555	snns/src/xgui/sources/ui_config.c	566	583	2	-	-
+7138	7	snns/src/kernel/sources/trans_f.c	294	302	snns/src/kernel/sources/trans_f.c	403	411	1	-	-
+7140	7	snns/src/xgui/sources/ui_action.c	619	627	snns/src/xgui/sources/ui_action.c	1101	1109	1	-	-
+7145	7	snns/src/kernel/sources/kr_ui.c	1246	1255	snns/src/kernel/sources/kr_ui.c	1264	1273	2	-	-
+7149	7	snns/src/kernel/sources/kr_art1.c	521	526	snns/src/kernel/sources/kr_art2.c	1078	1083	2	-	-
+7151	7	snns/src/xgui/sources/d3_xUtils.c	212	222	snns/src/xgui/sources/ui_xWidgets.c	489	499	2	-	-
+7157	7	snns/src/kernel/sources/learn_f.c	4422	4430	snns/src/kernel/sources/learn_f.c	5754	5761	1	-	-
+7162	7	snns/src/xgui/sources/d3_move.c	127	136	snns/src/xgui/sources/ui_file.c	425	434	2	-	-
+7164	7	snns/src/xgui/sources/net_analyzer.c	239	247	snns/src/xgui/sources/ui_xWidgets.c	1059	1067	2	-	-
+7165	7	snns/src/kernel/sources/kr_amap.c	1270	1296	snns/src/kernel/sources/kr_amap.c	1298	1324	2	-	-
+7168	7	snns/src/xgui/sources/ui_funcdispl.c	274	346	snns/src/xgui/sources/ui_funcdispl.c	385	457	1	-	-
+7171	7	snns/src/kernel/sources/kr_td.c	292	302	snns/src/kernel/sources/learn_f.c	3717	3727	2	-	-
+7173	7	snns/src/kernel/sources/learn_f.c	4997	5063	snns/src/kernel/sources/learn_f.c	5443	5503	3	4997, 4998, 4999, 5002, 5003, 5004, 5026, 5027, 5028, 5029, 5037, 5038, 5039, 5040, 5041, 5048, 5053, 5055, 5056, 5060, 5061, 5062	5443, 5444, 5445, 5448, 5461, 5462, 5467, 5468, 5478, 5479, 5480, 5481, 5482, 5483, 5484, 5485, 5486, 5487, 5488, 5493, 5495, 5496, 5497, 5498, 5499, 5500, 5501, 5502
+7178	7	snns/src/kernel/sources/kr_amap.c	817	822	snns/src/kernel/sources/kr_art2.c	886	891	2	-	-
+7185	7	snns/src/xgui/sources/ui_displwght.c	399	408	snns/src/xgui/sources/ui_file.c	425	434	2	-	-
+7187	7	snns/src/xgui/sources/bn_artmap.c	704	710	snns/src/xgui/sources/bn_artmap.c	735	741	2	-	-
+7188	7	snns/src/kernel/sources/learn_f.c	955	999	snns/src/kernel/sources/learn_f.c	2270	2338	3	995, 996, 997, 998	2276, 2277, 2287, 2288, 2289, 2290, 2305, 2308, 2309, 2310, 2316, 2323, 2324, 2325, 2326, 2327, 2328, 2329, 2330, 2331, 2332, 2333, 2334, 2335, 2336, 2337
+7192	7	snns/src/xgui/sources/bn_art1.c	303	313	snns/src/xgui/sources/bn_art1.c	390	400	2	-	-
+7198	7	snns/src/kernel/sources/kr_amap.c	909	914	snns/src/kernel/sources/kr_art2.c	1052	1057	2	-	-
+7203	7	snns/src/xgui/sources/ui_xWidgets.c	490	499	snns/src/xgui/sources/ui_xWidgets.c	1151	1160	2	-	-
+7205	7	snns/src/kernel/sources/learn_f.c	4182	4206	snns/src/kernel/sources/update_f.c	689	710	1	-	-
+7213	7	snns/src/xgui/sources/d3_pannels.c	91	96	snns/src/xgui/sources/ui_file.c	425	430	2	-	-
+7220	7	snns/src/kernel/sources/kr_art1.c	192	207	snns/src/kernel/sources/kr_art2.c	197	212	2	-	-
+7221	7	snns/src/kernel/sources/learn_f.c	2079	2090	snns/src/kernel/sources/learn_f.c	5490	5503	3	2085, 2086, 2087, 2088, 2089	5496, 5497, 5498, 5499, 5500, 5501, 5502
+7229	7	snns/src/xgui/sources/ui_displwght.c	430	438	snns/src/xgui/sources/ui_xWidgets.c	1151	1159	2	-	-
+7232	7	snns/src/kernel/sources/kr_art2.c	1174	1191	snns/src/kernel/sources/kr_art2.c	1309	1326	2	-	-
+7238	7	snns/src/kernel/sources/learn_f.c	2291	2304	snns/src/kernel/sources/learn_f.c	3716	3728	2	-	-
+7241	7	snns/src/xgui/sources/d3_move.c	128	137	snns/src/xgui/sources/ui_displmap.c	134	143	2	-	-
+7246	7	snns/src/kernel/sources/kr_amap.c	666	673	snns/src/kernel/sources/kr_amap.c	1849	1856	2	-	-
+7254	7	snns/src/xgui/sources/bn_TD_bignet.c	131	138	snns/src/xgui/sources/bn_bignet.c	102	112	2	-	-
+7257	7	snns/src/xgui/sources/o_graph.c	498	508	snns/src/xgui/sources/o_graph.c	778	788	1	-	-
+7263	7	snns/src/kernel/sources/kr_amap.c	3364	3374	snns/src/kernel/sources/kr_art1.c	1482	1491	3	3364	1482
+7269	7	snns/src/xgui/sources/bn_TD_bignet.c	1581	1588	snns/src/xgui/sources/bn_bignet.c	1688	1695	3	1585	1692
+7274	7	snns/src/kernel/sources/kr_art2.c	1271	1306	snns/src/kernel/sources/kr_art2.c	1309	1340	3	1290, 1291, 1292, 1293	-
+7276	7	snns/src/xgui/sources/d3_move.c	85	96	snns/src/xgui/sources/ui_colEdit.c	76	87	2	-	-
+7277	7	snns/src/xgui/sources/net_analyzer.c	812	822	snns/src/xgui/sources/ui_xWidgets.c	489	498	2	-	-
+7278	7	snns/src/tools/sources/snnsbat.c	860	866	snns/src/tools/sources/snnsbat.c	928	934	2	-	-
+7288	7	snns/src/xgui/sources/bn_art1.c	433	444	snns/src/xgui/sources/bn_art1.c	502	512	3	440, 443	508, 511
+7291	7	snns/src/tools/sources/td_bignet.c	685	700	snns/src/xgui/sources/bn_bighop.c	519	535	2	-	-
+7296	7	snns/src/kernel/sources/learn_f.c	2291	2304	snns/src/kernel/sources/learn_f.c	3827	3839	2	-	-
+7301	7	snns/src/xgui/sources/ui_control.c	148	156	snns/src/xgui/sources/ui_displmap.c	404	412	2	-	-
+7302	7	snns/src/kernel/sources/kernel.c	794	804	snns/src/kernel/sources/kernel.c	848	858	2	-	-
+7307	7	snns/src/kernel/sources/kr_td.c	270	333	snns/src/kernel/sources/learn_f.c	3809	3850	3	271, 275, 287, 288, 290, 291, 303, 305, 306, 307, 308, 309, 310, 312, 314, 315, 316, 323, 329, 330, 331, 332	3810, 3815, 3820, 3846, 3848, 3849
+7309	7	snns/src/kernel/sources/kr_io.c	1673	1682	snns/src/kernel/sources/kr_io.c	1684	1692	3	-	-
+7319	7	snns/src/xgui/sources/d3_move.c	85	96	snns/src/xgui/sources/ui_funcdispl.c	201	212	2	-	-
+7321	7	snns/src/xgui/sources/cc_main.c	350	363	snns/src/xgui/sources/o_graph.c	128	136	2	-	-
+7323	7	snns/src/kernel/sources/learn_f.c	3570	3578	snns/src/kernel/sources/learn_f.c	5009	5019	2	-	-
+7324	7	snns/src/kernel/sources/kr_amap.c	2536	2544	snns/src/kernel/sources/kr_amap.c	3106	3114	2	-	-
+7355	7	snns/src/kernel/sources/trans_f.c	89	102	snns/src/kernel/sources/trans_f.c	508	521	3	102	521
+7393	7	snns/src/kernel/sources/kr_newpattern.c	2602	2613	snns/src/kernel/sources/kr_newpattern.c	2623	2634	2	-	-
+7458	7	snns/src/kernel/sources/kr_amap.c	1085	1150	snns/src/kernel/sources/kr_amap.c	1635	1679	3	1088, 1090, 1091, 1092, 1093, 1097, 1098, 1099, 1102, 1103, 1104, 1112, 1113, 1114, 1117, 1121, 1125, 1129, 1130, 1144, 1145, 1146, 1147	1639, 1640, 1647, 1653, 1654, 1655, 1657, 1663
+7461	7	snns/src/kernel/sources/kr_td.c	392	406	snns/src/kernel/sources/learn_f.c	1478	1508	3	395, 403, 404, 405, 406	1482, 1483, 1485, 1486, 1487, 1488, 1489, 1490, 1492, 1493, 1494, 1495, 1496, 1497, 1498, 1499, 1500, 1502, 1503, 1504, 1506, 1507, 1508
+7462	7	snns/src/kernel/sources/learn_f.c	3550	3605	snns/src/kernel/sources/learn_f.c	6112	6146	3	3555, 3556, 3557, 3558, 3559, 3560, 3562, 3563, 3564, 3565, 3566, 3567, 3568, 3569, 3570, 3571, 3572, 3573, 3576, 3577, 3578, 3579, 3580, 3582, 3583, 3585, 3586, 3587, 3588, 3590, 3591, 3592, 3599, 3601, 3602, 3604	6116, 6117, 6118, 6119, 6121, 6122, 6123, 6124, 6125, 6126, 6127, 6128, 6129, 6130, 6131, 6141, 6142, 6143, 6145
+7463	7	snns/src/kernel/sources/learn_f.c	1202	1218	snns/src/kernel/sources/learn_f.c	3667	3689	3	1209, 1211, 1212, 1213, 1214, 1215, 1216, 1217	3672, 3674, 3675, 3676, 3677, 3679, 3680, 3681, 3682, 3683, 3684, 3685, 3686, 3688
+7464	7	snns/src/kernel/sources/kr_amap.c	549	587	snns/src/kernel/sources/kr_amap.c	1153	1191	2	-	-
+7466	7	snns/src/kernel/sources/kr_amap.c	1394	1629	snns/src/kernel/sources/kr_art1.c	577	630	3	1395, 1396, 1397, 1398, 1399, 1400, 1401, 1402, 1403, 1404, 1405, 1406, 1407, 1408, 1409, 1410, 1411, 1412, 1413, 1414, 1415, 1416, 1417, 1418, 1419, 1420, 1421, 1422, 1423, 1424, 1425, 1426, 1427, 1428, 1429, 1430, 1431, 1432, 1433, 1434, 1435, 1436, 1437, 1438, 1439, 1440, 1441, 1442, 1443, 1444, 1445, 1446, 1447, 1448, 1449, 1450, 1451, 1452, 1453, 1454, 1455, 1456, 1457, 1459, 1460, 1461, 1462, 1463, 1464, 1465, 1466, 1467, 1468, 1469, 1470, 1471, 1472, 1473, 1474, 1475, 1476, 1477, 1478, 1479, 1480, 1481, 1482, 1483, 1484, 1485, 1486, 1487, 1488, 1489, 1490, 1492, 1493, 1495, 1496, 1497, 1498, 1499, 1500, 1503, 1504, 1505, 1506, 1508, 1509, 1510, 1511, 1512, 1513, 1514, 1515, 1516, 1517, 1518, 1519, 1520, 1523, 1524, 1525, 1526, 1527, 1528, 1529, 1530, 1531, 1532, 1533, 1534, 1535, 1536, 1538, 1539, 1540, 1541, 1542, 1543, 1551, 1553, 1556, 1557, 1558, 1559, 1560, 1561, 1565, 1566, 1570, 1571, 1572, 1573, 1574, 1576, 1577, 1578, 1579, 1580, 1581, 1582, 1583, 1584, 1585, 1586, 1589, 1590, 1591, 1592, 1594, 1595, 1596, 1597, 1598, 1599, 1600, 1601	578, 579, 581, 582, 584, 585, 592, 594, 602, 604, 605, 606, 607, 615
+7467	7	snns/src/kernel/sources/learn_f.c	5690	5722	snns/src/kernel/sources/learn_f.c	5982	6016	3	5697, 5717, 5718, 5719, 5720	5987, 5991, 5997, 5998, 6013, 6014
+7468	7	snns/src/kernel/sources/init_f.c	75	92	snns/src/kernel/sources/stochastic_learn_f.c	114	126	3	77, 78, 80, 84, 85, 88, 91, 92	116, 119, 121, 123, 126
+7469	7	snns/src/kernel/sources/kr_pat_scan.c	1006	1020	snns/src/tools/sources/lex.yyy.c	746	760	1	-	-
+7471	7	snns/src/kernel/sources/learn_f.c	229	274	snns/src/kernel/sources/learn_f.c	285	325	1	-	-
+7472	7	snns/src/kernel/sources/kernel.c	275	294	snns/src/kernel/sources/kr_ui.c	965	977	3	283, 284, 285, 286, 287, 288, 289, 290	-
+7474	7	snns/src/kernel/sources/kr_amap.c	1017	1026	snns/src/kernel/sources/kr_art1.c	621	630	2	-	-
+7475	7	snns/src/kernel/sources/kr_td.c	318	332	snns/src/kernel/sources/learn_f.c	5190	5202	3	321, 323, 329, 330, 331, 332	5193, 5198, 5200, 5201, 5202
+7476	7	snns/src/kernel/sources/learn_f.c	381	442	snns/src/kernel/sources/update_f.c	1414	1455	3	386, 387, 388, 389, 391, 395, 396, 398, 401, 402, 403, 405, 407, 408, 414, 415, 419, 424, 425, 428, 429, 430, 435, 436, 439, 440, 441	1418, 1419, 1421, 1422, 1423, 1424, 1425, 1426, 1427, 1428, 1429, 1430, 1431, 1432, 1435, 1436, 1442, 1445, 1446, 1450, 1453, 1454
+7477	7	snns/src/kernel/sources/learn_f.c	3550	3605	snns/src/kernel/sources/learn_f.c	5074	5131	3	3555, 3556, 3562, 3563, 3564, 3565, 3566, 3567, 3568, 3569, 3579, 3580, 3582, 3583, 3588, 3590, 3597, 3599, 3601, 3602, 3604	5079, 5080, 5081, 5103, 5104, 5105, 5106, 5108, 5111, 5114, 5115, 5116, 5121, 5126, 5128, 5129, 5130
+7479	7	snns/src/kernel/sources/learn_f.c	364	442	snns/src/kernel/sources/learn_f.c	786	879	3	364, 369, 391, 395, 402, 408, 414, 415, 419, 430, 441	786, 787, 788, 793, 797, 814, 817, 818, 819, 820, 821, 822, 824, 830, 831, 832, 837, 838, 839, 840, 844, 845, 848, 849, 850, 851, 852, 854, 864, 865, 866, 874, 875, 876, 877, 878
+7481	7	snns/src/kernel/sources/learn_f.c	2694	2712	snns/src/kernel/sources/learn_f.c	5045	5062	3	2698, 2700, 2701, 2702, 2703, 2704, 2705, 2706, 2707, 2708, 2709, 2710, 2711, 2712	5048, 5053, 5055, 5056, 5060, 5061, 5062
+7482	7	snns/src/kernel/sources/learn_f.c	3700	3739	snns/src/kernel/sources/learn_f.c	5142	5206	3	3705, 3716, 3717, 3718, 3719, 3720, 3733, 3735, 3737, 3738	5147, 5148, 5149, 5171, 5172, 5173, 5174, 5176, 5179, 5180, 5181, 5182, 5183, 5184, 5185, 5186, 5193, 5198, 5200, 5201, 5202, 5204, 5205
+7484	7	snns/src/kernel/sources/kr_pat_scan.c	920	1004	snns/src/tools/sources/lex.yyy.c	660	744	1	-	-
+7485	7	snns/src/tools/sources/ic_snns.c	1283	1295	snns/src/tools/sources/ic_snns.c	1317	1329	1	-	-
+7488	7	snns/src/kernel/sources/learn_f.c	4101	4163	snns/src/kernel/sources/update_f.c	635	686	3	4127, 4135	660
+7489	7	snns/src/kernel/sources/kr_amap.c	763	1027	snns/src/kernel/sources/kr_art1.c	679	902	3	764, 782, 785, 786, 787, 788, 789, 798, 799, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 825, 828, 831, 843, 865, 867, 890, 891, 892, 902, 908, 918, 924, 925, 926, 936, 942, 943, 944, 945, 946, 947, 948, 949, 950, 951, 952, 953, 967, 968, 969, 970, 971, 972, 973, 974, 975, 976, 977, 978, 989, 993, 994, 998, 999, 1000	698, 700, 708, 711, 712, 713, 714, 728, 729, 732, 742, 746, 750, 769, 770, 771, 772, 773, 792, 804, 808, 820, 824, 836, 837, 841, 851, 854, 856, 857, 858, 870, 872
+7492	7	snns/src/kernel/sources/kr_amap.c	3141	3387	snns/src/kernel/sources/kr_art1.c	1325	1566	3	3352, 3353, 3354, 3359, 3360, 3361, 3362, 3385	1379, 1536, 1537, 1538
+7493	7	snns/src/kernel/sources/kr_art2.c	835	866	snns/src/kernel/sources/kr_art2.c	986	1025	3	846, 851, 852	993, 1000, 1001, 1002, 1003, 1004, 1009, 1019, 1020
+7494	7	snns/src/kernel/sources/learn_f.c	596	619	snns/src/kernel/sources/learn_f.c	1530	1549	3	601, 605, 606, 607, 610, 611, 612, 613, 615, 616, 617, 618	1538, 1539, 1542, 1543, 1544, 1545, 1546, 1547, 1548
+7495	7	snns/src/kernel/sources/learn_f.c	766	776	snns/src/kernel/sources/stochastic_learn_f.c	79	98	3	772, 776	80, 81, 82, 88, 89, 90, 91, 95, 96, 97, 98
+7496	7	snns/src/kernel/sources/arttr_f.c	120	139	snns/src/kernel/sources/trans_f.c	198	213	3	122, 123, 124, 125, 126, 127, 128, 129, 131, 132, 133, 134, 136, 137, 138, 139	200, 201, 202, 203, 205, 206, 207, 208, 210, 211, 212, 213
+7498	7	snns/src/kernel/sources/learn_f.c	2046	2089	snns/src/kernel/sources/learn_f.c	2273	2326	3	2061, 2075, 2084, 2085, 2086, 2087, 2088, 2089	2276, 2277, 2287, 2288, 2289, 2290, 2294, 2310, 2316, 2318, 2323, 2324, 2325, 2326
+7500	7	snns/src/kernel/sources/update_f.c	400	407	snns/src/kernel/sources/update_f.c	660	666	2	-	-
+7501	7	snns/src/kernel/sources/learn_f.c	702	708	snns/src/kernel/sources/learn_f.c	6205	6210	2	-	-
+7502	7	snns/src/kernel/sources/init_f.c	58	73	snns/src/kernel/sources/kr_amap.c	1051	1063	3	59, 60, 61, 63, 64, 66, 67, 70, 72, 73	1052, 1053, 1054, 1055, 1056, 1057, 1059, 1060, 1061, 1062, 1063
+7503	7	snns/src/kernel/sources/learn_f.c	926	942	snns/src/kernel/sources/learn_f.c	5190	5201	3	929, 931, 937, 938, 939, 940, 941, 942	5193, 5198, 5200, 5201
+7504	7	snns/src/kernel/sources/kr_inversion.c	156	167	snns/src/kernel/sources/learn_f.c	1602	1627	3	158, 159, 162, 163, 165, 166, 167	1603, 1604, 1605, 1609, 1610, 1611, 1614, 1615, 1616, 1619, 1621, 1622, 1625, 1626, 1627
+7506	7	snns/src/kernel/sources/learn_f.c	5877	5907	snns/src/kernel/sources/learn_f.c	5938	5968	3	5886, 5900, 5901, 5904, 5905, 5906	5947, 5950, 5951, 5964, 5967
+7507	7	snns/src/kernel/sources/kr_amap.c	2800	2810	snns/src/kernel/sources/kr_amap.c	3040	3052	3	2802	3042, 3043, 3044
+7508	7	snns/src/kernel/sources/kr_td.c	278	332	snns/src/kernel/sources/learn_f.c	1802	1841	3	287, 288, 290, 291, 303, 305, 306, 307, 308, 309, 310, 329, 330, 331, 332	1839, 1840, 1841
+7511	7	snns/src/kernel/sources/trans_f.c	276	289	snns/src/kernel/sources/trans_f.c	628	647	3	278, 279, 280, 281, 283, 284, 285, 286, 288, 289	630, 631, 632, 634, 635, 636, 637, 639, 640, 641, 642, 643, 644, 645, 646, 647
+7512	7	snns/src/kernel/sources/init_f.c	58	73	snns/src/kernel/sources/scaled_conj_grad.c	106	119	3	58, 60, 61, 63, 67, 70, 73	106, 107, 109, 112, 114, 116, 119
+7514	7	snns/src/kernel/sources/learn_f.c	5007	5024	snns/src/kernel/sources/stochastic_learn_f.c	379	395	3	5013	385, 386
+7516	7	snns/src/kernel/sources/kr_art2.c	1211	1238	snns/src/kernel/sources/kr_art2.c	1241	1268	2	-	-
+7517	7	snns/src/kernel/sources/kernel.c	2004	2031	snns/src/kernel/sources/kr_JordElm.c	156	194	3	2014	160, 161, 162, 165, 166, 168, 169, 170, 192, 194
+7518	7	snns/src/kernel/sources/learn_f.c	131	216	snns/src/kernel/sources/learn_f.c	364	442	3	131, 132, 137, 141, 161, 162, 163, 164, 186, 187, 188, 189	364, 369
+7519	7	snns/src/kernel/sources/learn_f.c	761	777	snns/src/kernel/sources/learn_f.c	1530	1549	3	-	1538, 1542, 1547
+7520	7	snns/src/kernel/sources/learn_f.c	260	273	snns/src/kernel/sources/learn_f.c	5190	5201	3	263, 265, 270, 271, 272, 273	5193, 5198, 5200, 5201
+7521	7	snns/src/kernel/sources/learn_f.c	1265	1275	snns/src/kernel/sources/learn_f.c	5118	5129	3	1269, 1272, 1273, 1274, 1275	5126, 5128, 5129
+7522	7	snns/src/kernel/sources/learn_f.c	891	943	snns/src/kernel/sources/learn_f.c	5218	5282	3	895, 905, 906, 907, 908, 909, 929, 931, 937, 938, 939, 940, 941, 942	5223, 5224, 5225, 5226, 5227, 5247, 5248, 5249, 5250, 5258, 5259, 5260, 5261, 5262, 5269, 5274, 5276, 5277, 5278, 5279, 5280, 5281
+7523	7	snns/src/kernel/sources/trans_f.c	145	154	snns/src/kernel/sources/trans_f.c	511	520	1	-	-
+7526	7	snns/src/kernel/sources/kr_art1.c	1247	1322	snns/src/kernel/sources/kr_art2.c	1309	1340	3	1250, 1251, 1252, 1253, 1254, 1255, 1265, 1266, 1267, 1270, 1271, 1272, 1273, 1276, 1277, 1278, 1279, 1280, 1281, 1282, 1283, 1284, 1285, 1286, 1291, 1292, 1293, 1294, 1295, 1296, 1297, 1300, 1301, 1302, 1304, 1305, 1306, 1307, 1308, 1309, 1310, 1316, 1319	1312, 1318, 1321, 1332, 1335
+7528	7	snns/src/kernel/sources/cc_learn.c	608	629	snns/src/kernel/sources/dlvq_learn.c	570	587	3	608, 610, 615, 617, 618, 619, 620, 621, 622, 623, 624, 628	570, 574, 578, 579, 580, 581, 583
+7530	7	snns/src/kernel/sources/learn_f.c	2049	2077	snns/src/kernel/sources/learn_f.c	5007	5036	3	2058, 2059, 2060, 2061, 2062	5026, 5027, 5028, 5029
+7531	7	snns/src/kernel/sources/learn_f.c	633	647	snns/src/kernel/sources/scaled_conj_grad.c	143	159	3	633, 634, 638, 641, 642, 646, 647	143, 144, 146, 147, 151, 152, 153, 157, 158, 159
+7532	7	snns/src/kernel/sources/dlvq_learn.c	74	81	snns/src/kernel/sources/learn_f.c	5890	5897	2	-	-
+7533	7	snns/src/kernel/sources/learn_f.c	4903	4919	snns/src/kernel/sources/learn_f.c	4948	4967	3	4910, 4911, 4912, 4914, 4915, 4917, 4919	4952, 4953, 4954, 4955, 4956, 4957, 4959, 4961, 4962, 4963, 4964, 4965, 4966, 4967
+7534	7	snns/src/kernel/sources/kr_mem.c	310	318	snns/src/kernel/sources/learn_f.c	3128	3141	3	310, 311, 312, 313, 314, 315, 316, 317, 318	3128, 3129, 3130, 3131, 3132, 3133, 3134, 3135, 3136, 3137, 3138, 3139, 3140, 3141
+7535	7	snns/src/kernel/sources/learn_f.c	786	879	snns/src/kernel/sources/learn_f.c	1014	1153	3	786, 787, 788, 789, 790, 791, 793, 814, 817, 821, 822, 824, 826, 830, 831, 832, 833, 834, 837, 838, 839, 840, 844, 845, 847, 851, 852, 854, 856, 859, 860, 863, 864, 865, 866, 867, 868, 875, 876, 877, 878	1014, 1015, 1016, 1017, 1019, 1039, 1047, 1052, 1055, 1057, 1060, 1061, 1062, 1066, 1067, 1068, 1070, 1071, 1073, 1074, 1076, 1077, 1078, 1079, 1080, 1081, 1085, 1086, 1087, 1089, 1090, 1092, 1096, 1098, 1099, 1104, 1107, 1109, 1112, 1113, 1114, 1122, 1123, 1124, 1126, 1127, 1129, 1130, 1132, 1133, 1134, 1135, 1136, 1137, 1139, 1142, 1143, 1145, 1146, 1147, 1149, 1150, 1152
+7537	7	snns/src/kernel/sources/kr_art2.c	1373	1408	snns/src/kernel/sources/kr_art2.c	1445	1472	3	1376, 1381, 1391, 1392, 1393, 1394, 1395, 1396, 1397, 1403	1448, 1467
+7540	7	snns/src/kernel/sources/stochastic_learn_f.c	463	484	snns/src/kernel/sources/stochastic_learn_f.c	586	607	1	-	-
+7541	7	snns/src/kernel/sources/learn_f.c	695	747	snns/src/kernel/sources/learn_f.c	1797	1846	3	701, 702, 705, 713, 714, 716, 717, 718, 720, 723, 728, 734, 736, 745, 746	1807, 1812, 1813, 1814, 1817, 1818, 1821, 1825, 1826, 1827, 1828, 1829, 1830, 1843, 1844, 1845
+7542	7	snns/src/kernel/sources/trans_f.c	124	135	snns/src/kernel/sources/trans_f.c	306	317	1	-	-
+7543	7	snns/src/kernel/sources/init_f.c	553	597	snns/src/kernel/sources/init_f.c	1817	1849	3	554, 556, 558, 560, 562, 564, 566, 568, 570, 571, 572, 573, 574, 575, 591, 592, 593, 594, 595, 596, 597	1818, 1820, 1822, 1824, 1826, 1828, 1830, 1832, 1849
+7544	7	snns/src/kernel/sources/kr_art1.c	1247	1322	snns/src/kernel/sources/kr_art2.c	1174	1208	3	1250, 1251, 1252, 1253, 1254, 1255, 1265, 1266, 1267, 1270, 1271, 1272, 1273, 1276, 1277, 1278, 1279, 1280, 1281, 1282, 1283, 1284, 1285, 1286, 1291, 1292, 1293, 1294, 1295, 1296, 1297, 1300, 1304, 1305, 1306, 1307, 1308, 1309, 1310, 1316, 1318	1177, 1183, 1186, 1193, 1196, 1203
+7547	7	snns/src/kernel/sources/kr_td.c	507	523	snns/src/kernel/sources/learn_f.c	824	839	3	514, 516, 521, 523	830, 831, 832, 837, 838, 839
+7548	7	snns/src/kernel/sources/learn_f.c	5690	5722	snns/src/kernel/sources/learn_f.c	5868	5907	3	5717, 5718, 5719, 5720, 5721	5884, 5886, 5887, 5899, 5900, 5901, 5902, 5903, 5904, 5905, 5906
+7549	7	snns/src/kernel/sources/kr_art.c	42	52	snns/src/kernel/sources/kr_art1.c	394	410	3	43, 45, 46, 48, 49, 50	394, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407
+7550	7	snns/src/kernel/sources/learn_f.c	766	776	snns/src/kernel/sources/learn_f.c	6246	6267	3	767, 768, 769, 770, 772, 773, 774, 775, 776	6247, 6249, 6250, 6251, 6252, 6253, 6254, 6255, 6256, 6257, 6258, 6259, 6261, 6262, 6263, 6264, 6265, 6266, 6267
+7552	7	snns/src/kernel/sources/learn_f.c	2653	2659	snns/src/kernel/sources/stochastic_learn_f.c	379	384	2	-	-
+7553	7	snns/src/kernel/sources/kr_td.c	507	523	snns/src/kernel/sources/learn_f.c	166	178	3	514, 521	-
+7557	7	snns/src/kernel/sources/learn_f.c	282	325	snns/src/kernel/sources/learn_f.c	2635	2726	3	287, 288, 289, 290, 291, 298, 299, 301, 302, 303, 304, 306, 307, 309, 310, 311, 312, 313, 318, 321, 322, 323, 324	2640, 2641, 2642, 2643, 2644, 2645, 2646, 2647, 2648, 2649, 2650, 2651, 2652, 2653, 2654, 2661, 2662, 2663, 2664, 2665, 2666, 2668, 2669, 2670, 2671, 2672, 2673, 2674, 2675, 2676, 2677, 2679, 2680, 2681, 2682, 2683, 2684, 2685, 2686, 2687, 2688, 2689, 2690, 2691, 2692, 2700, 2701, 2702, 2703, 2704, 2705, 2706, 2707, 2708, 2709, 2710, 2711, 2712, 2713, 2714, 2715, 2716, 2717, 2718, 2719, 2720, 2721, 2722, 2723, 2724, 2725
+7559	7	snns/src/kernel/sources/learn_f.c	282	325	snns/src/kernel/sources/learn_f.c	1797	1846	3	288, 290, 299, 303, 304, 306, 309, 321, 322, 323, 324	1807, 1812, 1817, 1818, 1821, 1825, 1826, 1827, 1828, 1829, 1830, 1839, 1840, 1841, 1843, 1844, 1845
+7560	7	snns/src/kernel/sources/learn_f.c	5218	5282	snns/src/kernel/sources/learn_f.c	5443	5503	3	5218, 5219, 5220, 5223, 5224, 5225, 5247, 5248, 5249, 5250, 5258, 5260, 5261, 5262, 5263, 5264, 5269, 5274, 5276, 5277, 5278, 5279, 5280, 5281	5443, 5444, 5445, 5448, 5461, 5462, 5467, 5468, 5478, 5480, 5481, 5482, 5483, 5484, 5485, 5486, 5487, 5488, 5493, 5495, 5496, 5497, 5498, 5499, 5500, 5501, 5502
+7562	7	snns/src/kernel/sources/update_f.c	1148	1183	snns/src/kernel/sources/update_f.c	1191	1237	3	-	1202, 1204, 1205, 1206, 1207, 1208, 1209, 1210, 1211, 1212
+7563	7	snns/src/kernel/sources/kr_io.c	2085	2090	snns/src/kernel/sources/learn_f.c	5890	5895	3	2085, 2088, 2089, 2090	5890, 5893, 5894, 5895
+7564	7	snns/src/kernel/sources/kernel.c	1051	1076	snns/src/kernel/sources/stochastic_learn_f.c	114	126	3	1051, 1052, 1053, 1054, 1055, 1056, 1057, 1058, 1059, 1060, 1061, 1062, 1064, 1065, 1066, 1068, 1069, 1070, 1071, 1072, 1073, 1074, 1076	114, 115, 117, 119, 122, 123, 125, 126
+7566	7	snns/src/tools/sources/snns2c.c	784	815	snns/src/tools/sources/snns2c.c	824	863	3	786, 788, 789, 790, 794, 795, 796, 797, 802	827, 828, 829, 830, 831, 839, 840, 853, 855, 856, 857, 858, 859, 860, 861, 862
+7567	7	snns/src/kernel/sources/kr_amap.c	2953	3060	snns/src/kernel/sources/kr_art1.c	1151	1244	3	2984, 2985, 2986, 2987, 2992, 2993, 2995, 2996, 2998, 2999, 3000, 3001, 3005	1178, 1179, 1189
+7569	7	snns/src/kernel/sources/kr_td.c	392	407	snns/src/kernel/sources/kr_td.c	563	578	2	-	-
+7573	7	snns/src/kernel/sources/arttr_f.c	149	159	snns/src/kernel/sources/trans_f.c	77	85	3	149, 150, 152, 153, 154, 155, 157, 158, 159	77, 78, 80, 81, 82, 83, 85
+7574	7	snns/src/kernel/sources/kr_io.c	1538	1587	snns/src/kernel/sources/kr_io.c	1843	1865	3	1539, 1540, 1541, 1542, 1548, 1549, 1550, 1551, 1552, 1553, 1554, 1555, 1557, 1558, 1560, 1561, 1565, 1566, 1567, 1569, 1570, 1571, 1572, 1573, 1575, 1576, 1577, 1578, 1579, 1582, 1583, 1584, 1585, 1586, 1587	1844, 1851, 1852, 1853, 1856, 1857, 1858, 1860, 1863, 1864, 1865
+7575	7	snns/src/kernel/sources/learn_f.c	1299	1357	snns/src/kernel/sources/learn_f.c	1797	1846	3	1305, 1306, 1308, 1312, 1317, 1318, 1321, 1324, 1327, 1332, 1338, 1339, 1341, 1342, 1343, 1344, 1345, 1347, 1348, 1349, 1350, 1351, 1352, 1353, 1355, 1356	1807, 1812, 1813, 1817, 1818, 1819, 1821, 1825, 1828, 1829, 1830, 1835, 1838, 1839, 1840, 1841, 1843, 1844, 1845
+7577	7	snns/src/kernel/sources/kr_pat_scan.c	497	1452	snns/src/tools/sources/lex.yyz.c	384	1491	3	711, 712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734, 735, 736, 737, 738, 739, 740, 741, 742, 743, 744, 745, 746, 747, 748, 749, 750, 751, 752, 753, 754, 755, 756, 757, 758, 759, 760, 761, 762, 763, 764, 765, 766, 767, 768, 769, 770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816	606, 607, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 626, 627, 628, 629, 630, 631, 632, 633, 634, 635, 636, 637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 672, 673, 674, 675, 676, 677, 678, 679, 680, 681, 682, 683, 684, 685, 686, 687, 688, 689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734, 735, 736, 737, 738, 739, 740, 741, 742, 743, 744, 745, 746, 747, 748, 749, 750, 751, 752, 753, 754, 755, 756, 757, 758, 759, 760, 761, 762, 763, 764, 765, 766, 767, 768, 769, 770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 817, 818, 819, 820, 821, 822, 823, 824, 825, 826, 827, 828, 829, 830, 831, 832, 833, 834, 835, 836, 837, 838, 839, 840, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853
+7578	7	snns/src/kernel/sources/init_f.c	1098	1124	snns/src/kernel/sources/init_f.c	1338	1364	2	-	-
+7579	7	snns/src/kernel/sources/cc_glob.c	607	631	snns/src/kernel/sources/kernel.c	2131	2152	3	612, 618, 619, 620, 621	2142
+7581	7	snns/src/kernel/sources/learn_f.c	628	648	snns/src/kernel/sources/learn_f.c	3123	3142	3	634, 638, 642, 647	3124, 3131, 3132, 3135, 3136, 3140, 3141
+7583	7	snns/src/kernel/sources/kernel.c	2156	2164	snns/src/kernel/sources/kr_JordElm.c	272	278	3	-	-
+7584	7	snns/src/kernel/sources/learn_f.c	3809	3850	snns/src/kernel/sources/learn_f.c	4997	5063	3	3814, 3820, 3827, 3828, 2829, 3830, 3831, 3844, 3848, 3849	5002, 5004, 5026, 5027, 5028, 5029, 5031, 5034, 5035, 5036, 5037, 5038, 5039, 5040, 5041, 5048, 5055, 5056, 5060, 5061, 5062
+7585	7	snns/src/kernel/sources/kr_art1.c	776	807	snns/src/kernel/sources/kr_art1.c	824	857	3	788	836, 837, 854
+7586	7	snns/src/kernel/sources/arttr_f.c	256	274	snns/src/kernel/sources/trans_f.c	304	320	3	256, 258, 259, 260, 262, 263, 264, 265, 267, 268, 269, 270, 271, 272, 273, 274	304, 305, 307, 308, 309, 310, 312, 313, 314, 315, 317, 318, 319, 320
+7588	7	snns/src/kernel/sources/init_f.c	914	919	snns/src/kernel/sources/kernel.c	1285	1290	3	914, 915	1285, 1286
+7589	7	snns/src/kernel/sources/trans_f.c	344	358	snns/src/kernel/sources/trans_f.c	546	564	3	346, 347, 348, 349, 351, 352, 353, 354, 356, 357, 358	548, 549, 550, 552, 553, 554, 555, 557, 558, 559, 560, 561, 562, 563, 564
+7590	7	snns/src/kernel/sources/learn_f.c	315	325	snns/src/kernel/sources/learn_f.c	5045	5063	3	318, 320, 321, 322, 323, 324	5048, 5053, 5055, 5056, 5060, 5061, 5062
+7593	7	snns/src/kernel/sources/kr_amap.c	1194	1327	snns/src/kernel/sources/kr_art1.c	679	902	3	1198, 1199, 1200, 1204, 1208, 1209, 1210, 1211, 1212, 1213, 1218, 1227, 1228, 1232, 1233, 1236, 1237, 1238, 1239, 1240, 1241, 1242, 1245, 1251, 1252, 1253, 1256, 1258, 1266, 1270, 1271, 1272, 1273, 1274, 1275, 1284, 1286, 1289, 1294, 1298, 1299, 1300, 1301, 1302, 1303, 1312, 1317, 1325	683, 693, 694, 695, 696, 697, 698, 699, 700, 701, 707, 710, 713, 714, 723, 726, 727, 728, 730, 732, 733, 734, 736, 737, 742, 744, 745, 746, 747, 748, 749, 750, 751, 752, 753, 754, 755, 756, 757, 758, 759, 760, 761, 762, 763, 764, 765, 766, 767, 769, 770, 771, 773, 776, 777, 778, 780, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 802, 804, 805, 806, 808, 809, 810, 812, 813, 815, 816, 817, 818, 819, 820, 821, 822, 824, 825, 828, 829, 830, 831, 832, 833, 834, 835, 836, 837, 838, 839, 840, 841, 851, 852, 853, 855, 856, 857, 858, 859, 860, 861, 862, 863, 864, 865, 866, 867, 868, 870, 871, 872
+7594	7	snns/src/kernel/sources/arttr_f.c	128	138	snns/src/kernel/sources/trans_f.c	127	135	3	128, 129, 131, 132, 133, 134, 136, 137, 138	127, 128, 130, 131, 132, 133, 135
+7597	7	snns/src/kernel/sources/learn_f.c	1230	1283	snns/src/kernel/sources/learn_f.c	3700	3739	3	1236, 1237, 1238, 1239, 1240, 1243, 1248, 1252, 1255, 1256, 1258, 1263, 1269, 1270, 1273, 1274, 1275, 1276, 1277, 1278, 1279, 1281, 1282	3706, 3707, 3708, 3709, 3712, 3717, 3719, 3722, 3723, 3725, 3733, 3737, 3738
+7598	7	snns/src/kernel/sources/learn_f.c	3809	3850	snns/src/kernel/sources/learn_f.c	5218	5282	3	3814, 3820, 3830, 3831, 3833, 3834, 3844, 3848, 3849	5223, 5225, 5247, 5248, 5249, 5250, 5252, 5253, 5254, 5255, 5256, 5257, 5258, 5259, 5260, 5261, 5262, 5269, 5276, 5277, 5278, 5279, 5280, 5281
+7599	7	snns/src/kernel/sources/kr_td.c	270	333	snns/src/kernel/sources/learn_f.c	3614	3689	3	270, 271, 272, 274, 275, 287, 288, 290, 291, 303, 305, 306, 307, 308, 309, 310, 312, 314, 323, 329, 330, 331, 332	3614, 3615, 3616, 3619, 3620, 3621, 3622, 3628, 3629, 3630, 3631, 3632, 3633, 3634, 3635, 3636, 3637, 3638, 3639, 3640, 3660, 3662, 3664, 3672, 3674, 3675, 3676, 3677, 3679, 3680, 3681, 3682, 3683, 3684, 3685, 3686, 3688
+7600	7	snns/src/kernel/sources/learn_f.c	695	747	snns/src/kernel/sources/learn_f.c	1299	1357	3	701, 733, 736, 742, 743, 744, 745, 746	1305, 1312, 1342, 1343, 1344, 1345, 1347, 1348, 1349, 1350, 1351, 1352, 1353, 1355, 1356
+7602	7	snns/src/kernel/sources/kr_amap.c	3227	3257	snns/src/kernel/sources/kr_amap.c	3603	3633	2	-	-
+7603	7	snns/src/kernel/sources/learn_f.c	2694	2712	snns/src/kernel/sources/stochastic_learn_f.c	586	607	3	2700, 2701, 2702, 2703, 2704, 2705, 2706, 2707, 2708, 2709, 2710, 2711, 2712	589, 594, 595, 596, 597, 598, 599, 600, 601, 602, 603, 604, 605, 606, 607
+7604	7	snns/src/kernel/sources/arttr_f.c	257	269	snns/src/kernel/sources/trans_f.c	235	246	3	258, 259, 260, 262, 263, 264, 265, 267, 268, 269	236, 237, 238, 239, 241, 242, 243, 244, 246
+7605	7	snns/src/kernel/sources/learn_f.c	1202	1216	snns/src/kernel/sources/scaled_conj_grad.c	341	349	3	1206, 1211, 1212, 1213, 1214, 1215, 1216	344, 347, 348
+7606	7	snns/src/kernel/sources/trans_f.c	294	302	snns/src/kernel/sources/trans_f.c	549	559	3	294, 295, 297, 298, 299, 300, 302	549, 550, 552, 553, 554, 555, 557, 558, 559
+7607	7	snns/src/kernel/sources/kernel.c	1285	1301	snns/src/kernel/sources/learn_f.c	1832	1837	3	1285, 1286, 1288, 1289, 1292	1832, 1835
+7610	7	snns/src/kernel/sources/arttr_f.c	234	254	snns/src/kernel/sources/trans_f.c	216	231	3	236, 237, 238, 240, 241, 242, 243, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254	218, 219, 220, 221, 223, 224, 225, 226, 228, 229, 230, 231
+7612	7	snns/src/kernel/sources/kr_art1.c	1089	1148	snns/src/kernel/sources/kr_art2.c	1309	1340	3	1092, 1093, 1094, 1095, 1104, 1105, 1106, 1113, 1114, 1115, 1124, 1125, 1126, 1127, 1128, 1135, 1136, 1137, 1138, 1140, 1141, 1142, 1144	1312, 1335
+7613	7	snns/src/kernel/sources/kr_art2.c	1494	1506	snns/src/kernel/sources/prun_f.c	115	124	3	1494, 1495, 1496, 1498, 1499, 1500, 1501, 1502, 1503, 1504, 1505, 1506	115, 116, 118, 119, 120, 121, 122, 123, 124
+7614	7	snns/src/kernel/sources/learn_f.c	2079	2090	snns/src/kernel/sources/learn_f.c	6133	6146	3	2084, 2085, 2086, 2087, 2088, 2089	6141, 6143, 6145
+7615	7	snns/src/kernel/sources/learn_f.c	3700	3739	snns/src/kernel/sources/learn_f.c	3809	3850	3	3735, 3737, 3738	3815, 3820, 3846, 3848, 3849
+7616	7	snns/src/kernel/sources/kr_amap.c	2264	2319	snns/src/kernel/sources/kr_amap.c	3063	3138	3	2267, 2268, 2269, 2285, 2288, 2290	3066, 3067, 3068, 3069, 3070, 3071, 3087, 3088, 3089, 3093, 3094, 3095, 3096, 3097, 3107, 3108, 3109, 3110, 3111, 3112, 3113, 3120, 3121, 3122, 3123, 3124, 3125, 3126
+7617	7	snns/src/kernel/sources/kr_td.c	563	578	snns/src/kernel/sources/learn_f.c	315	325	2	-	-
+7621	7	snns/src/kernel/sources/kr_amap.c	2264	2319	snns/src/kernel/sources/kr_art1.c	1247	1322	3	2267, 2268, 2269, 2285, 2288, 2290	1250, 1251, 1252, 1253, 1254, 1255, 1271, 1272, 1273, 1277, 1278, 1279, 1280, 1281, 1291, 1292, 1293, 1294, 1295, 1296, 1297, 1304, 1305, 1306, 1307, 1308, 1309, 1310
+7622	7	snns/src/kernel/sources/trans_f.c	366	374	snns/src/kernel/sources/trans_f.c	589	599	3	366, 367, 369, 370, 371, 372, 374	589, 590, 592, 593, 594, 595, 597, 598, 599
+7623	7	snns/src/kernel/sources/learn_f.c	984	998	snns/src/kernel/sources/learn_f.c	3667	3675	3	989, 995, 996, 997, 998	3672, 3674, 3675
+7625	7	snns/src/kernel/sources/prun_f.c	874	880	snns/src/kernel/sources/prun_f.c	891	909	3	880	897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 909
+7626	7	snns/src/kernel/sources/learn_f.c	5814	5854	snns/src/kernel/sources/learn_f.c	5982	6016	3	5822, 5831, 5832, 5833, 5834, 5846, 5847, 5848, 5849, 5850, 5851, 5852, 5853	5987, 5991, 5997, 5998, 6013, 6014, 6015
+7628	7	snns/src/kernel/sources/learn_f.c	1808	1824	snns/src/kernel/sources/update_f.c	1398	1411	2	-	-
+7630	7	snns/src/kernel/sources/kr_amap.c	694	700	snns/src/kernel/sources/kr_amap.c	1131	1137	2	-	-
+7632	7	snns/src/kernel/sources/kr_amap.c	590	717	snns/src/kernel/sources/kr_amap.c	1194	1327	3	594, 609, 611, 639, 640, 641, 642, 643, 644	1200, 1211, 1214, 1251, 1216, 1218, 1251, 1252, 1253, 1262
+7633	7	snns/src/kernel/sources/kr_amap.c	3725	3745	snns/src/kernel/sources/kr_art1.c	1544	1564	3	3725, 3732	1544, 1550
+7635	7	snns/src/kernel/sources/learn_f.c	891	943	snns/src/kernel/sources/learn_f.c	955	999	3	919, 922, 923, 924, 937, 938, 939, 940, 941, 942	995, 996, 997, 998
+7636	7	snns/src/kernel/sources/learn_f.c	984	998	snns/src/kernel/sources/learn_f.c	5190	5202	3	987, 989, 995, 996, 997, 998	5193, 5198, 5200, 5201, 5202
+7637	7	snns/src/kernel/sources/kr_td.c	318	332	snns/src/kernel/sources/learn_f.c	1202	1216	3	329, 330, 331, 332	1211, 1212, 1213, 1214, 1215, 1216
+7638	7	snns/src/kernel/sources/learn_f.c	131	216	snns/src/kernel/sources/learn_f.c	786	879	3	131, 132, 137, 158, 163, 173, 178, 182, 183, 188, 191, 203, 204, 214, 215	786, 787, 788, 793, 814, 817, 821, 822, 830, 831, 832, 837, 838, 839, 840, 844, 845, 847, 851, 852, 864, 865, 866, 875, 876, 877, 878
+7639	7	snns/src/kernel/sources/arttr_f.c	276	294	snns/src/kernel/sources/trans_f.c	380	395	3	278, 279, 280, 282, 283, 284, 285, 287, 288, 289, 290, 291, 292, 293, 294	382, 383, 384, 385, 387, 388, 389, 390, 392, 393, 394, 395
+7640	7	snns/src/kernel/sources/update_f.c	207	233	snns/src/kernel/sources/update_f.c	1464	1521	3	213, 214, 217, 219, 226	1470, 1471, 1472, 1474, 1475, 1478, 1481, 1485, 1508, 1509, 1511, 1513, 1514, 1515, 1517, 1518, 1520
+7641	7	snns/src/kernel/sources/init_f.c	75	92	snns/src/kernel/sources/kr_art1.c	361	373	3	76, 77, 78, 80, 81, 83, 84, 85, 88, 90, 91, 92	362, 363, 364, 365, 366, 368, 369, 370, 371, 372, 373
+7644	7	snns/src/kernel/sources/kr_td.c	318	333	snns/src/kernel/sources/learn_f.c	260	274	3	-	-
+7645	7	snns/src/kernel/sources/kr_art1.c	361	372	snns/src/kernel/sources/prun_f.c	389	398	3	361, 362, 363, 365, 366, 367, 368, 369, 370, 371, 372	389, 390, 391, 393, 394, 395, 396, 397, 398
+7647	7	snns/src/kernel/sources/kernel.c	1244	1262	snns/src/kernel/sources/learn_f.c	240	258	1	-	-
+7648	7	snns/src/kernel/sources/kernel.c	1179	1201	snns/src/kernel/sources/learn_f.c	3128	3141	3	1181, 1182, 1184, 1186, 1187, 1188, 1189, 1190, 1191, 1192, 1193, 1195, 1196, 1197, 1198, 1199, 1200, 1201	3130, 3131, 3132, 3133, 3134, 3135, 3136, 3137, 3138, 3139, 3140, 3141
+7650	7	snns/src/kernel/sources/learn_f.c	2043	2090	snns/src/kernel/sources/learn_f.c	4997	5063	3	2048, 2058, 2059, 2060, 2061, 2062, 2082, 2084, 2085, 2086, 2087, 2088, 2089	5002, 5003, 5004, 5005, 5006, 5026, 5027, 5028, 5029, 5037, 5038, 5039, 5040, 5041, 5048, 5053, 5055, 5056, 5060, 5061, 5062
+7651	7	snns/src/kernel/sources/cc_learn.c	320	341	snns/src/kernel/sources/cc_learn.c	348	381	3	326, 334, 337, 340	354, 356, 357, 362, 365, 366, 367, 368, 371, 372, 373, 374, 377, 378, 379, 380
+7652	7	snns/src/kernel/sources/kr_td.c	507	523	snns/src/kernel/sources/learn_f.c	3347	3363	3	507, 508, 514, 516, 521, 523	3347, 3349, 3351, 3355, 3359, 3363
+7653	7	snns/src/kernel/sources/kernel.c	1872	1885	snns/src/kernel/sources/kernel.c	1894	1907	3	1882	1904
