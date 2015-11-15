@@ -39,15 +39,16 @@ public class CGPrinter {
 	private static Clone getClone(final String line) {
 		final StringTokenizer tokenizer = new StringTokenizer(line, "\t");
 		final int id = Integer.parseInt(tokenizer.nextToken());
-		final String path = tokenizer.nextToken();
+		final String filepath = tokenizer.nextToken();
+		final int fileLOC = Integer.parseInt(tokenizer.nextToken());
 		final int startLine = Integer.parseInt(tokenizer.nextToken());
 		final int endLine = Integer.parseInt(tokenizer.nextToken());
-		return new Clone(id, path, startLine, endLine);
+		return new Clone(id, filepath, fileLOC, startLine, endLine);
 	}
 
 	private static void printClone(final Clone clone) {
 		try (final LineNumberReader reader = new LineNumberReader(
-				new InputStreamReader(new FileInputStream(clone.path),
+				new InputStreamReader(new FileInputStream(clone.filepath),
 						"JISAutoDetect"))) {
 
 			System.out
@@ -61,7 +62,7 @@ public class CGPrinter {
 			{
 				final StringBuilder text = new StringBuilder();
 				text.append("file: ");
-				text.append(clone.path);
+				text.append(clone.filepath);
 
 				final int base = 78;
 				for (int i = 1; i * base < text.length(); i++) {
@@ -92,14 +93,16 @@ public class CGPrinter {
 
 	static class Clone {
 		final int id;
-		final String path;
+		final String filepath;
+		final int fileLOC;
 		final int startLine;
 		final int endLine;
 
-		Clone(final int id, final String path, final int startLine,
-				final int endLine) {
+		Clone(final int id, final String filepath, final int fileLOC,
+				final int startLine, final int endLine) {
 			this.id = id;
-			this.path = path;
+			this.filepath = filepath;
+			this.fileLOC = fileLOC;
 			this.startLine = startLine;
 			this.endLine = endLine;
 		}

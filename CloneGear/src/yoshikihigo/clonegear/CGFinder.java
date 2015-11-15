@@ -358,6 +358,8 @@ public class CGFinder {
 					writer.print("\t");
 					writer.print(clonedFragment.file.path);
 					writer.print("\t");
+					writer.print(Integer.toString(clonedFragment.file.getLOC()));
+					writer.print("\t");
 					writer.print(Integer.toString(clonedFragment.getFromLine()));
 					writer.print("\t");
 					writer.print(Integer.toString(clonedFragment.getToLine()));
