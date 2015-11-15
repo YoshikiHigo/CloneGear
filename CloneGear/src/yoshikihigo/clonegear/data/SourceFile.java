@@ -6,7 +6,7 @@ import java.util.List;
 import yoshikihigo.clonegear.LANGUAGE;
 import yoshikihigo.clonegear.lexer.token.Token;
 
-public abstract class SourceFile {
+public abstract class SourceFile implements Comparable<SourceFile> {
 
 	final public String path;
 	final private List<Statement> statements;
@@ -35,6 +35,11 @@ public abstract class SourceFile {
 		return this.path.hashCode();
 	}
 
+	@Override
+	public int compareTo(final SourceFile target) {
+		return this.path.compareTo(target.path);
+	}
+
 	public void addStatement(final Statement statement) {
 		this.statements.add(statement);
 	}
@@ -48,8 +53,7 @@ public abstract class SourceFile {
 	}
 
 	public List<Statement> getStatements() {
-		final List<Statement> statements = new ArrayList<>();
-		statements.addAll(this.statements);
+		final List<Statement> statements = new ArrayList<>(this.statements);
 		return statements;
 	}
 

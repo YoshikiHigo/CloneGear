@@ -9,13 +9,13 @@ import yoshikihigo.clonegear.lexer.token.Token;
 public class ClonedFragment implements Comparable<ClonedFragment> {
 
 	final public MD5[] cloneID;
-	final public String path;
+	final public SourceFile file;
 	final public List<Statement> statements;
 
-	public ClonedFragment(final MD5[] cloneID, final String path,
+	public ClonedFragment(final MD5[] cloneID, final SourceFile file,
 			final List<Statement> statements) {
 		this.cloneID = cloneID;
-		this.path = path;
+		this.file = file;
 		this.statements = Collections.unmodifiableList(statements);
 	}
 
@@ -49,7 +49,7 @@ public class ClonedFragment implements Comparable<ClonedFragment> {
 
 	public boolean isOverraped(final ClonedFragment clonedFragment) {
 
-		if (!this.path.equals(clonedFragment.path)) {
+		if (!this.file.equals(clonedFragment.file)) {
 			return false;
 		}
 
@@ -69,9 +69,9 @@ public class ClonedFragment implements Comparable<ClonedFragment> {
 	@Override
 	public int compareTo(final ClonedFragment o) {
 
-		final int pathComparisonResult = this.path.compareTo(o.path);
-		if (0 != pathComparisonResult) {
-			return pathComparisonResult;
+		final int fileComparisonResult = this.file.compareTo(o.file);
+		if (0 != fileComparisonResult) {
+			return fileComparisonResult;
 		}
 
 		final int fromLine1 = this.getFromLine();

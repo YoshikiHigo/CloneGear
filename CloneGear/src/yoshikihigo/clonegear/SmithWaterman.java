@@ -273,10 +273,6 @@ public class SmithWaterman {
 
 	private List<ClonePair> detectClones(final Cell[][] table) {
 
-		final String path1 = this.file1.path;
-		final String path2 = this.file2.path;
-		final List<Statement> statements1 = this.file1.getStatements();
-		final List<Statement> statements2 = this.file2.getStatements();
 		final int threshold = CGConfig.getInstance().getTHRESHOLD();
 
 		final List<ClonePair> clonepairs = new ArrayList<>();
@@ -287,10 +283,10 @@ public class SmithWaterman {
 			final Cell minCell = getMinCell(maxCell);
 			final MD5[] cloneHash = getCloneHash(minCell, maxCell);
 
-			final ClonedFragment xClonedFragment = getClonedFragment(path1,
-					statements1, minCell.x, maxCell.x, cloneHash);
-			final ClonedFragment yClonedFragment = getClonedFragment(path2,
-					statements2, minCell.y, maxCell.y, cloneHash);
+			final ClonedFragment xClonedFragment = getClonedFragment(
+					this.file1, minCell.x, maxCell.x, cloneHash);
+			final ClonedFragment yClonedFragment = getClonedFragment(
+					this.file2, minCell.y, maxCell.y, cloneHash);
 			if ((threshold <= xClonedFragment.getNumberOfTokens())
 					&& (threshold <= yClonedFragment.getNumberOfTokens())
 					&& !xClonedFragment.isOverraped(yClonedFragment)) {
@@ -428,14 +424,14 @@ public class SmithWaterman {
 		return (MD5[]) list.toArray(new MD5[] {});
 	}
 
-	public ClonedFragment getClonedFragment(final String path,
-			final List<Statement> statements, final int fromIndex,
-			final int toIndex, final MD5[] cloneHash) {
+	public ClonedFragment getClonedFragment(final SourceFile file,
+			final int fromIndex, final int toIndex, final MD5[] cloneHash) {
+		final List<Statement> statements = file.getStatements();
 		final List<Statement> clonedStatements = new ArrayList<>();
 		for (int index = fromIndex; index <= toIndex; index++) {
 			clonedStatements.add(statements.get(index));
 		}
-		return new ClonedFragment(cloneHash, path, clonedStatements);
+		return new ClonedFragment(cloneHash, file, clonedStatements);
 	}
 
 	private void switchToChecked(final Cell[][] table, final int fromX,

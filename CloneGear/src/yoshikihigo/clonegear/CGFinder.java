@@ -356,7 +356,7 @@ public class CGFinder {
 				for (final ClonedFragment clonedFragment : cloneset.getClones()) {
 					writer.print(Integer.toString(cloneset.id));
 					writer.print("\t");
-					writer.print(clonedFragment.path);
+					writer.print(clonedFragment.file.path);
 					writer.print("\t");
 					writer.print(Integer.toString(clonedFragment.getFromLine()));
 					writer.print("\t");
@@ -379,13 +379,13 @@ public class CGFinder {
 				: new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"))) {
 
 			for (final ClonePair clonepair : clonepairs) {
-				writer.print(clonepair.left.path);
+				writer.print(clonepair.left.file.path);
 				writer.print("\t");
 				writer.print(clonepair.left.getFromLine());
 				writer.print("\t");
 				writer.print(clonepair.left.getToLine());
 				writer.print("\t");
-				writer.print(clonepair.right.path);
+				writer.print(clonepair.right.file.path);
 				writer.print("\t");
 				writer.print(clonepair.right.getFromLine());
 				writer.print("\t");
@@ -412,7 +412,7 @@ public class CGFinder {
 			Collections.<SourceFile> sort(files,
 					(file1, file2) -> file1.path.compareTo(file2.path));
 
-			final Map<String, Integer> map = new HashMap<String, Integer>();
+			final Map<SourceFile, Integer> map = new HashMap<SourceFile, Integer>();
 			for (final SourceFile file : files) {
 				final int number = map.size();
 				writer.print("0.");
@@ -424,7 +424,7 @@ public class CGFinder {
 				writer.print("\t");
 				writer.print(file.path);
 				writer.println();
-				map.put(file.path, number);
+				map.put(file, number);
 			}
 			writer.println("#end{file description}");
 
@@ -435,7 +435,7 @@ public class CGFinder {
 			for (final SortedSet<ClonedFragment> cloneset : clonesets) {
 				writer.println("#begin{set}");
 				for (final ClonedFragment fragment : cloneset) {
-					final Integer id = map.get(fragment.path);
+					final Integer id = map.get(fragment.file);
 					final List<Token> tokens = fragment.getTokens();
 					writer.print("0.");
 					writer.print(id.toString());
