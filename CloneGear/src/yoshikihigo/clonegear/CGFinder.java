@@ -12,7 +12,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -57,7 +56,7 @@ public class CGFinder {
 			clonesets = null;
 			timeToFilter = System.nanoTime();
 			final Map<ClonePair, Map<ClonePair, Double>> similarities = new HashMap<>();
-			remainingClonepairs = /*filterClones(clonepairs, similarities)*/clonepairs;
+			remainingClonepairs = /* filterClones(clonepairs, similarities) */clonepairs;
 			remainingClonesets = null;
 			printInBellonFomat(remainingClonepairs);
 		} else {
@@ -65,7 +64,7 @@ public class CGFinder {
 			timeToFilter = System.nanoTime();
 			final Map<CloneSet, Map<CloneSet, Double>> similarities = new HashMap<>();
 			remainingClonepairs = null;
-			remainingClonesets = /*filterClones(clonesets, similarities)*/clonesets;
+			remainingClonesets = /* filterClones(clonesets, similarities) */clonesets;
 			print(remainingClonesets);
 		}
 		final long timeToEnd = System.nanoTime();
@@ -344,14 +343,9 @@ public class CGFinder {
 
 	private static void print(final List<CloneSet> clonesets) {
 
-		Collections.sort(clonesets, new Comparator<CloneSet>() {
-			@Override
-			public int compare(final CloneSet cloneset1,
-					final CloneSet cloneset2) {
-				return Integer.valueOf(cloneset1.id).compareTo(
-						Integer.valueOf(cloneset2.id));
-			}
-		});
+		Collections.<CloneSet> sort(clonesets,
+				(cloneset1, cloneset2) -> Integer.valueOf(cloneset1.id)
+						.compareTo(Integer.valueOf(cloneset2.id)));
 
 		try (final PrintWriter writer = CGConfig.getInstance().hasRESULT() ? new PrintWriter(
 				new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
@@ -415,13 +409,9 @@ public class CGFinder {
 				: new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"))) {
 
 			writer.println("#begin{file description}");
-			Collections.sort(files, new Comparator<SourceFile>() {
-				@Override
-				public int compare(final SourceFile file1,
-						final SourceFile file2) {
-					return file1.path.compareTo(file2.path);
-				}
-			});
+			Collections.<SourceFile> sort(files,
+					(file1, file2) -> file1.path.compareTo(file2.path));
+
 			final Map<String, Integer> map = new HashMap<String, Integer>();
 			for (final SourceFile file : files) {
 				final int number = map.size();
