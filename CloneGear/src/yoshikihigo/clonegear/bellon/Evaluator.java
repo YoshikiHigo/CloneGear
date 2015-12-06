@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
 public class Evaluator {
 
@@ -162,18 +163,12 @@ public class Evaluator {
 
 		} catch (final IOException e) {
 			e.printStackTrace();
-			System.exit(0);
 		}
 	}
 
 	private List<ClonePair> getSpecifiedType(final List<ClonePair> clonepairs,
 			final int type) {
-		final List<ClonePair> specified = new ArrayList<>();
-		for (final ClonePair clonepair : clonepairs) {
-			if (clonepair.type == type) {
-				specified.add(clonepair);
-			}
-		}
-		return specified;
+		return clonepairs.stream().filter(clonepair -> clonepair.type == type)
+				.collect(Collectors.toList());
 	}
 }

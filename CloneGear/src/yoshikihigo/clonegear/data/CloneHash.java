@@ -20,16 +20,13 @@ public class CloneHash {
 	final public MD5[] value;
 
 	public CloneHash(final MD5[] value) {
-		this.value = value;
+		this.value = Arrays.copyOf(value, value.length);
 	}
 
 	@Override
 	public int hashCode() {
-		int hash = 0;
-		for (int index = 0; index < this.value.length; index++) {
-			hash += this.value[index].value[0];
-		}
-		return hash;
+		return Arrays.asList(this.value).stream().mapToInt(md5 -> md5.value[0])
+				.sum();
 	}
 
 	@Override

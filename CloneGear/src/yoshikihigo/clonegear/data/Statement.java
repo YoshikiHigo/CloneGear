@@ -41,8 +41,8 @@ public class Statement {
 	public static List<Statement> getJCStatements(final List<Token> allTokens)
 			throws EmptyStackException {
 
-		final List<Statement> statements = new ArrayList<Statement>();
-		List<Token> tokens = new ArrayList<Token>();
+		final List<Statement> statements = new ArrayList<>();
+		List<Token> tokens = new ArrayList<>();
 
 		final Stack<Integer> nestLevel = new Stack<>();
 		nestLevel.push(Integer.valueOf(1));
@@ -99,7 +99,7 @@ public class Statement {
 					if (1 < tokens.size()) {
 
 						if (isJCTypeDefinition(tokens)) {
-							nestLevel.push(new Integer(0));
+							nestLevel.push(Integer.valueOf(0));
 						}
 
 						final int nestDepth = nestLevel.peek().intValue();
@@ -110,7 +110,7 @@ public class Statement {
 						final Statement statement = new Statement(fromLine,
 								toLine, nestDepth, 1 < nestDepth, tokens, hash);
 						statements.add(statement);
-						tokens = new ArrayList<Token>();
+						tokens = new ArrayList<>();
 
 						if (isDebug) {
 							System.out.println(statement.toString());
@@ -123,8 +123,8 @@ public class Statement {
 				}
 
 				if ((0 == inParenDepth) && (token instanceof LEFTBRACKET)) {
-					nestLevel
-							.push(new Integer(nestLevel.peek().intValue() + 1));
+					nestLevel.push(Integer
+							.valueOf(nestLevel.peek().intValue() + 1));
 				}
 
 				if ((0 < inTernaryOperationDepth) && (token instanceof COLON)) {
@@ -157,8 +157,8 @@ public class Statement {
 	public static List<Statement> getJSStatements(final List<Token> allTokens)
 			throws EmptyStackException {
 
-		final List<Statement> statements = new ArrayList<Statement>();
-		List<Token> tokens = new ArrayList<Token>();
+		final List<Statement> statements = new ArrayList<>();
+		List<Token> tokens = new ArrayList<>();
 
 		final Stack<Integer> nestLevel = new Stack<>();
 		nestLevel.push(Integer.valueOf(1));
@@ -199,7 +199,7 @@ public class Statement {
 						final Statement statement = new Statement(fromLine,
 								toLine, nestDepth, true, tokens, hash);
 						statements.add(statement);
-						tokens = new ArrayList<Token>();
+						tokens = new ArrayList<>();
 
 						if (isDebug) {
 							System.out.println(statement.toString());
@@ -212,8 +212,8 @@ public class Statement {
 				}
 
 				if (token instanceof LEFTBRACKET) {
-					nestLevel
-							.push(new Integer(nestLevel.peek().intValue() + 1));
+					nestLevel.push(Integer
+							.valueOf(nestLevel.peek().intValue() + 1));
 				}
 
 				if ((0 < inTernaryOperationDepth) && (token instanceof COLON)) {
@@ -232,8 +232,8 @@ public class Statement {
 	public static List<Statement> getPHPStatements(final List<Token> allTokens)
 			throws EmptyStackException {
 
-		final List<Statement> statements = new ArrayList<Statement>();
-		List<Token> tokens = new ArrayList<Token>();
+		final List<Statement> statements = new ArrayList<>();
+		List<Token> tokens = new ArrayList<>();
 
 		final Stack<Integer> nestLevel = new Stack<>();
 		nestLevel.push(Integer.valueOf(1));
@@ -274,7 +274,7 @@ public class Statement {
 						final Statement statement = new Statement(fromLine,
 								toLine, nestDepth, true, tokens, hash);
 						statements.add(statement);
-						tokens = new ArrayList<Token>();
+						tokens = new ArrayList<>();
 
 						if (isDebug) {
 							System.out.println(statement.toString());
@@ -287,8 +287,8 @@ public class Statement {
 				}
 
 				if (token instanceof LEFTBRACKET) {
-					nestLevel
-							.push(new Integer(nestLevel.peek().intValue() + 1));
+					nestLevel.push(Integer
+							.valueOf(nestLevel.peek().intValue() + 1));
 				}
 
 				if ((0 < inTernaryOperationDepth) && (token instanceof COLON)) {
@@ -307,8 +307,8 @@ public class Statement {
 	public static List<Statement> getPYStatements(final List<Token> allTokens)
 			throws EmptyStackException {
 
-		final List<Statement> statements = new ArrayList<Statement>();
-		List<Token> tokens = new ArrayList<Token>();
+		final List<Statement> statements = new ArrayList<>();
+		List<Token> tokens = new ArrayList<>();
 
 		final Stack<Integer> methodDefinitionDepth = new Stack<>();
 
@@ -404,7 +404,7 @@ public class Statement {
 						final Statement statement = new Statement(fromLine,
 								toLine, nestLevel, isTarget, tokens, hash);
 						statements.add(statement);
-						tokens = new ArrayList<Token>();
+						tokens = new ArrayList<>();
 
 						if (isDebug) {
 							System.out.println(statement.toString());

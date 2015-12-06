@@ -1,14 +1,14 @@
 package yoshikihigo.clonegear;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -65,7 +65,8 @@ public class CGFinder {
 			final Map<CloneSet, Map<CloneSet, Double>> similarities = new HashMap<>();
 			remainingClonepairs = null;
 			remainingClonesets = /* filterClones(clonesets, similarities) */clonesets;
-			print(remainingClonesets);
+			DetectionResultsFormat.writer(remainingClonesets, CGConfig
+					.getInstance().getRESULT());
 		}
 		final long timeToEnd = System.nanoTime();
 
@@ -143,34 +144,27 @@ public class CGFinder {
 				System.err.println(file.path);
 			}
 
-			int loc = 0;
-			final StringBuilder textBuilder = new StringBuilder();
-			try (final BufferedReader reader = new BufferedReader(
-					new InputStreamReader(new FileInputStream(file.path),
-							"JISAutoDetect"))) {
-				while (reader.ready()) {
-					final String line = reader.readLine();
-					textBuilder.append(line);
-					textBuilder.append(System.lineSeparator());
-					loc++;
+			try {
+				final List<String> lines = Files.readAllLines(
+						Paths.get(file.path), StandardCharsets.UTF_8);
+				final String text = String.join(System.lineSeparator(), lines);
+				final int loc = lines.size();
+				file.setLOC(loc);
+
+				final List<Statement> statements = StringUtility
+						.splitToStatements(text, file.getLanguage());
+				if (!CGConfig.getInstance().isFOLDING()) {
+					final List<Statement> foldedStatements = Statement
+							.getFoldedStatements(statements);
+					file.addStatements(foldedStatements);
+				} else {
+					file.addStatements(statements);
 				}
-			} catch (IOException e) {
-				System.err.print("file \"");
-				System.err.print(file.path);
-				System.err.println("\" is unreadable.");
+
+			} catch (final IOException e) {
+				System.err.print("file \"" + file.path + "\" is unreadable.");
 				continue;
 			}
-
-			final List<Statement> statements = StringUtility.splitToStatements(
-					textBuilder.toString(), file.getLanguage());
-			if (!CGConfig.getInstance().isFOLDING()) {
-				final List<Statement> foldedStatements = Statement
-						.getFoldedStatements(statements);
-				file.addStatements(foldedStatements);
-			} else {
-				file.addStatements(statements);
-			}
-			file.setLOC(loc);
 		}
 
 		final List<WebFile> webFiles = FileUtility.collectWebFiles(new File(
@@ -256,33 +250,17 @@ public class CGFinder {
 	private static List<CloneSet> convert(final List<ClonePair> clonepairs) {
 
 		final Map<CloneHash, CloneSet> clonesets = new HashMap<>();
-		for (final ClonePair clonepair : clonepairs) {
-
-			{
-				final CloneHash hash = new CloneHash(clonepair.left.cloneID);
-				CloneSet cloneset = clonesets.get(hash);
-				if (null == cloneset) {
-					final List<Token> tokens = CloneHash.getTokens(hash);
-					cloneset = new CloneSet(hash, tokens);
-					clonesets.put(hash, cloneset);
-				}
-				cloneset.addClone(clonepair.left);
+		clonepairs.stream().forEach(clonepair -> {
+			final CloneHash hash = clonepair.hash;
+			CloneSet cloneset = clonesets.get(hash);
+			if (null == cloneset) {
+				cloneset = new CloneSet(hash, clonepair.tokens);
+				clonesets.put(hash, cloneset);
 			}
+			cloneset.addClonepair(clonepair);
+		});
 
-			{
-				final CloneHash hash = new CloneHash(clonepair.right.cloneID);
-				CloneSet cloneset = clonesets.get(hash);
-				if (null == cloneset) {
-					final List<Token> tokens = CloneHash.getTokens(hash);
-					cloneset = new CloneSet(hash, tokens);
-					clonesets.put(hash, cloneset);
-				}
-				cloneset.addClone(clonepair.right);
-			}
-		}
-
-		final List<CloneSet> list = new ArrayList<>();
-		list.addAll(clonesets.values());
+		final List<CloneSet> list = new ArrayList<>(clonesets.values());
 		return list;
 	}
 
@@ -339,38 +317,6 @@ public class CGFinder {
 		}
 
 		return false;
-	}
-
-	private static void print(final List<CloneSet> clonesets) {
-
-		Collections.<CloneSet> sort(clonesets,
-				(cloneset1, cloneset2) -> Integer.valueOf(cloneset1.id)
-						.compareTo(Integer.valueOf(cloneset2.id)));
-
-		try (final PrintWriter writer = CGConfig.getInstance().hasRESULT() ? new PrintWriter(
-				new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
-						CGConfig.getInstance().getRESULT()), "UTF-8")))
-				: new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"))) {
-
-			for (final CloneSet cloneset : clonesets) {
-				for (final ClonedFragment clonedFragment : cloneset.getClones()) {
-					writer.print(Integer.toString(cloneset.id));
-					writer.print("\t");
-					writer.print(clonedFragment.file.path);
-					writer.print("\t");
-					writer.print(Integer.toString(clonedFragment.file.getLOC()));
-					writer.print("\t");
-					writer.print(Integer.toString(clonedFragment.getFromLine()));
-					writer.print("\t");
-					writer.print(Integer.toString(clonedFragment.getToLine()));
-					writer.println();
-				}
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(0);
-		}
 	}
 
 	private static void printInBellonFomat(final List<ClonePair> clonepairs) {

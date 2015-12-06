@@ -1,5 +1,7 @@
 package yoshikihigo.clonegear.bellon;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -24,10 +26,8 @@ public class Clone implements Comparable<Clone> {
 		}
 	}
 
-	public SortedSet<Integer> getLines() {
-		final SortedSet<Integer> lines = new TreeSet<>();
-		lines.addAll(this.lines);
-		return lines;
+	public List<Integer> getLines() {
+		return new ArrayList<Integer>(this.lines);
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class Clone implements Comparable<Clone> {
 			return 1;
 		} else if (toline1 < toline2) {
 			return -1;
-		} else if (toline2 > toline2) {
+		} else if (toline1 > toline2) {
 			return 1;
 		} else {
 			return 0;

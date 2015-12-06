@@ -1,13 +1,15 @@
 package yoshikihigo.clonegear.tfidf;
 
+import java.util.Arrays;
+
 import yoshikihigo.clonegear.lexer.token.Token;
 
 public class NGram {
 
-	final Token[] tokens;
+	final public Token[] tokens;
 
 	public NGram(final Token[] tokens) {
-		this.tokens = tokens;
+		this.tokens = Arrays.copyOf(tokens, tokens.length);
 	}
 
 	@Override

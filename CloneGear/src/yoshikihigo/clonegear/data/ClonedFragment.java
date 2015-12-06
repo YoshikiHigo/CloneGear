@@ -1,6 +1,7 @@
 package yoshikihigo.clonegear.data;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class ClonedFragment implements Comparable<ClonedFragment> {
 
 	public ClonedFragment(final MD5[] cloneID, final SourceFile file,
 			final List<Statement> statements) {
-		this.cloneID = cloneID;
+		this.cloneID = Arrays.copyOf(cloneID, cloneID.length);
 		this.file = file;
 		this.statements = Collections.unmodifiableList(statements);
 	}
@@ -66,6 +67,20 @@ public class ClonedFragment implements Comparable<ClonedFragment> {
 		}
 	}
 
+	public float getRNR() {
+
+		int sum = 0;
+		for (final Statement statement : this.statements) {
+			if (statement instanceof ConsecutiveStatement) {
+				sum += ((ConsecutiveStatement) statement).foldedStatements
+						.size();
+			} else {
+				sum++;
+			}
+		}
+		return (float) this.statements.size() / (float) sum;
+	}
+
 	@Override
 	public int compareTo(final ClonedFragment o) {
 
@@ -91,4 +106,22 @@ public class ClonedFragment implements Comparable<ClonedFragment> {
 		}
 	}
 
+	@Override
+	public boolean equals(final Object o) {
+		if (null == o) {
+			return false;
+		}
+		if (!(o instanceof ClonedFragment)) {
+			return false;
+		}
+		final ClonedFragment target = (ClonedFragment) o;
+		return this.file.equals(target.file)
+				&& (this.getFromLine() == target.getFromLine())
+				&& (this.getToLine() == target.getToLine());
+	}
+
+	@Override
+	public int hashCode() {
+		return this.file.hashCode() + this.getFromLine() + this.getToLine();
+	}
 }

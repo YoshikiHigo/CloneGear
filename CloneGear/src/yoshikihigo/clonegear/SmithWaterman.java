@@ -20,9 +20,9 @@ public class SmithWaterman {
 	final private static AtomicLong MATRIX_CREATION_TIME = new AtomicLong(0);
 	final private static AtomicLong CLONE_DETECTION_TIME = new AtomicLong(0);
 
-	final private int MATCH = 2;
-	final private int MISMATCH = -1;
-	final private int GAP = -1;
+	static final private int MATCH = 2;
+	static final private int MISMATCH = -1;
+	static final private int GAP = -1;
 
 	public static long getMatrixCreationTime() {
 		return MATRIX_CREATION_TIME.get();
