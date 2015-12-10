@@ -172,7 +172,8 @@ public class CGFinder {
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JAVASCRIPT)) {
 			for (final WebFile f : webFiles) {
 				final List<Statement> statements = f.getJavascriptStatements();
-				final JavascriptFile javascriptFile = new JavascriptFile(f.path);
+				final JavascriptFile javascriptFile = new JavascriptFile(
+						f.path, 0);
 				if (!CGConfig.getInstance().isFOLDING()) {
 					final List<Statement> foldedStatements = Statement
 							.getFoldedStatements(statements);
@@ -185,7 +186,7 @@ public class CGFinder {
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JSP)) {
 			for (final WebFile f : webFiles) {
 				final List<Statement> statements = f.getJSPStatements();
-				final JSPFile jspFile = new JSPFile(f.path);
+				final JSPFile jspFile = new JSPFile(f.path, 0);
 				if (!CGConfig.getInstance().isFOLDING()) {
 					final List<Statement> foldedStatements = Statement
 							.getFoldedStatements(statements);
@@ -198,7 +199,7 @@ public class CGFinder {
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.PHP)) {
 			for (final WebFile f : webFiles) {
 				final List<Statement> statements = f.getPHPStatements();
-				final PHPFile phpFile = new PHPFile(f.path);
+				final PHPFile phpFile = new PHPFile(f.path, 0);
 				if (!CGConfig.getInstance().isFOLDING()) {
 					final List<Statement> foldedStatements = Statement
 							.getFoldedStatements(statements);
@@ -218,6 +219,13 @@ public class CGFinder {
 			System.err.println("detecting clones ... ");
 		}
 
+		final boolean isCrossGroupDetection = CGConfig.getInstance()
+				.isCrossGroupDetection();
+		final boolean isCrossFileDetection = CGConfig.getInstance()
+				.isCrossFileDetection();
+		final boolean isWithinFileDetection = CGConfig.getInstance()
+				.isWithinFileDetection();
+
 		final ExecutorService executorService = Executors
 				.newFixedThreadPool(CGConfig.getInstance().getTHREAD());
 		final List<ClonePair> clonepairs = new ArrayList<>();
@@ -226,6 +234,20 @@ public class CGFinder {
 			final SourceFile iFile = files.get(i);
 			for (int j = i; j < files.size(); j++) {
 				final SourceFile jFile = files.get(j);
+
+				if (!isCrossGroupDetection && (iFile.groupID != jFile.groupID)) {
+					continue;
+				}
+
+				if (!isCrossFileDetection && (iFile.groupID == jFile.groupID)
+						&& !iFile.path.equals(jFile.path)) {
+					continue;
+				}
+
+				if (!isWithinFileDetection && iFile.path.equals(jFile.path)) {
+					continue;
+				}
+
 				Future<?> future = executorService
 						.submit(new CloneDetectionThread(iFile, jFile,
 								clonepairs));

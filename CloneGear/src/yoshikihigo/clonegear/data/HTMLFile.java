@@ -4,8 +4,8 @@ import yoshikihigo.clonegear.LANGUAGE;
 
 public class HTMLFile extends WebFile {
 
-	public HTMLFile(final String path) {
-		super(path);
+	public HTMLFile(final String path, final int groupID) {
+		super(path, groupID);
 	}
 
 	@Override

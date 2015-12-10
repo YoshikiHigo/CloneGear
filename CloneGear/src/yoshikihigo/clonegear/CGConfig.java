@@ -110,6 +110,33 @@ public class CGConfig {
 		}
 
 		{
+			final Option cg = new Option("cg", "cross-group", true,
+					"detect clones cross groups");
+			cg.setArgName("YES-or-NO");
+			cg.setArgs(1);
+			cg.setRequired(false);
+			options.addOption(cg);
+		}
+
+		{
+			final Option cf = new Option("cf", "cross-file", true,
+					"detect clones cross files");
+			cf.setArgName("YES-or-NO");
+			cf.setArgs(1);
+			cf.setRequired(false);
+			options.addOption(cf);
+		}
+
+		{
+			final Option wf = new Option("wf", "within-file", true,
+					"detect clones cross files");
+			wf.setArgName("YES-or-NO");
+			wf.setArgs(1);
+			wf.setRequired(false);
+			options.addOption(wf);
+		}
+
+		{
 			final Option debug = new Option("debug", "debug", false,
 					"print some informlation for debugging");
 			debug.setRequired(false);
@@ -117,10 +144,10 @@ public class CGConfig {
 		}
 
 		{
-			final Option debug = new Option("module", "module", false,
+			final Option module = new Option("module", "module", false,
 					"do not consider module boundaries");
-			debug.setRequired(false);
-			options.addOption(debug);
+			module.setRequired(false);
+			options.addOption(module);
 		}
 
 		{
@@ -244,6 +271,60 @@ public class CGConfig {
 			System.exit(0);
 		}
 		return this.commandLine.getOptionValue("result");
+	}
+
+	public boolean isCrossGroupDetection() {
+		if (!this.commandLine.hasOption("cg")) {
+			return true;
+		}
+		final String value = this.commandLine.getOptionValue("cg");
+		if (value.equalsIgnoreCase("YES")) {
+			return true;
+		} else if (value.equalsIgnoreCase("NO")) {
+			return false;
+		} else {
+			System.err.println("\"" + value
+					+ "\" is invalid value for \"--cross-group\".");
+			System.err.println("acceptable values are YES or NOT.");
+			System.exit(0);
+		}
+		return true;
+	}
+
+	public boolean isCrossFileDetection() {
+		if (!this.commandLine.hasOption("cf")) {
+			return true;
+		}
+		final String value = this.commandLine.getOptionValue("cf");
+		if (value.equalsIgnoreCase("YES")) {
+			return true;
+		} else if (value.equalsIgnoreCase("NO")) {
+			return false;
+		} else {
+			System.err.println("\"" + value
+					+ "\" is invalid value for \"--cross-file\".");
+			System.err.println("acceptable values are YES or NOT.");
+			System.exit(0);
+		}
+		return true;
+	}
+
+	public boolean isWithinFileDetection() {
+		if (!this.commandLine.hasOption("wf")) {
+			return true;
+		}
+		final String value = this.commandLine.getOptionValue("wf");
+		if (value.equalsIgnoreCase("YES")) {
+			return true;
+		} else if (value.equalsIgnoreCase("NO")) {
+			return false;
+		} else {
+			System.err.println("\"" + value
+					+ "\" is invalid value for \"--within-file\".");
+			System.err.println("acceptable values are YES or NOT.");
+			System.exit(0);
+		}
+		return true;
 	}
 
 	public boolean isFOLDING() {

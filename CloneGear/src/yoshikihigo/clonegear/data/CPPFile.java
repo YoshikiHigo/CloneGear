@@ -4,8 +4,8 @@ import yoshikihigo.clonegear.LANGUAGE;
 
 public class CPPFile extends SourceFile {
 
-	public CPPFile(final String path) {
-		super(path);
+	public CPPFile(final String path, final int groupID) {
+		super(path, groupID);
 	}
 
 	@Override

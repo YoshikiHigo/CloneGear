@@ -4,12 +4,12 @@ import yoshikihigo.clonegear.LANGUAGE;
 
 public class PythonFile extends SourceFile {
 
-	public PythonFile(final String path){
-		super(path);
+	public PythonFile(final String path, final int groupID) {
+		super(path, groupID);
 	}
-	
+
 	@Override
-	public LANGUAGE getLanguage(){
+	public LANGUAGE getLanguage() {
 		return LANGUAGE.PYTHON;
 	}
 }

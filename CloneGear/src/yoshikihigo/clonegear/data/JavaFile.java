@@ -4,12 +4,12 @@ import yoshikihigo.clonegear.LANGUAGE;
 
 public class JavaFile extends SourceFile {
 
-	public JavaFile(final String path){
-		super(path);
+	public JavaFile(final String path, final int groupID) {
+		super(path, groupID);
 	}
-	
+
 	@Override
-	public LANGUAGE getLanguage(){
+	public LANGUAGE getLanguage() {
 		return LANGUAGE.JAVA;
 	}
 }

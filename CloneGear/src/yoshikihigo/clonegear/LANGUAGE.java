@@ -21,9 +21,9 @@ public enum LANGUAGE {
 		}
 
 		@Override
-		public SourceFile getSourceFile(final File file) {
+		public SourceFile getSourceFile(final File file, final int groupID) {
 			if (this.isTarget(file)) {
-				return new JavaFile(file.getAbsolutePath());
+				return new JavaFile(file.getAbsolutePath(), groupID);
 			}
 			return null;
 		}
@@ -36,9 +36,9 @@ public enum LANGUAGE {
 		}
 
 		@Override
-		public SourceFile getSourceFile(final File file) {
+		public SourceFile getSourceFile(final File file, final int groupID) {
 			if (this.isTarget(file)) {
-				return new JavascriptFile(file.getAbsolutePath());
+				return new JavascriptFile(file.getAbsolutePath(), groupID);
 			}
 			return null;
 		}
@@ -51,9 +51,9 @@ public enum LANGUAGE {
 		}
 
 		@Override
-		public SourceFile getSourceFile(final File file) {
+		public SourceFile getSourceFile(final File file, final int groupID) {
 			if (this.isTarget(file)) {
-				return new JSPFile(file.getAbsolutePath());
+				return new JSPFile(file.getAbsolutePath(), groupID);
 			}
 			return null;
 		}
@@ -68,9 +68,9 @@ public enum LANGUAGE {
 		}
 
 		@Override
-		public SourceFile getSourceFile(final File file) {
+		public SourceFile getSourceFile(final File file, final int groupID) {
 			if (this.isTarget(file)) {
-				return new CFile(file.getAbsolutePath());
+				return new CFile(file.getAbsolutePath(), groupID);
 			}
 			return null;
 		}
@@ -88,9 +88,9 @@ public enum LANGUAGE {
 		}
 
 		@Override
-		public SourceFile getSourceFile(final File file) {
+		public SourceFile getSourceFile(final File file, final int groupID) {
 			if (this.isTarget(file)) {
-				return new CPPFile(file.getAbsolutePath());
+				return new CPPFile(file.getAbsolutePath(), groupID);
 			}
 			return null;
 		}
@@ -105,9 +105,9 @@ public enum LANGUAGE {
 		}
 
 		@Override
-		public SourceFile getSourceFile(final File file) {
+		public SourceFile getSourceFile(final File file, final int groupID) {
 			if (this.isTarget(file)) {
-				return new HTMLFile(file.getAbsolutePath());
+				return new HTMLFile(file.getAbsolutePath(), groupID);
 			}
 			return null;
 		}
@@ -120,9 +120,9 @@ public enum LANGUAGE {
 		}
 
 		@Override
-		public SourceFile getSourceFile(final File file) {
+		public SourceFile getSourceFile(final File file, final int groupID) {
 			if (this.isTarget(file)) {
-				return new PHPFile(file.getAbsolutePath());
+				return new PHPFile(file.getAbsolutePath(), groupID);
 			}
 			return null;
 		}
@@ -135,9 +135,9 @@ public enum LANGUAGE {
 		}
 
 		@Override
-		public SourceFile getSourceFile(final File file) {
+		public SourceFile getSourceFile(final File file, final int groupID) {
 			if (this.isTarget(file)) {
-				return new PythonFile(file.getAbsolutePath());
+				return new PythonFile(file.getAbsolutePath(), groupID);
 			}
 			return null;
 		}
@@ -151,5 +151,5 @@ public enum LANGUAGE {
 
 	abstract boolean isTarget(File file);
 
-	abstract SourceFile getSourceFile(File file);
+	abstract SourceFile getSourceFile(File file, int groupID);
 }

@@ -9,11 +9,13 @@ import yoshikihigo.clonegear.lexer.token.Token;
 public abstract class SourceFile implements Comparable<SourceFile> {
 
 	final public String path;
+	final public int groupID;
 	final private List<Statement> statements;
 	private int loc;
 
-	protected SourceFile(final String path) {
+	protected SourceFile(final String path, final int groupID) {
 		this.path = path;
+		this.groupID = groupID;
 		this.statements = new ArrayList<>();
 		this.loc = 0;
 	}
@@ -53,15 +55,13 @@ public abstract class SourceFile implements Comparable<SourceFile> {
 	}
 
 	public List<Statement> getStatements() {
-		final List<Statement> statements = new ArrayList<>(this.statements);
-		return statements;
+		return new ArrayList<Statement>(this.statements);
 	}
 
 	public List<Token> getTokens() {
 		final List<Token> tokens = new ArrayList<>();
-		for (final Statement statement : this.statements) {
-			tokens.addAll(statement.tokens);
-		}
+		this.statements.stream().forEach(
+				statement -> tokens.addAll(statement.tokens));
 		return tokens;
 	}
 

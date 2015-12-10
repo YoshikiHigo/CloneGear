@@ -22,8 +22,8 @@ import yoshikihigo.commentremover.FileUtility;
 
 public abstract class WebFile extends SourceFile {
 
-	protected WebFile(final String path) {
-		super(path);
+	protected WebFile(final String path, final int groupID) {
+		super(path, groupID);
 	}
 
 	public List<Statement> getJavascriptStatements() {

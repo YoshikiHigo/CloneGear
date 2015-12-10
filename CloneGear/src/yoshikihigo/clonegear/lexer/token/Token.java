@@ -19,6 +19,9 @@ public abstract class Token {
 
 	@Override
 	final public boolean equals(final Object o) {
+		if (o == null) {
+			return false;
+		}
 		return this.getClass() == o.getClass();
 	}
 }

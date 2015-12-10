@@ -72,6 +72,6 @@ public class MyNode implements Comparable<MyNode> {
 
 	@Override
 	public int compareTo(final MyNode node) {
-		return Integer.valueOf(this.id).compareTo(Integer.valueOf(node.id));
+		return Integer.compare(this.id, node.id);
 	}
 }

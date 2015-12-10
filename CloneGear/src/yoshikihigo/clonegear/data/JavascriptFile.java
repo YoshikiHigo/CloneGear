@@ -4,8 +4,8 @@ import yoshikihigo.clonegear.LANGUAGE;
 
 public class JavascriptFile extends SourceFile {
 
-	public JavascriptFile(final String path) {
-		super(path);
+	public JavascriptFile(final String path, final int groupID) {
+		super(path, groupID);
 	}
 
 	@Override

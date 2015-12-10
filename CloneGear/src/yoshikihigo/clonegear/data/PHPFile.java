@@ -4,8 +4,8 @@ import yoshikihigo.clonegear.LANGUAGE;
 
 public class PHPFile extends WebFile {
 
-	public PHPFile(final String path) {
-		super(path);
+	public PHPFile(final String path, final int groupID) {
+		super(path, groupID);
 	}
 
 	@Override
