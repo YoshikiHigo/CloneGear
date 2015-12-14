@@ -95,7 +95,7 @@ public class CGConfig {
 
 		{
 			final Option result = new Option("result", "result", true,
-					"clone detection results of CGFinder");
+					"clone detection results");
 			result.setArgName("file");
 			result.setArgs(1);
 			result.setRequired(false);
@@ -134,6 +134,13 @@ public class CGConfig {
 			wf.setArgs(1);
 			wf.setRequired(false);
 			options.addOption(wf);
+		}
+
+		{
+			final Option gemini = new Option("g", "gemini", false,
+					"launch Gemini after finishing clone detection");
+			gemini.setRequired(false);
+			options.addOption(gemini);
 		}
 
 		{
@@ -329,6 +336,10 @@ public class CGConfig {
 
 	public boolean isFOLDING() {
 		return this.commandLine.hasOption("folding");
+	}
+
+	public boolean isGEMINI() {
+		return this.commandLine.hasOption("g");
 	}
 
 	public boolean isDEBUG() {

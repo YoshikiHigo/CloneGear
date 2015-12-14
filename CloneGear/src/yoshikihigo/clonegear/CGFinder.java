@@ -35,6 +35,7 @@ import yoshikihigo.clonegear.data.PHPFile;
 import yoshikihigo.clonegear.data.SourceFile;
 import yoshikihigo.clonegear.data.Statement;
 import yoshikihigo.clonegear.data.WebFile;
+import yoshikihigo.clonegear.gui.Gemini;
 import yoshikihigo.clonegear.lexer.token.Token;
 import yoshikihigo.clonegear.tfidf.TFIDF;
 
@@ -65,7 +66,7 @@ public class CGFinder {
 			final Map<CloneSet, Map<CloneSet, Double>> similarities = new HashMap<>();
 			remainingClonepairs = null;
 			remainingClonesets = /* filterClones(clonesets, similarities) */clonesets;
-			DetectionResultsFormat.writer(remainingClonesets, CGConfig
+			DetectionResultsFormat.writer(files, remainingClonesets, CGConfig
 					.getInstance().getRESULT());
 		}
 		final long timeToEnd = System.nanoTime();
@@ -112,6 +113,12 @@ public class CGFinder {
 			text.append(TimingUtility.getExecutionTime(SmithWaterman
 					.getCloneDetectionTime()));
 			System.err.println(text.toString());
+		}
+
+		if (CGConfig.getInstance().isGEMINI()) {
+			final String results = CGConfig.getInstance().getRESULT();
+			final Gemini gemini = new Gemini(results);
+			gemini.setVisible(true);
 		}
 	}
 

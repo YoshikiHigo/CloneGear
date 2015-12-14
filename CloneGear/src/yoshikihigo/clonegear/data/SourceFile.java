@@ -39,6 +39,11 @@ public abstract class SourceFile implements Comparable<SourceFile> {
 
 	@Override
 	public int compareTo(final SourceFile target) {
+		final int groupIDComparison = Integer.compare(this.groupID,
+				target.groupID);
+		if (0 != groupIDComparison) {
+			return groupIDComparison;
+		}
 		return this.path.compareTo(target.path);
 	}
 
