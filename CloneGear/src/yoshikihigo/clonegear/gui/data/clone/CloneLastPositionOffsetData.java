@@ -16,7 +16,7 @@ public class CloneLastPositionOffsetData {
 	}
 
 	public void initialize(final GUICloneManager manager) {
-		final List<GUICloneSet> lastPositionSorter = new ArrayList<GUICloneSet>(
+		final List<GUICloneSet> lastPositionSorter = new ArrayList<>(
 				manager.getCloneSets());
 		Collections.sort(
 				lastPositionSorter,

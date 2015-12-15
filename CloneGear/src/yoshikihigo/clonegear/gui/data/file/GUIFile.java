@@ -54,13 +54,11 @@ public class GUIFile implements Comparable<GUIFile>, Entity, HavingClones {
 			return groupIDComprisonResults;
 		}
 
-		final int fileIDComprisonResults = Integer.compare(this.fileID,
-				fileInfo.fileID);
-		return fileIDComprisonResults;
+		return Integer.compare(this.fileID, fileInfo.fileID);
 	}
 
 	@Override
-	public boolean equals(Object o) {
+	public boolean equals(final Object o) {
 
 		if (null == o) {
 			return false;
@@ -70,9 +68,8 @@ public class GUIFile implements Comparable<GUIFile>, Entity, HavingClones {
 			return false;
 		}
 
-		GUIFile fileInfo = (GUIFile) o;
-		return (this.groupID == fileInfo.groupID)
-				&& (this.fileID == fileInfo.fileID);
+		final GUIFile file = (GUIFile) o;
+		return this.path.equals(file.path);
 	}
 
 	@Override

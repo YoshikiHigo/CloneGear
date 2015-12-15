@@ -42,7 +42,7 @@ final class GUICloneMetricsManager {
 				.toArray(new String[0]));
 		int maxSeparatorCount = 0;
 
-		for (String path : paths) {
+		for (final String path : paths) {
 			final int count = PathCompare.countHierarchy(differentIndex, path);
 			if (maxSeparatorCount < count) {
 				maxSeparatorCount = count;

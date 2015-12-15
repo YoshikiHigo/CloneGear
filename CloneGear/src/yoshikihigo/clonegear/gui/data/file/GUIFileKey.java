@@ -21,9 +21,7 @@ public class GUIFileKey implements Comparable<GUIFileKey> {
 			return groupIDComparisonResults;
 		}
 
-		final int fileIDComparisonResults = Integer.compare(this.fileID,
-				target.fileID);
-		return fileIDComparisonResults;
+		return Integer.compare(this.fileID, target.fileID);
 	}
 
 	static private Map<Integer, Map<Integer, GUIFileKey>> FILEKEY_MAP = new HashMap<>();

@@ -7,32 +7,27 @@ import yoshikihigo.clonegear.gui.data.file.GUIFile;
 
 public final class GUIClone implements Comparable<GUIClone>, Entity {
 
-	public static final Comparator<GUIClone> ID_COMPARATOR = (code1, code2) -> {
-		final int groupIDComparisonResults = Integer.compare(code1.groupID,
-				code2.groupID);
+	public static final Comparator<GUIClone> ID_COMPARATOR = (clone1, clone2) -> {
+		final int groupIDComparisonResults = Integer.compare(clone1.groupID,
+				clone2.groupID);
 		if (0 != groupIDComparisonResults) {
 			return groupIDComparisonResults;
 		}
-		final int fileIDComparisonResults = Integer.valueOf(code1.fileID)
-				.compareTo(Integer.valueOf(code2.fileID));
-		return fileIDComparisonResults;
+		return Integer.compare(clone1.fileID, clone2.fileID);
 	};
 
-	public static final Comparator<GUIClone> LOCATION_COMPARATOR = (code1,
-			code2) -> {
-		final int fromLineComparisonResults = Integer.compare(code1.fromLine,
-				code2.fromLine);
+	public static final Comparator<GUIClone> LOCATION_COMPARATOR = (clone1,
+			clone2) -> {
+		final int fromLineComparisonResults = Integer.compare(clone1.fromLine,
+				clone2.fromLine);
 		if (0 != fromLineComparisonResults) {
 			return fromLineComparisonResults;
 		}
-		final int toLineComparisonResults = Integer.compare(code1.toLine,
-				code2.toLine);
-		return toLineComparisonResults;
+		return Integer.compare(clone1.toLine, clone2.toLine);
 	};
 
 	public GUIClone(final int clonesetID, final GUIFile file,
 			final int fromLine, final int toLine, final float rnr) {
-
 		this.clonesetID = clonesetID;
 		this.file = file;
 		this.groupID = file.groupID;
@@ -75,7 +70,7 @@ public final class GUIClone implements Comparable<GUIClone>, Entity {
 	}
 
 	@Override
-	public final boolean equals(Object o) {
+	public final boolean equals(final Object o) {
 
 		if (null == o) {
 			return false;
@@ -89,29 +84,27 @@ public final class GUIClone implements Comparable<GUIClone>, Entity {
 	}
 
 	@Override
-	public final int compareTo(final GUIClone codeFragment) {
+	public final int compareTo(final GUIClone clone) {
 
 		final int groupComparisonResults = Integer.compare(this.groupID,
-				codeFragment.groupID);
+				clone.groupID);
 		if (0 != groupComparisonResults) {
 			return groupComparisonResults;
 		}
 
 		final int fileComparisonResults = Integer.compare(this.fileID,
-				codeFragment.fileID);
+				clone.fileID);
 		if (0 != fileComparisonResults) {
 			return fileComparisonResults;
 		}
 
 		final int fromLineComparisonResults = Integer.compare(this.fromLine,
-				codeFragment.fromLine);
+				clone.fromLine);
 		if (0 != fromLineComparisonResults) {
 			return fromLineComparisonResults;
 		}
 
-		final int toLineComparisonResults = Integer.compare(this.toLine,
-				codeFragment.toLine);
-		return toLineComparisonResults;
+		return Integer.compare(this.toLine, clone.toLine);
 	}
 
 	@Override

@@ -105,8 +105,8 @@ public class IndexedFile implements Comparable {
 	@Override
 	public int compareTo(final Object o) {
 
-		IndexedFile leftFile = this;
-		IndexedFile rightFile = (IndexedFile) o;
+		final IndexedFile leftFile = this;
+		final IndexedFile rightFile = (IndexedFile) o;
 		if (leftFile.getStartIndex() > rightFile.getStartIndex())
 			return 1;
 		else if (leftFile.getStartIndex() < rightFile.getStartIndex())

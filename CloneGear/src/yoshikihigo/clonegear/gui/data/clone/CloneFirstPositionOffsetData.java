@@ -17,7 +17,7 @@ public class CloneFirstPositionOffsetData {
 
 	public void initialize(final GUICloneManager manager) {
 
-		final List<GUICloneSet> clonesets = new LinkedList<GUICloneSet>(
+		final List<GUICloneSet> clonesets = new LinkedList<>(
 				manager.getCloneSets());
 		Collections.sort(clonesets, (cloneset1, cloneset2) -> cloneset1.first()
 				.compareTo(cloneset2.first()));
@@ -36,6 +36,5 @@ public class CloneFirstPositionOffsetData {
 	}
 
 	private final Map<GUICloneSet, Integer> offsets;
-
 	private boolean initialized;
 }

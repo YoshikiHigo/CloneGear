@@ -31,12 +31,11 @@ public class GUIClonePair implements Comparable<GUIClonePair>, Entity,
 			return leftCloneOrder;
 		}
 
-		final int rightCloneOrder = this.right.compareTo(clonePair.right);
-		return rightCloneOrder;
+		return this.right.compareTo(clonePair.right);
 	}
 
 	@Override
-	public boolean equals(Object o) {
+	public boolean equals(final Object o) {
 
 		if (null == o) {
 			return false;

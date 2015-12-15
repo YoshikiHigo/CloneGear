@@ -224,7 +224,7 @@ public class CloneSetListView extends JTable implements ViewScale, Observer,
 			for (final GUICloneSet cloneSet : SelectedEntities
 					.<GUICloneSet> getInstance(FILTERED_CLONESET).get()) {
 
-				final int id = cloneSet.getID();
+				final int id = cloneSet.id;
 				final int rad = cloneSet.getRAD();
 				final int len = cloneSet.getLEN();
 				final int rnr = cloneSet.getRNR();
@@ -260,7 +260,7 @@ public class CloneSetListView extends JTable implements ViewScale, Observer,
 			for (final GUICloneSet cloneSet : SelectedEntities
 					.<GUICloneSet> getInstance(SELECTED_CLONESET).get()) {
 
-				final int id = cloneSet.getID();
+				final int id = cloneSet.id;
 				final int rad = cloneSet.getRAD();
 				final int len = cloneSet.getLEN();
 				final int rnr = cloneSet.getRNR();

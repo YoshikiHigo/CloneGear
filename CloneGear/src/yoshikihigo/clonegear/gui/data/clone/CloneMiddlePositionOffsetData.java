@@ -19,7 +19,7 @@ public class CloneMiddlePositionOffsetData {
 
 	public void initialize(final GUICloneManager manager) {
 
-		final List<GUICloneSet> clonesets = new ArrayList<GUICloneSet>(
+		final List<GUICloneSet> clonesets = new ArrayList<>(
 				manager.getCloneSets());
 		Collections.sort(
 				clonesets,

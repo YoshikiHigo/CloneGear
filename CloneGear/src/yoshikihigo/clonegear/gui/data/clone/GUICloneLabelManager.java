@@ -30,20 +30,20 @@ public final class GUICloneLabelManager {
 		this.locationLabels = new HashMap<>();
 	}
 
-	private String createIDLabel(final GUIClone codeFragment) {
+	private String createIDLabel(final GUIClone clone) {
 		final StringBuffer labelBuffer = new StringBuffer();
-		labelBuffer.append(codeFragment.groupID);
+		labelBuffer.append(clone.groupID);
 		labelBuffer.append(".");
-		labelBuffer.append(codeFragment.fileID);
+		labelBuffer.append(clone.fileID);
 		return labelBuffer.toString();
 	}
 
-	private String createLocationLabel(final GUIClone codeFragment) {
+	private String createLocationLabel(final GUIClone clone) {
 		final StringBuffer labelBuffer = new StringBuffer();
 		labelBuffer.append(" ");
-		labelBuffer.append(codeFragment.fromLine);
+		labelBuffer.append(clone.fromLine);
 		labelBuffer.append(" - ");
-		labelBuffer.append(codeFragment.toLine);
+		labelBuffer.append(clone.toLine);
 		labelBuffer.append(" ");
 		return labelBuffer.toString();
 	}

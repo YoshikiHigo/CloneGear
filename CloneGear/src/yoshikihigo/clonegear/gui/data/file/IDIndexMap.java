@@ -49,8 +49,8 @@ public class IDIndexMap {
 	}
 
 	private IDIndexMap() {
-		this.indexes = new HashMap<GUIFile, Integer>();
-		this.reverseIndexes = new HashMap<Integer, GUIFile>();
+		this.indexes = new HashMap<>();
+		this.reverseIndexes = new HashMap<>();
 		this.initialized = false;
 	}
 

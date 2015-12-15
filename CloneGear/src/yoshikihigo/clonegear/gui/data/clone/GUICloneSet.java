@@ -13,17 +13,15 @@ public class GUICloneSet implements Comparable<GUICloneSet>, Entity,
 
 	public GUICloneSet(final int id) {
 		this.id = id;
-		this.clonepairs = new TreeSet<>();
+		this.clonepairs = new ArrayList<>();
 	}
 
 	public void addClonepair(final GUIClonePair clonepair) {
 		this.clonepairs.add(clonepair);
 	}
 
-	public SortedSet<GUIClonePair> getClonepairs() {
-		final SortedSet<GUIClonePair> clonepairs = new TreeSet<>(
-				this.clonepairs);
-		return clonepairs;
+	public List<GUIClonePair> getClonepairs() {
+		return new ArrayList<GUIClonePair>(this.clonepairs);
 	}
 
 	@Override
@@ -44,10 +42,6 @@ public class GUICloneSet implements Comparable<GUICloneSet>, Entity,
 	public final GUIClone last() {
 		final List<GUIClone> clones = this.getClones();
 		return clones.get(clones.size() - 1);
-	}
-
-	public final int getID() {
-		return this.id;
 	}
 
 	public final int size() {
@@ -84,7 +78,7 @@ public class GUICloneSet implements Comparable<GUICloneSet>, Entity,
 	}
 
 	@Override
-	public boolean equals(Object o) {
+	public boolean equals(final Object o) {
 
 		if (null == o) {
 			return false;
@@ -104,5 +98,5 @@ public class GUICloneSet implements Comparable<GUICloneSet>, Entity,
 	}
 
 	public final int id;
-	private final SortedSet<GUIClonePair> clonepairs;
+	private final ArrayList<GUIClonePair> clonepairs;
 }

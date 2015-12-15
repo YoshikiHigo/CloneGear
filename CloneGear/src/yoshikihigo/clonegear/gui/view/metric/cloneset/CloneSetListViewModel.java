@@ -40,7 +40,7 @@ public class CloneSetListViewModel extends AbstractTableModel {
 
 		switch (col) {
 		case COL_ID:
-			return this.clonesets.get(row).getID();
+			return this.clonesets.get(row).id;
 		case COL_RAD:
 			return this.clonesets.get(row).getRAD();
 		case COL_LEN:

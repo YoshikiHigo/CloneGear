@@ -14,7 +14,7 @@ public class CloneIDOffsetData {
 
 	public void initialize(final GUICloneManager manager) {
 		manager.getCloneSets().stream().forEach(cloneset -> {
-			this.offsets.put(cloneset, cloneset.getID());
+			this.offsets.put(cloneset, cloneset.id);
 		});
 		this.initialized = true;
 	}
