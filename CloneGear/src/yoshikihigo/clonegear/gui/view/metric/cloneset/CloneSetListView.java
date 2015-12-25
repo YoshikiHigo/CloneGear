@@ -1,14 +1,8 @@
 package yoshikihigo.clonegear.gui.view.metric.cloneset;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -23,9 +17,6 @@ import javax.swing.table.TableRowSorter;
 
 import yoshikihigo.clonegear.gui.data.clone.GUIClone;
 import yoshikihigo.clonegear.gui.data.clone.GUICloneSet;
-import yoshikihigo.clonegear.gui.util.CLSFileFilter;
-import yoshikihigo.clonegear.gui.util.CSVFileFilter;
-import yoshikihigo.clonegear.gui.util.SelectDirectory;
 import yoshikihigo.clonegear.gui.util.SelectedEntities;
 import yoshikihigo.clonegear.gui.view.ViewScale;
 import yoshikihigo.clonegear.gui.view.metric.MetricViewInterface;
@@ -35,11 +26,13 @@ public class CloneSetListView extends JTable implements ViewScale, Observer,
 
 	class SelectionEventHandler implements ListSelectionListener {
 
-		public void valueChanged(ListSelectionEvent e) {
+		@Override
+		public void valueChanged(final ListSelectionEvent e) {
 
 			if (e.getValueIsAdjusting()) {
 				return;
 			}
+
 			SelectedEntities.<GUIClone> getInstance(CLONE).clear(
 					CloneSetListView.this);
 
@@ -69,32 +62,11 @@ public class CloneSetListView extends JTable implements ViewScale, Observer,
 		}
 	}
 
-	class MouseEventHandler extends MouseAdapter {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-
-			int modifier = e.getModifiers();
-
-			if ((modifier & MouseEvent.BUTTON1_MASK) != 0) {
-
-			} else if ((modifier & MouseEvent.BUTTON2_MASK) != 0) {
-
-			} else if ((modifier & MouseEvent.BUTTON3_MASK) != 0) {
-
-				CloneSetListView.this.cloneSetListViewPopupMenu.show(
-						e.getComponent(), e.getX(), e.getY());
-			}
-		}
-	}
-
 	private static final int CSV_MODE = 0;
 	private static final int CLS_MODE = 1;
 
-	final private CloneSetListViewPopupMenu cloneSetListViewPopupMenu;
 	final private JScrollPane scrollPane;
 	final private SelectionEventHandler selectionEventHandler;
-	final private MouseEventHandler mouseEventHandler;
 
 	public CloneSetListView() {
 
@@ -112,16 +84,14 @@ public class CloneSetListView extends JTable implements ViewScale, Observer,
 
 		this.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-		this.cloneSetListViewPopupMenu = new CloneSetListViewPopupMenu(this);
-
 		this.selectionEventHandler = new SelectionEventHandler();
-		this.mouseEventHandler = new MouseEventHandler();
 	}
 
 	public void init() {
 	}
 
-	public void update(Observable o, Object arg) {
+	@Override
+	public void update(final Observable o, final Object arg) {
 
 		this.removeListeners();
 
@@ -194,129 +164,14 @@ public class CloneSetListView extends JTable implements ViewScale, Observer,
 	private void addListeners() {
 		this.getSelectionModel().addListSelectionListener(
 				this.selectionEventHandler);
-		this.addMouseListener(this.mouseEventHandler);
 	}
 
 	private void removeListeners() {
 		this.getSelectionModel().removeListSelectionListener(
 				this.selectionEventHandler);
-		this.removeMouseListener(this.mouseEventHandler);
 	}
 
 	public JScrollPane getScrollPane() {
 		return this.scrollPane;
-	}
-
-	void exportAllCloneSetCSVFormat() {
-
-		try {
-
-			String exportFilePath = this.getExportFilePath(CSV_MODE);
-
-			if (exportFilePath == null)
-				return;
-
-			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(
-					exportFilePath));
-			bufferedWriter
-					.write("\"ID\",\"RAD\",\"LEN\",\"RNR\",\"POP\",\"DFL\"\n");
-
-			for (final GUICloneSet cloneSet : SelectedEntities
-					.<GUICloneSet> getInstance(FILTERED_CLONESET).get()) {
-
-				final int id = cloneSet.id;
-				final int rad = cloneSet.getRAD();
-				final int len = cloneSet.getLEN();
-				final int rnr = cloneSet.getRNR();
-				final int pop = cloneSet.getPOP();
-				final int dfl = cloneSet.getDFL();
-
-				bufferedWriter.write("\"" + id + "\",\"" + rad + "\",\"" + len
-						+ "\",\"" + rnr + "\",\"" + pop + "\",\"" + dfl
-						+ "\"\n");
-			}
-
-			bufferedWriter.close();
-
-		} catch (IOException e) {
-			System.err.println(e.getMessage());
-		}
-	}
-
-	void exportSelectedCloneSetCSVFormat() {
-
-		try {
-
-			String exportFilePath = this.getExportFilePath(CSV_MODE);
-
-			if (exportFilePath == null)
-				return;
-
-			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(
-					exportFilePath));
-			bufferedWriter
-					.write("\"ID\",\"RAD\",\"LEN\",\"RNR\",\"POP\",\"DFL\"\n");
-
-			for (final GUICloneSet cloneSet : SelectedEntities
-					.<GUICloneSet> getInstance(SELECTED_CLONESET).get()) {
-
-				final int id = cloneSet.id;
-				final int rad = cloneSet.getRAD();
-				final int len = cloneSet.getLEN();
-				final int rnr = cloneSet.getRNR();
-				final int pop = cloneSet.getPOP();
-				final int dfl = cloneSet.getDFL();
-
-				bufferedWriter.write("\"" + id + "\",\"" + rad + "\",\"" + len
-						+ "\",\"" + rnr + "\",\"" + pop + "\",\"" + dfl
-						+ "\"\n");
-			}
-
-			bufferedWriter.close();
-
-		} catch (IOException e) {
-			System.err.println(e.getMessage());
-		}
-	}
-
-	private String getExportFilePath(int mode) {
-
-		String directory = SelectDirectory.getLastDirectory();
-		JFileChooser fileChooser = new JFileChooser(directory);
-		fileChooser.setDialogType(JFileChooser.SAVE_DIALOG);
-		fileChooser.setDialogTitle("Save in CSV Format");
-		fileChooser.setAcceptAllFileFilterUsed(false);
-		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
-		if (mode == CSV_MODE) {
-			fileChooser.addChoosableFileFilter(new CSVFileFilter());
-		} else if (mode == CLS_MODE) {
-			fileChooser.addChoosableFileFilter(new CLSFileFilter());
-		}
-
-		// show dialog
-		int returnValue = fileChooser.showSaveDialog(this);
-
-		// if save button push ...
-		if (returnValue == JFileChooser.APPROVE_OPTION) {
-
-			directory = fileChooser.getCurrentDirectory().getAbsolutePath();
-			SelectDirectory.setLastDirectory(directory);
-
-			return fileChooser.getSelectedFile().getAbsolutePath();
-
-			// if cancel button push ...
-		} else if (returnValue == JFileChooser.CANCEL_OPTION) {
-
-			return null;
-
-			// if error happens ...
-		} else if (returnValue == JFileChooser.ERROR_OPTION) {
-
-			return null;
-
-		} else {
-			return null;
-		}
 	}
 }

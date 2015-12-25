@@ -101,10 +101,9 @@ public class CloneListView extends JTable implements ViewScale, Observer,
 	final public JScrollPane scrollPane;
 
 	private SelectionEventHandler selectionEventHandler;
-
 	private MouseEventHandler mouseEventHandler;
 
-	private final CloneListViewPopupMenu fragmentViewPopupMenu;
+	final private CloneListViewPopupMenu fragmentViewPopupMenu;
 
 	public CloneListView() {
 
@@ -148,23 +147,19 @@ public class CloneListView extends JTable implements ViewScale, Observer,
 				this.setTable(codeFragments);
 
 			} else if (selectedEntities.getLabel().equals(RELATED_FILE)) {
-
 			} else if (selectedEntities.getLabel().equals(GROUP)) {
-
 				this.setTable(new ArrayList<GUIClone>());
 			}
 
 		} else if (o instanceof RNRValue) {
 
-			RNRValue rnrValue = (RNRValue) o;
+			final RNRValue rnrValue = (RNRValue) o;
 			if (rnrValue.getLabel().equals(RNR)) {
-
 				final CloneListViewRenderer renderer = new CloneListViewRenderer();
 				final TableColumnModel columnModel = this.getColumnModel();
 				for (int i = 0; i < columnModel.getColumnCount(); i++) {
 					columnModel.getColumn(i).setCellRenderer(renderer);
 				}
-
 				this.repaint();
 			}
 
@@ -215,154 +210,35 @@ public class CloneListView extends JTable implements ViewScale, Observer,
 				return;
 			}
 
-			BufferedWriter bw = new BufferedWriter(new FileWriter(
+			final BufferedWriter bw = new BufferedWriter(new FileWriter(
 					exportFilePath));
-
 			for (final GUIFile file : SelectedEntities.<GUIFile> getInstance(
 					SELECTED_FILE).get()) {
 				final String filePath = file.path;
 				bw.write("File Path :" + filePath + "\n");
 				bw.write("Location, Length, Despersivity, Equivalence\n");
 
-				for (GUIClone codeFragment : file.getClones()) {
+				for (final GUIClone clone : file.getClones()) {
 
 					bw.write("\""
 							+ GUICloneLabelManager.SINGLETON
-									.getLocationLabel(codeFragment) + "\",\""
-							+ codeFragment.getLOC() + "\",\"");
+									.getLocationLabel(clone) + "\",\""
+							+ clone.getLOC() + "\",\"");
 
-					final GUICloneSet cloneSet = GUICloneManager.SINGLETON
-							.getCloneSet(codeFragment);
+					final GUICloneSet cloneset = GUICloneManager.SINGLETON
+							.getCloneSet(clone);
 
-					if (cloneSet.getRAD() == 0) {
+					if (cloneset.getRAD() == 0) {
 						bw.write("\",dense,\"");
-					} else if (cloneSet.getRAD() == 1) {
+					} else if (cloneset.getRAD() == 1) {
 						bw.write("\",middle,\"");
-					} else if (cloneSet.getRAD() > 1) {
+					} else if (cloneset.getRAD() > 1) {
 						bw.write("\",scattered,\"");
 					}
 
-					bw.write(cloneSet.getPOP() + "\"\n");
+					bw.write(cloneset.getPOP() + "\"\n");
 				}
 
-			}
-
-			bw.close();
-
-		} catch (IOException e) {
-			System.err.println(e.getMessage());
-		}
-	}
-
-	void exportScatteredCloneCSVFormat() {
-
-		try {
-
-			String exportFilePath = this.getExportFilePath();
-			if (exportFilePath == null)
-				return;
-
-			BufferedWriter bw = new BufferedWriter(new FileWriter(
-					exportFilePath));
-
-			for (final GUIFile file : SelectedEntities.<GUIFile> getInstance(
-					SELECTED_FILE).get()) {
-
-				final String filePath = file.path;
-				bw.write("File Path :" + filePath + "\n");
-				bw.write("Location, Length, Despersivity, Equivalence\n");
-
-				for (GUIClone codeFragment : file.getClones()) {
-
-					final GUICloneSet cloneSet = GUICloneManager.SINGLETON
-							.getCloneSet(codeFragment);
-					if (cloneSet.getRAD() > 1) {
-						bw.write("\""
-								+ GUICloneLabelManager.SINGLETON
-										.getLocationLabel(codeFragment)
-								+ "\",\"" + codeFragment.getLOC()
-								+ "\", scattered,\"" + cloneSet.getPOP() + "\n");
-					}
-				}
-			}
-
-			bw.close();
-
-		} catch (IOException e) {
-			System.err.println(e.getMessage());
-		}
-	}
-
-	void exportMiddleCloneCSVFormat() {
-
-		try {
-
-			String exportFilePath = this.getExportFilePath();
-			if (exportFilePath == null)
-				return;
-
-			BufferedWriter bw = new BufferedWriter(new FileWriter(
-					exportFilePath));
-
-			for (final GUIFile file : SelectedEntities.<GUIFile> getInstance(
-					SELECTED_FILE).get()) {
-
-				final String filePath = file.path;
-				bw.write("File Path :" + filePath + "\n");
-				bw.write("Location, Length, Despersivity, Equivalence\n");
-
-				for (GUIClone codeFragment : file.getClones()) {
-
-					final GUICloneSet cloneSet = GUICloneManager.SINGLETON
-							.getCloneSet(codeFragment);
-					if (cloneSet.getRAD() == 1) {
-						bw.write("\""
-								+ GUICloneLabelManager.SINGLETON
-										.getLocationLabel(codeFragment)
-								+ "\",\"" + codeFragment.getLOC()
-								+ "\", middle,\"" + cloneSet.getPOP() + "\"\n");
-					}
-				}
-			}
-
-			bw.close();
-
-		} catch (IOException e) {
-			System.err.println(e.getMessage());
-		}
-	}
-
-	void exportDenseCloneCSVFormat() {
-
-		try {
-
-			String exportFilePath = this.getExportFilePath();
-			if (exportFilePath == null)
-				return;
-
-			BufferedWriter bw = new BufferedWriter(new FileWriter(
-					exportFilePath));
-
-			for (final GUIFile file : SelectedEntities.<GUIFile> getInstance(
-					SELECTED_FILE).get()) {
-
-				final String filePath = file.path;
-				bw.write("File Path :" + filePath + "\n");
-				bw.write("Location, Length, Despersivity, Equivalence\n");
-
-				for (GUIClone codeFragment : file.getClones()) {
-
-					final GUICloneSet cloneSet = GUICloneManager.SINGLETON
-							.getCloneSet(codeFragment);
-
-					if (cloneSet.getRAD() == 0) {
-						bw.write("\""
-								+ GUICloneLabelManager.SINGLETON
-										.getLocationLabel(codeFragment)
-								+ "\",\"" + codeFragment.getLOC()
-								+ "\", dense,\"" + cloneSet.getPOP() + "\"\n");
-					}
-				}
 			}
 
 			bw.close();

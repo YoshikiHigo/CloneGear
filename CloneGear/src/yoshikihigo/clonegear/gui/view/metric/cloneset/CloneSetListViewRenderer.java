@@ -29,34 +29,41 @@ class CloneSetListViewRenderer extends JLabel implements TableCellRenderer,
 		final int modelColumn = table.convertColumnIndexToModel(column);
 
 		switch (modelColumn) {
-		case CloneSetListViewModel.COL_ID:
+		case CloneSetListViewModel.COL_ID: {
 			this.setHorizontalAlignment(JLabel.CENTER);
 			this.setText(value.toString());
 			break;
-		case CloneSetListViewModel.COL_RAD:
+		}
+		case CloneSetListViewModel.COL_RAD: {
 			this.setHorizontalAlignment(JLabel.RIGHT);
 			this.setText(value.toString());
 			break;
-		case CloneSetListViewModel.COL_LEN:
+		}
+		case CloneSetListViewModel.COL_LEN: {
 			this.setHorizontalAlignment(JLabel.RIGHT);
 			this.setText(value.toString());
 			break;
-		case CloneSetListViewModel.COL_RNR:
+		}
+		case CloneSetListViewModel.COL_RNR: {
 			this.setHorizontalAlignment(JLabel.RIGHT);
 			this.setText(value.toString());
 			break;
-		case CloneSetListViewModel.COL_NIF:
+		}
+		case CloneSetListViewModel.COL_NIF: {
 			this.setHorizontalAlignment(JLabel.RIGHT);
 			this.setText(value.toString());
 			break;
-		case CloneSetListViewModel.COL_POP:
+		}
+		case CloneSetListViewModel.COL_POP: {
 			this.setHorizontalAlignment(JLabel.RIGHT);
 			this.setText(value.toString());
 			break;
-		case CloneSetListViewModel.COL_DFL:
+		}
+		case CloneSetListViewModel.COL_DFL: {
 			this.setHorizontalAlignment(JLabel.RIGHT);
 			this.setText(value.toString());
 			break;
+		}
 		}
 
 		return this;

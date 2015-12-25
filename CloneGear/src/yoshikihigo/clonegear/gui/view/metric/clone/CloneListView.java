@@ -3,16 +3,11 @@ package yoshikihigo.clonegear.gui.view.metric.clone;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
@@ -23,12 +18,10 @@ import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
 
 import yoshikihigo.clonegear.gui.data.clone.GUIClone;
-import yoshikihigo.clonegear.gui.data.clone.GUICloneLabelManager;
 import yoshikihigo.clonegear.gui.data.clone.GUICloneManager;
 import yoshikihigo.clonegear.gui.data.clone.GUICloneSet;
 import yoshikihigo.clonegear.gui.data.file.GUIFile;
 import yoshikihigo.clonegear.gui.data.file.GUIFileManager;
-import yoshikihigo.clonegear.gui.util.CSVFileFilter;
 import yoshikihigo.clonegear.gui.util.SelectedEntities;
 import yoshikihigo.clonegear.gui.view.ViewScale;
 import yoshikihigo.clonegear.gui.view.metric.MetricViewInterface;
@@ -87,8 +80,8 @@ public class CloneListView extends JTable implements ViewScale, Observer,
 		this.scrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-		this.scrollPane.setBorder(new TitledBorder(new LineBorder(
-				Color.black), "Clone List"));
+		this.scrollPane.setBorder(new TitledBorder(new LineBorder(Color.black),
+				"Clone List"));
 
 		this.selectionEventHandler = new SelectionEventHandler();
 	}
@@ -153,109 +146,6 @@ public class CloneListView extends JTable implements ViewScale, Observer,
 
 		final GUIFile file = GUIFileManager.SINGLETON.getFile(groupID, fileID);
 		return file.path;
-	}
-
-	void exportAllFragmentCSVFormat() {
-
-		try {
-
-			String exportFilePath = this.getExportFilePath();
-			if (exportFilePath == null) {
-				return;
-			}
-
-			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(
-					exportFilePath));
-			bufferedWriter
-					.write("\"GroupID\",\"FileID\",\"Position\",\"Path\"\n");
-
-			final List<GUIClone> codeFragments = GUICloneManager
-					.getClones(SelectedEntities.<GUICloneSet> getInstance(
-							SELECTED_CLONESET).get());
-			for (GUIClone codeFragment : codeFragments) {
-
-				final int groupID = codeFragment.groupID;
-				final int fileID = codeFragment.fileID;
-				final String filePath = GUIFileManager.SINGLETON.getFile(
-						groupID, fileID).path;
-				final String position = GUICloneLabelManager.SINGLETON
-						.getLocationLabel(codeFragment);
-
-				bufferedWriter.write("\"" + groupID + "\",\"" + fileID
-						+ "\",\"" + position + "\",\"" + filePath + "\"\n");
-			}
-
-			bufferedWriter.close();
-
-		} catch (IOException e) {
-			System.err.println(e.getMessage());
-		}
-	}
-
-	void exportSelectedFragmentCSVFormat() {
-
-		try {
-
-			String exportFilePath = this.getExportFilePath();
-			if (exportFilePath == null) {
-				return;
-			}
-
-			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(
-					exportFilePath));
-			bufferedWriter
-					.write("\"GroupID\",\"FileID\",\"Position\",\"Path\"\n");
-
-			for (final GUIClone codeFragment : SelectedEntities
-					.<GUIClone> getInstance(CLONE).get()) {
-
-				final int groupID = codeFragment.groupID;
-				final int fileID = codeFragment.fileID;
-				final String filePath = GUIFileManager.SINGLETON.getFile(
-						groupID, fileID).path;
-				final String position = GUICloneLabelManager.SINGLETON
-						.getLocationLabel(codeFragment);
-
-				bufferedWriter.write("\"" + groupID + "\",\"" + fileID
-						+ "\",\"" + position + "\",\"" + filePath + "\"\n");
-			}
-
-			bufferedWriter.close();
-
-		} catch (IOException e) {
-			System.err.println(e.getMessage());
-		}
-	}
-
-	private String getExportFilePath() {
-
-		String home = (new File(System.getProperty("user.home")))
-				.getAbsolutePath();
-		JFileChooser fileChooser = new JFileChooser(home);
-		fileChooser.setDialogType(JFileChooser.SAVE_DIALOG);
-		fileChooser.setDialogTitle("Save in CSV Format");
-		fileChooser.setAcceptAllFileFilterUsed(false);
-		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-		fileChooser.addChoosableFileFilter(new CSVFileFilter());
-
-		int returnValue = fileChooser.showSaveDialog(this);
-
-		if (returnValue == JFileChooser.APPROVE_OPTION) {
-
-			return fileChooser.getSelectedFile().getAbsolutePath();
-
-		} else if (returnValue == JFileChooser.CANCEL_OPTION) {
-
-			return null;
-
-		} else if (returnValue == JFileChooser.ERROR_OPTION) {
-
-			return null;
-
-		} else {
-
-			return null;
-		}
 	}
 
 	private void addListeners() {

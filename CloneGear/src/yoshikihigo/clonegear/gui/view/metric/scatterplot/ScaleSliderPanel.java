@@ -1,5 +1,6 @@
 package yoshikihigo.clonegear.gui.view.metric.scatterplot;
 
+import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -19,7 +20,7 @@ public class ScaleSliderPanel extends JSlider implements Observer,
 
 		super(1, 10, DEFAULT_VALUE);
 
-		this.setBorder(new TitledBorder(new LineBorder(java.awt.Color.black),
+		this.setBorder(new TitledBorder(new LineBorder(Color.black),
 				"Scale Ratio"));
 		this.setPaintLabels(true);
 		this.setPaintTicks(true);
@@ -39,8 +40,7 @@ public class ScaleSliderPanel extends JSlider implements Observer,
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {
-
+	public void update(final Observable o, final Object arg) {
 		final int scale = ScaleValue.getInstance(SCALE).get();
 		this.setValue(scale);
 	}

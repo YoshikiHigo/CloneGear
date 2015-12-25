@@ -11,73 +11,37 @@ class ScatterPlotFileFilter extends FileFilter {
 	private Hashtable<String, ScatterPlotFileFilter> filters;
 
 	private String description;
-
 	private String fullDescription;
-
 	private boolean useExtensionsInDescription;
 
-	/**
-	 * Creates a file filter. If no filters are added, then all files are
-	 * accepted.
-	 * 
-	 * @see #addExtension
-	 */
 	public ScatterPlotFileFilter() {
-		this.filters = new Hashtable<String, ScatterPlotFileFilter>();
+		this.filters = new Hashtable<>();
 		this.description = null;
 		this.fullDescription = null;
 		this.useExtensionsInDescription = true;
 	}
 
-	/**
-	 * Creates a file filter that accepts files with the given extension.
-	 * Example: new ScatterPlotFileFilter("jpg");
-	 * 
-	 * @see #addExtension
-	 */
-	public ScatterPlotFileFilter(String extension) {
+	public ScatterPlotFileFilter(final String extension) {
 		this(extension, null);
 	}
 
-	/**
-	 * Creates a file filter that accepts the given file type. Example: new
-	 * ScatterPlotFileFilter("jpg", "JPEG Image Images");
-	 * 
-	 * Note that the "." before the extension is not needed. If provided, it
-	 * will be ignored.
-	 * 
-	 * @see #addExtension
-	 */
-	public ScatterPlotFileFilter(String extension, String description) {
+	public ScatterPlotFileFilter(final String extension,
+			final String description) {
 		this();
-		if (extension != null)
-			addExtension(extension);
-		if (description != null)
-			setDescription(description);
+		if (extension != null) {
+			this.addExtension(extension);
+		}
+		if (description != null) {
+			this.setDescription(description);
+		}
 	}
 
-	/**
-	 * Creates a file filter from the given string array. Example: new
-	 * ScatterPlotFileFilter(String {"gif", "jpg"});
-	 * 
-	 * Note that the "." before the extension is not needed adn will be ignored.
-	 * 
-	 * @see #addExtension
-	 */
-	public ScatterPlotFileFilter(String[] filters) {
+	public ScatterPlotFileFilter(final String[] filters) {
 		this(filters, null);
 	}
 
-	/**
-	 * Creates a file filter from the given string array and description.
-	 * Example: new ScatterPlotFileFilter(String {"gif", "jpg"}, "Gif and JPG
-	 * Images");
-	 * 
-	 * Note that the "." before the extension is not needed and will be ignored.
-	 * 
-	 * @see #addExtension
-	 */
-	public ScatterPlotFileFilter(String[] filters, String description) {
+	public ScatterPlotFileFilter(final String[] filters,
+			final String description) {
 
 		this();
 
@@ -91,16 +55,8 @@ class ScatterPlotFileFilter extends FileFilter {
 		}
 	}
 
-	/**
-	 * Return true if this file should be shown in the directory pane, false if
-	 * it shouldn't.
-	 * 
-	 * Files that begin with "." are ignored.
-	 * 
-	 * @see #getExtension
-	 * @see FileFilter#accepts
-	 */
-	public boolean accept(File f) {
+	@Override
+	public boolean accept(final File f) {
 		if (f != null) {
 			if (f.isDirectory()) {
 				return true;
@@ -114,13 +70,7 @@ class ScatterPlotFileFilter extends FileFilter {
 		return false;
 	}
 
-	/**
-	 * Return the extension portion of the file's name .
-	 * 
-	 * @see #getExtension
-	 * @see FileFilter#accept
-	 */
-	public String getExtension(File f) {
+	public String getExtension(final File f) {
 		if (f != null) {
 			String filename = f.getName();
 			int i = filename.lastIndexOf('.');
@@ -132,102 +82,54 @@ class ScatterPlotFileFilter extends FileFilter {
 		return null;
 	}
 
-	/**
-	 * Adds a filetype "dot" extension to filter against.
-	 * 
-	 * For example: the following code will create a filter that filters out all
-	 * files except those that end in ".jpg" and ".tif":
-	 * 
-	 * ScatterPlotFileFilter filter = new ScatterPlotFileFilter();
-	 * filter.addExtension("jpg"); filter.addExtension("tif");
-	 * 
-	 * Note that the "." before the extension is not needed and will be ignored.
-	 */
 	public void addExtension(String extension) {
-		if (filters == null) {
-			filters = new Hashtable<String, ScatterPlotFileFilter>(5);
+		if (this.filters == null) {
+			filters = new Hashtable<>(5);
 		}
-		filters.put(extension.toLowerCase(), this);
-		fullDescription = null;
+		this.filters.put(extension.toLowerCase(), this);
+		this.fullDescription = null;
 	}
 
-	/**
-	 * Returns the human readable description of this filter. For example: "JPEG
-	 * and GIF Image Files (*.jpg, *.gif)"
-	 * 
-	 * @see setDescription
-	 * @see setExtensionListInDescription
-	 * @see isExtensionListInDescription
-	 * @see FileFilter#getDescription
-	 */
+	@Override
 	public String getDescription() {
-		if (fullDescription == null) {
-			if (description == null || isExtensionListInDescription()) {
-				fullDescription = description == null ? "(" : description
-						+ " (";
+		if (this.fullDescription == null) {
+			if (this.description == null || this.isExtensionListInDescription()) {
+				this.fullDescription = this.description == null ? "("
+						: this.description + " (";
 				// build the description from the extension list
-				Enumeration<String> extensions = filters.keys();
+				final Enumeration<String> extensions = this.filters.keys();
 				if (extensions != null) {
-					fullDescription += "." + extensions.nextElement();
+					this.fullDescription += "." + extensions.nextElement();
 					while (extensions.hasMoreElements()) {
-						fullDescription += ", ." + extensions.nextElement();
+						this.fullDescription += ", ."
+								+ extensions.nextElement();
 					}
 				}
-				fullDescription += ")";
+				this.fullDescription += ")";
 			} else {
-				fullDescription = description;
+				this.fullDescription = this.description;
 			}
 		}
-		return fullDescription;
+		return this.fullDescription;
 	}
 
-	/**
-	 * Sets the human readable description of this filter. For example:
-	 * filter.setDescription("Gif and JPG Images");
-	 * 
-	 * @see setDescription
-	 * @see setExtensionListInDescription
-	 * @see isExtensionListInDescription
-	 */
-	public void setDescription(String description) {
+	public void setDescription(final String description) {
 		this.description = description;
-		fullDescription = null;
+		this.fullDescription = null;
 	}
 
-	/**
-	 * Determines whether the extension list (.jpg, .gif, etc) should show up in
-	 * the human readable description.
-	 * 
-	 * Only relevent if a description was provided in the constructor or using
-	 * setDescription();
-	 * 
-	 * @see getDescription
-	 * @see setDescription
-	 * @see isExtensionListInDescription
-	 */
-	public void setExtensionListInDescription(boolean b) {
-		useExtensionsInDescription = b;
-		fullDescription = null;
+	public void setExtensionListInDescription(final boolean b) {
+		this.useExtensionsInDescription = b;
+		this.fullDescription = null;
 	}
 
-	/**
-	 * Returns whether the extension list (.jpg, .gif, etc) should show up in
-	 * the human readable description.
-	 * 
-	 * Only relevent if a description was provided in the constructor or using
-	 * setDescription();
-	 * 
-	 * @see getDescription
-	 * @see setDescription
-	 * @see setExtensionListInDescription
-	 */
 	public boolean isExtensionListInDescription() {
 		return useExtensionsInDescription;
 	}
 
-	public boolean isRegisteredExtension(String extension) {
+	public boolean isRegisteredExtension(final String extension) {
 
-		if ((extension != null) && (filters.get(extension) != null))
+		if ((extension != null) && (this.filters.get(extension) != null))
 			return true;
 		else
 			return false;

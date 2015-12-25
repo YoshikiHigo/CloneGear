@@ -41,7 +41,7 @@ import yoshikihigo.clonegear.gui.view.quantity.QuantitativeViewInterface;
 public class FileListView extends JTable implements ViewScale, Observer,
 		QuantitativeViewInterface {
 
-	class FileListViewPopupMenu extends JPopupMenu {
+	static class FileListViewPopupMenu extends JPopupMenu {
 
 		public FileListViewPopupMenu(final FileListView parentContainer) {
 

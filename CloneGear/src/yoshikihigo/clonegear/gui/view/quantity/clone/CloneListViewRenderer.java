@@ -16,13 +16,12 @@ class CloneListViewRenderer extends JLabel implements TableCellRenderer,
 		ViewColors, QuantitativeViewInterface {
 
 	static final String DENSE_STRING = "dense";
-
 	static final String MIDDLE_STRING = "middle";
-
 	static final String SCATTERED_STRING = "scattered";
 
-	public Component getTableCellRendererComponent(JTable table, Object value,
-			boolean isSelected, boolean hasFocus, int row, int column) {
+	public Component getTableCellRendererComponent(final JTable table,
+			final Object value, final boolean isSelected,
+			final boolean hasFocus, final int row, final int column) {
 
 		setOpaque(true);
 
@@ -57,7 +56,7 @@ class CloneListViewRenderer extends JLabel implements TableCellRenderer,
 		switch (modelColumn) {
 		case CloneListViewModel.COL_LOCATION:
 			setHorizontalAlignment(JLabel.CENTER);
-			setText((String)value);
+			setText((String) value);
 			break;
 		case CloneListViewModel.COL_LENGTH:
 			setHorizontalAlignment(JLabel.CENTER);

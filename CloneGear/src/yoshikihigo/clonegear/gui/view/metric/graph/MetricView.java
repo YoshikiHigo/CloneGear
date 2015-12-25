@@ -43,17 +43,20 @@ public class MetricView extends JPanel implements MetricViewConst, Observer,
 			this.reset();
 		}
 
-		public void mouseClicked(MouseEvent evt) {
+		@Override
+		public void mouseClicked(final MouseEvent evt) {
 		}
 
-		public void mouseEntered(MouseEvent evt) {
+		@Override
+		public void mouseEntered(final MouseEvent evt) {
 		}
 
-		public void mouseExited(MouseEvent evt) {
+		@Override
+		public void mouseExited(final MouseEvent evt) {
 		}
 
-		public void mousePressed(MouseEvent evt) {
-
+		@Override
+		public void mousePressed(final MouseEvent evt) {
 			if ((evt.getModifiers() & MouseEvent.BUTTON1_MASK) != 0) {
 				this.pressedPoint = evt.getPoint();
 				this.draggingPolygonalIndex = this
@@ -63,7 +66,8 @@ public class MetricView extends JPanel implements MetricViewConst, Observer,
 			}
 		}
 
-		public void mouseReleased(MouseEvent evt) {
+		@Override
+		public void mouseReleased(final MouseEvent evt) {
 
 			MetricView.this.setCursor(WAIT_CURSOR);
 
@@ -84,14 +88,15 @@ public class MetricView extends JPanel implements MetricViewConst, Observer,
 			MetricView.this.setCursor(DEFAULT_CURSOR);
 		}
 
-		public void mouseDragged(MouseEvent evt) {
+		@Override
+		public void mouseDragged(final MouseEvent evt) {
 
 			if ((evt.getModifiers() & MouseEvent.BUTTON1_MASK) != 0) {
 
 				if (this.draggingPolygonalIndex != -1) {
 
-					int deltaY = this.pressedPoint.y - evt.getY();
-					double deltaRate = ((double) deltaY)
+					final int deltaY = this.pressedPoint.y - evt.getY();
+					final double deltaRate = ((double) deltaY)
 							/ ((double) MetricView.this.getYSpace());
 
 					this.yRate[this.draggingPolygonalIndex] += deltaRate;
@@ -101,34 +106,32 @@ public class MetricView extends JPanel implements MetricViewConst, Observer,
 					if (this.yRate[this.draggingPolygonalIndex] > 1.0)
 						this.yRate[this.draggingPolygonalIndex] = 1.0;
 
-					int otherSideIndex = 2 * AXIS_TITLE.length - 1
+					final int otherSideIndex = 2 * AXIS_TITLE.length - 1
 							- this.draggingPolygonalIndex;
 
 					if (this.draggingPolygonalIndex < otherSideIndex) {
-
-						if (this.yRate[this.draggingPolygonalIndex] < this.yRate[otherSideIndex])
+						if (this.yRate[this.draggingPolygonalIndex] < this.yRate[otherSideIndex]) {
 							this.yRate[this.draggingPolygonalIndex] = this.yRate[otherSideIndex];
+						}
 
 					} else {
-
-						if (this.yRate[this.draggingPolygonalIndex] > this.yRate[otherSideIndex])
+						if (this.yRate[this.draggingPolygonalIndex] > this.yRate[otherSideIndex]) {
 							this.yRate[this.draggingPolygonalIndex] = this.yRate[otherSideIndex];
+						}
 					}
 
 					this.pressedPoint = evt.getPoint();
-
 					MetricView.this.repaint();
 				}
 			}
 		}
 
-		public void mouseMoved(MouseEvent evt) {
+		@Override
+		public void mouseMoved(final MouseEvent evt) {
 		}
 
-		// initilize filter range
 		private void reset() {
 
-			// reset filter range
 			for (int i = 0; i < AXIS_TITLE.length; i++) {
 
 				this.x[i] = X_MARGIN + i * MetricView.this.getXInterval();
@@ -240,10 +243,10 @@ public class MetricView extends JPanel implements MetricViewConst, Observer,
 					+ (int) (MetricView.this.getYSpace() * this.yRate[2
 							* AXIS_TITLE.length - 1 - axisIndex]);
 
-			Rectangle topValidArea = new Rectangle(this.x[axisIndex]
+			final Rectangle topValidArea = new Rectangle(this.x[axisIndex]
 					- validAreaWidth / 2, MetricView.this.getReversedY(topY)
 					- validAreaHeight / 2, validAreaWidth, validAreaHeight);
-			Rectangle bottomValidArea = new Rectangle(this.x[axisIndex]
+			final Rectangle bottomValidArea = new Rectangle(this.x[axisIndex]
 					- validAreaWidth / 2, MetricView.this.getReversedY(bottomY)
 					- validAreaHeight / 2, validAreaWidth, validAreaHeight);
 
@@ -253,26 +256,26 @@ public class MetricView extends JPanel implements MetricViewConst, Observer,
 			if (topContains && bottomContains) {
 
 				int halfY = (topY + bottomY) / 2;
-				if (halfY > p.y)
+				if (halfY > p.y) {
 					bottomContains = false;
-				else
+				} else {
 					topContains = false;
+				}
 			}
 
-			if (bottomContains)
+			if (bottomContains) {
 				return axisIndex;
-			else if (topContains)
+			} else if (topContains) {
 				return 2 * AXIS_TITLE.length - 1 - axisIndex;
-			else
+			} else {
 				return -1;
+			}
 		}
 
 		private int getNearestAxisIndex(final int x) {
-
-			double x_interval = ((double) MetricView.this.getWidth())
+			final double x_interval = ((double) MetricView.this.getWidth())
 					/ ((double) AXIS_TITLE.length);
-			int index = (int) (x / x_interval);
-
+			final int index = (int) (x / x_interval);
 			return index;
 		}
 	}
@@ -369,7 +372,7 @@ public class MetricView extends JPanel implements MetricViewConst, Observer,
 		g.setColor(METRICS_AXIS_TITLE_COLOR);
 
 		for (int i = 0; i < AXIS_TITLE.length; i++) {
-			int x_location = Y_MARGIN + (int) (data_space * i);
+			final int x_location = Y_MARGIN + (int) (data_space * i);
 			g.drawLine(x_location, this.getReversedY(y_line_start), x_location,
 					this.getReversedY(y_line_end));
 			g.drawString(AXIS_TITLE[i], x_location - 10,
@@ -407,7 +410,7 @@ public class MetricView extends JPanel implements MetricViewConst, Observer,
 
 		// get x axis plot location
 		final int[] x = new int[AXIS_TITLE.length];
-		int data_space = (this.getWidth() - 2 * X_MARGIN)
+		final int data_space = (this.getWidth() - 2 * X_MARGIN)
 				/ (AXIS_TITLE.length - 1);
 		for (int i = 0; i < AXIS_TITLE.length; i++) {
 			x[i] = X_MARGIN + i * data_space;

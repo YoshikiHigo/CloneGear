@@ -1,52 +1,47 @@
 package yoshikihigo.clonegear.gui.util;
 
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 
-
 public class UninterestingClonesDisplay extends Observable {
 
-    public static UninterestingClonesDisplay getInstance(final String label) {
+	private static final Map<String, UninterestingClonesDisplay> INSTANCES = new HashMap<>();
 
-        if (null == label) {
-            throw new NullPointerException();
-        }
+	public static UninterestingClonesDisplay getInstance(final String label) {
 
-        UninterestingClonesDisplay instance = INSTANCES.get(label);
-        if (null == instance) {
-            instance = new UninterestingClonesDisplay(label);
-            INSTANCES.put(label, instance);
-        }
+		if (null == label) {
+			throw new NullPointerException();
+		}
 
-        return instance;
-    }
+		UninterestingClonesDisplay instance = INSTANCES.get(label);
+		if (null == instance) {
+			instance = new UninterestingClonesDisplay(label);
+			INSTANCES.put(label, instance);
+		}
 
-    public void set(final boolean display) {
+		return instance;
+	}
 
-        this.display = display;
+	public void set(final boolean display) {
+		this.display = display;
+		this.setChanged();
+		this.notifyObservers();
+	}
 
-        this.setChanged();
-        this.notifyObservers();
-    }
+	public String getLabel() {
+		return this.label;
+	}
 
-    public String getLabel() {
-        return this.label;
-    }
+	public boolean isDisplay() {
+		return this.display;
+	}
 
-    public boolean isDisplay() {
-        return this.display;
-    }
+	private UninterestingClonesDisplay(final String label) {
+		this.display = true;
+		this.label = label;
+	}
 
-    private UninterestingClonesDisplay(final String label) {
-        this.display = true;
-        this.label = label;
-    }
-
-    private boolean display;
-
-    private final String label;
-
-    private static final Map<String, UninterestingClonesDisplay> INSTANCES = new HashMap<String, UninterestingClonesDisplay>();
+	private boolean display;
+	private final String label;
 }

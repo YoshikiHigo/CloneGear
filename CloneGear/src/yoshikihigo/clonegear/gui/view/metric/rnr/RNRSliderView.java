@@ -1,5 +1,7 @@
 package yoshikihigo.clonegear.gui.view.metric.rnr;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -20,10 +22,10 @@ public class RNRSliderView extends JPanel implements Observer,
 
 	public RNRSliderView() {
 
-		this.setBorder(new TitledBorder(new LineBorder(java.awt.Color.black),
+		this.setBorder(new TitledBorder(new LineBorder(Color.black),
 				"Threshold of RNR"));
 
-		this.setLayout(new java.awt.BorderLayout());
+		this.setLayout(new BorderLayout());
 
 		this.slider = new javax.swing.JSlider(0, 100, DEFAULT_VALUE);
 		this.slider.setPaintLabels(true);
@@ -32,7 +34,7 @@ public class RNRSliderView extends JPanel implements Observer,
 		this.slider.setMajorTickSpacing(10);
 		this.slider.setMinorTickSpacing(1);
 		this.slider.setSnapToTicks(true);
-		this.add(this.slider, java.awt.BorderLayout.CENTER);
+		this.add(this.slider, BorderLayout.CENTER);
 
 		this.slider.addChangeListener(e -> {
 			if (!RNRSliderView.this.slider.getValueIsAdjusting()) {
@@ -45,7 +47,7 @@ public class RNRSliderView extends JPanel implements Observer,
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {
+	public void update(final Observable o, final Object arg) {
 	}
 
 	public void reset() {

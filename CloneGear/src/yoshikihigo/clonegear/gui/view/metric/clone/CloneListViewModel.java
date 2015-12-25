@@ -19,7 +19,7 @@ public class CloneListViewModel extends AbstractTableModel {
 	final private List<GUIClone> clones;
 
 	public CloneListViewModel(final List<GUIClone> clones) {
-		this.clones = clones;
+		this.clones = new ArrayList<>(clones);
 	}
 
 	@Override

@@ -19,8 +19,8 @@ public class FileNameDisplayPanel extends JPanel {
 		final JLabel horizontalLabel = new JLabel("Horizontal :");
 		final JLabel verticalLabel = new JLabel("Vertical   :");
 
-		this.horizontalFileName = new javax.swing.JTextField("");
-		this.verticalCloneSet = new javax.swing.JTextField("");
+		this.horizontalFileName = new JTextField("");
+		this.verticalCloneSet = new JTextField("");
 
 		final JPanel horizontalPanel = new JPanel();
 		final JPanel verticalPanel = new JPanel();

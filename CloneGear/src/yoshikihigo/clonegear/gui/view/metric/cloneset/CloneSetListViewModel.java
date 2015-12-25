@@ -1,5 +1,6 @@
 package yoshikihigo.clonegear.gui.view.metric.cloneset;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
@@ -22,7 +23,7 @@ public class CloneSetListViewModel extends AbstractTableModel {
 	final private List<GUICloneSet> clonesets;
 
 	public CloneSetListViewModel(final List<GUICloneSet> clonesets) {
-		this.clonesets = clonesets;
+		this.clonesets = new ArrayList<>(clonesets);
 	}
 
 	@Override
@@ -36,7 +37,7 @@ public class CloneSetListViewModel extends AbstractTableModel {
 	}
 
 	@Override
-	public Object getValueAt(int row, int col) {
+	public Object getValueAt(final int row, final int col) {
 
 		switch (col) {
 		case COL_ID:
@@ -59,12 +60,12 @@ public class CloneSetListViewModel extends AbstractTableModel {
 	}
 
 	@Override
-	public String getColumnName(int col) {
+	public String getColumnName(final int col) {
 		return TITLES[col];
 	}
 
 	@Override
-	public Class<Integer> getColumnClass(int col) {
+	public Class<Integer> getColumnClass(final int col) {
 		switch (col) {
 		case COL_ID:
 		case COL_RAD:

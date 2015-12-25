@@ -22,7 +22,7 @@ import yoshikihigo.clonegear.gui.data.clone.GUICloneSet;
 public class SourceCodeWindow extends javax.swing.JTextArea implements
 		CloneColor, CodeColor {
 
-	public SourceCodeWindow(final GUIClone codeFragment) {
+	public SourceCodeWindow(final GUIClone clone) {
 
 		super();
 
@@ -42,7 +42,7 @@ public class SourceCodeWindow extends javax.swing.JTextArea implements
 		this.scrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-		this.readFile(codeFragment);
+		this.readFile(clone);
 
 		this.addMouseListener(new MouseAdapter() {
 			@Override
@@ -57,7 +57,7 @@ public class SourceCodeWindow extends javax.swing.JTextArea implements
 					case 1:
 						break;
 					case 2:
-						displayCodeFragment(codeFragment);
+						displayCodeFragment(clone);
 						break;
 					default:
 					}

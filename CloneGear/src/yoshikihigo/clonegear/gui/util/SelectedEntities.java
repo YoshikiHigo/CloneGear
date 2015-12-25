@@ -14,6 +14,8 @@ import yoshikihigo.clonegear.gui.data.Entity;
 
 public final class SelectedEntities<T extends Entity> extends Observable {
 
+	private static final Map<String, SelectedEntities<? extends Entity>> INSTANCES = new HashMap<>();
+
 	public static final <S extends Entity> SelectedEntities<S> getInstance(
 			final String label) {
 		SelectedEntities<S> instance = (SelectedEntities<S>) INSTANCES
@@ -106,10 +108,8 @@ public final class SelectedEntities<T extends Entity> extends Observable {
 		return this.label;
 	}
 
-	private static final Map<String, SelectedEntities<? extends Entity>> INSTANCES = new HashMap<>();
-
 	private SelectedEntities(final String label) {
-		this.selectedEntities = new TreeSet<T>();
+		this.selectedEntities = new TreeSet<>();
 		this.source = null;
 		this.label = label;
 	}

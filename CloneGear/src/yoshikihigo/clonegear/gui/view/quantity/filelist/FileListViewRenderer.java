@@ -17,8 +17,9 @@ import yoshikihigo.clonegear.gui.view.quantity.QuantitativeViewInterface;
 class FileListViewRenderer extends JLabel implements TableCellRenderer,
 		QuantitativeViewInterface {
 
-	public Component getTableCellRendererComponent(JTable table, Object value,
-			boolean isSelected, boolean hasFocus, int row, int column) {
+	public Component getTableCellRendererComponent(final JTable table,
+			final Object value, final boolean isSelected,
+			final boolean hasFocus, final int row, final int column) {
 
 		setOpaque(true);
 
@@ -38,15 +39,17 @@ class FileListViewRenderer extends JLabel implements TableCellRenderer,
 				UNINTERESTING).isDisplay();
 		final int threshold = RNRValue.getInstance(RNR).get();
 		switch (modelColumn) {
-		case FileListViewModel.COL_NAME:
+		case FileListViewModel.COL_NAME: {
 			this.setHorizontalAlignment(JLabel.LEFT);
 			this.setText(file.getFileName());
 			break;
-		case FileListViewModel.COL_LOC:
+		}
+		case FileListViewModel.COL_LOC: {
 			this.setHorizontalAlignment(JLabel.RIGHT);
 			this.setText(value.toString());
 			break;
-		case FileListViewModel.COL_NOC:
+		}
+		case FileListViewModel.COL_NOC: {
 			this.setHorizontalAlignment(JLabel.RIGHT);
 			if (display) {
 				final StringBuilder sb = new StringBuilder();
@@ -59,7 +62,8 @@ class FileListViewRenderer extends JLabel implements TableCellRenderer,
 				this.setText(Integer.toString(file.getNOC(threshold)));
 			}
 			break;
-		case FileListViewModel.COL_ROC:
+		}
+		case FileListViewModel.COL_ROC: {
 			this.setHorizontalAlignment(JLabel.RIGHT);
 			if (display) {
 				final StringBuilder sb = new StringBuilder();
@@ -72,7 +76,8 @@ class FileListViewRenderer extends JLabel implements TableCellRenderer,
 				this.setText(ViewScale.ROC_FORMAT.format(file.getROC(threshold)));
 			}
 			break;
-		case FileListViewModel.COL_NOF:
+		}
+		case FileListViewModel.COL_NOF: {
 			this.setHorizontalAlignment(JLabel.RIGHT);
 			if (display) {
 				final StringBuilder sb = new StringBuilder();
@@ -85,8 +90,10 @@ class FileListViewRenderer extends JLabel implements TableCellRenderer,
 				this.setText(Integer.toString(file.getNOF(threshold)));
 			}
 			break;
-		default:
+		}
+		default: {
 			MessagePrinter.ERR.println("Here shouldn't be reached!");
+		}
 		}
 
 		return this;
