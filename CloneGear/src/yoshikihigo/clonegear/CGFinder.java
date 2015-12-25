@@ -45,6 +45,20 @@ public class CGFinder {
 
 		CGConfig.initialize(args);
 
+		if (CGConfig.getInstance().hasSOURCE()
+				&& CGConfig.getInstance().hasLIST()) {
+			System.err
+					.println("Either \"src\" or \"list\", but not both can be specified.");
+			System.exit(0);
+		}
+
+		if (!CGConfig.getInstance().hasSOURCE()
+				&& !CGConfig.getInstance().hasLIST()) {
+			System.err
+					.println("Either \"src\" or \"list\", must be specified.");
+			System.exit(0);
+		}
+
 		final long timeToStart = System.nanoTime();
 		final List<SourceFile> files = getFiles();
 		final long timeToDetect = System.nanoTime();
@@ -124,8 +138,15 @@ public class CGFinder {
 
 	private static List<SourceFile> getFiles() {
 
-		final List<SourceFile> files = FileUtility.collectSourceFiles(new File(
-				CGConfig.getInstance().getSource()));
+		final List<SourceFile> files = new ArrayList<>();
+		if (CGConfig.getInstance().hasSOURCE()) {
+			files.addAll(FileUtility.collectSourceFiles(new File(CGConfig
+					.getInstance().getSOURCE())));
+		}
+		if (CGConfig.getInstance().hasLIST()) {
+			files.addAll(FileUtility.collectFilesWithList(CGConfig
+					.getInstance().getLIST()));
+		}
 
 		for (final Iterator<SourceFile> iterator = files.iterator(); iterator
 				.hasNext();) {
@@ -174,8 +195,16 @@ public class CGFinder {
 			}
 		}
 
-		final List<WebFile> webFiles = FileUtility.collectWebFiles(new File(
-				CGConfig.getInstance().getSource()));
+		final List<WebFile> webFiles = new ArrayList<>();
+		if (CGConfig.getInstance().hasSOURCE()) {
+			webFiles.addAll(FileUtility.collectWebFiles(new File(CGConfig
+					.getInstance().getSOURCE())));
+		}
+		if (CGConfig.getInstance().hasLIST()) {
+			webFiles.addAll(FileUtility.collectWebFiles(new File(CGConfig
+					.getInstance().getLIST())));
+		}
+
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JAVASCRIPT)) {
 			for (final WebFile f : webFiles) {
 				final List<Statement> statements = f.getJavascriptStatements();
@@ -188,6 +217,7 @@ public class CGFinder {
 				} else {
 					javascriptFile.addStatements(statements);
 				}
+				files.add(javascriptFile);
 			}
 		}
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JSP)) {
@@ -201,6 +231,7 @@ public class CGFinder {
 				} else {
 					jspFile.addStatements(statements);
 				}
+				files.add(jspFile);
 			}
 		}
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.PHP)) {
@@ -214,6 +245,7 @@ public class CGFinder {
 				} else {
 					phpFile.addStatements(statements);
 				}
+				files.add(phpFile);
 			}
 		}
 

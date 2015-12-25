@@ -33,6 +33,15 @@ public class CGConfig {
 		}
 
 		{
+			final Option list = new Option("list", "list", true,
+					"file listing target source files");
+			list.setArgName("listfile");
+			list.setArgs(1);
+			list.setRequired(false);
+			options.addOption(list);
+		}
+
+		{
 			final Option similarityOutput = new Option("sml", "similarity",
 					true, "output file for similarities between clone sets");
 			similarityOutput.setArgName("file");
@@ -66,15 +75,6 @@ public class CGConfig {
 			gap.setArgs(1);
 			gap.setRequired(false);
 			options.addOption(gap);
-		}
-
-		{
-			final Option software = new Option("soft", "software", true,
-					"software name");
-			software.setArgName("software");
-			software.setArgs(1);
-			software.setRequired(false);
-			options.addOption(software);
 		}
 
 		{
@@ -221,20 +221,28 @@ public class CGConfig {
 		return languages;
 	}
 
-	public String getSOFTWARE() {
-		if (!this.commandLine.hasOption("soft")) {
-			System.err.println("option \"soft\" is not specified.");
-			System.exit(0);
-		}
-		return this.commandLine.getOptionValue("soft");
+	public boolean hasSOURCE() {
+		return this.commandLine.hasOption("src");
 	}
 
-	public String getSource() {
+	public String getSOURCE() {
 		if (!this.commandLine.hasOption("src")) {
 			System.err.println("option \"src\" is not specified.");
 			System.exit(0);
 		}
 		return this.commandLine.getOptionValue("src");
+	}
+
+	public boolean hasLIST() {
+		return this.commandLine.hasOption("list");
+	}
+
+	public String getLIST() {
+		if (!this.commandLine.hasOption("list")) {
+			System.err.println("option \"list\" is not specified.");
+			System.exit(0);
+		}
+		return this.commandLine.getOptionValue("list");
 	}
 
 	public boolean hasSIMILARITY() {
