@@ -1,0 +1,15 @@
+CloneGear is a set of tools that detect and analyze code clones.
+
+CGFinder is a tool to detect code clones.
+CGFinder has the following options.
+[-src] specify a root directory including target source files.
+[-list] specify a list consisting paths of target source files. A blank line plays a role of group separator.
+[-result] specify a file path to which CGFinder outputs detected clones.
+[-thd] specify the number of threads used to detect clones.
+[-gap] specify the number of gaps allowed in type-3 clones.
+[-g] specify to launch a GUI front-end after finishing detecting clones.
+
+The followings are examples:
+[example1] -src /path/to/root/directory  -thd 2 -result results.txt -gap 1 -g
+[example2] list list.txt -thd 4 -result results.txt -gap 2
+
