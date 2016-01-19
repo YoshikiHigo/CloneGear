@@ -144,4 +144,8 @@ public class StringUtility {
 
 		return null;
 	}
+
+	public static boolean isBlankLine(final String line) {
+		return line.chars().allMatch(c -> (' ' == c) || ('\t' == c));
+	}
 }

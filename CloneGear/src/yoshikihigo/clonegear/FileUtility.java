@@ -4,10 +4,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,12 +33,29 @@ public class FileUtility {
 		return null;
 	}
 
+	public static List<String> readFile(final String path) {
+		List<String> lines = null;
+		Charset[] charsets = new Charset[] { StandardCharsets.ISO_8859_1,
+				StandardCharsets.US_ASCII, StandardCharsets.UTF_16,
+				StandardCharsets.UTF_16BE, StandardCharsets.UTF_16LE,
+				StandardCharsets.UTF_8 };
+		for (final Charset c : charsets) {
+			try {
+				lines = Files.readAllLines(Paths.get(path), c);
+				break;
+			} catch (final IOException e) {
+				continue;
+			}
+		}
+		return lines;
+
+	}
+
 	public static List<SourceFile> collectSourceFiles(final File file) {
 
 		final List<SourceFile> files = new ArrayList<>();
 
 		if (file.isFile()) {
-
 			final LANGUAGE language = getLANGUAGE(file);
 			if (null != language
 					&& CGConfig.getInstance().getLANGUAGE().contains(language)) {
@@ -53,13 +72,20 @@ public class FileUtility {
 		}
 
 		else if (file.isDirectory()) {
-
 			final File[] children = file.listFiles();
 			if (null != children) {
-				for (final File child : children) {
-					final List<SourceFile> childFiles = collectSourceFiles(child);
-					files.addAll(childFiles);
-				}
+				Arrays.asList(children)
+						.stream()
+						.filter(child -> child.isFile())
+						.forEach(
+								child -> files
+										.addAll(collectSourceFiles(child)));
+				Arrays.asList(children)
+						.stream()
+						.filter(child -> child.isDirectory())
+						.forEach(
+								child -> files
+										.addAll(collectSourceFiles(child)));
 			}
 		}
 

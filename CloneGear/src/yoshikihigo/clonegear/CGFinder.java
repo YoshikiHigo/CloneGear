@@ -6,9 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -38,12 +35,30 @@ import yoshikihigo.clonegear.data.WebFile;
 import yoshikihigo.clonegear.gui.Gemini;
 import yoshikihigo.clonegear.lexer.token.Token;
 import yoshikihigo.clonegear.tfidf.TFIDF;
+import yoshikihigo.clonegear.wizard.Wizard;
 
 public class CGFinder {
 
 	public static void main(final String[] args) {
 
 		CGConfig.initialize(args);
+
+		if (!CGConfig.getInstance().isCUI()) {
+			final Wizard wizard = new Wizard();
+			wizard.setVisible(true);
+
+			while (!wizard.isFinished()) {
+				try {
+					Thread.sleep(200);
+				} catch (final InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+
+			wizard.setVisible(false);
+			final String[] newArgs = wizard.getConfiguration();
+			CGConfig.initialize(newArgs);
+		}
 
 		if (CGConfig.getInstance().hasSOURCE()
 				&& CGConfig.getInstance().hasLIST()) {
@@ -172,26 +187,23 @@ public class CGFinder {
 				System.err.println(file.path);
 			}
 
-			try {
-				final List<String> lines = Files.readAllLines(
-						Paths.get(file.path), StandardCharsets.UTF_8);
-				final String text = String.join(System.lineSeparator(), lines);
-				final int loc = lines.size();
-				file.setLOC(loc);
-
-				final List<Statement> statements = StringUtility
-						.splitToStatements(text, file.getLanguage());
-				if (!CGConfig.getInstance().isFOLDING()) {
-					final List<Statement> foldedStatements = Statement
-							.getFoldedStatements(statements);
-					file.addStatements(foldedStatements);
-				} else {
-					file.addStatements(statements);
-				}
-
-			} catch (final IOException e) {
+			final List<String> lines = FileUtility.readFile(file.path);
+			if (null == lines) {
 				System.err.print("file \"" + file.path + "\" is unreadable.");
 				continue;
+			}
+			final String text = String.join(System.lineSeparator(), lines);
+			final int loc = lines.size();
+			file.setLOC(loc);
+
+			final List<Statement> statements = StringUtility.splitToStatements(
+					text, file.getLanguage());
+			if (!CGConfig.getInstance().isFOLDING()) {
+				final List<Statement> foldedStatements = Statement
+						.getFoldedStatements(statements);
+				file.addStatements(foldedStatements);
+			} else {
+				file.addStatements(statements);
 			}
 		}
 

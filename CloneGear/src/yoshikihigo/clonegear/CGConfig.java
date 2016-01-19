@@ -17,10 +17,6 @@ public class CGConfig {
 
 	static public boolean initialize(final String[] args) {
 
-		if (null != SINGLETON) {
-			return false;
-		}
-
 		final Options options = new Options();
 
 		{
@@ -100,6 +96,13 @@ public class CGConfig {
 			result.setArgs(1);
 			result.setRequired(false);
 			options.addOption(result);
+		}
+
+		{
+			final Option cui = new Option("cui", "cui", false,
+					"run in CUI mode");
+			cui.setRequired(false);
+			options.addOption(cui);
 		}
 
 		{
@@ -340,6 +343,10 @@ public class CGConfig {
 			System.exit(0);
 		}
 		return true;
+	}
+
+	public boolean isCUI() {
+		return this.commandLine.hasOption("cui");
 	}
 
 	public boolean isFOLDING() {
