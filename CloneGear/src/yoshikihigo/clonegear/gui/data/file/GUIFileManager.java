@@ -114,15 +114,15 @@ public final class GUIFileManager {
 	}
 
 	public double getGroupROC(final int groupID) {
-		return this.getFiles(groupID).stream()
-				.mapToDouble(file -> file.getROC() * file.loc).average()
-				.orElse(0d);
+		return this.getGroupROC(groupID, 0);
 	}
 
 	public double getGroupROC(final int groupID, final int threshold) {
-		return this.getFiles(groupID).stream()
-				.mapToDouble(file -> file.getROC(threshold) * file.loc)
-				.average().orElse(0d);
+		final List<GUIFile> files = this.getFiles(groupID);
+		final int cloc = files.stream()
+				.mapToInt(file -> file.getCLOC(threshold)).sum();
+		final int loc = files.stream().mapToInt(file -> file.loc).sum();
+		return 100d * cloc / loc;
 	}
 
 	public int getGroupNOC(final int groupID) {

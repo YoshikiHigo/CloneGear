@@ -68,11 +68,11 @@ final class GUIFileMetricsManager {
 		return new ArrayList<GUIClone>(clones);
 	}
 
-	double getROC(final GUIFile file) {
-		return this.getROC(file, 0);
+	int getCLOC(final GUIFile file) {
+		return this.getCLOC(file, 0);
 	}
 
-	double getROC(final GUIFile file, final int threshold) {
+	int getCLOC(final GUIFile file, final int threshold) {
 
 		int[] lines = this.lines.get(file);
 		if (null == lines) {
@@ -80,14 +80,21 @@ final class GUIFileMetricsManager {
 			this.lines.put(file, lines);
 		}
 
-		int clonedTokenNumber = 0;
+		int number = 0;
 		for (int i = 0; i < lines.length; i++) {
 			if (threshold <= lines[i]) {
-				clonedTokenNumber++;
+				number++;
 			}
 		}
+		return number;
+	}
 
-		return 100.0d * clonedTokenNumber / lines.length;
+	double getROC(final GUIFile file) {
+		return this.getROC(file, 0);
+	}
+
+	double getROC(final GUIFile file, final int threshold) {
+		return 100d * this.getCLOC(file, threshold) / file.loc;
 	}
 
 	double getROC(final GUIFile file, final GUIFile target) {

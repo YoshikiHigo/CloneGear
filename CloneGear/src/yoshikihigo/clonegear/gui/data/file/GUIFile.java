@@ -110,6 +110,14 @@ public class GUIFile implements Comparable<GUIFile>, Entity, HavingClones {
 		return GUIFileMetricsManager.SINGLETON.getNOC(this, target, threshold);
 	}
 
+	public int getCLOC() {
+		return GUIFileMetricsManager.SINGLETON.getCLOC(this);
+	}
+
+	public int getCLOC(final int threshold) {
+		return GUIFileMetricsManager.SINGLETON.getCLOC(this, threshold);
+	}
+	
 	public double getROC() {
 		return GUIFileMetricsManager.SINGLETON.getROC(this);
 	}
