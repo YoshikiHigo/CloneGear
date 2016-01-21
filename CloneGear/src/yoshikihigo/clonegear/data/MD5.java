@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import yoshikihigo.clonegear.CGConfig;
 import yoshikihigo.clonegear.lexer.token.IDENTIFIER;
 import yoshikihigo.clonegear.lexer.token.LEFTPAREN;
 import yoshikihigo.clonegear.lexer.token.LITERAL;
@@ -21,6 +22,7 @@ public class MD5 {
 		final StringBuilder builder = new StringBuilder();
 		final Map<String, String> variables = new HashMap<>();
 		final Map<String, String> methods = new HashMap<>();
+		final String parameterize = CGConfig.getInstance().getPARAMETERIZE();
 
 		for (int index = 0; index < nonTrivialTokens.size(); index++) {
 
@@ -29,12 +31,19 @@ public class MD5 {
 			// in cases of literals
 			if (token instanceof LITERAL) {
 				final String value = token.value;
-				String normalizedValue = variables.get(value);
-				if (null == normalizedValue) {
-					normalizedValue = "$" + variables.size();
-					variables.put(value, normalizedValue);
+
+				if (parameterize.equals("no")) {
+					builder.append(value);
+				} else if (parameterize.equals("matching")) {
+					String normalizedValue = variables.get(value);
+					if (null == normalizedValue) {
+						normalizedValue = "$L" + variables.size();
+						variables.put(value, normalizedValue);
+					}
+					builder.append(normalizedValue);
+				} else if (parameterize.equals("simple")) {
+					builder.append("$L");
 				}
-				builder.append(normalizedValue);
 			}
 
 			// in case of identifiers
@@ -43,22 +52,34 @@ public class MD5 {
 				if (nonTrivialTokens.size() == (index + 1)
 						|| !(nonTrivialTokens.get(index + 1) instanceof LEFTPAREN)) {
 					final String name = token.value;
-					String normalizedName = variables.get(name);
-					if (null == normalizedName) {
-						normalizedName = "$V" + variables.size();
-						variables.put(name, normalizedName);
+					if (parameterize.equals("no")) {
+						builder.append(name);
+					} else if (parameterize.equals("matching")) {
+						String normalizedName = variables.get(name);
+						if (null == normalizedName) {
+							normalizedName = "$V" + variables.size();
+							variables.put(name, normalizedName);
+						}
+						builder.append(normalizedName);
+					} else if (parameterize.equals("simple")) {
+						builder.append("$V");
 					}
-					builder.append(normalizedName);
 				}
 
 				else {
 					final String name = token.value;
-					String normalizedName = methods.get(name);
-					if (null == normalizedName) {
-						normalizedName = "$F" + methods.size();
-						methods.put(name, normalizedName);
+					if (parameterize.equals("no")) {
+						builder.append(name);
+					} else if (parameterize.equals("matching")) {
+						String normalizedName = methods.get(name);
+						if (null == normalizedName) {
+							normalizedName = "$F" + methods.size();
+							methods.put(name, normalizedName);
+						}
+						builder.append(normalizedName);
+					} else if (parameterize.equals("simple")) {
+						builder.append("$F");
 					}
-					builder.append(normalizedName);
 				}
 			}
 
@@ -83,6 +104,7 @@ public class MD5 {
 				.removePYTrivialTokens(tokens);
 		final StringBuilder builder = new StringBuilder();
 		final Map<String, String> identifiers = new HashMap<>();
+		final String parameterize = CGConfig.getInstance().getPARAMETERIZE();
 
 		for (int index = 0; index < nonTrivialTokens.size(); index++) {
 
@@ -93,12 +115,18 @@ public class MD5 {
 				if (nonTrivialTokens.size() == (index + 1)
 						|| !(nonTrivialTokens.get(index + 1) instanceof LEFTPAREN)) {
 					final String name = token.value;
-					String normalizedName = identifiers.get(name);
-					if (null == normalizedName) {
-						normalizedName = "$" + identifiers.size();
-						identifiers.put(name, normalizedName);
+					if (parameterize.equals("no")) {
+						builder.append(name);
+					} else if (parameterize.equals("matching")) {
+						String normalizedName = identifiers.get(name);
+						if (null == normalizedName) {
+							normalizedName = "$" + identifiers.size();
+							identifiers.put(name, normalizedName);
+						}
+						builder.append(normalizedName);
+					} else if (parameterize.equals("simple")) {
+						builder.append("$");
 					}
-					builder.append(normalizedName);
 				}
 
 				// not normalize if identifier is method name
@@ -125,6 +153,7 @@ public class MD5 {
 
 		final StringBuilder builder = new StringBuilder();
 		final Map<String, String> identifiers = new HashMap<>();
+		final String parameterize = CGConfig.getInstance().getPARAMETERIZE();
 
 		for (int index = 0; index < tokens.size(); index++) {
 
@@ -135,12 +164,18 @@ public class MD5 {
 				if (tokens.size() == (index + 1)
 						|| !(tokens.get(index + 1) instanceof LEFTPAREN)) {
 					final String name = token.value;
-					String normalizedName = identifiers.get(name);
-					if (null == normalizedName) {
-						normalizedName = "$" + identifiers.size();
-						identifiers.put(name, normalizedName);
+					if (parameterize.equals("no")) {
+						builder.append(name);
+					} else if (parameterize.equals("matching")) {
+						String normalizedName = identifiers.get(name);
+						if (null == normalizedName) {
+							normalizedName = "$" + identifiers.size();
+							identifiers.put(name, normalizedName);
+						}
+						builder.append(normalizedName);
+					} else if (parameterize.equalsIgnoreCase("simple")) {
+						builder.append("$");
 					}
-					builder.append(normalizedName);
 				}
 
 				// not normalize if identifier is method name

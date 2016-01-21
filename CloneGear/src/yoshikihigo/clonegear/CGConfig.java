@@ -56,6 +56,15 @@ public class CGConfig {
 		}
 
 		{
+			final Option normalization = new Option("p", "parameterize", true,
+					"parameterization");
+			normalization.setArgName("no/matching/simple");
+			normalization.setArgs(1);
+			normalization.setRequired(false);
+			options.addOption(normalization);
+		}
+
+		{
 			final Option threshold = new Option("thrld", "threshold", true,
 					"threshold of detected clone size");
 			threshold.setArgName("threshold");
@@ -229,6 +238,20 @@ public class CGConfig {
 		}
 
 		return languages;
+	}
+
+	public String getPARAMETERIZE() {
+		String value = "matching";
+		if (this.commandLine.hasOption("p")) {
+			value = this.commandLine.getOptionValue("p");
+		}
+		if (!value.equals("no") && !value.equals("matching")
+				&& !value.equals("simple")) {
+			System.err
+					.println("either of no/matching/simple is value for option \"-p\"");
+			System.exit(0);
+		}
+		return value;
 	}
 
 	public boolean hasSOURCE() {

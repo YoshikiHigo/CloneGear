@@ -16,12 +16,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
@@ -39,6 +41,9 @@ public class Wizard extends JFrame {
 	private boolean finished;
 	final private JTextField tokenField;
 	final private JTextField gapField;
+	final private JRadioButton noParameterizeButton;
+	final private JRadioButton matchingParameterizeButton;
+	final private JRadioButton simpleParameterizeButton;
 	final private JTextField outputField;
 	final private FileTable fileTable;
 	final private JCheckBox crossGroupCheckBox;
@@ -83,6 +88,22 @@ public class Wizard extends JFrame {
 		gapPanel.add(gapLabel);
 		gapPanel.setBorder(new LineBorder(Color.black));
 
+		final JLabel parameterizeLabel = new JLabel("parameterization: ");
+		this.noParameterizeButton = new JRadioButton("no");
+		this.matchingParameterizeButton = new JRadioButton("matching", true);
+		this.simpleParameterizeButton = new JRadioButton("simple");
+		final ButtonGroup parameterizeButtonGroup = new ButtonGroup();
+		parameterizeButtonGroup.add(this.noParameterizeButton);
+		parameterizeButtonGroup.add(this.matchingParameterizeButton);
+		parameterizeButtonGroup.add(this.simpleParameterizeButton);
+		final JPanel parameterizePanel = new JPanel(new FlowLayout(
+				FlowLayout.LEFT));
+		parameterizePanel.add(parameterizeLabel);
+		parameterizePanel.add(this.noParameterizeButton);
+		parameterizePanel.add(this.matchingParameterizeButton);
+		parameterizePanel.add(this.simpleParameterizeButton);
+		parameterizePanel.setBorder(new LineBorder(Color.black));
+
 		final JLabel outputLabel = new JLabel("detection results: ");
 		this.outputField = new JTextField(
 				CGConfig.getInstance().hasRESULT() ? CGConfig.getInstance()
@@ -94,9 +115,10 @@ public class Wizard extends JFrame {
 		outputPanel.add(referButton, BorderLayout.EAST);
 		outputPanel.setBorder(new LineBorder(Color.black));
 
-		final JPanel topPanel = new JPanel(new GridLayout(3, 1, 2, 2));
+		final JPanel topPanel = new JPanel(new GridLayout(4, 1, 2, 2));
 		topPanel.add(tokenPanel);
 		topPanel.add(gapPanel);
+		topPanel.add(parameterizePanel);
 		topPanel.add(outputPanel);
 
 		final JLabel targetFileLabel = new JLabel("target files: ");
@@ -312,6 +334,15 @@ public class Wizard extends JFrame {
 
 		configs.add("-gap");
 		configs.add(this.gapField.getText());
+
+		configs.add("-p");
+		if (this.noParameterizeButton.isSelected()) {
+			configs.add("no");
+		} else if (this.matchingParameterizeButton.isSelected()) {
+			configs.add("matching");
+		} else if (this.simpleParameterizeButton.isSelected()) {
+			configs.add("simple");
+		}
 
 		configs.add("-list");
 		configs.add(makeListFile(this.fileTable.getFilesWithSeparators()));
