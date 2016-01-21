@@ -138,8 +138,8 @@ public class RelatedFileListView extends JTable implements ViewScale, Observer,
 
 					final GUIFile selectedFile = (GUIFile) selectedFiles.get()
 							.get(0);
-					final List<GUIFile> relatedFiles = GUIFileManager.SINGLETON
-							.getRelatedFiles(selectedFile);
+					final List<GUIFile> relatedFiles = GUIFileManager
+							.instance().getRelatedFiles(selectedFile);
 					this.setTable(selectedFile, relatedFiles);
 					this.repaint();
 				}
@@ -255,7 +255,7 @@ public class RelatedFileListView extends JTable implements ViewScale, Observer,
 			final GUIFile relatedFile = model.getFiles().get(modelIndex);
 			final int groupID = relatedFile.groupID;
 			final int fileID = relatedFile.fileID;
-			final GUIFile file = GUIFileManager.SINGLETON.getFile(groupID,
+			final GUIFile file = GUIFileManager.instance().getFile(groupID,
 					fileID);
 			selectedFiles.add(file);
 		}

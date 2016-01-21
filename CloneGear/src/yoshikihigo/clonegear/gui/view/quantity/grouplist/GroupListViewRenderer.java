@@ -54,14 +54,14 @@ class GroupListViewRenderer extends JLabel implements TableCellRenderer,
 			this.setHorizontalAlignment(JLabel.RIGHT);
 			if (display) {
 				final StringBuilder sb = new StringBuilder();
-				sb.append(GUIFileManager.SINGLETON.getGroupNOC(modelRow,
+				sb.append(GUIFileManager.instance().getGroupNOC(modelRow,
 						threshold));
 				sb.append("(");
-				sb.append(GUIFileManager.SINGLETON.getGroupNOC(modelRow));
+				sb.append(GUIFileManager.instance().getGroupNOC(modelRow));
 				sb.append(")");
 				this.setText(sb.toString());
 			} else {
-				this.setText(Integer.toString(GUIFileManager.SINGLETON
+				this.setText(Integer.toString(GUIFileManager.instance()
 						.getGroupNOC(modelRow, threshold)));
 			}
 			break;
@@ -69,15 +69,15 @@ class GroupListViewRenderer extends JLabel implements TableCellRenderer,
 			this.setHorizontalAlignment(JLabel.RIGHT);
 			if (display) {
 				final StringBuilder sb = new StringBuilder();
-				sb.append(ROC_FORMAT.format(GUIFileManager.SINGLETON
+				sb.append(ROC_FORMAT.format(GUIFileManager.instance()
 						.getGroupROC(modelRow, threshold)));
 				sb.append("(");
-				sb.append(ROC_FORMAT.format(GUIFileManager.SINGLETON
+				sb.append(ROC_FORMAT.format(GUIFileManager.instance()
 						.getGroupROC(modelRow)));
 				sb.append(")");
 				this.setText(sb.toString());
 			} else {
-				this.setText(ROC_FORMAT.format(GUIFileManager.SINGLETON
+				this.setText(ROC_FORMAT.format(GUIFileManager.instance()
 						.getGroupROC(modelRow, threshold)));
 			}
 			break;

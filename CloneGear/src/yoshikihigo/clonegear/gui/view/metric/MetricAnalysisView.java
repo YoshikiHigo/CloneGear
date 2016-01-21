@@ -149,7 +149,7 @@ public class MetricAnalysisView extends JInternalFrame implements ViewScale,
 		this.rightSplitPane.setDividerLocation(minWidth);
 
 		SelectedEntities.<GUICloneSet> getInstance(FILTERED_CLONESET).setAll(
-				GUICloneManager.SINGLETON.getCloneSets(), this);
+				GUICloneManager.instance().getCloneSets(), this);
 
 		this.setVisible(false);
 	}
@@ -164,7 +164,7 @@ public class MetricAnalysisView extends JInternalFrame implements ViewScale,
 
 	public void reset() {
 		SelectedEntities.<GUICloneSet> getInstance(FILTERED_CLONESET).setAll(
-				GUICloneManager.SINGLETON.getCloneSets(), this);
+				GUICloneManager.instance().getCloneSets(), this);
 		SelectedEntities.<GUICloneSet> getInstance(SELECTED_CLONESET).clear(
 				this);
 		SelectedEntities.<GUIClone> getInstance(CLONE).clear(this);

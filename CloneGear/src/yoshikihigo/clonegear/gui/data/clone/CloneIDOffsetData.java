@@ -5,25 +5,27 @@ import java.util.Map;
 
 public class CloneIDOffsetData {
 
-	public static final CloneIDOffsetData SINGLETON = new CloneIDOffsetData();
+	private static CloneIDOffsetData SINGLETON = null;
 
-	public int get(final GUICloneSet cloneSet) {
-		assert this.initialized : "CloneIDOffsetData was not initialized.";
-		return this.offsets.get(cloneSet);
+	public static CloneIDOffsetData instance() {
+		assert null != SINGLETON : "SINGLETON is not initialized.";
+		return SINGLETON;
 	}
 
-	public void initialize(final GUICloneManager manager) {
+	public static void initialize(final GUICloneManager manager) {
+		SINGLETON = new CloneIDOffsetData();
 		manager.getCloneSets().stream().forEach(cloneset -> {
-			this.offsets.put(cloneset, cloneset.id);
+			SINGLETON.offsets.put(cloneset, cloneset.id);
 		});
-		this.initialized = true;
+	}
+
+	public int get(final GUICloneSet cloneSet) {
+		return this.offsets.get(cloneSet);
 	}
 
 	private CloneIDOffsetData() {
 		this.offsets = new HashMap<>();
-		this.initialized = false;
 	}
 
 	private final Map<GUICloneSet, Integer> offsets;
-	private boolean initialized;
 }

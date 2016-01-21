@@ -114,7 +114,7 @@ public class SourceCodeWindow extends javax.swing.JTextArea implements
 				System.err.println("Error Happened in SourceCodeWindow.");
 			}
 
-			final GUICloneSet cloneSet = GUICloneManager.SINGLETON
+			final GUICloneSet cloneSet = GUICloneManager.instance()
 					.getCloneSet(clone);
 			switch (cloneSet.getRAD()) {
 			case 0:

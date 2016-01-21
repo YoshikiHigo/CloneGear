@@ -46,15 +46,15 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				this.historyList);
 
 		this.startIndex = 0;
-		this.endIndex = GUIFileManager.SINGLETON.getFileCount() - 1;
+		this.endIndex = GUIFileManager.instance().getFileCount() - 1;
 		this.restartIndex = -1;
 		this.interruptIndex = -1;
 
 		this.zoomMode = false;
 		this.splitDrawing = false;
 
-		this.zoomedArea = new ZoomedArea(
-				GUIFileManager.SINGLETON.getFileCount() - 1);
+		this.zoomedArea = new ZoomedArea(GUIFileManager.instance()
+				.getFileCount() - 1);
 		this.draggedArea = new DraggedArea();
 
 		this.setDoubleBuffered(false);
@@ -157,7 +157,7 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 	void reset() {
 
 		this.startIndex = 0;
-		this.endIndex = GUIFileManager.SINGLETON.getFileCount() - 1;
+		this.endIndex = GUIFileManager.instance().getFileCount() - 1;
 		this.restartIndex = -1;
 		this.interruptIndex = -1;
 		this.splitDrawing = false;
@@ -254,37 +254,37 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 		final double scaleRatio = this.getScaleRatio();
 		final int panelLength = this.getLowerLength();
-		final int groupNumber = GUIFileManager.SINGLETON.getGroupCount();
+		final int groupNumber = GUIFileManager.instance().getGroupCount();
 
-		final GUIFile startFile = IDIndexMap.SINGLETON.getFile(this.startIndex);
-		final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
+		final GUIFile startFile = IDIndexMap.instance().getFile(this.startIndex);
+		final int startFileOffset = FileOffsetData.instance().get(startFile);
 
 		if (this.splitDrawing) {
 
-			final GUIFile interruptFile = IDIndexMap.SINGLETON
+			final GUIFile interruptFile = IDIndexMap.instance()
 					.getFile(this.interruptIndex);
-			final int interruptFileOffset = FileOffsetData.SINGLETON
-					.get(interruptFile);
+			final int interruptFileOffset = FileOffsetData.instance().get(
+					interruptFile);
 			final double splitPosition = (interruptFileOffset
 					+ interruptFile.loc - startFileOffset)
 					/ scaleRatio;
 
-			final GUIFile restartFile = IDIndexMap.SINGLETON
+			final GUIFile restartFile = IDIndexMap.instance()
 					.getFile(this.restartIndex);
-			final int restartFileOffset = FileOffsetData.SINGLETON
-					.get(restartFile);
+			final int restartFileOffset = FileOffsetData.instance().get(
+					restartFile);
 
 			for (int groupIndex = 0; groupIndex < groupNumber; groupIndex++) {
 
-				final GUIFile lastFile = GUIFileManager.SINGLETON
-						.getLastFile(groupIndex);
-				final int fileIndex = IDIndexMap.SINGLETON.getIndex(
+				final GUIFile lastFile = GUIFileManager.instance().getLastFile(
+						groupIndex);
+				final int fileIndex = IDIndexMap.instance().getIndex(
 						lastFile.groupID, lastFile.fileID);
 				if ((this.startIndex <= fileIndex)
 						&& (fileIndex <= this.interruptIndex)) {
 
-					final int lastFileOffset = FileOffsetData.SINGLETON
-							.get(lastFile);
+					final int lastFileOffset = FileOffsetData.instance().get(
+							lastFile);
 					final double lastFileEndPosition = (lastFileOffset
 							+ lastFile.loc - startFileOffset)
 							/ scaleRatio;
@@ -298,8 +298,8 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				} else if ((this.restartIndex <= fileIndex)
 						&& (fileIndex <= this.endIndex)) {
 
-					final int lastFileOffset = FileOffsetData.SINGLETON
-							.get(lastFile);
+					final int lastFileOffset = FileOffsetData.instance().get(
+							lastFile);
 					final double lastFileEndPosition = (lastFileOffset
 							+ lastFile.loc - restartFileOffset)
 							/ scaleRatio + splitPosition;
@@ -316,15 +316,15 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 			for (int groupIndex = 0; groupIndex < groupNumber; groupIndex++) {
 
-				final GUIFile lastFile = GUIFileManager.SINGLETON
-						.getLastFile(groupIndex);
-				final int fileIndex = IDIndexMap.SINGLETON.getIndex(
+				final GUIFile lastFile = GUIFileManager.instance().getLastFile(
+						groupIndex);
+				final int fileIndex = IDIndexMap.instance().getIndex(
 						lastFile.groupID, lastFile.fileID);
 				if ((this.startIndex <= fileIndex)
 						&& (fileIndex < this.endIndex)) {
 
-					final int lastFileOffset = FileOffsetData.SINGLETON
-							.get(lastFile);
+					final int lastFileOffset = FileOffsetData.instance().get(
+							lastFile);
 					final double lastFileEndPosition = (lastFileOffset
 							+ lastFile.loc - startFileOffset)
 							/ scaleRatio;
@@ -343,34 +343,34 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 		final double scaleRatio = this.getScaleRatio();
 		final int panelLength = this.getLowerLength();
-		final int fileNumber = GUIFileManager.SINGLETON.getFileCount();
+		final int fileNumber = GUIFileManager.instance().getFileCount();
 
-		final GUIFile startFile = IDIndexMap.SINGLETON.getFile(this.startIndex);
-		final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
+		final GUIFile startFile = IDIndexMap.instance().getFile(this.startIndex);
+		final int startFileOffset = FileOffsetData.instance().get(startFile);
 
 		if (this.splitDrawing) {
 
-			final GUIFile interruptFile = IDIndexMap.SINGLETON
+			final GUIFile interruptFile = IDIndexMap.instance()
 					.getFile(this.interruptIndex);
-			final int interruptFileOffset = FileOffsetData.SINGLETON
-					.get(interruptFile);
+			final int interruptFileOffset = FileOffsetData.instance().get(
+					interruptFile);
 			final double splitPosition = (interruptFileOffset
 					+ interruptFile.loc - startFileOffset)
 					/ scaleRatio;
 
-			final GUIFile restartFile = IDIndexMap.SINGLETON
+			final GUIFile restartFile = IDIndexMap.instance()
 					.getFile(this.restartIndex);
-			final int restartFileOffset = FileOffsetData.SINGLETON
-					.get(restartFile);
+			final int restartFileOffset = FileOffsetData.instance().get(
+					restartFile);
 
 			for (int index = 0; index < fileNumber; index++) {
 
 				if ((this.startIndex <= index)
 						&& (index <= this.interruptIndex)) {
 
-					final GUIFile currentFile = IDIndexMap.SINGLETON
+					final GUIFile currentFile = IDIndexMap.instance()
 							.getFile(index);
-					final int currentFileOffset = FileOffsetData.SINGLETON
+					final int currentFileOffset = FileOffsetData.instance()
 							.get(currentFile);
 					final double currentFileEndPosition = (currentFileOffset
 							+ currentFile.loc - startFileOffset)
@@ -385,9 +385,9 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				} else if ((this.restartIndex <= index)
 						&& (index <= this.endIndex)) {
 
-					final GUIFile currentFile = IDIndexMap.SINGLETON
+					final GUIFile currentFile = IDIndexMap.instance()
 							.getFile(index);
-					final int currentFileOffset = FileOffsetData.SINGLETON
+					final int currentFileOffset = FileOffsetData.instance()
 							.get(currentFile);
 					final double currentFileEndPosition = (currentFileOffset
 							+ currentFile.loc - restartFileOffset)
@@ -407,9 +407,9 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 				if ((this.startIndex <= index) && (index <= this.endIndex)) {
 
-					final GUIFile currentFile = IDIndexMap.SINGLETON
+					final GUIFile currentFile = IDIndexMap.instance()
 							.getFile(index);
-					final int currentFileOffset = FileOffsetData.SINGLETON
+					final int currentFileOffset = FileOffsetData.instance()
 							.get(currentFile);
 					final double currentFileEndPosition = (currentFileOffset
 							+ currentFile.loc - startFileOffset)
@@ -430,13 +430,14 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 		if (this.splitDrawing) {
 			final double scaleRatio = this.getScaleRatio();
 			final int panelLength = this.getLowerLength();
-			final GUIFile startFile = IDIndexMap.SINGLETON
+			final GUIFile startFile = IDIndexMap.instance()
 					.getFile(this.startIndex);
-			final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
-			final GUIFile interruptFile = IDIndexMap.SINGLETON
+			final int startFileOffset = FileOffsetData.instance()
+					.get(startFile);
+			final GUIFile interruptFile = IDIndexMap.instance()
 					.getFile(this.interruptIndex);
-			final int interruptFileOffset = FileOffsetData.SINGLETON
-					.get(interruptFile);
+			final int interruptFileOffset = FileOffsetData.instance().get(
+					interruptFile);
 			final double splitPosition = (interruptFileOffset
 					+ interruptFile.loc - startFileOffset)
 					/ scaleRatio;
@@ -487,43 +488,45 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 		final int rnrThreshold = RNRValue.getInstance(RNR).get();
 		final double scaleRatio = this.getScaleRatio();
 
-		final GUIFile startFile = IDIndexMap.SINGLETON.getFile(this.startIndex);
-		final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
+		final GUIFile startFile = IDIndexMap.instance().getFile(this.startIndex);
+		final int startFileOffset = FileOffsetData.instance().get(startFile);
 
-		final Set<FilePair> fileKeys = GUICloneManager.SINGLETON
+		final Set<FilePair> fileKeys = GUICloneManager.instance()
 				.getClonePairFileKeys();
 
 		if (this.splitDrawing) {
 
-			final GUIFile interruptFile = IDIndexMap.SINGLETON
+			final GUIFile interruptFile = IDIndexMap.instance()
 					.getFile(this.interruptIndex);
-			final int interruptFileOffset = FileOffsetData.SINGLETON
-					.get(interruptFile);
+			final int interruptFileOffset = FileOffsetData.instance().get(
+					interruptFile);
 			final double splitPosition = (interruptFileOffset
 					+ interruptFile.loc - startFileOffset)
 					/ scaleRatio;
 
-			final GUIFile restartFile = IDIndexMap.SINGLETON
+			final GUIFile restartFile = IDIndexMap.instance()
 					.getFile(this.restartIndex);
-			final int restartFileOffset = FileOffsetData.SINGLETON
-					.get(restartFile);
+			final int restartFileOffset = FileOffsetData.instance().get(
+					restartFile);
 
 			for (FilePair fileKey : fileKeys) {
 				final GUIFile file1 = fileKey.left;
 				final GUIFile file2 = fileKey.right;
-				final int file1Index = IDIndexMap.SINGLETON.getIndex(
+				final int file1Index = IDIndexMap.instance().getIndex(
 						file1.groupID, file1.fileID);
-				final int file2Index = IDIndexMap.SINGLETON.getIndex(
+				final int file2Index = IDIndexMap.instance().getIndex(
 						file2.groupID, file2.fileID);
 
 				if (((this.startIndex <= file1Index) && (file1Index <= this.interruptIndex))
 						&& ((this.startIndex <= file2Index) && (file2Index <= this.interruptIndex))) {
 
-					final int file1Offset = FileOffsetData.SINGLETON.get(file1);
-					final int file2Offset = FileOffsetData.SINGLETON.get(file2);
+					final int file1Offset = FileOffsetData.instance()
+							.get(file1);
+					final int file2Offset = FileOffsetData.instance()
+							.get(file2);
 
-					final List<GUIClonePair> clonePairs = GUICloneManager.SINGLETON
-							.getClonePairs(fileKey);
+					final List<GUIClonePair> clonePairs = GUICloneManager
+							.instance().getClonePairs(fileKey);
 
 					for (final GUIClonePair clonePair : clonePairs) {
 						final GUIClone clone1 = clonePair.left;
@@ -555,11 +558,13 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				} else if (((this.startIndex <= file1Index) && (file1Index <= this.interruptIndex))
 						&& ((this.restartIndex <= file2Index) && (file2Index <= this.endIndex))) {
 
-					final int file1Offset = FileOffsetData.SINGLETON.get(file1);
-					final int file2Offset = FileOffsetData.SINGLETON.get(file2);
+					final int file1Offset = FileOffsetData.instance()
+							.get(file1);
+					final int file2Offset = FileOffsetData.instance()
+							.get(file2);
 
-					final List<GUIClonePair> clonePairs = GUICloneManager.SINGLETON
-							.getClonePairs(fileKey);
+					final List<GUIClonePair> clonePairs = GUICloneManager
+							.instance().getClonePairs(fileKey);
 					for (final GUIClonePair clonePair : clonePairs) {
 						final GUIClone clone1 = clonePair.left;
 						final GUIClone clone2 = clonePair.right;
@@ -588,11 +593,13 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				} else if (((this.restartIndex <= file1Index) && (file1Index <= this.endIndex))
 						&& ((this.restartIndex <= file2Index) && (file2Index <= this.endIndex))) {
 
-					final int file1Offset = FileOffsetData.SINGLETON.get(file1);
-					final int file2Offset = FileOffsetData.SINGLETON.get(file2);
+					final int file1Offset = FileOffsetData.instance()
+							.get(file1);
+					final int file2Offset = FileOffsetData.instance()
+							.get(file2);
 
-					final List<GUIClonePair> clonePairs = GUICloneManager.SINGLETON
-							.getClonePairs(fileKey);
+					final List<GUIClonePair> clonePairs = GUICloneManager
+							.instance().getClonePairs(fileKey);
 
 					for (final GUIClonePair clonePair : clonePairs) {
 						final GUIClone clone1 = clonePair.left;
@@ -627,19 +634,21 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 			for (FilePair fileKey : fileKeys) {
 				final GUIFile file1 = fileKey.left;
 				final GUIFile file2 = fileKey.right;
-				final int file1Index = IDIndexMap.SINGLETON.getIndex(
+				final int file1Index = IDIndexMap.instance().getIndex(
 						file1.groupID, file1.fileID);
-				final int file2Index = IDIndexMap.SINGLETON.getIndex(
+				final int file2Index = IDIndexMap.instance().getIndex(
 						file2.groupID, file2.fileID);
 
 				if (((this.startIndex <= file1Index) && (file1Index <= this.endIndex))
 						&& ((this.startIndex <= file2Index) && (file2Index <= this.endIndex))) {
 
-					final int file1Offset = FileOffsetData.SINGLETON.get(file1);
-					final int file2Offset = FileOffsetData.SINGLETON.get(file2);
+					final int file1Offset = FileOffsetData.instance()
+							.get(file1);
+					final int file2Offset = FileOffsetData.instance()
+							.get(file2);
 
-					final List<GUIClonePair> clonePairs = GUICloneManager.SINGLETON
-							.getClonePairs(fileKey);
+					final List<GUIClonePair> clonePairs = GUICloneManager
+							.instance().getClonePairs(fileKey);
 
 					for (final GUIClonePair clonePair : clonePairs) {
 
@@ -676,43 +685,45 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 		final double scaleRatio = this.getScaleRatio();
 
-		final GUIFile startFile = IDIndexMap.SINGLETON.getFile(this.startIndex);
-		final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
+		final GUIFile startFile = IDIndexMap.instance().getFile(this.startIndex);
+		final int startFileOffset = FileOffsetData.instance().get(startFile);
 
-		final Set<FilePair> fileKeys = GUICloneManager.SINGLETON
+		final Set<FilePair> fileKeys = GUICloneManager.instance()
 				.getClonePairFileKeys();
 
 		if (this.splitDrawing) {
 
-			final GUIFile interruptFile = IDIndexMap.SINGLETON
+			final GUIFile interruptFile = IDIndexMap.instance()
 					.getFile(this.interruptIndex);
-			final int interruptFileOffset = FileOffsetData.SINGLETON
-					.get(interruptFile);
+			final int interruptFileOffset = FileOffsetData.instance().get(
+					interruptFile);
 			final double splitPosition = (interruptFileOffset
 					+ interruptFile.loc - startFileOffset)
 					/ scaleRatio;
 
-			final GUIFile restartFile = IDIndexMap.SINGLETON
+			final GUIFile restartFile = IDIndexMap.instance()
 					.getFile(this.restartIndex);
-			final int restartFileOffset = FileOffsetData.SINGLETON
-					.get(restartFile);
+			final int restartFileOffset = FileOffsetData.instance().get(
+					restartFile);
 
 			for (final FilePair fileKey : fileKeys) {
 				final GUIFile file1 = fileKey.left;
 				final GUIFile file2 = fileKey.right;
-				final int file1Index = IDIndexMap.SINGLETON.getIndex(
+				final int file1Index = IDIndexMap.instance().getIndex(
 						file1.groupID, file1.fileID);
-				final int file2Index = IDIndexMap.SINGLETON.getIndex(
+				final int file2Index = IDIndexMap.instance().getIndex(
 						file2.groupID, file2.fileID);
 
 				if (((this.startIndex <= file1Index) && (file1Index <= this.interruptIndex))
 						&& ((this.startIndex <= file2Index) && (file2Index <= this.interruptIndex))) {
 
-					final double file1StartX = (FileOffsetData.SINGLETON
-							.get(file1) - startFileOffset) / scaleRatio;
+					final double file1StartX = (FileOffsetData.instance().get(
+							file1) - startFileOffset)
+							/ scaleRatio;
 					final double file1Width = file1.loc / scaleRatio;
-					final double file2StartY = (FileOffsetData.SINGLETON
-							.get(file2) - startFileOffset) / scaleRatio;
+					final double file2StartY = (FileOffsetData.instance().get(
+							file2) - startFileOffset)
+							/ scaleRatio;
 					final double file2Height = file2.loc / scaleRatio;
 
 					g.setColor(SCATTERPLOT_FILTERIN_CLONEPAIR_COLOR);
@@ -724,13 +735,13 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				} else if (((this.startIndex <= file1Index) && (file1Index <= this.interruptIndex))
 						&& ((this.restartIndex <= file2Index) && (file2Index <= this.endIndex))) {
 
-					final double file1StartX = (FileOffsetData.SINGLETON
-							.get(file1) - startFileOffset) / scaleRatio;
+					final double file1StartX = (FileOffsetData.instance().get(
+							file1) - startFileOffset)
+							/ scaleRatio;
 					final double file1Width = file1.loc / scaleRatio;
-					final double file2StartY = (FileOffsetData.SINGLETON
-							.get(file2) - restartFileOffset)
-							/ scaleRatio
-							+ splitPosition;
+					final double file2StartY = (FileOffsetData.instance().get(
+							file2) - restartFileOffset)
+							/ scaleRatio + splitPosition;
 					final double file2Height = file2.loc / scaleRatio;
 
 					g.setColor(SCATTERPLOT_FILTERIN_CLONEPAIR_COLOR);
@@ -742,15 +753,13 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				} else if (((this.restartIndex <= file1Index) && (file1Index <= this.endIndex))
 						&& ((this.restartIndex <= file2Index) && (file2Index <= this.endIndex))) {
 
-					final double file1StartX = (FileOffsetData.SINGLETON
-							.get(file1) - restartFileOffset)
-							/ scaleRatio
-							+ splitPosition;
+					final double file1StartX = (FileOffsetData.instance().get(
+							file1) - restartFileOffset)
+							/ scaleRatio + splitPosition;
 					final double file1Width = file1.loc / scaleRatio;
-					final double file2StartY = (FileOffsetData.SINGLETON
-							.get(file2) - restartFileOffset)
-							/ scaleRatio
-							+ splitPosition;
+					final double file2StartY = (FileOffsetData.instance().get(
+							file2) - restartFileOffset)
+							/ scaleRatio + splitPosition;
 					final double file2Height = file2.loc / scaleRatio;
 
 					g.setColor(SCATTERPLOT_FILTERIN_CLONEPAIR_COLOR);
@@ -766,19 +775,21 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 			for (final FilePair fileKey : fileKeys) {
 				final GUIFile file1 = fileKey.left;
 				final GUIFile file2 = fileKey.right;
-				final int file1Index = IDIndexMap.SINGLETON.getIndex(
+				final int file1Index = IDIndexMap.instance().getIndex(
 						file1.groupID, file1.fileID);
-				final int file2Index = IDIndexMap.SINGLETON.getIndex(
+				final int file2Index = IDIndexMap.instance().getIndex(
 						file2.groupID, file2.fileID);
 
 				if (((this.startIndex <= file1Index) && (file1Index <= this.endIndex))
 						&& ((this.startIndex <= file2Index) && (file2Index <= this.endIndex))) {
 
-					final double file1StartX = (FileOffsetData.SINGLETON
-							.get(file1) - startFileOffset) / scaleRatio;
+					final double file1StartX = (FileOffsetData.instance().get(
+							file1) - startFileOffset)
+							/ scaleRatio;
 					final double file1Width = file1.loc / scaleRatio;
-					final double file2StartY = (FileOffsetData.SINGLETON
-							.get(file2) - startFileOffset) / scaleRatio;
+					final double file2StartY = (FileOffsetData.instance().get(
+							file2) - startFileOffset)
+							/ scaleRatio;
 					final double file2Height = file2.loc / scaleRatio;
 
 					g.setColor(SCATTERPLOT_FILTERIN_CLONEPAIR_COLOR);
@@ -798,47 +809,51 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 					.<GUIClonePair> getInstance(CLONEPAIR).get().get(0);
 
 			final double scaleRatio = this.getScaleRatio();
-			final GUIFile startFile = IDIndexMap.SINGLETON
+			final GUIFile startFile = IDIndexMap.instance()
 					.getFile(this.startIndex);
-			final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
+			final int startFileOffset = FileOffsetData.instance()
+					.get(startFile);
 
 			final GUIClone horizontalClone = clonePair.left;
 			final GUIClone verticalClone = clonePair.right;
 			final GUIFile horizontalFile = horizontalClone.file;
 			final GUIFile verticalFile = verticalClone.file;
-			final int horizontalFileIndex = IDIndexMap.SINGLETON.getIndex(
+			final int horizontalFileIndex = IDIndexMap.instance().getIndex(
 					horizontalFile.groupID, horizontalFile.fileID);
-			final int verticalFileIndex = IDIndexMap.SINGLETON.getIndex(
+			final int verticalFileIndex = IDIndexMap.instance().getIndex(
 					verticalFile.groupID, verticalFile.fileID);
 
 			if (this.splitDrawing) {
 
-				final GUIFile interruptFile = IDIndexMap.SINGLETON
+				final GUIFile interruptFile = IDIndexMap.instance()
 						.getFile(this.interruptIndex);
-				final int interruptFileOffset = FileOffsetData.SINGLETON
-						.get(interruptFile);
+				final int interruptFileOffset = FileOffsetData.instance().get(
+						interruptFile);
 				final double splitPosition = (interruptFileOffset
 						+ interruptFile.loc - startFileOffset)
 						/ scaleRatio;
 
-				final GUIFile restartFile = IDIndexMap.SINGLETON
+				final GUIFile restartFile = IDIndexMap.instance()
 						.getFile(this.restartIndex);
-				final int restartFileOffset = FileOffsetData.SINGLETON
-						.get(restartFile);
+				final int restartFileOffset = FileOffsetData.instance().get(
+						restartFile);
 
 				if (((this.startIndex <= horizontalFileIndex) && (horizontalFileIndex <= this.interruptIndex))
 						&& ((this.startIndex <= verticalFileIndex) && (verticalFileIndex <= this.interruptIndex))) {
 
-					final double horizontalCloneStart = (FileOffsetData.SINGLETON
-							.get(horizontalFile) + horizontalClone.fromLine - startFileOffset)
+					final double horizontalCloneStart = (FileOffsetData
+							.instance().get(horizontalFile)
+							+ horizontalClone.fromLine - startFileOffset)
 							/ scaleRatio;
-					final double horizontalCloneEnd = (FileOffsetData.SINGLETON
-							.get(horizontalFile) + horizontalClone.toLine - startFileOffset)
+					final double horizontalCloneEnd = (FileOffsetData
+							.instance().get(horizontalFile)
+							+ horizontalClone.toLine - startFileOffset)
 							/ scaleRatio;
-					final double verticalCloneStart = (FileOffsetData.SINGLETON
-							.get(verticalFile) + verticalClone.fromLine - startFileOffset)
+					final double verticalCloneStart = (FileOffsetData
+							.instance().get(verticalFile)
+							+ verticalClone.fromLine - startFileOffset)
 							/ scaleRatio;
-					final double verticalCloneEnd = (FileOffsetData.SINGLETON
+					final double verticalCloneEnd = (FileOffsetData.instance()
 							.get(verticalFile) + verticalClone.toLine - startFileOffset)
 							/ scaleRatio;
 
@@ -850,16 +865,19 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				} else if (((this.startIndex <= horizontalFileIndex) && (horizontalFileIndex <= this.interruptIndex))
 						&& ((this.restartIndex <= verticalFileIndex) && (verticalFileIndex <= this.endIndex))) {
 
-					final double horizontalCloneStart = (FileOffsetData.SINGLETON
-							.get(horizontalFile) + horizontalClone.fromLine - startFileOffset)
+					final double horizontalCloneStart = (FileOffsetData
+							.instance().get(horizontalFile)
+							+ horizontalClone.fromLine - startFileOffset)
 							/ scaleRatio;
-					final double horizontalCloneEnd = (FileOffsetData.SINGLETON
-							.get(horizontalFile) + horizontalClone.toLine - startFileOffset)
+					final double horizontalCloneEnd = (FileOffsetData
+							.instance().get(horizontalFile)
+							+ horizontalClone.toLine - startFileOffset)
 							/ scaleRatio;
-					final double verticalCloneStart = (FileOffsetData.SINGLETON
-							.get(verticalFile) + verticalClone.fromLine - restartFileOffset)
+					final double verticalCloneStart = (FileOffsetData
+							.instance().get(verticalFile)
+							+ verticalClone.fromLine - restartFileOffset)
 							/ scaleRatio + splitPosition;
-					final double verticalCloneEnd = (FileOffsetData.SINGLETON
+					final double verticalCloneEnd = (FileOffsetData.instance()
 							.get(verticalFile) + verticalClone.toLine - restartFileOffset)
 							/ scaleRatio + splitPosition;
 
@@ -871,16 +889,19 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				} else if (((this.restartIndex <= horizontalFileIndex) && (horizontalFileIndex <= this.endIndex))
 						&& ((this.restartIndex <= verticalFileIndex) && (verticalFileIndex <= this.endIndex))) {
 
-					final double horizontalCloneStart = (FileOffsetData.SINGLETON
-							.get(horizontalFile) + horizontalClone.fromLine - restartFileOffset)
+					final double horizontalCloneStart = (FileOffsetData
+							.instance().get(horizontalFile)
+							+ horizontalClone.fromLine - restartFileOffset)
 							/ scaleRatio + splitPosition;
-					final double horizontalCloneEnd = (FileOffsetData.SINGLETON
-							.get(horizontalFile) + horizontalClone.toLine - restartFileOffset)
+					final double horizontalCloneEnd = (FileOffsetData
+							.instance().get(horizontalFile)
+							+ horizontalClone.toLine - restartFileOffset)
 							/ scaleRatio + splitPosition;
-					final double verticalCloneStart = (FileOffsetData.SINGLETON
-							.get(verticalFile) + verticalClone.fromLine - startFileOffset)
+					final double verticalCloneStart = (FileOffsetData
+							.instance().get(verticalFile)
+							+ verticalClone.fromLine - startFileOffset)
 							/ scaleRatio;
-					final double verticalCloneEnd = (FileOffsetData.SINGLETON
+					final double verticalCloneEnd = (FileOffsetData.instance()
 							.get(verticalFile) + verticalClone.toLine - startFileOffset)
 							/ scaleRatio;
 
@@ -896,16 +917,19 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				if (((this.startIndex <= horizontalFileIndex) && (horizontalFileIndex <= this.endIndex))
 						&& ((this.startIndex <= verticalFileIndex) && (verticalFileIndex <= this.endIndex))) {
 
-					final double horizontalCloneStart = (FileOffsetData.SINGLETON
-							.get(horizontalFile) + horizontalClone.fromLine - startFileOffset)
+					final double horizontalCloneStart = (FileOffsetData
+							.instance().get(horizontalFile)
+							+ horizontalClone.fromLine - startFileOffset)
 							/ scaleRatio;
-					final double horizontalCloneEnd = (FileOffsetData.SINGLETON
-							.get(horizontalFile) + horizontalClone.toLine - startFileOffset)
+					final double horizontalCloneEnd = (FileOffsetData
+							.instance().get(horizontalFile)
+							+ horizontalClone.toLine - startFileOffset)
 							/ scaleRatio;
-					final double verticalCloneStart = (FileOffsetData.SINGLETON
-							.get(verticalFile) + verticalClone.fromLine - startFileOffset)
+					final double verticalCloneStart = (FileOffsetData
+							.instance().get(verticalFile)
+							+ verticalClone.fromLine - startFileOffset)
 							/ scaleRatio;
-					final double verticalCloneEnd = (FileOffsetData.SINGLETON
+					final double verticalCloneEnd = (FileOffsetData.instance()
 							.get(verticalFile) + verticalClone.toLine - startFileOffset)
 							/ scaleRatio;
 
@@ -922,20 +946,20 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 		final double scaleRatio = this.getScaleRatio();
 
-		final GUIFile startFile = IDIndexMap.SINGLETON.getFile(this.startIndex);
-		final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
+		final GUIFile startFile = IDIndexMap.instance().getFile(this.startIndex);
+		final int startFileOffset = FileOffsetData.instance().get(startFile);
 
 		if (this.splitDrawing) {
 
-			final GUIFile interruptFile = IDIndexMap.SINGLETON
+			final GUIFile interruptFile = IDIndexMap.instance()
 					.getFile(this.interruptIndex);
-			final int interruptFileOffset = FileOffsetData.SINGLETON
-					.get(interruptFile);
+			final int interruptFileOffset = FileOffsetData.instance().get(
+					interruptFile);
 
-			final GUIFile restartFile = IDIndexMap.SINGLETON
+			final GUIFile restartFile = IDIndexMap.instance()
 					.getFile(this.restartIndex);
-			final int restartFileOffset = FileOffsetData.SINGLETON
-					.get(restartFile);
+			final int restartFileOffset = FileOffsetData.instance().get(
+					restartFile);
 
 			final double splitPosition = (interruptFileOffset
 					+ interruptFile.loc - startFileOffset)
@@ -1075,14 +1099,15 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 		if (horizontalSelectedFiles.isSet()) {
 
 			final GUIFile horizontalFile = horizontalSelectedFiles.get().get(0);
-			final int horizontalFileIndex = IDIndexMap.SINGLETON.getIndex(
+			final int horizontalFileIndex = IDIndexMap.instance().getIndex(
 					horizontalFile.groupID, horizontalFile.fileID);
-			final int horizontalFileOffset = FileOffsetData.SINGLETON
-					.get(horizontalFile);
+			final int horizontalFileOffset = FileOffsetData.instance().get(
+					horizontalFile);
 
-			final GUIFile startFile = IDIndexMap.SINGLETON
+			final GUIFile startFile = IDIndexMap.instance()
 					.getFile(this.startIndex);
-			final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
+			final int startFileOffset = FileOffsetData.instance()
+					.get(startFile);
 
 			if (this.splitDrawing) {
 
@@ -1100,14 +1125,14 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				} else if ((this.restartIndex <= horizontalFileIndex)
 						&& (horizontalFileIndex <= this.endIndex)) {
 
-					final GUIFile restartFile = IDIndexMap.SINGLETON
+					final GUIFile restartFile = IDIndexMap.instance()
 							.getFile(this.restartIndex);
-					final int restartFileOffset = FileOffsetData.SINGLETON
+					final int restartFileOffset = FileOffsetData.instance()
 							.get(restartFile);
 
-					final GUIFile interruptFile = IDIndexMap.SINGLETON
+					final GUIFile interruptFile = IDIndexMap.instance()
 							.getFile(this.interruptIndex);
-					final int interruptFileOffset = FileOffsetData.SINGLETON
+					final int interruptFileOffset = FileOffsetData.instance()
 							.get(interruptFile);
 
 					final double startX = (interruptFileOffset
@@ -1138,14 +1163,15 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 			final GUIFile verticalFile = verticalSelectedFiles.get().get(0);
 			g.setColor(VISUAL_VERTICAL_COLOR);
 
-			final int verticalFileIndex = IDIndexMap.SINGLETON.getIndex(
+			final int verticalFileIndex = IDIndexMap.instance().getIndex(
 					verticalFile.groupID, verticalFile.fileID);
-			final int verticalFileOffset = FileOffsetData.SINGLETON
-					.get(verticalFile);
+			final int verticalFileOffset = FileOffsetData.instance().get(
+					verticalFile);
 
-			final GUIFile startFile = IDIndexMap.SINGLETON
+			final GUIFile startFile = IDIndexMap.instance()
 					.getFile(this.startIndex);
-			final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
+			final int startFileOffset = FileOffsetData.instance()
+					.get(startFile);
 
 			if (this.splitDrawing) {
 
@@ -1163,14 +1189,14 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				} else if ((this.restartIndex <= verticalFileIndex)
 						&& (verticalFileIndex <= this.endIndex)) {
 
-					final GUIFile restartFile = IDIndexMap.SINGLETON
+					final GUIFile restartFile = IDIndexMap.instance()
 							.getFile(this.restartIndex);
-					final int restartFileOffset = FileOffsetData.SINGLETON
+					final int restartFileOffset = FileOffsetData.instance()
 							.get(restartFile);
 
-					final GUIFile interruptFile = IDIndexMap.SINGLETON
+					final GUIFile interruptFile = IDIndexMap.instance()
 							.getFile(this.interruptIndex);
-					final int interruptFileOffset = FileOffsetData.SINGLETON
+					final int interruptFileOffset = FileOffsetData.instance()
 							.get(interruptFile);
 
 					final double startY = (interruptFileOffset
@@ -1208,7 +1234,7 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 			fileNumber = this.endIndex - this.startIndex + 1;
 
 			for (int i = this.startIndex; i <= this.endIndex; i++) {
-				GUIFile element = IDIndexMap.SINGLETON.getFile(i);
+				GUIFile element = IDIndexMap.instance().getFile(i);
 				loc += element.loc;
 			}
 
@@ -1219,13 +1245,13 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 			for (int i = this.startIndex; i <= this.interruptIndex; i++) {
 
-				GUIFile element = IDIndexMap.SINGLETON.getFile(i);
+				GUIFile element = IDIndexMap.instance().getFile(i);
 				loc += element.loc;
 			}
 
 			for (int i = this.restartIndex; i <= this.endIndex; i++) {
 
-				GUIFile element = IDIndexMap.SINGLETON.getFile(i);
+				GUIFile element = IDIndexMap.instance().getFile(i);
 				loc += element.loc;
 			}
 		}
@@ -1248,13 +1274,14 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 		if (this.splitDrawing) {
 
-			final GUIFile startFile = IDIndexMap.SINGLETON
+			final GUIFile startFile = IDIndexMap.instance()
 					.getFile(this.startIndex);
-			final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
-			final GUIFile interruptFile = IDIndexMap.SINGLETON
+			final int startFileOffset = FileOffsetData.instance()
+					.get(startFile);
+			final GUIFile interruptFile = IDIndexMap.instance()
 					.getFile(this.interruptIndex);
-			final int interruptFileOffset = FileOffsetData.SINGLETON
-					.get(interruptFile);
+			final int interruptFileOffset = FileOffsetData.instance().get(
+					interruptFile);
 			final double splitPosition = (interruptFileOffset
 					+ interruptFile.loc - startFileOffset)
 					/ this.getScaleRatio();
@@ -1288,13 +1315,13 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 		int low = this.startIndex;
 		int high = this.endIndex;
-		int horizontalStartFileID = IDIndexMap.SINGLETON.searchFileIndex(
+		int horizontalStartFileID = IDIndexMap.instance().searchFileIndex(
 				this.zoomedArea.getHorizontalStartToken(), low, high);
-		int horizontalEndFileID = IDIndexMap.SINGLETON.searchFileIndex(
+		int horizontalEndFileID = IDIndexMap.instance().searchFileIndex(
 				this.zoomedArea.getHorizontalEndToken(), low, high);
-		int verticalStartFileID = IDIndexMap.SINGLETON.searchFileIndex(
+		int verticalStartFileID = IDIndexMap.instance().searchFileIndex(
 				this.zoomedArea.getVerticalStartToken(), low, high);
-		int verticalEndFileID = IDIndexMap.SINGLETON.searchFileIndex(
+		int verticalEndFileID = IDIndexMap.instance().searchFileIndex(
 				this.zoomedArea.getVerticalEndToken(), low, high);
 
 		int startIndex = 0;
@@ -1381,18 +1408,19 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 		if (this.splitDrawing) {
 
-			final GUIFile startFile = IDIndexMap.SINGLETON
+			final GUIFile startFile = IDIndexMap.instance()
 					.getFile(this.startIndex);
-			final GUIFile interruptFile = IDIndexMap.SINGLETON
+			final GUIFile interruptFile = IDIndexMap.instance()
 					.getFile(this.interruptIndex);
-			final GUIFile restartFile = IDIndexMap.SINGLETON
+			final GUIFile restartFile = IDIndexMap.instance()
 					.getFile(this.restartIndex);
-			final GUIFile endFile = IDIndexMap.SINGLETON.getFile(this.endIndex);
-			final int startToken = FileOffsetData.SINGLETON.get(startFile);
-			final int interruptToken = FileOffsetData.SINGLETON
-					.get(interruptFile) + interruptFile.loc;
-			final int restartToken = FileOffsetData.SINGLETON.get(restartFile);
-			final int endToken = FileOffsetData.SINGLETON.get(endFile)
+			final GUIFile endFile = IDIndexMap.instance().getFile(this.endIndex);
+			final int startToken = FileOffsetData.instance().get(startFile);
+			final int interruptToken = FileOffsetData.instance().get(
+					interruptFile)
+					+ interruptFile.loc;
+			final int restartToken = FileOffsetData.instance().get(restartFile);
+			final int endToken = FileOffsetData.instance().get(endFile)
 					+ endFile.loc;
 			final int displayToken = (endToken - restartToken)
 					+ (interruptToken - startToken);
@@ -1401,11 +1429,11 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 		} else {
 
-			final GUIFile startFile = IDIndexMap.SINGLETON
+			final GUIFile startFile = IDIndexMap.instance()
 					.getFile(this.startIndex);
-			final GUIFile endFile = IDIndexMap.SINGLETON.getFile(this.endIndex);
-			final int startToken = FileOffsetData.SINGLETON.get(startFile);
-			final int endToken = FileOffsetData.SINGLETON.get(endFile)
+			final GUIFile endFile = IDIndexMap.instance().getFile(this.endIndex);
+			final int startToken = FileOffsetData.instance().get(startFile);
+			final int endToken = FileOffsetData.instance().get(endFile)
 					+ endFile.loc;
 			final int displayToken = endToken - startToken;
 
@@ -1458,10 +1486,10 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 			if ((modifier & MouseEvent.BUTTON1_MASK) != 0) {
 
-				final GUIFile startFile = IDIndexMap.SINGLETON
+				final GUIFile startFile = IDIndexMap.instance()
 						.getFile(startIndex);
-				final int startFileOffset = FileOffsetData.SINGLETON
-						.get(startFile);
+				final int startFileOffset = FileOffsetData.instance().get(
+						startFile);
 
 				final double scaleRatio = getScaleRatio();
 
@@ -1470,17 +1498,17 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 				if (splitDrawing) {
 
-					final GUIFile interruptFile = IDIndexMap.SINGLETON
+					final GUIFile interruptFile = IDIndexMap.instance()
 							.getFile(interruptIndex);
-					final int interruptFileOffset = FileOffsetData.SINGLETON
+					final int interruptFileOffset = FileOffsetData.instance()
 							.get(interruptFile);
 					final double splitPosition = (interruptFileOffset
 							+ interruptFile.loc - startFileOffset)
 							/ scaleRatio;
 
-					final GUIFile restartFile = IDIndexMap.SINGLETON
+					final GUIFile restartFile = IDIndexMap.instance()
 							.getFile(restartIndex);
-					final int restartFileOffset = FileOffsetData.SINGLETON
+					final int restartFileOffset = FileOffsetData.instance()
 							.get(restartFile);
 
 					if (e.getX() < splitPosition) {
@@ -1500,17 +1528,17 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 				if (splitDrawing) {
 
-					final GUIFile interruptFile = IDIndexMap.SINGLETON
+					final GUIFile interruptFile = IDIndexMap.instance()
 							.getFile(interruptIndex);
-					final int interruptFileOffset = FileOffsetData.SINGLETON
+					final int interruptFileOffset = FileOffsetData.instance()
 							.get(interruptFile);
 					final double splitPosition = (interruptFileOffset
 							+ interruptFile.loc - startFileOffset)
 							/ scaleRatio;
 
-					final GUIFile restartFile = IDIndexMap.SINGLETON
+					final GUIFile restartFile = IDIndexMap.instance()
 							.getFile(restartIndex);
-					final int restartFileOffset = FileOffsetData.SINGLETON
+					final int restartFileOffset = FileOffsetData.instance()
 							.get(restartFile);
 
 					if (e.getY() < splitPosition) {
@@ -1552,10 +1580,10 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 			if ((modifier & MouseEvent.BUTTON1_MASK) != 0) {
 
-				final GUIFile startFile = IDIndexMap.SINGLETON
+				final GUIFile startFile = IDIndexMap.instance()
 						.getFile(startIndex);
-				final int startFileOffset = FileOffsetData.SINGLETON
-						.get(startFile);
+				final int startFileOffset = FileOffsetData.instance().get(
+						startFile);
 
 				final double scaleRatio = getScaleRatio();
 
@@ -1564,17 +1592,17 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 				if (splitDrawing) {
 
-					final GUIFile interruptFile = IDIndexMap.SINGLETON
+					final GUIFile interruptFile = IDIndexMap.instance()
 							.getFile(interruptIndex);
-					final int interruptFileOffset = FileOffsetData.SINGLETON
+					final int interruptFileOffset = FileOffsetData.instance()
 							.get(interruptFile);
 					final double splitPosition = (interruptFileOffset
 							+ interruptFile.loc - startFileOffset)
 							/ scaleRatio;
 
-					final GUIFile restartFile = IDIndexMap.SINGLETON
+					final GUIFile restartFile = IDIndexMap.instance()
 							.getFile(restartIndex);
-					final int restartFileOffset = FileOffsetData.SINGLETON
+					final int restartFileOffset = FileOffsetData.instance()
 							.get(restartFile);
 
 					if (e.getX() < splitPosition) {
@@ -1594,17 +1622,17 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 				if (splitDrawing) {
 
-					final GUIFile interruptFile = IDIndexMap.SINGLETON
+					final GUIFile interruptFile = IDIndexMap.instance()
 							.getFile(interruptIndex);
-					final int interruptFileOffset = FileOffsetData.SINGLETON
+					final int interruptFileOffset = FileOffsetData.instance()
 							.get(interruptFile);
 					final double splitPosition = (interruptFileOffset
 							+ interruptFile.loc - startFileOffset)
 							/ scaleRatio;
 
-					final GUIFile restartFile = IDIndexMap.SINGLETON
+					final GUIFile restartFile = IDIndexMap.instance()
 							.getFile(restartIndex);
-					final int restartFileOffset = FileOffsetData.SINGLETON
+					final int restartFileOffset = FileOffsetData.instance()
 							.get(restartFile);
 
 					if (e.getY() < splitPosition) {
@@ -1647,10 +1675,10 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 			if ((modifier & MouseEvent.BUTTON1_MASK) != 0) {
 
-				final GUIFile startFile = IDIndexMap.SINGLETON
+				final GUIFile startFile = IDIndexMap.instance()
 						.getFile(startIndex);
-				final int startFileOffset = FileOffsetData.SINGLETON
-						.get(startFile);
+				final int startFileOffset = FileOffsetData.instance().get(
+						startFile);
 
 				final double scaleRatio = getScaleRatio();
 
@@ -1659,17 +1687,17 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 				if (splitDrawing) {
 
-					final GUIFile interruptFile = IDIndexMap.SINGLETON
+					final GUIFile interruptFile = IDIndexMap.instance()
 							.getFile(interruptIndex);
-					final int interruptFileOffset = FileOffsetData.SINGLETON
+					final int interruptFileOffset = FileOffsetData.instance()
 							.get(interruptFile);
 					final double splitPosition = (interruptFileOffset
 							+ interruptFile.loc - startFileOffset)
 							/ scaleRatio;
 
-					final GUIFile restartFile = IDIndexMap.SINGLETON
+					final GUIFile restartFile = IDIndexMap.instance()
 							.getFile(restartIndex);
-					final int restartFileOffset = FileOffsetData.SINGLETON
+					final int restartFileOffset = FileOffsetData.instance()
 							.get(restartFile);
 
 					if (e.getX() < splitPosition) {
@@ -1689,17 +1717,17 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 				if (splitDrawing) {
 
-					final GUIFile interruptFile = IDIndexMap.SINGLETON
+					final GUIFile interruptFile = IDIndexMap.instance()
 							.getFile(interruptIndex);
-					final int interruptFileOffset = FileOffsetData.SINGLETON
+					final int interruptFileOffset = FileOffsetData.instance()
 							.get(interruptFile);
 					final double splitPosition = (interruptFileOffset
 							+ interruptFile.loc - startFileOffset)
 							/ scaleRatio;
 
-					final GUIFile restartFile = IDIndexMap.SINGLETON
+					final GUIFile restartFile = IDIndexMap.instance()
 							.getFile(restartIndex);
-					final int restartFileOffset = FileOffsetData.SINGLETON
+					final int restartFileOffset = FileOffsetData.instance()
 							.get(restartFile);
 
 					if (e.getY() < splitPosition) {
@@ -1718,14 +1746,14 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				}
 
 				int low = 0;
-				int high = GUIFileManager.SINGLETON.getFileCount();
-				int horizontalElementIndex = IDIndexMap.SINGLETON
+				int high = GUIFileManager.instance().getFileCount();
+				int horizontalElementIndex = IDIndexMap.instance()
 						.searchFileIndex((int) Math.rint(x), low, high);
-				int verticalElementIndex = IDIndexMap.SINGLETON
+				int verticalElementIndex = IDIndexMap.instance()
 						.searchFileIndex((int) Math.rint(y), low, high);
-				final GUIFile horizontalFile = IDIndexMap.SINGLETON
+				final GUIFile horizontalFile = IDIndexMap.instance()
 						.getFile(horizontalElementIndex);
-				final GUIFile verticalFile = IDIndexMap.SINGLETON
+				final GUIFile verticalFile = IDIndexMap.instance()
 						.getFile(verticalElementIndex);
 
 				SelectedEntities.<GUIFile> getInstance(HORIZONTAL_FILE).set(
@@ -1762,10 +1790,10 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 					return;
 				}
 
-				final GUIFile startFile = IDIndexMap.SINGLETON
+				final GUIFile startFile = IDIndexMap.instance()
 						.getFile(startIndex);
-				final int startFileOffset = FileOffsetData.SINGLETON
-						.get(startFile);
+				final int startFileOffset = FileOffsetData.instance().get(
+						startFile);
 
 				final double scaleRatio = getScaleRatio();
 
@@ -1774,17 +1802,17 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 				if (splitDrawing) {
 
-					final GUIFile interruptFile = IDIndexMap.SINGLETON
+					final GUIFile interruptFile = IDIndexMap.instance()
 							.getFile(interruptIndex);
-					final int interruptFileOffset = FileOffsetData.SINGLETON
+					final int interruptFileOffset = FileOffsetData.instance()
 							.get(interruptFile);
 					final double splitPosition = (interruptFileOffset
 							+ interruptFile.loc - startFileOffset)
 							/ scaleRatio;
 
-					final GUIFile restartFile = IDIndexMap.SINGLETON
+					final GUIFile restartFile = IDIndexMap.instance()
 							.getFile(restartIndex);
-					final int restartFileOffset = FileOffsetData.SINGLETON
+					final int restartFileOffset = FileOffsetData.instance()
 							.get(restartFile);
 
 					if (e.getX() < splitPosition) {
@@ -1804,17 +1832,17 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 				if (splitDrawing) {
 
-					final GUIFile interruptFile = IDIndexMap.SINGLETON
+					final GUIFile interruptFile = IDIndexMap.instance()
 							.getFile(interruptIndex);
-					final int interruptFileOffset = FileOffsetData.SINGLETON
+					final int interruptFileOffset = FileOffsetData.instance()
 							.get(interruptFile);
 					final double splitPosition = (interruptFileOffset
 							+ interruptFile.loc - startFileOffset)
 							/ scaleRatio;
 
-					final GUIFile restartFile = IDIndexMap.SINGLETON
+					final GUIFile restartFile = IDIndexMap.instance()
 							.getFile(restartIndex);
-					final int restartFileOffset = FileOffsetData.SINGLETON
+					final int restartFileOffset = FileOffsetData.instance()
 							.get(restartFile);
 
 					if (e.getY() < splitPosition) {
@@ -1832,12 +1860,12 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 					y = e.getY() * scaleRatio + startFileOffset;
 				}
 
-				int fileNumber = GUIFileManager.SINGLETON.getFileCount();
+				int fileNumber = GUIFileManager.instance().getFileCount();
 				int low = 0;
 				int high = fileNumber - 1;
-				int horizontalElementIndex = IDIndexMap.SINGLETON
+				int horizontalElementIndex = IDIndexMap.instance()
 						.searchFileIndex((int) Math.rint(x), low, high);
-				int verticalElementIndex = IDIndexMap.SINGLETON
+				int verticalElementIndex = IDIndexMap.instance()
 						.searchFileIndex((int) Math.rint(y), low, high);
 
 				if ((0 <= horizontalElementIndex)
@@ -1845,9 +1873,9 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 						&& (0 <= verticalElementIndex)
 						&& (verticalElementIndex < fileNumber)) {
 
-					GUIFile horizontalElement = IDIndexMap.SINGLETON
+					GUIFile horizontalElement = IDIndexMap.instance()
 							.getFile(horizontalElementIndex);
-					GUIFile verticalElement = IDIndexMap.SINGLETON
+					GUIFile verticalElement = IDIndexMap.instance()
 							.getFile(verticalElementIndex);
 					String horizontalFileName = horizontalElement.path + "("
 							+ horizontalElement.groupID + "."
@@ -1882,8 +1910,9 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				return;
 			}
 
-			final GUIFile startFile = IDIndexMap.SINGLETON.getFile(startIndex);
-			final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
+			final GUIFile startFile = IDIndexMap.instance().getFile(startIndex);
+			final int startFileOffset = FileOffsetData.instance()
+					.get(startFile);
 
 			final double scaleRatio = getScaleRatio();
 
@@ -1892,18 +1921,18 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 			if (splitDrawing) {
 
-				final GUIFile interruptFile = IDIndexMap.SINGLETON
+				final GUIFile interruptFile = IDIndexMap.instance()
 						.getFile(interruptIndex);
-				final int interruptFileOffset = FileOffsetData.SINGLETON
-						.get(interruptFile);
+				final int interruptFileOffset = FileOffsetData.instance().get(
+						interruptFile);
 				final double splitPosition = (interruptFileOffset
 						+ interruptFile.loc - startFileOffset)
 						/ scaleRatio;
 
-				final GUIFile restartFile = IDIndexMap.SINGLETON
+				final GUIFile restartFile = IDIndexMap.instance()
 						.getFile(restartIndex);
-				final int restartFileOffset = FileOffsetData.SINGLETON
-						.get(restartFile);
+				final int restartFileOffset = FileOffsetData.instance().get(
+						restartFile);
 
 				if (e.getX() < splitPosition) {
 
@@ -1922,18 +1951,18 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 			if (splitDrawing) {
 
-				final GUIFile interruptFile = IDIndexMap.SINGLETON
+				final GUIFile interruptFile = IDIndexMap.instance()
 						.getFile(interruptIndex);
-				final int interruptFileOffset = FileOffsetData.SINGLETON
-						.get(interruptFile);
+				final int interruptFileOffset = FileOffsetData.instance().get(
+						interruptFile);
 				final double splitPosition = (interruptFileOffset
 						+ interruptFile.loc - startFileOffset)
 						/ scaleRatio;
 
-				final GUIFile restartFile = IDIndexMap.SINGLETON
+				final GUIFile restartFile = IDIndexMap.instance()
 						.getFile(restartIndex);
-				final int restartFileOffset = FileOffsetData.SINGLETON
-						.get(restartFile);
+				final int restartFileOffset = FileOffsetData.instance().get(
+						restartFile);
 
 				if (e.getY() < splitPosition) {
 
@@ -1950,12 +1979,12 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				y = e.getY() * scaleRatio + startFileOffset;
 			}
 
-			int fileNumber = GUIFileManager.SINGLETON.getFileCount();
+			int fileNumber = GUIFileManager.instance().getFileCount();
 			int low = 0;
 			int high = fileNumber - 1;
-			int horizontalElementIndex = IDIndexMap.SINGLETON.searchFileIndex(
+			int horizontalElementIndex = IDIndexMap.instance().searchFileIndex(
 					(int) Math.rint(x), low, high);
-			int verticalElementIndex = IDIndexMap.SINGLETON.searchFileIndex(
+			int verticalElementIndex = IDIndexMap.instance().searchFileIndex(
 					(int) Math.rint(y), low, high);
 
 			if ((0 <= horizontalElementIndex)
@@ -1963,9 +1992,9 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 					&& (0 <= verticalElementIndex)
 					&& (verticalElementIndex < fileNumber)) {
 
-				GUIFile horizontalElement = IDIndexMap.SINGLETON
+				GUIFile horizontalElement = IDIndexMap.instance()
 						.getFile(horizontalElementIndex);
-				GUIFile verticalElement = IDIndexMap.SINGLETON
+				GUIFile verticalElement = IDIndexMap.instance()
 						.getFile(verticalElementIndex);
 				String horizontalFileName = horizontalElement.path + "("
 						+ horizontalElement.groupID + "."

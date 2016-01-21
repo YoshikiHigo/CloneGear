@@ -4,62 +4,58 @@ import java.util.Collection;
 
 public class CloneMetricsMaxValues {
 
-	public static final CloneMetricsMaxValues SINGLETON = new CloneMetricsMaxValues();
+	private static CloneMetricsMaxValues SINGLETON = null;
 
-	public void initialize(final Collection<GUICloneSet> clonesets) {
-		assert !this.initialized : "CloneMetricsMaxValues has already initialized.";
-
+	public static CloneMetricsMaxValues instance(){
+		assert null != SINGLETON : "SINGLETON is not initialized.";
+		return SINGLETON;
+	}
+	
+	public static void initialize(final Collection<GUICloneSet> clonesets) {
+		SINGLETON = new CloneMetricsMaxValues();
 		for (final GUICloneSet cloneset : clonesets) {
-			if (this.maxDFL < cloneset.getDFL()) {
-				this.maxDFL = cloneset.getDFL();
+			if (SINGLETON.maxDFL < cloneset.getDFL()) {
+				SINGLETON.maxDFL = cloneset.getDFL();
 			}
-			if (this.maxLEN < cloneset.getLEN()) {
-				this.maxLEN = cloneset.getLEN();
+			if (SINGLETON.maxLEN < cloneset.getLEN()) {
+				SINGLETON.maxLEN = cloneset.getLEN();
 			}
-			if (this.maxNIF < cloneset.getNIF()) {
-				this.maxNIF = cloneset.getNIF();
+			if (SINGLETON.maxNIF < cloneset.getNIF()) {
+				SINGLETON.maxNIF = cloneset.getNIF();
 			}
-			if (this.maxPOP < cloneset.getPOP()) {
-				this.maxPOP = cloneset.getPOP();
+			if (SINGLETON.maxPOP < cloneset.getPOP()) {
+				SINGLETON.maxPOP = cloneset.getPOP();
 			}
-			if (this.maxRAD < cloneset.getRAD()) {
-				this.maxRAD = cloneset.getRAD();
+			if (SINGLETON.maxRAD < cloneset.getRAD()) {
+				SINGLETON.maxRAD = cloneset.getRAD();
 			}
-			if (this.maxRNR < cloneset.getRNR()) {
-				this.maxRNR = cloneset.getRNR();
+			if (SINGLETON.maxRNR < cloneset.getRNR()) {
+				SINGLETON.maxRNR = cloneset.getRNR();
 			}
 		}
-
-		this.initialized = true;
 	}
 
 	public int getMaxDFL() {
-		assert this.initialized : "CloneMetricsMaxValues was not initialized.";
 		return this.maxDFL;
 	}
 
 	public int getMaxLEN() {
-		assert this.initialized : "CloneMetricsMaxValues was not initialized.";
 		return this.maxLEN;
 	}
 
 	public int getMaxNIF() {
-		assert this.initialized : "CloneMetricsMaxValues was not initialized.";
 		return this.maxNIF;
 	}
 
 	public int getMaxPOP() {
-		assert this.initialized : "CloneMetricsMaxValues was not initialized.";
 		return this.maxPOP;
 	}
 
 	public int getMaxRAD() {
-		assert this.initialized : "CloneMetricsMaxValues was not initialized.";
 		return this.maxRAD;
 	}
 
 	public int getMaxRNR() {
-		assert this.initialized : "CloneMetricsMaxValues was not initialized.";
 		return this.maxRNR;
 	}
 
@@ -70,7 +66,6 @@ public class CloneMetricsMaxValues {
 		this.maxPOP = 0;
 		this.maxRAD = 0;
 		this.maxRNR = 0;
-		this.initialized = false;
 	}
 
 	private int maxDFL;
@@ -79,5 +74,4 @@ public class CloneMetricsMaxValues {
 	private int maxPOP;
 	private int maxRAD;
 	private int maxRNR;
-	private boolean initialized;
 }

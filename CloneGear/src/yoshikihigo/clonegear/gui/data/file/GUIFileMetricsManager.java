@@ -56,7 +56,7 @@ final class GUIFileMetricsManager {
 	List<GUIClone> getClones(final GUIFile file, final GUIFile target,
 			final int threshold) {
 		final SortedSet<GUIClone> clones = new TreeSet<>();
-		GUICloneManager.SINGLETON.getClonePairs(file, target, threshold)
+		GUICloneManager.instance().getClonePairs(file, target, threshold)
 				.forEach(clonepair -> {
 					if (clonepair.left.file.equals(this)) {
 						clones.add(clonepair.left);
@@ -116,7 +116,7 @@ final class GUIFileMetricsManager {
 	}
 
 	private List<GUIClone> createClones(final GUIFile file) {
-		return GUICloneManager.SINGLETON.getFileClones(file.groupID,
+		return GUICloneManager.instance().getFileClones(file.groupID,
 				file.fileID);
 	}
 

@@ -159,7 +159,7 @@ public class MetricView extends JPanel implements MetricViewConst, Observer,
 			final Set<GUICloneSet> unfilteredCloneSets = new HashSet<>();
 			final Set<GUICloneSet> filteredCloneSets = new HashSet<>();
 
-			for (final GUICloneSet cloneset : GUICloneManager.SINGLETON
+			for (final GUICloneSet cloneset : GUICloneManager.instance()
 					.getCloneSets()) {
 
 				if (cloneset.getRAD() > MetricView.this.maxRAD * this.yRate[0])
@@ -294,15 +294,15 @@ public class MetricView extends JPanel implements MetricViewConst, Observer,
 		this.addMouseListener(this.filter);
 		this.addMouseMotionListener(this.filter);
 
-		this.maxRAD = CloneMetricsMaxValues.SINGLETON.getMaxRAD();
-		this.maxLEN = this.getPropertyMaxNumber(CloneMetricsMaxValues.SINGLETON
+		this.maxRAD = CloneMetricsMaxValues.instance().getMaxRAD();
+		this.maxLEN = this.getPropertyMaxNumber(CloneMetricsMaxValues.instance()
 				.getMaxLEN());
-		this.maxRNR = CloneMetricsMaxValues.SINGLETON.getMaxRNR();
-		this.maxNIF = this.getPropertyMaxNumber(CloneMetricsMaxValues.SINGLETON
+		this.maxRNR = CloneMetricsMaxValues.instance().getMaxRNR();
+		this.maxNIF = this.getPropertyMaxNumber(CloneMetricsMaxValues.instance()
 				.getMaxNIF());
-		this.maxPOP = this.getPropertyMaxNumber(CloneMetricsMaxValues.SINGLETON
+		this.maxPOP = this.getPropertyMaxNumber(CloneMetricsMaxValues.instance()
 				.getMaxPOP());
-		this.maxDFL = this.getPropertyMaxNumber(CloneMetricsMaxValues.SINGLETON
+		this.maxDFL = this.getPropertyMaxNumber(CloneMetricsMaxValues.instance()
 				.getMaxDFL());
 	}
 
@@ -350,7 +350,7 @@ public class MetricView extends JPanel implements MetricViewConst, Observer,
 
 		final List<GUICloneSet> filteredCloneSets = SelectedEntities
 				.<GUICloneSet> getInstance(FILTERED_CLONESET).get();
-		final int numberOfCloneSet = GUICloneManager.SINGLETON
+		final int numberOfCloneSet = GUICloneManager.instance()
 				.getCloneSetCount();
 		final int numberOfSelectedCloneSet = filteredCloneSets.size();
 
@@ -383,7 +383,7 @@ public class MetricView extends JPanel implements MetricViewConst, Observer,
 	private void drawCloneSets(final Graphics g) {
 
 		g.setColor(METRICS_UN_SELECTED_DATA_COLOR);
-		GUICloneManager.SINGLETON.getCloneSets().stream()
+		GUICloneManager.instance().getCloneSets().stream()
 				.forEach(cloneset -> this.drawCloneSet(g, cloneset));
 
 		g.setColor(METRICS_SELECTED_DATA_COLOR);

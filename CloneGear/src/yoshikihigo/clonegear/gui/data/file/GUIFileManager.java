@@ -13,7 +13,16 @@ import yoshikihigo.clonegear.gui.data.clone.GUICloneManager;
 
 public final class GUIFileManager {
 
-	public final static GUIFileManager SINGLETON = new GUIFileManager();
+	private static GUIFileManager SINGLETON = null;
+
+	public static void initialize() {
+		SINGLETON = new GUIFileManager();
+	}
+
+	public static GUIFileManager instance() {
+		assert null != SINGLETON : "SINGLETON is not initialized.";
+		return SINGLETON;
+	}
 
 	public void add(final GUIFile file) {
 		this.idFiles
@@ -80,7 +89,7 @@ public final class GUIFileManager {
 
 	public List<GUIFile> getRelatedFiles(final GUIFile file) {
 		return this.getFiles().stream().filter(f -> !f.equals(file))
-				.filter(f -> GUICloneManager.SINGLETON.hasClonePairs(f, file))
+				.filter(f -> GUICloneManager.instance().hasClonePairs(f, file))
 				.sorted().collect(Collectors.toList());
 	}
 
@@ -89,7 +98,7 @@ public final class GUIFileManager {
 				.getFiles()
 				.stream()
 				.filter(f -> !f.equals(file))
-				.filter(f -> GUICloneManager.SINGLETON.hasClonePairs(f, file,
+				.filter(f -> GUICloneManager.instance().hasClonePairs(f, file,
 						threshold)).sorted().collect(Collectors.toList());
 	}
 

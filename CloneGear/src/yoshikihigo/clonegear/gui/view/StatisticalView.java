@@ -41,20 +41,20 @@ public class StatisticalView extends JInternalFrame {
 
 		logger.log(Level.INFO, "begin");
 
-		final int numberOfCloneClasses = GUICloneManager.SINGLETON
+		final int numberOfCloneClasses = GUICloneManager.instance()
 				.getCloneSetCount();
-		final int numberOfClonePairs = GUICloneManager.SINGLETON
+		final int numberOfClonePairs = GUICloneManager.instance()
 				.getClonePairCount();
-		final int numberOfClonedFragments = GUICloneManager.SINGLETON
+		final int numberOfClonedFragments = GUICloneManager.instance()
 				.getClones().size();
 
-		final int numberOfFiles = GUIFileManager.SINGLETON.getFileCount();
-		final int numberOfGroups = GUIFileManager.SINGLETON.getGroupCount();
-		final int totalLinesOfCode = GUIFileManager.SINGLETON.getTotalLOC();
-		final double totalClonedRatio = GUIFileManager.SINGLETON.getTotalROC();
+		final int numberOfFiles = GUIFileManager.instance().getFileCount();
+		final int numberOfGroups = GUIFileManager.instance().getGroupCount();
+		final int totalLinesOfCode = GUIFileManager.instance().getTotalLOC();
+		final double totalClonedRatio = GUIFileManager.instance().getTotalROC();
 
 		final int[][] clonedRatioDistribution = this
-				.getClonedRatioDistribution(GUIFileManager.SINGLETON);
+				.getClonedRatioDistribution(GUIFileManager.instance());
 
 		final JTextArea statisticalTextArea = new JTextArea();
 		statisticalTextArea.setEditable(false);

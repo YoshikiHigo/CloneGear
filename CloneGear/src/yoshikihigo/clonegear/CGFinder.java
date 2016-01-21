@@ -43,112 +43,132 @@ public class CGFinder {
 
 		CGConfig.initialize(args);
 
-		if (!CGConfig.getInstance().isCUI()) {
-			final Wizard wizard = new Wizard();
-			wizard.setVisible(true);
+		Wizard wizard = null;
+		do {
+			if (!CGConfig.getInstance().isCUI()) {
 
-			while (!wizard.isFinished()) {
-				try {
-					Thread.sleep(200);
-				} catch (final InterruptedException e) {
-					e.printStackTrace();
+				if (null == wizard) {
+					wizard = new Wizard();
+				}
+				wizard.setFinished(false);
+				wizard.setVisible(true);
+
+				while (!wizard.isFinished()) {
+					try {
+						Thread.sleep(200);
+					} catch (final InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+
+				wizard.setVisible(false);
+				final String[] newArgs = wizard.getConfiguration();
+				CGConfig.initialize(newArgs);
+			}
+
+			if (!CGConfig.getInstance().isNOTDETECTION()) {
+
+				if (CGConfig.getInstance().hasSOURCE()
+						&& CGConfig.getInstance().hasLIST()) {
+					System.err
+							.println("Either \"src\" or \"list\", but not both can be specified.");
+					System.exit(0);
+				}
+
+				if (!CGConfig.getInstance().hasSOURCE()
+						&& !CGConfig.getInstance().hasLIST()) {
+					System.err
+							.println("Either \"src\" or \"list\", must be specified.");
+					System.exit(0);
+				}
+
+				final long timeToStart = System.nanoTime();
+				final List<SourceFile> files = getFiles();
+				final long timeToDetect = System.nanoTime();
+				final List<ClonePair> clonepairs = detectClones(files);
+				final List<CloneSet> clonesets;
+				final List<ClonePair> remainingClonepairs;
+				final List<CloneSet> remainingClonesets;
+				final long timeToFilter;
+				if (CGConfig.getInstance().isBELLON()) {
+					clonesets = null;
+					timeToFilter = System.nanoTime();
+					final Map<ClonePair, Map<ClonePair, Double>> similarities = new HashMap<>();
+					remainingClonepairs = /*
+										 * filterClones(clonepairs,
+										 * similarities)
+										 */clonepairs;
+					remainingClonesets = null;
+					printInBellonFomat(remainingClonepairs);
+				} else {
+					clonesets = convert(clonepairs);
+					timeToFilter = System.nanoTime();
+					final Map<CloneSet, Map<CloneSet, Double>> similarities = new HashMap<>();
+					remainingClonepairs = null;
+					remainingClonesets = /* filterClones(clonesets, similarities) */clonesets;
+					DetectionResultsFormat.writer(files, remainingClonesets,
+							CGConfig.getInstance().getRESULT());
+				}
+				final long timeToEnd = System.nanoTime();
+
+				{
+					final StringBuilder text = new StringBuilder();
+					if (CGConfig.getInstance().isBELLON()) {
+						text.append(Integer.toString(clonepairs.size()));
+						text.append(" clone pairs have been detected.");
+						text.append(System.lineSeparator());
+						// text.append(Integer.toString(remainingClonepairs.size()));
+						// text.append(" clone pairs have passed through filtering.");
+						// text.append(System.lineSeparator());
+					} else {
+						text.append(Integer.toString(clonesets.size()));
+						text.append(" clone sets (");
+						text.append(Integer.toString(clonepairs.size()));
+						text.append(" clone pairs) have been detected.");
+						text.append(System.lineSeparator());
+						// text.append(Integer.toString(remainingClonesets.size()));
+						// text.append(" clone sets have passed through filtering.");
+						// text.append(System.lineSeparator());
+					}
+
+					text.append("execution time: ");
+					text.append(TimingUtility.getExecutionTime(timeToStart,
+							timeToEnd));
+					text.append(System.lineSeparator());
+					text.append(" file reading time: ");
+					text.append(TimingUtility.getExecutionTime(timeToStart,
+							timeToDetect));
+					text.append(System.lineSeparator());
+					text.append(" clone detection time: ");
+					text.append(TimingUtility.getExecutionTime(timeToDetect,
+							timeToFilter));
+					text.append(System.lineSeparator());
+					text.append(" clone filtering time: ");
+					text.append(TimingUtility.getExecutionTime(timeToFilter,
+							timeToEnd));
+					text.append(System.lineSeparator());
+					text.append(" (for performance turning) matrix creation time for all the threads: ");
+					text.append(TimingUtility.getExecutionTime(SmithWaterman
+							.getMatrixCreationTime()));
+					text.append(System.lineSeparator());
+					text.append(" (for performance turning) similar alignment identification time for all the threads: ");
+					text.append(TimingUtility.getExecutionTime(SmithWaterman
+							.getCloneDetectionTime()));
+					System.err.println(text.toString());
 				}
 			}
 
-			wizard.setVisible(false);
-			final String[] newArgs = wizard.getConfiguration();
-			CGConfig.initialize(newArgs);
-		}
-
-		if (CGConfig.getInstance().hasSOURCE()
-				&& CGConfig.getInstance().hasLIST()) {
-			System.err
-					.println("Either \"src\" or \"list\", but not both can be specified.");
-			System.exit(0);
-		}
-
-		if (!CGConfig.getInstance().hasSOURCE()
-				&& !CGConfig.getInstance().hasLIST()) {
-			System.err
-					.println("Either \"src\" or \"list\", must be specified.");
-			System.exit(0);
-		}
-
-		final long timeToStart = System.nanoTime();
-		final List<SourceFile> files = getFiles();
-		final long timeToDetect = System.nanoTime();
-		final List<ClonePair> clonepairs = detectClones(files);
-		final List<CloneSet> clonesets;
-		final List<ClonePair> remainingClonepairs;
-		final List<CloneSet> remainingClonesets;
-		final long timeToFilter;
-		if (CGConfig.getInstance().isBELLON()) {
-			clonesets = null;
-			timeToFilter = System.nanoTime();
-			final Map<ClonePair, Map<ClonePair, Double>> similarities = new HashMap<>();
-			remainingClonepairs = /* filterClones(clonepairs, similarities) */clonepairs;
-			remainingClonesets = null;
-			printInBellonFomat(remainingClonepairs);
-		} else {
-			clonesets = convert(clonepairs);
-			timeToFilter = System.nanoTime();
-			final Map<CloneSet, Map<CloneSet, Double>> similarities = new HashMap<>();
-			remainingClonepairs = null;
-			remainingClonesets = /* filterClones(clonesets, similarities) */clonesets;
-			DetectionResultsFormat.writer(files, remainingClonesets, CGConfig
-					.getInstance().getRESULT());
-		}
-		final long timeToEnd = System.nanoTime();
-
-		{
-			final StringBuilder text = new StringBuilder();
-			if (CGConfig.getInstance().isBELLON()) {
-				text.append(Integer.toString(clonepairs.size()));
-				text.append(" clone pairs have been detected.");
-				text.append(System.lineSeparator());
-				// text.append(Integer.toString(remainingClonepairs.size()));
-				// text.append(" clone pairs have passed through filtering.");
-				// text.append(System.lineSeparator());
-			} else {
-				text.append(Integer.toString(clonesets.size()));
-				text.append(" clone sets (");
-				text.append(Integer.toString(clonepairs.size()));
-				text.append(" clone pairs) have been detected.");
-				text.append(System.lineSeparator());
-				// text.append(Integer.toString(remainingClonesets.size()));
-				// text.append(" clone sets have passed through filtering.");
-				// text.append(System.lineSeparator());
+			if (CGConfig.getInstance().isGEMINI()) {
+				final String results = CGConfig.getInstance().getRESULT();
+				ExecutorService service = Executors.newSingleThreadExecutor();
+				final Future<?> f = service.submit(new Gemini(results));
+				try {
+					f.get();
+				} catch (final ExecutionException | InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
-
-			text.append("execution time: ");
-			text.append(TimingUtility.getExecutionTime(timeToStart, timeToEnd));
-			text.append(System.lineSeparator());
-			text.append(" file reading time: ");
-			text.append(TimingUtility.getExecutionTime(timeToStart,
-					timeToDetect));
-			text.append(System.lineSeparator());
-			text.append(" clone detection time: ");
-			text.append(TimingUtility.getExecutionTime(timeToDetect,
-					timeToFilter));
-			text.append(System.lineSeparator());
-			text.append(" clone filtering time: ");
-			text.append(TimingUtility.getExecutionTime(timeToFilter, timeToEnd));
-			text.append(System.lineSeparator());
-			text.append(" (for performance turning) matrix creation time for all the threads: ");
-			text.append(TimingUtility.getExecutionTime(SmithWaterman
-					.getMatrixCreationTime()));
-			text.append(System.lineSeparator());
-			text.append(" (for performance turning) similar alignment identification time for all the threads: ");
-			text.append(TimingUtility.getExecutionTime(SmithWaterman
-					.getCloneDetectionTime()));
-			System.err.println(text.toString());
-		}
-
-		if (CGConfig.getInstance().isGEMINI()) {
-			final String results = CGConfig.getInstance().getRESULT();
-			final Gemini gemini = new Gemini(results);
-			gemini.setVisible(true);
-		}
+		} while (!CGConfig.getInstance().isCUI());
 	}
 
 	private static List<SourceFile> getFiles() {

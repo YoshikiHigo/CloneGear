@@ -32,10 +32,10 @@ public class RelatedGroup {
 		this.leftGroupID = leftGroupID;
 		this.rightGroupID = rightGroupID;
 
-		final int leftLOC = GUIFileManager.SINGLETON
-				.getGroupLOC(this.leftGroupID);
-		final int rightLOC = GUIFileManager.SINGLETON
-				.getGroupLOC(this.rightGroupID);
+		final int leftLOC = GUIFileManager.instance().getGroupLOC(
+				this.leftGroupID);
+		final int rightLOC = GUIFileManager.instance().getGroupLOC(
+				this.rightGroupID);
 		this.leftLines = new int[leftLOC];
 		this.rightLines = new int[rightLOC];
 		Arrays.fill(this.leftLines, -1);
@@ -44,12 +44,12 @@ public class RelatedGroup {
 
 	public void addLeftClone(final int fileID, final GUIClone clone) {
 
-		final GUIFile firstFile = GUIFileManager.SINGLETON.getFile(
+		final GUIFile firstFile = GUIFileManager.instance().getFile(
 				this.leftGroupID, 0);
-		final GUIFile ownerFile = GUIFileManager.SINGLETON.getFile(
+		final GUIFile ownerFile = GUIFileManager.instance().getFile(
 				this.leftGroupID, fileID);
-		final int groupOffset = FileOffsetData.SINGLETON.get(firstFile);
-		final int fileOffset = FileOffsetData.SINGLETON.get(ownerFile);
+		final int groupOffset = FileOffsetData.instance().get(firstFile);
+		final int fileOffset = FileOffsetData.instance().get(ownerFile);
 
 		final int fromLine = clone.fromLine + fileOffset - groupOffset;
 		final int toLine = clone.toLine + fileOffset - groupOffset;
@@ -68,12 +68,12 @@ public class RelatedGroup {
 
 	public void addRightClone(final int fileID, final GUIClone clone) {
 
-		final GUIFile firstFile = GUIFileManager.SINGLETON.getFile(
+		final GUIFile firstFile = GUIFileManager.instance().getFile(
 				this.rightGroupID, 0);
-		final GUIFile ownerFile = GUIFileManager.SINGLETON.getFile(
+		final GUIFile ownerFile = GUIFileManager.instance().getFile(
 				this.rightGroupID, fileID);
-		final int groupOffset = FileOffsetData.SINGLETON.get(firstFile);
-		final int fileOffset = FileOffsetData.SINGLETON.get(ownerFile);
+		final int groupOffset = FileOffsetData.instance().get(firstFile);
+		final int fileOffset = FileOffsetData.instance().get(ownerFile);
 
 		final int fromToken = clone.fromLine + fileOffset - groupOffset;
 		final int toToken = clone.toLine + fileOffset - groupOffset;

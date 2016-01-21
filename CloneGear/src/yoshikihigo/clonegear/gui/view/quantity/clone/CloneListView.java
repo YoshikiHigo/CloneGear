@@ -225,7 +225,7 @@ public class CloneListView extends JTable implements ViewScale, Observer,
 									.getLocationLabel(clone) + "\",\""
 							+ clone.getLOC() + "\",\"");
 
-					final GUICloneSet cloneset = GUICloneManager.SINGLETON
+					final GUICloneSet cloneset = GUICloneManager.instance()
 							.getCloneSet(clone);
 
 					if (cloneset.getRAD() == 0) {

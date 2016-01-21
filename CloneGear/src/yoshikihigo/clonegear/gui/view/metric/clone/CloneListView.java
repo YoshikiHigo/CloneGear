@@ -144,7 +144,7 @@ public class CloneListView extends JTable implements ViewScale, Observer,
 		final int groupID = clones.get(modelRow).groupID;
 		final int fileID = clones.get(modelRow).fileID;
 
-		final GUIFile file = GUIFileManager.SINGLETON.getFile(groupID, fileID);
+		final GUIFile file = GUIFileManager.instance().getFile(groupID, fileID);
 		return file.path;
 	}
 

@@ -19,12 +19,6 @@ import yoshikihigo.clonegear.gui.data.file.GUIFile;
 import yoshikihigo.clonegear.gui.data.file.GUIFileLabelManager;
 import yoshikihigo.clonegear.gui.data.file.IDIndexMap;
 
-
-/**
- * @author y-higo 2005-11-08 : modify
- * 
- * this class is pop up menu.
- */
 public class ScatterPlotPopupMenu extends JPopupMenu {
 
     public ScatterPlotPopupMenu(final ScatterPlotPanel parentContainer, final List<Area> historyList) {
@@ -117,8 +111,8 @@ public class ScatterPlotPopupMenu extends JPopupMenu {
 
                     if (interruptIndex == -1) {
 
-                        GUIFile startElement = IDIndexMap.SINGLETON.getFile(startIndex);
-                        GUIFile endElement = IDIndexMap.SINGLETON.getFile(endIndex);
+                        GUIFile startElement = IDIndexMap.instance().getFile(startIndex);
+                        GUIFile endElement = IDIndexMap.instance().getFile(endIndex);
 
                         JMenuItem historyMenuItem = new JMenuItem(GUIFileLabelManager.SINGLETON
                                 .getIDLabel(startElement)
@@ -132,10 +126,10 @@ public class ScatterPlotPopupMenu extends JPopupMenu {
 
                     } else {
 
-                        GUIFile startElement = IDIndexMap.SINGLETON.getFile(startIndex);
-                        GUIFile interruptElement = IDIndexMap.SINGLETON.getFile(interruptIndex);
-                        GUIFile restartElement = IDIndexMap.SINGLETON.getFile(restartIndex);
-                        GUIFile endElement = IDIndexMap.SINGLETON.getFile(endIndex);
+                        GUIFile startElement = IDIndexMap.instance().getFile(startIndex);
+                        GUIFile interruptElement = IDIndexMap.instance().getFile(interruptIndex);
+                        GUIFile restartElement = IDIndexMap.instance().getFile(restartIndex);
+                        GUIFile endElement = IDIndexMap.instance().getFile(endIndex);
 
                         JMenuItem historyMenuItem = new JMenuItem(GUIFileLabelManager.SINGLETON
                                 .getIDLabel(startElement)

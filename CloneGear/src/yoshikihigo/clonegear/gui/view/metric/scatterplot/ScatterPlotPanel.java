@@ -45,7 +45,7 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 	public ScatterPlotPanel(final FileNameDisplayPanel fileNameDisplayPanel) {
 
 		this.startIndex = 0;
-		this.endIndex = GUIFileManager.SINGLETON.getFileCount() - 1;
+		this.endIndex = GUIFileManager.instance().getFileCount() - 1;
 
 		this.fileNameDisplayPanel = fileNameDisplayPanel;
 
@@ -198,21 +198,22 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 		final double xScaleRatio = this.getXScaleRatio();
 		final int panelHeight = this.getFrameHeight();
 
-		final int groupNumber = GUIFileManager.SINGLETON.getGroupCount();
+		final int groupNumber = GUIFileManager.instance().getGroupCount();
 
-		final GUIFile startFile = IDIndexMap.SINGLETON.getFile(this.startIndex);
-		final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
+		final GUIFile startFile = IDIndexMap.instance()
+				.getFile(this.startIndex);
+		final int startFileOffset = FileOffsetData.instance().get(startFile);
 
 		for (int groupIndex = 0; groupIndex < groupNumber; groupIndex++) {
 
-			final GUIFile lastFile = GUIFileManager.SINGLETON
-					.getLastFile(groupIndex);
-			final int fileIndex = IDIndexMap.SINGLETON.getIndex(
+			final GUIFile lastFile = GUIFileManager.instance().getLastFile(
+					groupIndex);
+			final int fileIndex = IDIndexMap.instance().getIndex(
 					lastFile.groupID, lastFile.fileID);
 			if ((this.startIndex <= fileIndex) && (fileIndex < this.endIndex)) {
 
-				final int lastFileOffset = FileOffsetData.SINGLETON
-						.get(lastFile);
+				final int lastFileOffset = FileOffsetData.instance().get(
+						lastFile);
 				final double lastFileEndPosition = (lastFileOffset
 						+ lastFile.loc - startFileOffset)
 						/ xScaleRatio;
@@ -228,18 +229,20 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 		final double xScaleRatio = this.getXScaleRatio();
 		final int panelHeight = this.getFrameHeight();
-		final int fileNumber = GUIFileManager.SINGLETON.getFileCount();
+		final int fileNumber = GUIFileManager.instance().getFileCount();
 
-		final GUIFile startFile = IDIndexMap.SINGLETON.getFile(this.startIndex);
-		final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
+		final GUIFile startFile = IDIndexMap.instance()
+				.getFile(this.startIndex);
+		final int startFileOffset = FileOffsetData.instance().get(startFile);
 
 		for (int index = 0; index < fileNumber; index++) {
 
 			if ((this.startIndex <= index) && (index <= this.endIndex)) {
 
-				final GUIFile currentFile = IDIndexMap.SINGLETON.getFile(index);
-				final int currentFileOffset = FileOffsetData.SINGLETON
-						.get(currentFile);
+				final GUIFile currentFile = IDIndexMap.instance()
+						.getFile(index);
+				final int currentFileOffset = FileOffsetData.instance().get(
+						currentFile);
 				final double currentFileEndPosition = (currentFileOffset
 						+ currentFile.loc - startFileOffset)
 						/ xScaleRatio;
@@ -259,22 +262,22 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 		final double xScaleRatio = this.getXScaleRatio();
 		final double yScaleRatio = this.getYScaleRatio();
-		for (final GUICloneSet cloneSet : GUICloneManager.SINGLETON
+		for (final GUICloneSet cloneSet : GUICloneManager.instance()
 				.getCloneSets()) {
 
 			final int index;
 			if (this.scatterPlotPopupMenu.getStateIDSort()) {
-				index = CloneIDOffsetData.SINGLETON.get(cloneSet);
+				index = CloneIDOffsetData.instance().get(cloneSet);
 			} else if (this.scatterPlotPopupMenu.getStateFirstPositionSort()) {
-				index = CloneFirstPositionOffsetData.SINGLETON.get(cloneSet);
+				index = CloneFirstPositionOffsetData.instance().get(cloneSet);
 			} else if (this.scatterPlotPopupMenu.getStateLastPositionSort()) {
-				index = CloneLastPositionOffsetData.SINGLETON.get(cloneSet);
+				index = CloneLastPositionOffsetData.instance().get(cloneSet);
 			} else if (this.scatterPlotPopupMenu.getStateMiddlePositionSort()) {
-				index = CloneMiddlePositionOffsetData.SINGLETON.get(cloneSet);
+				index = CloneMiddlePositionOffsetData.instance().get(cloneSet);
 			} else if (this.scatterPlotPopupMenu.getStateRangeSort()) {
-				index = CloneRangeOffsetData.SINGLETON.get(cloneSet);
+				index = CloneRangeOffsetData.instance().get(cloneSet);
 			} else if (this.scatterPlotPopupMenu.getStateNIFSort()) {
-				index = CloneNIFOffsetData.SINGLETON.get(cloneSet);
+				index = CloneNIFOffsetData.instance().get(cloneSet);
 			} else {
 				index = 0;
 				assert false : "Here shouldn't be reached!";
@@ -285,8 +288,8 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 			{
 				for (final GUIClone codeFragment : cloneSet.getClones()) {
 					final GUIFile ownerFile = codeFragment.file;
-					final int ownerFileOffset = FileOffsetData.SINGLETON
-							.get(ownerFile);
+					final int ownerFileOffset = FileOffsetData.instance().get(
+							ownerFile);
 					final double codeFragmentStartOffset = (ownerFileOffset + codeFragment.fromLine)
 							/ xScaleRatio;
 					final double codeFragmentWidth = codeFragment.getLOC()
@@ -390,7 +393,7 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 		} else if (isRectangleFormat) {
 
-			final int height = GUICloneManager.SINGLETON.getCloneSetCount();
+			final int height = GUICloneManager.instance().getCloneSetCount();
 			return height * scale;
 		}
 
@@ -400,10 +403,11 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 	private final double getXScaleRatio() {
 
-		final GUIFile startFile = IDIndexMap.SINGLETON.getFile(this.startIndex);
-		final GUIFile endFile = IDIndexMap.SINGLETON.getFile(this.endIndex);
-		final int startToken = FileOffsetData.SINGLETON.get(startFile);
-		final int endToken = FileOffsetData.SINGLETON.get(endFile)
+		final GUIFile startFile = IDIndexMap.instance()
+				.getFile(this.startIndex);
+		final GUIFile endFile = IDIndexMap.instance().getFile(this.endIndex);
+		final int startToken = FileOffsetData.instance().get(startFile);
+		final int endToken = FileOffsetData.instance().get(endFile)
 				+ endFile.loc;
 		final int displayToken = endToken - startToken;
 
@@ -412,7 +416,7 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 
 	private final double getYScaleRatio() {
 
-		final int number = GUICloneManager.SINGLETON.getCloneSetCount();
+		final int number = GUICloneManager.instance().getCloneSetCount();
 		return (double) number / (double) this.getFrameHeight();
 	}
 
@@ -481,31 +485,31 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 						.getStartRow();
 				final int endY = ScatterPlotPanel.this.selectedRows.getEndRow();
 
-				for (final GUICloneSet cloneSet : GUICloneManager.SINGLETON
+				for (final GUICloneSet cloneSet : GUICloneManager.instance()
 						.getCloneSets()) {
 
 					final int index;
 					if (ScatterPlotPanel.this.scatterPlotPopupMenu
 							.getStateIDSort()) {
-						index = CloneIDOffsetData.SINGLETON.get(cloneSet);
+						index = CloneIDOffsetData.instance().get(cloneSet);
 					} else if (ScatterPlotPanel.this.scatterPlotPopupMenu
 							.getStateFirstPositionSort()) {
-						index = CloneFirstPositionOffsetData.SINGLETON
-								.get(cloneSet);
+						index = CloneFirstPositionOffsetData.instance().get(
+								cloneSet);
 					} else if (ScatterPlotPanel.this.scatterPlotPopupMenu
 							.getStateLastPositionSort()) {
-						index = CloneLastPositionOffsetData.SINGLETON
-								.get(cloneSet);
+						index = CloneLastPositionOffsetData.instance().get(
+								cloneSet);
 					} else if (ScatterPlotPanel.this.scatterPlotPopupMenu
 							.getStateMiddlePositionSort()) {
-						index = CloneMiddlePositionOffsetData.SINGLETON
-								.get(cloneSet);
+						index = CloneMiddlePositionOffsetData.instance().get(
+								cloneSet);
 					} else if (ScatterPlotPanel.this.scatterPlotPopupMenu
 							.getStateRangeSort()) {
-						index = CloneRangeOffsetData.SINGLETON.get(cloneSet);
+						index = CloneRangeOffsetData.instance().get(cloneSet);
 					} else if (ScatterPlotPanel.this.scatterPlotPopupMenu
 							.getStateNIFSort()) {
-						index = CloneNIFOffsetData.SINGLETON.get(cloneSet);
+						index = CloneNIFOffsetData.instance().get(cloneSet);
 					} else {
 						index = 0;
 						assert false : "Here shouldn't be reached!";
@@ -555,10 +559,10 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 			}
 
 			{
-				final GUIFile startFile = IDIndexMap.SINGLETON
-						.getFile(ScatterPlotPanel.this.startIndex);
-				final int startFileOffset = FileOffsetData.SINGLETON
-						.get(startFile);
+				final GUIFile startFile = IDIndexMap.instance().getFile(
+						ScatterPlotPanel.this.startIndex);
+				final int startFileOffset = FileOffsetData.instance().get(
+						startFile);
 
 				final double xScaleRatio = getXScaleRatio();
 				final double yScaleRatio = getYScaleRatio();
@@ -566,12 +570,12 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				final double x = e.getX() * xScaleRatio + startFileOffset;
 				final double y = e.getY() * yScaleRatio;
 
-				final int fileNumber = GUIFileManager.SINGLETON.getFileCount();
-				final int cloneSetNumber = GUICloneManager.SINGLETON
+				final int fileNumber = GUIFileManager.instance().getFileCount();
+				final int cloneSetNumber = GUICloneManager.instance()
 						.getCloneSetCount();
 				final int low = 0;
 				final int high = fileNumber - 1;
-				final int horizontalElementIndex = IDIndexMap.SINGLETON
+				final int horizontalElementIndex = IDIndexMap.instance()
 						.searchFileIndex((int) Math.rint(x), low, high);
 				final int verticalElementIndex = (int) y;
 
@@ -580,7 +584,7 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 						&& (0 <= verticalElementIndex)
 						&& (verticalElementIndex < cloneSetNumber)) {
 
-					final GUIFile horizontalElement = IDIndexMap.SINGLETON
+					final GUIFile horizontalElement = IDIndexMap.instance()
 							.getFile(horizontalElementIndex);
 					final StringBuilder horizontalString = new StringBuilder();
 					horizontalString.append(horizontalElement.path);
@@ -590,8 +594,8 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 					horizontalString.append(horizontalElement.fileID);
 					horizontalString.append(")");
 
-					final GUICloneSet verticalElement = GUICloneManager.SINGLETON
-							.getCloneSet(verticalElementIndex);
+					final GUICloneSet verticalElement = GUICloneManager
+							.instance().getCloneSet(verticalElementIndex);
 					final StringBuilder verticalString = new StringBuilder();
 					verticalString.append(verticalElementIndex);
 					verticalString.append(" (DFL:");
@@ -632,9 +636,10 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				return;
 			}
 
-			final GUIFile startFile = IDIndexMap.SINGLETON
-					.getFile(ScatterPlotPanel.this.startIndex);
-			final int startFileOffset = FileOffsetData.SINGLETON.get(startFile);
+			final GUIFile startFile = IDIndexMap.instance().getFile(
+					ScatterPlotPanel.this.startIndex);
+			final int startFileOffset = FileOffsetData.instance()
+					.get(startFile);
 
 			final double xScaleRatio = getXScaleRatio();
 			final double yScaleRatio = getYScaleRatio();
@@ -642,12 +647,12 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 			final double x = e.getX() * xScaleRatio + startFileOffset;
 			final double y = e.getY() * yScaleRatio;
 
-			final int fileNumber = GUIFileManager.SINGLETON.getFileCount();
-			final int cloneSetNumber = GUICloneManager.SINGLETON
+			final int fileNumber = GUIFileManager.instance().getFileCount();
+			final int cloneSetNumber = GUICloneManager.instance()
 					.getCloneSetCount();
 			final int low = 0;
 			final int high = fileNumber - 1;
-			final int horizontalElementIndex = IDIndexMap.SINGLETON
+			final int horizontalElementIndex = IDIndexMap.instance()
 					.searchFileIndex((int) Math.rint(x), low, high);
 			final int verticalElementIndex = (int) y;
 
@@ -656,7 +661,7 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 					&& (0 <= verticalElementIndex)
 					&& (verticalElementIndex < cloneSetNumber)) {
 
-				final GUIFile horizontalElement = IDIndexMap.SINGLETON
+				final GUIFile horizontalElement = IDIndexMap.instance()
 						.getFile(horizontalElementIndex);
 				final StringBuilder horizontalString = new StringBuilder();
 				horizontalString.append(horizontalElement.path);
@@ -666,7 +671,7 @@ class ScatterPlotPanel extends JPanelLightBuffered implements ViewColors,
 				horizontalString.append(horizontalElement.fileID);
 				horizontalString.append(")");
 
-				final GUICloneSet verticalElement = GUICloneManager.SINGLETON
+				final GUICloneSet verticalElement = GUICloneManager.instance()
 						.getCloneSet(verticalElementIndex);
 				final StringBuilder verticalString = new StringBuilder();
 				verticalString.append(verticalElementIndex);

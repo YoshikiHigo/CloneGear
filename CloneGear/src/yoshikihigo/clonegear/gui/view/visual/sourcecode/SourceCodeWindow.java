@@ -163,8 +163,8 @@ public class SourceCodeWindow extends JTextArea implements ViewColors,
 								.get(0);
 						this.readFile(file);
 
-						final List<GUIClone> codeFragments = GUICloneManager.SINGLETON
-								.getFileClones(file);
+						final List<GUIClone> codeFragments = GUICloneManager
+								.instance().getFileClones(file);
 						this.addHighLight(codeFragments);
 
 						this.setCaretPosition(0);
@@ -192,8 +192,8 @@ public class SourceCodeWindow extends JTextArea implements ViewColors,
 								.get(0);
 						this.readFile(file);
 
-						final List<GUIClone> codeFragments = GUICloneManager.SINGLETON
-								.getFileClones(file);
+						final List<GUIClone> codeFragments = GUICloneManager
+								.instance().getFileClones(file);
 						this.addHighLight(codeFragments);
 
 						this.setCaretPosition(0);
@@ -232,8 +232,8 @@ public class SourceCodeWindow extends JTextArea implements ViewColors,
 					this.getHighlighter().removeAllHighlights();
 
 					final GUIFile file = horizontalSelectedFiles.get().get(0);
-					final List<GUIClone> codeFragments = GUICloneManager.SINGLETON
-							.getFileClones(file);
+					final List<GUIClone> codeFragments = GUICloneManager
+							.instance().getFileClones(file);
 					this.addHighLight(codeFragments);
 				}
 				break;
@@ -247,8 +247,8 @@ public class SourceCodeWindow extends JTextArea implements ViewColors,
 					this.getHighlighter().removeAllHighlights();
 
 					final GUIFile file = verticalSelectedFiles.get().get(0);
-					final List<GUIClone> codeFragments = GUICloneManager.SINGLETON
-							.getFileClones(file);
+					final List<GUIClone> codeFragments = GUICloneManager
+							.instance().getFileClones(file);
 					this.addHighLight(codeFragments);
 				}
 				break;

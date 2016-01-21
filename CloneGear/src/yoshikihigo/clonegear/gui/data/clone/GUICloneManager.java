@@ -19,7 +19,16 @@ import yoshikihigo.clonegear.gui.data.file.GUIFileManager;
 
 public final class GUICloneManager {
 
-	public final static GUICloneManager SINGLETON = new GUICloneManager();
+	private static GUICloneManager SINGLETON = null;
+
+	public static void initialize() {
+		SINGLETON = new GUICloneManager();
+	}
+
+	public static GUICloneManager instance() {
+		assert null != SINGLETON : "SINGLETON is not initialized.";
+		return SINGLETON;
+	}
 
 	public final static <T extends HavingClones> List<GUIClone> getClones(
 			final Collection<T> entities) {
@@ -78,9 +87,9 @@ public final class GUICloneManager {
 
 	public List<GUIClonePair> getClonePairs(final int groupID1,
 			final int fileID1, final int groupID2, final int fileID2) {
-		final GUIFile file1 = GUIFileManager.SINGLETON.getFile(groupID1,
+		final GUIFile file1 = GUIFileManager.instance().getFile(groupID1,
 				fileID1);
-		final GUIFile file2 = GUIFileManager.SINGLETON.getFile(groupID2,
+		final GUIFile file2 = GUIFileManager.instance().getFile(groupID2,
 				fileID2);
 		return this.clonepairs.getClonePairs(file1, file2);
 	}
@@ -88,9 +97,9 @@ public final class GUICloneManager {
 	public List<GUIClonePair> getClonePairs(final int groupID1,
 			final int fileID1, final int groupID2, final int fileID2,
 			final int threshold) {
-		final GUIFile file1 = GUIFileManager.SINGLETON.getFile(groupID1,
+		final GUIFile file1 = GUIFileManager.instance().getFile(groupID1,
 				fileID1);
-		final GUIFile file2 = GUIFileManager.SINGLETON.getFile(groupID2,
+		final GUIFile file2 = GUIFileManager.instance().getFile(groupID2,
 				fileID2);
 		return this.clonepairs.getClonePairs(file1, file2, threshold);
 	}
@@ -107,18 +116,18 @@ public final class GUICloneManager {
 
 	public boolean hasClonePairs(final int groupID1, final int fileID1,
 			final int groupID2, final int fileID2) {
-		final GUIFile file1 = GUIFileManager.SINGLETON.getFile(groupID1,
+		final GUIFile file1 = GUIFileManager.instance().getFile(groupID1,
 				fileID1);
-		final GUIFile file2 = GUIFileManager.SINGLETON.getFile(groupID2,
+		final GUIFile file2 = GUIFileManager.instance().getFile(groupID2,
 				fileID2);
 		return this.clonepairs.hasClonePairs(file1, file2);
 	}
 
 	public boolean hasClonePairs(final int groupID1, final int fileID1,
 			final int groupID2, final int fileID2, final int threshold) {
-		final GUIFile file1 = GUIFileManager.SINGLETON.getFile(groupID1,
+		final GUIFile file1 = GUIFileManager.instance().getFile(groupID1,
 				fileID1);
-		final GUIFile file2 = GUIFileManager.SINGLETON.getFile(groupID2,
+		final GUIFile file2 = GUIFileManager.instance().getFile(groupID2,
 				fileID2);
 		return this.clonepairs.hasClonePairs(file1, file2, threshold);
 	}
@@ -186,19 +195,19 @@ public final class GUICloneManager {
 	}
 
 	public double getGroupROC(final int groupID) {
-		return GUIFileManager.SINGLETON.getGroupROC(groupID);
+		return GUIFileManager.instance().getGroupROC(groupID);
 	}
 
 	public double getGroupROC(final int groupID, final int threshold) {
-		return GUIFileManager.SINGLETON.getGroupROC(groupID, threshold);
+		return GUIFileManager.instance().getGroupROC(groupID, threshold);
 	}
 
 	public int getGroupNOC(final int groupID) {
-		return GUIFileManager.SINGLETON.getGroupNOC(groupID);
+		return GUIFileManager.instance().getGroupNOC(groupID);
 	}
 
 	public int getGroupNOC(final int groupID, final int threshold) {
-		return GUIFileManager.SINGLETON.getGroupNOC(groupID, threshold);
+		return GUIFileManager.instance().getGroupNOC(groupID, threshold);
 	}
 
 	public int getMaxDFL() {

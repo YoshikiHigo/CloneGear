@@ -8,15 +8,16 @@ import java.util.Map;
 
 public class CloneFirstPositionOffsetData {
 
-	public static final CloneFirstPositionOffsetData SINGLETON = new CloneFirstPositionOffsetData();
+	private static CloneFirstPositionOffsetData SINGLETON = null;
 
-	public int get(final GUICloneSet cloneset) {
-		assert this.initialized : "CloneFirstPositionOffsetData was not initialized.";
-		return this.offsets.get(cloneset);
+	public static CloneFirstPositionOffsetData instance(){
+		assert null != SINGLETON : "SINGLETON is not initialized.";
+		return SINGLETON;
 	}
-
-	public void initialize(final GUICloneManager manager) {
-
+	
+	public static void initialize(final GUICloneManager manager) {
+		
+		SINGLETON = new CloneFirstPositionOffsetData();
 		final List<GUICloneSet> clonesets = new LinkedList<>(
 				manager.getCloneSets());
 		Collections.sort(clonesets, (cloneset1, cloneset2) -> cloneset1.first()
@@ -24,17 +25,19 @@ public class CloneFirstPositionOffsetData {
 
 		int index = 0;
 		for (final GUICloneSet cloneSet : clonesets) {
-			this.offsets.put(cloneSet, index++);
+			SINGLETON.offsets.put(cloneSet, index++);
 		}
-
-		this.initialized = true;
 	}
+	
+	public int get(final GUICloneSet cloneset) {
+		return this.offsets.get(cloneset);
+	}
+
+	
 
 	private CloneFirstPositionOffsetData() {
 		this.offsets = new HashMap<>();
-		this.initialized = false;
 	}
 
 	private final Map<GUICloneSet, Integer> offsets;
-	private boolean initialized;
 }

@@ -42,7 +42,7 @@ public class DirectoryTreeView extends JTree implements Observer,
 
 				if (indexedFile.isFile()) {
 
-					final GUIFile file = IDIndexMap.SINGLETON
+					final GUIFile file = IDIndexMap.instance()
 							.getFile(indexedFile.getStartIndex());
 
 					switch (direction) {
@@ -92,9 +92,9 @@ public class DirectoryTreeView extends JTree implements Observer,
 		this.direction = direction;
 
 		String rootString = PathCompare
-				.getRootFilePath(GUIFileManager.SINGLETON.getFiles());
+				.getRootFilePath(GUIFileManager.instance().getFiles());
 		this.rootNode = new DefaultMutableTreeNode(new IndexedFile(rootString));
-		this.makeTree(rootString, GUIFileManager.SINGLETON.getFiles());
+		this.makeTree(rootString, GUIFileManager.instance().getFiles());
 
 		this.assignIndex(this.rootNode, 0);
 
@@ -143,7 +143,7 @@ public class DirectoryTreeView extends JTree implements Observer,
 
 					for (final GUIFile file : (List<GUIFile>) selectedFiles
 							.get()) {
-						final IndexedFile indexedFile = IndexedFileData.SINGLETON
+						final IndexedFile indexedFile = IndexedFileData.instance()
 								.get(file);
 						final TreePath currentPath = this
 								.getTreePath(indexedFile);
@@ -212,7 +212,7 @@ public class DirectoryTreeView extends JTree implements Observer,
 				}
 			}
 
-			IndexedFile currentFile = IndexedFileData.SINGLETON.get(file);
+			IndexedFile currentFile = IndexedFileData.instance().get(file);
 			DefaultMutableTreeNode newLeaf = new DefaultMutableTreeNode(
 					currentFile);
 			currentNode.add(newLeaf);

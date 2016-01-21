@@ -140,6 +140,13 @@ public class CGConfig {
 		}
 
 		{
+			final Option n = new Option("n", "no-detection", false,
+					"not execute clone detection");
+			n.setRequired(false);
+			options.addOption(n);
+		}
+
+		{
 			final Option gemini = new Option("g", "gemini", false,
 					"launch Gemini after finishing clone detection");
 			gemini.setRequired(false);
@@ -351,6 +358,10 @@ public class CGConfig {
 
 	public boolean isFOLDING() {
 		return this.commandLine.hasOption("folding");
+	}
+
+	public boolean isNOTDETECTION() {
+		return this.commandLine.hasOption("n");
 	}
 
 	public boolean isGEMINI() {

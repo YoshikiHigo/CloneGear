@@ -31,9 +31,21 @@ import yoshikihigo.clonegear.gui.view.metric.MetricAnalysisView;
 import yoshikihigo.clonegear.gui.view.quantity.QuantitativeAnalysisView;
 import yoshikihigo.clonegear.gui.view.visual.VisualAnalysisView;
 
-public class Gemini extends JFrame {
+public class Gemini extends JFrame implements Runnable {
 
 	public static void main(String args[]) {
+		final String inputFileName = args[0];
+		final Gemini gemini = new Gemini(inputFileName);
+		gemini.setVisible(true);
+	}
+
+	private boolean alive;
+
+	public Gemini(final String inputFileName) {
+
+		super("Gemini");
+
+		alive = true;
 
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -42,14 +54,8 @@ public class Gemini extends JFrame {
 			System.exit(0);
 		}
 
-		final String inputFileName = args[0];
-		final Gemini gemini = new Gemini(inputFileName);
-		gemini.setVisible(true);
-	}
-
-	public Gemini(final String inputFileName) {
-
-		super("Gemini");
+		GUIFileManager.initialize();
+		GUICloneManager.initialize();
 
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
@@ -61,25 +67,24 @@ public class Gemini extends JFrame {
 		final List<GUIFile> files = new ArrayList<>();
 		final List<GUIClonePair> clonepairs = new ArrayList<>();
 		DetectionResultsFormat.read(inputFileName, files, clonepairs);
-		files.stream().forEach(file -> GUIFileManager.SINGLETON.add(file));
-		clonepairs.stream().forEach(
-				clonepair -> GUICloneManager.SINGLETON.addClonepair(clonepair));
+		files.stream().forEach(file -> GUIFileManager.instance().add(file));
+		clonepairs.stream()
+				.forEach(
+						clonepair -> GUICloneManager.instance().addClonepair(
+								clonepair));
 
-		FileOffsetData.SINGLETON.initialize(GUIFileManager.SINGLETON);
-		IDIndexMap.SINGLETON.initialize(GUIFileManager.SINGLETON);
-		IndexedFileData.SINGLETON.initialize(GUIFileManager.SINGLETON);
+		FileOffsetData.initialize(GUIFileManager.instance());
+		IDIndexMap.initialize(GUIFileManager.instance());
+		IndexedFileData.initialize(GUIFileManager.instance());
 
-		CloneMetricsMaxValues.SINGLETON.initialize(GUICloneManager.SINGLETON
+		CloneMetricsMaxValues.initialize(GUICloneManager.instance()
 				.getCloneSets());
-		CloneIDOffsetData.SINGLETON.initialize(GUICloneManager.SINGLETON);
-		CloneFirstPositionOffsetData.SINGLETON
-				.initialize(GUICloneManager.SINGLETON);
-		CloneLastPositionOffsetData.SINGLETON
-				.initialize(GUICloneManager.SINGLETON);
-		CloneMiddlePositionOffsetData.SINGLETON
-				.initialize(GUICloneManager.SINGLETON);
-		CloneRangeOffsetData.SINGLETON.initialize(GUICloneManager.SINGLETON);
-		CloneNIFOffsetData.SINGLETON.initialize(GUICloneManager.SINGLETON);
+		CloneIDOffsetData.initialize(GUICloneManager.instance());
+		CloneFirstPositionOffsetData.initialize(GUICloneManager.instance());
+		CloneLastPositionOffsetData.initialize(GUICloneManager.instance());
+		CloneMiddlePositionOffsetData.initialize(GUICloneManager.instance());
+		CloneRangeOffsetData.initialize(GUICloneManager.instance());
+		CloneNIFOffsetData.initialize(GUICloneManager.instance());
 
 		final Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
 		final int viewerWidth = (int) size.getWidth() - 10;
@@ -115,10 +120,22 @@ public class Gemini extends JFrame {
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				System.exit(0);
+				Gemini.this.alive = false;
 			}
 		});
 
 		quantitativeAnalysisView.reset();
+	}
+
+	@Override
+	public void run() {
+		this.setVisible(true);
+		while (this.alive) {
+			try {
+				Thread.sleep(200);
+			} catch (final InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

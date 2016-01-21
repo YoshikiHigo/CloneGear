@@ -32,7 +32,7 @@ public class ROCPanel extends javax.swing.JPanel implements ROCPanelConst,
 			filteredNumber[i] = 0;
 		}
 
-		this.allFileNumber = GUIFileManager.SINGLETON.getFileCount();
+		this.allFileNumber = GUIFileManager.instance().getFileCount();
 	}
 
 	public void init() {
@@ -173,26 +173,26 @@ public class ROCPanel extends javax.swing.JPanel implements ROCPanelConst,
 		final int height = this.getHeight();
 
 		final int rnr = RNRValue.getInstance(RNR).get();
-		final int unfilteredCloneSetNumber = GUICloneManager.SINGLETON
+		final int unfilteredCloneSetNumber = GUICloneManager.instance()
 				.getCloneSetCount();
-		final int filteredCloneSetNumber = GUICloneManager.SINGLETON
+		final int filteredCloneSetNumber = GUICloneManager.instance()
 				.getCloneSetCount(rnr);
-		final int unfilteredClonePairNumber = GUICloneManager.SINGLETON
+		final int unfilteredClonePairNumber = GUICloneManager.instance()
 				.getClonePairCount();
-		final int filteredClonePairNumber = GUICloneManager.SINGLETON
+		final int filteredClonePairNumber = GUICloneManager.instance()
 				.getClonePairCount(rnr);
-		final int unfilteredFragmentNumber = GUICloneManager.SINGLETON
+		final int unfilteredFragmentNumber = GUICloneManager.instance()
 				.getClones().size();
-		final int filteredFragmentNumber = GUICloneManager.SINGLETON.getClones(
-				rnr).size();
+		final int filteredFragmentNumber = GUICloneManager.instance()
+				.getClones(rnr).size();
 
 		final int y1 = height - 15;
 		final int y2 = height - 30;
 		final int y3 = height - 45;
-		final String averageUnfilteredROC = String
-				.valueOf((int) GUIFileManager.SINGLETON.getTotalROC());
-		final String averageFilteredROC = String
-				.valueOf((int) GUIFileManager.SINGLETON.getTotalROC(rnr));
+		final String averageUnfilteredROC = String.valueOf((int) GUIFileManager
+				.instance().getTotalROC());
+		final String averageFilteredROC = String.valueOf((int) GUIFileManager
+				.instance().getTotalROC(rnr));
 
 		g.setColor(STATUS_COLOR);
 

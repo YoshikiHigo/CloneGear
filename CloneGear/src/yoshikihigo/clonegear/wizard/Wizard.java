@@ -23,6 +23,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -46,13 +47,20 @@ public class Wizard extends JFrame {
 	final private JTextField threadField;
 	final private JCheckBox verboseCheckBox;
 	final private JCheckBox geminiCheckBox;
-	final private JCheckBox onlyGeminiCheckBox;
+	final private JCheckBox notDetectionCheckBox;
 	final private JButton detectButton;
 	final private JButton quitButton;
 
 	public Wizard() {
 
 		super("CloneGear --setting for clone detection--");
+
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (final Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
 
 		this.finished = false;
 		this.setSize(800, 700);
@@ -140,12 +148,12 @@ public class Wizard extends JFrame {
 		this.geminiCheckBox = new JCheckBox(
 				"launch Gemini after finishing clone detection", CGConfig
 						.getInstance().isGEMINI());
-		this.onlyGeminiCheckBox = new JCheckBox(
+		this.notDetectionCheckBox = new JCheckBox(
 				"use existing detection results", false);
 		final JPanel geminiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		geminiPanel.add(this.geminiCheckBox);
 		geminiPanel.add(new JLabel("("));
-		geminiPanel.add(this.onlyGeminiCheckBox);
+		geminiPanel.add(this.notDetectionCheckBox);
 		geminiPanel.add(new JLabel(")"));
 		geminiPanel.setBorder(new LineBorder(Color.black));
 
@@ -282,10 +290,14 @@ public class Wizard extends JFrame {
 					}
 					}
 				});
-		this.geminiCheckBox.addActionListener(e -> this.onlyGeminiCheckBox
+		this.geminiCheckBox.addActionListener(e -> this.notDetectionCheckBox
 				.setEnabled(this.geminiCheckBox.isSelected()));
 		this.detectButton.addActionListener(e -> this.finished = true);
 		this.quitButton.addActionListener(e -> System.exit(0));
+	}
+
+	public void setFinished(final boolean finished) {
+		this.finished = finished;
 	}
 
 	public boolean isFinished() {
@@ -325,6 +337,10 @@ public class Wizard extends JFrame {
 
 		if (this.geminiCheckBox.isSelected()) {
 			configs.add("-g");
+		}
+
+		if (this.notDetectionCheckBox.isSelected()) {
+			configs.add("-n");
 		}
 
 		return configs.toArray(new String[0]);

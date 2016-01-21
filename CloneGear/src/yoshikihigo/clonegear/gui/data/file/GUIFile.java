@@ -135,10 +135,10 @@ public class GUIFile implements Comparable<GUIFile>, Entity, HavingClones {
 	}
 
 	public int getNOF() {
-		return GUIFileManager.SINGLETON.getRelatedFiles(this).size();
+		return GUIFileManager.instance().getRelatedFiles(this).size();
 	}
 
 	public int getNOF(final int threshold) {
-		return GUIFileManager.SINGLETON.getRelatedFiles(this, threshold).size();
+		return GUIFileManager.instance().getRelatedFiles(this, threshold).size();
 	}
 }

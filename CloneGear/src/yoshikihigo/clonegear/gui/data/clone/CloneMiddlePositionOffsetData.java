@@ -10,15 +10,15 @@ import yoshikihigo.clonegear.gui.data.file.IDIndexMap;
 
 public class CloneMiddlePositionOffsetData {
 
-	public static final CloneMiddlePositionOffsetData SINGLETON = new CloneMiddlePositionOffsetData();
+	private static CloneMiddlePositionOffsetData SINGLETON = null;
 
-	public int get(final GUICloneSet cloneset) {
-		assert this.initialized : "CloneMiddlePositionOffsetData was not initialized.";
-		return this.offsets.get(cloneset);
+	public static CloneMiddlePositionOffsetData instance() {
+		return SINGLETON;
 	}
 
-	public void initialize(final GUICloneManager manager) {
+	public static void initialize(final GUICloneManager manager) {
 
+		SINGLETON = new CloneMiddlePositionOffsetData();
 		final List<GUICloneSet> clonesets = new ArrayList<>(
 				manager.getCloneSets());
 		Collections.sort(
@@ -28,36 +28,34 @@ public class CloneMiddlePositionOffsetData {
 							.getClones()
 							.stream()
 							.mapToInt(
-									clone -> IDIndexMap.SINGLETON.getIndex(
+									clone -> IDIndexMap.instance().getIndex(
 											clone.file.groupID,
 											clone.file.fileID)).average()
 							.getAsDouble();
-
 					final double average2 = cloneset2
 							.getClones()
 							.stream()
 							.mapToInt(
-									clone -> IDIndexMap.SINGLETON.getIndex(
+									clone -> IDIndexMap.instance().getIndex(
 											clone.file.groupID,
 											clone.file.fileID)).average()
 							.getAsDouble();
-
 					return Double.compare(average1, average2);
 				});
 
 		int index = 0;
 		for (final GUICloneSet cloneset : clonesets) {
-			this.offsets.put(cloneset, index++);
+			SINGLETON.offsets.put(cloneset, index++);
 		}
+	}
 
-		this.initialized = true;
+	public int get(final GUICloneSet cloneset) {
+		return this.offsets.get(cloneset);
 	}
 
 	private CloneMiddlePositionOffsetData() {
 		this.offsets = new HashMap<>();
-		this.initialized = false;
 	}
 
 	private final Map<GUICloneSet, Integer> offsets;
-	private boolean initialized;
 }

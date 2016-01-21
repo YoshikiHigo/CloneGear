@@ -25,7 +25,7 @@ public class GroupListViewModel extends AbstractTableModel implements
 	}
 
 	public int getRowCount() {
-		return GUIFileManager.SINGLETON.getGroupCount();
+		return GUIFileManager.instance().getGroupCount();
 	}
 
 	public int getColumnCount() {
@@ -39,14 +39,14 @@ public class GroupListViewModel extends AbstractTableModel implements
 		case COL_ID:
 			return Integer.valueOf(row);
 		case COL_NOF:
-			return Integer.valueOf(GUIFileManager.SINGLETON.getFileCount(row));
+			return Integer.valueOf(GUIFileManager.instance().getFileCount(row));
 		case COL_LOC:
-			return Integer.valueOf(GUIFileManager.SINGLETON.getGroupLOC(row));
+			return Integer.valueOf(GUIFileManager.instance().getGroupLOC(row));
 		case COL_NOC:
-			return Integer.valueOf(GUIFileManager.SINGLETON.getGroupNOC(row,
+			return Integer.valueOf(GUIFileManager.instance().getGroupNOC(row,
 					threshold));
 		case COL_ROC:
-			return Double.valueOf(GUIFileManager.SINGLETON.getGroupROC(row,
+			return Double.valueOf(GUIFileManager.instance().getGroupROC(row,
 					threshold));
 		default:
 			return null;
@@ -74,6 +74,6 @@ public class GroupListViewModel extends AbstractTableModel implements
 	}
 
 	public Collection<GUIFile> getFiles(final int index) {
-		return GUIFileManager.SINGLETON.getFiles(index);
+		return GUIFileManager.instance().getFiles(index);
 	}
 }

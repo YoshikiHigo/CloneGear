@@ -111,10 +111,10 @@ public class ClonePairListView extends JTable implements ViewScale, Observer,
 
 					final List<GUIClonePair> clonePairs;
 					if (uninterestingClonesDisplay) {
-						clonePairs = GUICloneManager.SINGLETON.getClonePairs(
+						clonePairs = GUICloneManager.instance().getClonePairs(
 								horizontalFile, verticalFile);
 					} else {
-						clonePairs = GUICloneManager.SINGLETON.getClonePairs(
+						clonePairs = GUICloneManager.instance().getClonePairs(
 								horizontalFile, verticalFile, rnr);
 					}
 

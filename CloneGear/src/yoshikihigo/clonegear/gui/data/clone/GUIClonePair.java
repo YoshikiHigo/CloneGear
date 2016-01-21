@@ -18,8 +18,8 @@ public class GUIClonePair implements Comparable<GUIClonePair>, Entity,
 	}
 
 	public final int getRNR() {
-		final GUICloneSet cloneSet = GUICloneManager.SINGLETON
-				.getCloneSet(this.left);
+		final GUICloneSet cloneSet = GUICloneManager.instance().getCloneSet(
+				this.left);
 		return cloneSet.getRNR();
 	}
 

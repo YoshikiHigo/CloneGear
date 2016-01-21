@@ -46,8 +46,8 @@ public class CloneListViewModel extends AbstractTableModel {
 	public Object getValueAt(int row, int col) {
 
 		final GUIClone clone = this.clones.get(row);
-		final GUICloneSet cloneset = GUICloneManager.SINGLETON
-				.getCloneSet(clone);
+		final GUICloneSet cloneset = GUICloneManager.instance().getCloneSet(
+				clone);
 
 		switch (col) {
 		case COL_LOCATION:

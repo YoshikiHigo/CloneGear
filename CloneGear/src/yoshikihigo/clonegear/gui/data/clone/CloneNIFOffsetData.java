@@ -8,15 +8,16 @@ import java.util.Map;
 
 public class CloneNIFOffsetData {
 
-	public static final CloneNIFOffsetData SINGLETON = new CloneNIFOffsetData();
+	private static CloneNIFOffsetData SINGLETON = null;
 
-	public int get(final GUICloneSet cloneset) {
-		assert this.initialized : "CloneNIFOffsetData was not initialized.";
-		return this.offsets.get(cloneset);
+	public static CloneNIFOffsetData instance() {
+		assert null != SINGLETON : "SINGLETON is not initialized.";
+		return SINGLETON;
 	}
 
-	public void initialize(final GUICloneManager manager) {
+	public static void initialize(final GUICloneManager manager) {
 
+		SINGLETON = new CloneNIFOffsetData();
 		final List<GUICloneSet> clonesets = new ArrayList<>(
 				manager.getCloneSets());
 		Collections.sort(clonesets, (cloneset1, cloneset2) -> Integer.compare(
@@ -24,17 +25,17 @@ public class CloneNIFOffsetData {
 
 		int index = 0;
 		for (final GUICloneSet cloneSet : clonesets) {
-			this.offsets.put(cloneSet, index++);
+			SINGLETON.offsets.put(cloneSet, index++);
 		}
+	}
 
-		this.initialized = true;
+	public int get(final GUICloneSet cloneset) {
+		return this.offsets.get(cloneset);
 	}
 
 	private CloneNIFOffsetData() {
 		this.offsets = new HashMap<>();
-		this.initialized = false;
 	}
 
 	private final Map<GUICloneSet, Integer> offsets;
-	private boolean initialized;
 }

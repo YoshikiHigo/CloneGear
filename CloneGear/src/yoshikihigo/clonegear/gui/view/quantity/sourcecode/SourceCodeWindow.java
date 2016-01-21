@@ -122,7 +122,7 @@ public class SourceCodeWindow extends JTextArea implements ViewColors,
 
 				} else {
 
-					GUICloneSet cloneSet = GUICloneManager.SINGLETON
+					GUICloneSet cloneSet = GUICloneManager.instance()
 							.getCloneSet(clone);
 					switch (cloneSet.getRAD()) {
 					case 0:
@@ -170,7 +170,7 @@ public class SourceCodeWindow extends JTextArea implements ViewColors,
 					this.readFile(file);
 					this.setCaretPosition(0);
 
-					final List<GUIClone> codeFragments = GUICloneManager.SINGLETON
+					final List<GUIClone> codeFragments = GUICloneManager.instance()
 							.getFileClones(file);
 					this.addHighlight(codeFragments);
 				}
@@ -200,7 +200,7 @@ public class SourceCodeWindow extends JTextArea implements ViewColors,
 				this.getHighlighter().removeAllHighlights();
 				final GUIFile file = SelectedEntities
 						.<GUIFile> getInstance(SELECTED_FILE).get().get(0);
-				final List<GUIClone> codeFragments = GUICloneManager.SINGLETON
+				final List<GUIClone> codeFragments = GUICloneManager.instance()
 						.getFileClones(file);
 				this.addHighlight(codeFragments);
 			}

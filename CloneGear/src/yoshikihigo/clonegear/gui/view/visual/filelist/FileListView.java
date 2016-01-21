@@ -85,7 +85,7 @@ public class FileListView extends JTable implements ViewScale, Observer,
 
 		this.direction = direction;
 
-		this.model = new FileListViewModel(GUIFileManager.SINGLETON.getFiles());
+		this.model = new FileListViewModel(GUIFileManager.instance().getFiles());
 		this.setModel(this.model);
 		final RowSorter<FileListViewModel> sorter = new TableRowSorter<>(
 				this.model);
@@ -157,7 +157,7 @@ public class FileListView extends JTable implements ViewScale, Observer,
 					for (final GUIFile file : files) {
 						final int groupID = file.groupID;
 						final int fileID = file.fileID;
-						final int modelIndex = IDIndexMap.SINGLETON.getIndex(
+						final int modelIndex = IDIndexMap.instance().getIndex(
 								groupID, fileID);
 						final int viewIndex = this
 								.convertRowIndexToView(modelIndex);
