@@ -314,13 +314,23 @@ public class Wizard extends JFrame {
 		if (CGConfig.getInstance().hasSOURCE()) {
 			final File directory = new File(CGConfig.getInstance().getSOURCE());
 			if (directory.exists()) {
-				List<SourceFile> sourcefiles = FileUtility
+				final List<SourceFile> sourcefiles = FileUtility
 						.collectSourceFiles(directory);
-				List<File> files = sourcefiles.stream()
+				final List<File> files = sourcefiles.stream()
 						.map(sourcefile -> new File(sourcefile.path))
 						.collect(Collectors.toList());
 				this.fileTable.addFiles(files);
 			}
+		}
+
+		if (CGConfig.getInstance().hasLIST()) {
+			final File list = new File(CGConfig.getInstance().getLIST());
+			final List<SourceFile> sourcefiles = FileUtility
+					.collectFilesWithList(list.getAbsolutePath());
+			final List<File> files = sourcefiles.stream()
+					.map(sourcefile -> new File(sourcefile.path))
+					.collect(Collectors.toList());
+			this.fileTable.addFiles(files);
 		}
 	}
 
