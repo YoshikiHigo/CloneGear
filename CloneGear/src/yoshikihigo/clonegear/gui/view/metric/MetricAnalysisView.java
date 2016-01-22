@@ -6,10 +6,9 @@ import java.beans.PropertyChangeListener;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
-import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
@@ -26,12 +25,10 @@ import yoshikihigo.clonegear.gui.view.metric.scatterplot.ScatterPlotView;
 import yoshikihigo.clonegear.gui.view.metric.source.SourceCodeView;
 import yoshikihigo.clonegear.gui.view.metric.toolbar.ToolBarPanel;
 
-public class MetricAnalysisView extends JInternalFrame implements ViewScale,
+public class MetricAnalysisView extends JPanel implements ViewScale,
 		MetricViewInterface, Observer {
 
 	public MetricAnalysisView(final int width, final int height) {
-
-		super("Metric Analysis View", true, false, true, true);
 
 		SelectedEntities.<GUICloneSet> getInstance(FILTERED_CLONESET)
 				.addObserver(this);
@@ -95,14 +92,10 @@ public class MetricAnalysisView extends JInternalFrame implements ViewScale,
 		SelectedEntities.<GUIClone> getInstance(CLONE).addObserver(
 				this.toolBarPanel);
 
-		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
-		this.setBounds(0, 0, width, height);
-
-		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(this.baseSplitPane, BorderLayout.CENTER);
-		this.getContentPane().add(this.toolBarPanel, BorderLayout.NORTH);
-		this.getContentPane().add(this.rnrSliderView, BorderLayout.SOUTH);
+		this.setLayout(new BorderLayout());
+		this.add(this.baseSplitPane, BorderLayout.CENTER);
+		this.add(this.toolBarPanel, BorderLayout.NORTH);
+		this.add(this.rnrSliderView, BorderLayout.SOUTH);
 
 		this.baseSplitPane.setLeftComponent(leftTabbedPane);
 		this.baseSplitPane.setRightComponent(this.rightSplitPane);

@@ -4,11 +4,9 @@ import java.awt.BorderLayout;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
-import javax.swing.WindowConstants;
 
 import yoshikihigo.clonegear.gui.data.clone.GUIClone;
 import yoshikihigo.clonegear.gui.data.file.GUIFile;
@@ -27,12 +25,10 @@ import yoshikihigo.clonegear.gui.view.quantity.sourcecode.SourceCodeWindow;
 import yoshikihigo.clonegear.gui.view.quantity.statistic.roc.ROCPanel;
 import yoshikihigo.clonegear.gui.view.quantity.toolbar.ToolBarPanel;
 
-public class QuantitativeAnalysisView extends JInternalFrame implements
-		ViewScale, QuantitativeViewInterface, Observer {
+public class QuantitativeAnalysisView extends JPanel implements ViewScale,
+		QuantitativeViewInterface, Observer {
 
 	public QuantitativeAnalysisView(final int width, final int height) {
-
-		super("Quantitative File Analysis View", true, false, true, true);
 
 		SelectedEntities.<GUIFile> getInstance(GROUP).addObserver(this);
 		SelectedEntities.<GUIFile> getInstance(SELECTED_FILE).addObserver(this);
@@ -183,14 +179,10 @@ public class QuantitativeAnalysisView extends JInternalFrame implements
 		UninterestingClonesDisplay.getInstance(UNINTERESTING).addObserver(
 				this.rocPanel);
 
-		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
-		this.setBounds(0, 0, width, height);
-
-		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(this.baseSplitPane, BorderLayout.CENTER);
-		this.getContentPane().add(this.rnrSliderView, BorderLayout.SOUTH);
-		this.getContentPane().add(this.toolBarPanel, BorderLayout.NORTH);
+		this.setLayout(new BorderLayout());
+		this.add(this.baseSplitPane, BorderLayout.CENTER);
+		this.add(this.rnrSliderView, BorderLayout.SOUTH);
+		this.add(this.toolBarPanel, BorderLayout.NORTH);
 
 		this.baseSplitPane.setLeftComponent(groupSplitPane);
 		this.baseSplitPane.setRightComponent(fileStatisticsTabbedPane);

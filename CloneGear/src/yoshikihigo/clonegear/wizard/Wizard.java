@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,6 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -33,6 +32,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import yoshikihigo.clonegear.CGConfig;
 import yoshikihigo.clonegear.FileUtility;
 import yoshikihigo.clonegear.StringUtility;
+import yoshikihigo.clonegear.data.SourceFile;
 
 public class Wizard extends JFrame {
 
@@ -69,6 +69,7 @@ public class Wizard extends JFrame {
 
 		this.finished = false;
 		this.setSize(800, 700);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.tokenField = new JTextField(Integer.toString(CGConfig
 				.getInstance().getTHRESHOLD()), 3);
@@ -209,13 +210,6 @@ public class Wizard extends JFrame {
 
 		this.getContentPane().add(basePanel);
 
-		this.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			}
-		});
-
 		directoryButton
 				.addActionListener(e -> {
 					final JFileChooser chooser = null == lastDirectory ? new JFileChooser()
@@ -316,6 +310,18 @@ public class Wizard extends JFrame {
 				.setEnabled(this.geminiCheckBox.isSelected()));
 		this.detectButton.addActionListener(e -> this.finished = true);
 		this.quitButton.addActionListener(e -> System.exit(0));
+
+		if (CGConfig.getInstance().hasSOURCE()) {
+			final File directory = new File(CGConfig.getInstance().getSOURCE());
+			if (directory.exists()) {
+				List<SourceFile> sourcefiles = FileUtility
+						.collectSourceFiles(directory);
+				List<File> files = sourcefiles.stream()
+						.map(sourcefile -> new File(sourcefile.path))
+						.collect(Collectors.toList());
+				this.fileTable.addFiles(files);
+			}
+		}
 	}
 
 	public void setFinished(final boolean finished) {

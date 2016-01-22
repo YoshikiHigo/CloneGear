@@ -5,11 +5,9 @@ import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
-import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
@@ -28,12 +26,10 @@ import yoshikihigo.clonegear.gui.view.visual.scatterplot.ScatterPlotView;
 import yoshikihigo.clonegear.gui.view.visual.sourcecode.SourceCodeWindow;
 import yoshikihigo.clonegear.gui.view.visual.toolbar.ToolBarPanel;
 
-public class VisualAnalysisView extends JInternalFrame implements ViewScale,
+public class VisualAnalysisView extends JPanel implements ViewScale,
 		VisualViewInterface, Observer {
 
 	public VisualAnalysisView(final int width, final int height) {
-
-		super("Visual Analysis View", true, false, true, true);
 
 		this.baseSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, false);
 		this.rightSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true);
@@ -135,14 +131,10 @@ public class VisualAnalysisView extends JInternalFrame implements ViewScale,
 
 		this.scatterPlotView = new ScatterPlotView();
 
-		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
-		this.setBounds(0, 0, width, height);
-
-		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(baseSplitPane, BorderLayout.CENTER);
-		this.getContentPane().add(this.toolBarPanel, BorderLayout.NORTH);
-		this.getContentPane().add(this.rnrSliderView, BorderLayout.SOUTH);
+		this.setLayout(new BorderLayout());
+		this.add(baseSplitPane, BorderLayout.CENTER);
+		this.add(this.toolBarPanel, BorderLayout.NORTH);
+		this.add(this.rnrSliderView, BorderLayout.SOUTH);
 
 		fileListPane.setTopComponent(this.horizontalFileListView
 				.getScrollPane());

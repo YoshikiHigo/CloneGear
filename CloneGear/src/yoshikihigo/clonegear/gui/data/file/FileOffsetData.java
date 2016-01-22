@@ -8,6 +8,7 @@ public class FileOffsetData {
 	private static FileOffsetData SINGLETON = null;
 
 	public static FileOffsetData instance() {
+		assert null != SINGLETON : "SINGLETON is not initialized.";
 		return SINGLETON;
 	}
 
@@ -21,7 +22,6 @@ public class FileOffsetData {
 	}
 
 	public int get(final GUIFile file) {
-		assert null != SINGLETON : "SINGLETON is not initialized.";
 		return this.offsets.get(file);
 	}
 

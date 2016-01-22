@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,9 +36,13 @@ import yoshikihigo.clonegear.data.WebFile;
 import yoshikihigo.clonegear.gui.Gemini;
 import yoshikihigo.clonegear.lexer.token.Token;
 import yoshikihigo.clonegear.tfidf.TFIDF;
+import yoshikihigo.clonegear.wizard.Progress;
+import yoshikihigo.clonegear.wizard.Progress.ProgressPrintStream;
 import yoshikihigo.clonegear.wizard.Wizard;
 
 public class CGFinder {
+
+	private static PrintStream out = null;
 
 	public static void main(final String[] args) {
 
@@ -66,19 +71,23 @@ public class CGFinder {
 				CGConfig.initialize(newArgs);
 			}
 
+			final Progress progress = new Progress();
+			progress.setVisible(true);
+
+			out = CGConfig.getInstance().isCUI() ? System.err
+					: new ProgressPrintStream(progress);
+
 			if (!CGConfig.getInstance().isNOTDETECTION()) {
 
 				if (CGConfig.getInstance().hasSOURCE()
 						&& CGConfig.getInstance().hasLIST()) {
-					System.err
-							.println("Either \"src\" or \"list\", but not both can be specified.");
+					out.println("Either \"src\" or \"list\", but not both can be specified.");
 					System.exit(0);
 				}
 
 				if (!CGConfig.getInstance().hasSOURCE()
 						&& !CGConfig.getInstance().hasLIST()) {
-					System.err
-							.println("Either \"src\" or \"list\", must be specified.");
+					out.println("Either \"src\" or \"list\", must be specified.");
 					System.exit(0);
 				}
 
@@ -154,9 +163,11 @@ public class CGFinder {
 					text.append(" (for performance turning) similar alignment identification time for all the threads: ");
 					text.append(TimingUtility.getExecutionTime(SmithWaterman
 							.getCloneDetectionTime()));
-					System.err.println(text.toString());
+					out.println(text.toString());
 				}
 			}
+
+			progress.setVisible(false);
 
 			if (CGConfig.getInstance().isGEMINI()) {
 				final String results = CGConfig.getInstance().getRESULT();
@@ -193,23 +204,23 @@ public class CGFinder {
 		}
 
 		if (!CGConfig.getInstance().isVERBOSE()) {
-			System.err.println("parsing source files ... ");
+			out.println("parsing source files ... ");
 		}
 
 		int number = 1;
 		for (final SourceFile file : files) {
 
 			if (CGConfig.getInstance().isVERBOSE()) {
-				System.err.print(Integer.toString(number++));
-				System.err.print("/");
-				System.err.print(Integer.toString(files.size()));
-				System.err.print(": parsing ");
-				System.err.println(file.path);
+				out.print(Integer.toString(number++));
+				out.print("/");
+				out.print(Integer.toString(files.size()));
+				out.print(": parsing ");
+				out.println(file.path);
 			}
 
 			final List<String> lines = FileUtility.readFile(file.path);
 			if (null == lines) {
-				System.err.print("file \"" + file.path + "\" is unreadable.");
+				out.print("file \"" + file.path + "\" is unreadable.");
 				continue;
 			}
 			final String text = String.join(System.lineSeparator(), lines);
@@ -287,7 +298,7 @@ public class CGFinder {
 	private static List<ClonePair> detectClones(final List<SourceFile> files) {
 
 		if (!CGConfig.getInstance().isVERBOSE()) {
-			System.err.println("detecting clones ... ");
+			out.println("detecting clones ... ");
 		}
 
 		final boolean isCrossGroupDetection = CGConfig.getInstance()
@@ -361,7 +372,7 @@ public class CGFinder {
 			final List<T> clones, final Map<T, Map<T, Double>> similarities) {
 
 		if (!CGConfig.getInstance().isVERBOSE()) {
-			System.err.println("filtering trivial clones ... ");
+			out.println("filtering trivial clones ... ");
 		}
 
 		for (final T clone : clones) {
