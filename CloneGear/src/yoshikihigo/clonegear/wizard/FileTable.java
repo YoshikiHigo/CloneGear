@@ -181,7 +181,7 @@ public class FileTable extends JTable {
 		}
 	}
 
-	class FileTableModel extends AbstractTableModel {
+	static class FileTableModel extends AbstractTableModel {
 
 		final String[] titles;
 		final private List<File> files;

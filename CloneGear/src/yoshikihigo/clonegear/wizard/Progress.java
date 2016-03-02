@@ -21,7 +21,6 @@ public class Progress extends JFrame {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (final Exception e) {
 			e.printStackTrace();
-			System.exit(0);
 		}
 
 		this.setSize(800, 700);

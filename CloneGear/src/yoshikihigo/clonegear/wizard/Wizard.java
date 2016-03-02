@@ -64,7 +64,6 @@ public class Wizard extends JFrame {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (final Exception e) {
 			e.printStackTrace();
-			System.exit(0);
 		}
 
 		this.finished = false;
