@@ -186,6 +186,36 @@ public class FileUtility {
 		return files;
 	}
 
+	public static List<WebFile> collectWebFilesWithList(final String list) {
+		final List<WebFile> files = new ArrayList<>();
+		try {
+			final List<String> paths = Files.readAllLines(Paths.get(list),
+					StandardCharsets.UTF_8);
+			int groupID = 0;
+			for (final String path : paths) {
+				if (isBlankLine(path)) {
+					groupID++;
+				} else {
+					final File file = new File(path);
+					if (file.isFile()) {
+						final LANGUAGE language = getLANGUAGE(file);
+						if ((null != language)
+								&& (language.equals(LANGUAGE.HTML)
+										|| language.equals(LANGUAGE.JSP) || language
+											.equals(LANGUAGE.PHP))) {
+							final WebFile webFile = (WebFile) language
+									.getSourceFile(file, groupID);
+							files.add(webFile);
+						}
+					}
+				}
+			}
+		} catch (final IOException e) {
+			e.printStackTrace();
+		}
+		return files;
+	}
+
 	private static boolean isBlankLine(final String line) {
 		return line.chars().allMatch(c -> (' ' == c) || ('\t' == c));
 	}

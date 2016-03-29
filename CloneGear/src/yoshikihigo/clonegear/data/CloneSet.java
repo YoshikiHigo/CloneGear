@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import yoshikihigo.clonegear.lexer.token.Token;
 
-public class CloneSet extends CloneData {
+public class CloneSet extends CloneData implements Comparable<CloneSet> {
 
 	final static private AtomicInteger ID_GENERATOR = new AtomicInteger(0);
 
@@ -41,5 +41,10 @@ public class CloneSet extends CloneData {
 	@Override
 	public int getID() {
 		return this.id;
+	}
+
+	@Override
+	public int compareTo(final CloneSet target) {
+		return Integer.compare(this.getID(), target.getID());
 	}
 }

@@ -244,8 +244,8 @@ public class CGFinder {
 					.getInstance().getSOURCE())));
 		}
 		if (CGConfig.getInstance().hasLIST()) {
-			webFiles.addAll(FileUtility.collectWebFiles(new File(CGConfig
-					.getInstance().getLIST())));
+			webFiles.addAll(FileUtility.collectWebFilesWithList(CGConfig
+					.getInstance().getLIST()));
 		}
 
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JAVASCRIPT)) {

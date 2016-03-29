@@ -8,7 +8,9 @@ import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import yoshikihigo.clonegear.data.ClonePair;
 import yoshikihigo.clonegear.data.CloneSet;
@@ -27,12 +29,17 @@ public class DetectionResultsFormat {
 				new OutputStreamWriter(new FileOutputStream(path), "UTF-8"))
 				: new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"))) {
 
-			files.stream().forEach(file -> {
+			final Set<String> checked = new HashSet<>();
+			for (final SourceFile file : files) {
+				if (checked.contains(file.path)) {
+					continue;
+				}
 				final String line = makeFileLine(file);
 				writer.println(line);
-			});
+				checked.add(file.path);
+			}
 
-			clonesets.forEach(cloneset -> {
+			clonesets.stream().sorted().forEach(cloneset -> {
 				cloneset.getClonepairs().stream().forEach(clonepair -> {
 					final String line = makeCloneLine(cloneset.id, clonepair);
 					writer.println(line);
