@@ -39,8 +39,12 @@ public final class GUIFileManager {
 	}
 
 	public int getGroupCount() {
-		GUIFileKey fileKey = this.idFiles.lastKey();
-		return fileKey.groupID + 1;
+		if (!this.idFiles.isEmpty()) {
+			GUIFileKey fileKey = this.idFiles.lastKey();
+			return fileKey.groupID + 1;
+		} else {
+			return 0;
+		}
 	}
 
 	public GUIFile getFile(final String path) {
