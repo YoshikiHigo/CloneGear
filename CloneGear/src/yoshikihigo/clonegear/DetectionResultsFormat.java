@@ -110,13 +110,17 @@ public class DetectionResultsFormat {
 						final GUIClonePair pair = makeClonepair(line);
 						clonepairs.add(pair);
 					});
+
 		} catch (final IOException e) {
-			e.printStackTrace();
+			throw new IllegalStateException("unable to read input file.");
 		}
 	}
 
 	static private GUIFile makeFile(final String line) {
 		final String[] tokens = line.split("\t");
+		if (4 != tokens.length) {
+			throw new IllegalStateException("input file has invalid format.");
+		}
 		final int groupID = Integer.parseInt(tokens[1]);
 		final String path = tokens[2];
 		final int loc = Integer.parseInt(tokens[3]);
@@ -125,6 +129,9 @@ public class DetectionResultsFormat {
 
 	static private GUIClonePair makeClonepair(final String line) {
 		final String[] tokens = line.split("\t");
+		if (10 != tokens.length) {
+			throw new IllegalStateException("input file has invalid format.");
+		}
 		final int clonesetID = Integer.parseInt(tokens[1]);
 		final String leftPath = tokens[2];
 		final int leftFromLine = Integer.parseInt(tokens[3]);

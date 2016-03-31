@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 
@@ -35,11 +36,18 @@ public class Gemini extends JFrame implements Runnable {
 
 	public static void main(String args[]) {
 		final String inputFileName = args[0];
+
 		final Gemini gemini = new Gemini(inputFileName);
 		gemini.setVisible(true);
+
+		if (null != gemini.error) {
+			JOptionPane.showMessageDialog(gemini, "Message");
+			gemini.dispose();
+		}
 	}
 
 	private boolean alive;
+	private String error;
 
 	public Gemini(final String inputFileName) {
 
@@ -69,43 +77,65 @@ public class Gemini extends JFrame implements Runnable {
 		files.stream().forEach(file -> GUIFileManager.instance().add(file));
 		clonepairs.stream().forEach(
 				pair -> GUICloneManager.instance().addClonepair(pair));
+		if (files.isEmpty()) {
+			this.setSize(300, 200);
+			this.error = "no file in input file.";
+		} else if (clonepairs.isEmpty()) {
+			this.setSize(300, 200);
+			this.error = "no clone pair in input file.";
+		} else {
+			this.error = null;
+			FileOffsetData.initialize(GUIFileManager.instance());
+			IDIndexMap.initialize(GUIFileManager.instance());
+			IndexedFileData.initialize(GUIFileManager.instance());
 
-		FileOffsetData.initialize(GUIFileManager.instance());
-		IDIndexMap.initialize(GUIFileManager.instance());
-		IndexedFileData.initialize(GUIFileManager.instance());
+			CloneMetricsMaxValues.initialize(GUICloneManager.instance()
+					.getCloneSets());
+			CloneIDOffsetData.initialize(GUICloneManager.instance());
+			CloneFirstPositionOffsetData.initialize(GUICloneManager.instance());
+			CloneLastPositionOffsetData.initialize(GUICloneManager.instance());
+			CloneMiddlePositionOffsetData
+					.initialize(GUICloneManager.instance());
+			CloneRangeOffsetData.initialize(GUICloneManager.instance());
+			CloneNIFOffsetData.initialize(GUICloneManager.instance());
 
-		CloneMetricsMaxValues.initialize(GUICloneManager.instance()
-				.getCloneSets());
-		CloneIDOffsetData.initialize(GUICloneManager.instance());
-		CloneFirstPositionOffsetData.initialize(GUICloneManager.instance());
-		CloneLastPositionOffsetData.initialize(GUICloneManager.instance());
-		CloneMiddlePositionOffsetData.initialize(GUICloneManager.instance());
-		CloneRangeOffsetData.initialize(GUICloneManager.instance());
-		CloneNIFOffsetData.initialize(GUICloneManager.instance());
+			final Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+			final int viewerWidth = (int) size.getWidth() - 10;
+			final int viewerHeight = (int) size.getHeight() - 60;
 
-		final Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
-		final int viewerWidth = (int) size.getWidth() - 10;
-		final int viewerHeight = (int) size.getHeight() - 60;
+			final QuantitativeAnalysisView quantitativeAnalysisView = new QuantitativeAnalysisView(
+					viewerWidth, viewerHeight);
+			quantitativeAnalysisView.init();
 
-		final QuantitativeAnalysisView quantitativeAnalysisView = new QuantitativeAnalysisView(
-				viewerWidth, viewerHeight);
-		quantitativeAnalysisView.init();
+			final MetricAnalysisView metricAnalysisView = new MetricAnalysisView(
+					viewerWidth, viewerHeight);
+			metricAnalysisView.init();
 
-		final MetricAnalysisView metricAnalysisView = new MetricAnalysisView(
-				viewerWidth, viewerHeight);
-		metricAnalysisView.init();
+			final VisualAnalysisView visualAnalysisView = new VisualAnalysisView(
+					viewerWidth, viewerHeight);
+			visualAnalysisView.init();
 
-		final VisualAnalysisView visualAnalysisView = new VisualAnalysisView(
-				viewerWidth, viewerHeight);
-		visualAnalysisView.init();
+			final JTabbedPane mainPanel = new JTabbedPane();
+			mainPanel.addTab("Scatter Plot Analysis", visualAnalysisView);
+			mainPanel.addTab("Metric View Analysis", metricAnalysisView);
+			mainPanel.addTab("Quantitative Analysis", quantitativeAnalysisView);
+			this.getContentPane().add(mainPanel, BorderLayout.CENTER);
 
-		final JTabbedPane mainPanel = new JTabbedPane();
-		mainPanel.addTab("Scatter Plot Analysis", visualAnalysisView);
-		mainPanel.addTab("Metric View Analysis", metricAnalysisView);
-		mainPanel.addTab("Quantitative Analysis", quantitativeAnalysisView);
-		this.getContentPane().add(mainPanel, BorderLayout.CENTER);
+			quantitativeAnalysisView.reset();
+		}
+	}
 
-		quantitativeAnalysisView.reset();
+	public Gemini(final Exception exception) {
+
+		super("Gemini");
+
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (final Exception e) {
+			e.printStackTrace();
+		}
+
+		this.setSize(300, 200);
 	}
 
 	@Override
@@ -118,5 +148,9 @@ public class Gemini extends JFrame implements Runnable {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public String getError() {
+		return this.error;
 	}
 }

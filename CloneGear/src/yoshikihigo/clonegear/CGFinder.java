@@ -21,6 +21,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import javax.swing.JOptionPane;
+
 import yoshikihigo.clonegear.data.CloneData;
 import yoshikihigo.clonegear.data.CloneHash;
 import yoshikihigo.clonegear.data.ClonePair;
@@ -171,12 +173,19 @@ public class CGFinder {
 
 			if (CGConfig.getInstance().isGEMINI()) {
 				final String results = CGConfig.getInstance().getRESULT();
-				ExecutorService service = Executors.newSingleThreadExecutor();
-				final Future<?> f = service.submit(new Gemini(results));
-				try {
-					f.get();
-				} catch (final ExecutionException | InterruptedException e) {
-					e.printStackTrace();
+				final ExecutorService service = Executors
+						.newSingleThreadExecutor();
+				final Gemini gemini = new Gemini(results);
+				if (null != gemini.getError()) {
+					JOptionPane.showMessageDialog(wizard, gemini.getError(),
+							"CloneGear", JOptionPane.ERROR_MESSAGE);
+				} else {
+					final Future<?> f = service.submit(gemini);
+					try {
+						f.get();
+					} catch (final ExecutionException | InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		} while (!CGConfig.getInstance().isCUI());
@@ -250,9 +259,19 @@ public class CGFinder {
 
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JAVASCRIPT)) {
 			for (final WebFile f : webFiles) {
+
+				final List<String> lines = FileUtility.readFile(f.path);
+				if (null == lines) {
+					out.print("file \"" + f.path + "\" is unreadable.");
+					continue;
+				}
+				final int loc = lines.size();
+
 				final List<Statement> statements = f.getJavascriptStatements();
 				final JavascriptFile javascriptFile = new JavascriptFile(
 						f.path, 0);
+				javascriptFile.setLOC(loc);
+
 				if (!CGConfig.getInstance().isFOLDING()) {
 					final List<Statement> foldedStatements = Statement
 							.getFoldedStatements(statements);
@@ -265,8 +284,18 @@ public class CGFinder {
 		}
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.JSP)) {
 			for (final WebFile f : webFiles) {
+
+				final List<String> lines = FileUtility.readFile(f.path);
+				if (null == lines) {
+					out.print("file \"" + f.path + "\" is unreadable.");
+					continue;
+				}
+				final int loc = lines.size();
+
 				final List<Statement> statements = f.getJSPStatements();
 				final JSPFile jspFile = new JSPFile(f.path, 0);
+				jspFile.setLOC(loc);
+
 				if (!CGConfig.getInstance().isFOLDING()) {
 					final List<Statement> foldedStatements = Statement
 							.getFoldedStatements(statements);
@@ -279,8 +308,18 @@ public class CGFinder {
 		}
 		if (CGConfig.getInstance().getLANGUAGE().contains(LANGUAGE.PHP)) {
 			for (final WebFile f : webFiles) {
+
+				final List<String> lines = FileUtility.readFile(f.path);
+				if (null == lines) {
+					out.print("file \"" + f.path + "\" is unreadable.");
+					continue;
+				}
+				final int loc = lines.size();
+
 				final List<Statement> statements = f.getPHPStatements();
 				final PHPFile phpFile = new PHPFile(f.path, 0);
+				phpFile.setLOC(loc);
+
 				if (!CGConfig.getInstance().isFOLDING()) {
 					final List<Statement> foldedStatements = Statement
 							.getFoldedStatements(statements);
