@@ -2,6 +2,7 @@ package yoshikihigo.clonegear;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -54,66 +55,68 @@ public class SmithWaterman {
 		final List<Statement> statements = this.file1.getStatements();
 
 		if (statements.isEmpty()) {
-			return new ArrayList<ClonePair>();
+			return Collections.<ClonePair> emptyList();
 		}
 
 		final long startMatrixCreation = System.nanoTime();
-		final Cell[][] table = new Cell[statements.size()][statements.size()];
-		for (int x = 0; x < table.length; x++) {
+		final int size = statements.size();
+		final Cell[][] matrix = new Cell[size][size];
+		for (int x = 0; x < size; x++) {
 			for (int y = 0; y <= x; y++) {
-				table[x][y] = new Cell(0, false, x, y, null);
+				matrix[x][y] = new Cell(0, false, x, y, null);
 			}
 		}
 
-		for (int y = 1; y < statements.size(); y++) {
+		for (int y = 1; y < size; y++) {
 
 			if (!statements.get(0).isTarget || !statements.get(y).isTarget) {
-				table[0][y] = new Cell(0, false, 0, y, null);
+				matrix[0][y] = new Cell(0, false, 0, y, null);
 				continue;
 			}
 
 			final boolean match = Arrays.equals(statements.get(0).hash.value,
 					statements.get(y).hash.value);
-			if (table[0][y - 1].value > 2) {
-				final Cell base = table[0][y - 1];
-				table[0][y] = new Cell(base.value + this.getGapValue(base),
+			if (matrix[0][y - 1].value > 2) {
+				final Cell base = matrix[0][y - 1];
+				matrix[0][y] = new Cell(base.value + this.getGapValue(base),
 						match, 0, y, base);
 			} else {
-				table[0][y] = new Cell(match ? MATCH : 0, match, 0, y, null);
+				matrix[0][y] = new Cell(match ? MATCH : 0, match, 0, y, null);
 			}
 		}
 
-		for (int x = 1; x < statements.size(); x++) {
-			for (int y = x + 1; y < statements.size(); y++) {
+		for (int x = 1; x < size; x++) {
+			for (int y = x + 1; y < size; y++) {
 
 				if (!statements.get(x).isTarget || !statements.get(y).isTarget) {
-					table[x][y] = new Cell(0, false, x, y, null);
+					matrix[x][y] = new Cell(0, false, x, y, null);
 					continue;
 				}
 
 				final boolean match = Arrays.equals(
 						statements.get(x).hash.value,
 						statements.get(y).hash.value);
-				final Cell left = table[x - 1][y];
-				final Cell up = table[x][y - 1];
-				final Cell upleft = table[x - 1][y - 1];
+				final Cell left = matrix[x - 1][y];
+				final Cell up = matrix[x][y - 1];
+				final Cell upleft = matrix[x - 1][y - 1];
 				final int leftValue = left.value + this.getGapValue(left);
 				final int upValue = up.value + this.getGapValue(up);
 				final int upleftValue = upleft.value
 						+ (match ? MATCH : this.getMismatchValue(upleft));
 
 				if ((leftValue <= upleftValue) && (upValue <= upleftValue)) {
-					table[x][y] = new Cell((upleftValue > 0 ? upleftValue : 0),
-							match, x, y, (upleftValue > 0 ? upleft : null));
+					matrix[x][y] = new Cell(
+							(upleftValue > 0 ? upleftValue : 0), match, x, y,
+							(upleftValue > 0 ? upleft : null));
 				}
 
 				else if ((leftValue <= upValue) && (upleftValue <= upValue)) {
-					table[x][y] = new Cell((upValue > 0 ? upValue : 0), match,
+					matrix[x][y] = new Cell((upValue > 0 ? upValue : 0), match,
 							x, y, (upValue > 0 ? up : null));
 				}
 
 				else if ((upValue <= leftValue) && (upleftValue <= leftValue)) {
-					table[x][y] = new Cell((leftValue > 0 ? leftValue : 0),
+					matrix[x][y] = new Cell((leftValue > 0 ? leftValue : 0),
 							match, x, y, (leftValue > 0 ? left : null));
 				}
 			}
@@ -123,7 +126,7 @@ public class SmithWaterman {
 		MATRIX_CREATION_TIME.addAndGet(endMatrixCreation - startMatrixCreation);
 		// printTable(table, statements, statements);
 		final long startCloneDetection = System.nanoTime();
-		final List<ClonePair> clonepairs = this.detectClones(table);
+		final List<ClonePair> clonepairs = this.detectClones(matrix);
 		final long endCloneDetection = System.nanoTime();
 		CLONE_DETECTION_TIME.addAndGet(endCloneDetection - startCloneDetection);
 
@@ -142,98 +145,102 @@ public class SmithWaterman {
 				: language2 == LANGUAGE.CPP ? 2 : 1;
 
 		if (statements1.isEmpty() || statements2.isEmpty()) {
-			return new ArrayList<ClonePair>();
+			return Collections.<ClonePair> emptyList();
 		}
 
 		final long startCreatingMatrix = System.nanoTime();
 
-		final Cell[][] table = new Cell[statements1.size()][statements2.size()];
+		final int size1 = statements1.size();
+		final int size2 = statements2.size();
+		final Cell[][] matrix = new Cell[size1][size2];
 
 		// operations for table[0][0]
 		if (statements1.get(0).nestLevel < limitNestLevel1
 				|| statements2.get(0).nestLevel < limitNestLevel2) {
-			table[0][0] = new Cell(0, false, 0, 0, null);
+			matrix[0][0] = new Cell(0, false, 0, 0, null);
 		} else {
-			if (statements1.get(0).hash == statements2.get(0).hash) {
-				table[0][0] = new Cell(MATCH, true, 0, 0, null);
+			if (Arrays.equals(statements1.get(0).hash.value,
+					statements2.get(0).hash.value)) {
+				matrix[0][0] = new Cell(MATCH, true, 0, 0, null);
 			} else {
-				table[0][0] = new Cell(0, false, 0, 0, null);
+				matrix[0][0] = new Cell(0, false, 0, 0, null);
 			}
 		}
 
 		// operations for table[x][0]
-		for (int x = 1; x < statements1.size(); x++) {
+		for (int x = 1; x < size1; x++) {
 
 			if (statements1.get(x).nestLevel < limitNestLevel1
 					|| statements2.get(0).nestLevel < limitNestLevel2) {
-				table[x][0] = new Cell(0, false, x, 0, null);
+				matrix[x][0] = new Cell(0, false, x, 0, null);
 				continue;
 			}
 
 			final boolean match = Arrays.equals(statements1.get(x).hash.value,
 					statements2.get(0).hash.value);
-			if (table[x - 1][0].value > 2) {
-				final Cell base = table[x - 1][0];
-				table[x][0] = new Cell(base.value + this.getGapValue(base),
+			if (matrix[x - 1][0].value > 2) {
+				final Cell base = matrix[x - 1][0];
+				matrix[x][0] = new Cell(base.value + this.getGapValue(base),
 						match, x, 0, base);
 			} else {
-				table[x][0] = new Cell(match ? MATCH : 0, match, x, 0, null);
+				matrix[x][0] = new Cell(match ? MATCH : 0, match, x, 0, null);
 			}
 		}
 
 		// operations for table[0][y]
-		for (int y = 1; y < statements2.size(); y++) {
+		for (int y = 1; y < size2; y++) {
 
 			if (statements1.get(0).nestLevel < limitNestLevel1
 					|| statements2.get(y).nestLevel < limitNestLevel2) {
-				table[0][y] = new Cell(0, false, 0, y, null);
+				matrix[0][y] = new Cell(0, false, 0, y, null);
 				continue;
 			}
 
 			final boolean match = Arrays.equals(statements1.get(0).hash.value,
 					statements2.get(y).hash.value);
-			if (table[0][y - 1].value > 2) {
-				final Cell base = table[0][y - 1];
-				table[0][y] = new Cell(base.value + this.getGapValue(base),
+			if (matrix[0][y - 1].value > 2) {
+				final Cell base = matrix[0][y - 1];
+				matrix[0][y] = new Cell(base.value + this.getGapValue(base),
 						match, 0, y, base);
 			} else {
-				table[0][y] = new Cell(match ? MATCH : 0, match, 0, y, null);
+				matrix[0][y] = new Cell(match ? MATCH : 0, match, 0, y, null);
 			}
 		}
 
 		// operations for table[x][y]
-		for (int x = 1; x < statements1.size(); x++) {
-			for (int y = 1; y < statements2.size(); y++) {
+		for (int x = 1; x < size1; x++) {
+			for (int y = 1; y < size2; y++) {
 
 				if (statements1.get(x).nestLevel < limitNestLevel1
 						|| statements2.get(y).nestLevel < limitNestLevel2) {
-					table[x][y] = new Cell(0, false, x, y, null);
+					matrix[x][y] = new Cell(0, false, x, y, null);
 					continue;
 				}
 
 				final boolean match = Arrays.equals(
 						statements1.get(x).hash.value,
 						statements2.get(y).hash.value);
-				final Cell left = table[x - 1][y];
-				final Cell up = table[x][y - 1];
-				final Cell upleft = table[x - 1][y - 1];
+				final Cell left = matrix[x - 1][y];
+				final Cell up = matrix[x][y - 1];
+				final Cell upleft = matrix[x - 1][y - 1];
 				final int leftValue = left.value + this.getGapValue(left);
 				final int upValue = up.value + this.getGapValue(up);
 				final int upleftValue = upleft.value
 						+ (match ? MATCH : this.getMismatchValue(upleft));
 
 				if ((leftValue <= upleftValue) && (upValue <= upleftValue)) {
-					table[x][y] = new Cell((upleftValue > 0 ? upleftValue : 0),
-							match, x, y, (upleftValue > 0 ? upleft : null));
+					matrix[x][y] = new Cell(
+							(upleftValue > 0 ? upleftValue : 0), match, x, y,
+							(upleftValue > 0 ? upleft : null));
 				}
 
 				else if ((leftValue <= upValue) && (upleftValue <= upValue)) {
-					table[x][y] = new Cell((upValue > 0 ? upValue : 0), match,
+					matrix[x][y] = new Cell((upValue > 0 ? upValue : 0), match,
 							x, y, (upValue > 0 ? up : null));
 				}
 
 				else if ((upValue <= leftValue) && (upleftValue <= leftValue)) {
-					table[x][y] = new Cell((leftValue > 0 ? leftValue : 0),
+					matrix[x][y] = new Cell((leftValue > 0 ? leftValue : 0),
 							match, x, y, (leftValue > 0 ? left : null));
 				}
 			}
@@ -243,7 +250,7 @@ public class SmithWaterman {
 		MATRIX_CREATION_TIME.addAndGet(endCreatingMatrix - startCreatingMatrix);
 		// printTable(table, statements, statements);
 		final long startDetectingClones = System.nanoTime();
-		final List<ClonePair> clonepairs = this.detectClones(table);
+		final List<ClonePair> clonepairs = this.detectClones(matrix);
 		final long endDetectingClones = System.nanoTime();
 		CLONE_DETECTION_TIME.addAndGet(endDetectingClones
 				- startDetectingClones);
@@ -271,12 +278,12 @@ public class SmithWaterman {
 		return value;
 	}
 
-	private List<ClonePair> detectClones(final Cell[][] table) {
+	private List<ClonePair> detectClones(final Cell[][] matrix) {
 
 		final int threshold = CGConfig.getInstance().getTHRESHOLD();
 
 		final List<ClonePair> clonepairs = new ArrayList<>();
-		for (final Cell maxCell : this.getLocalMaximumCells(table)) {
+		for (final Cell maxCell : this.getLocalMaximumCells(matrix)) {
 			if (maxCell.isChecked()) {
 				continue;
 			}
@@ -296,7 +303,7 @@ public class SmithWaterman {
 				final ClonePair clonepair = new ClonePair(hash, tokens,
 						xClonedFragment, yClonedFragment);
 				clonepairs.add(clonepair);
-				switchToChecked(table, minCell.x, maxCell.x, minCell.y,
+				switchToChecked(matrix, minCell.x, maxCell.x, minCell.y,
 						maxCell.y);
 			}
 		}
@@ -304,24 +311,24 @@ public class SmithWaterman {
 		return clonepairs;
 	}
 
-	private Cell[] getLocalMaximumCells(final Cell[][] table) {
+	private Cell[] getLocalMaximumCells(final Cell[][] matrix) {
 		final SortedSet<Cell> cells = new TreeSet<>();
-		int x = table.length - 1;
-		int y = table[0].length - 1;
+		int x = matrix.length - 1;
+		int y = matrix[0].length - 1;
 		while ((0 < x) || (0 < y)) {
-			if (this.isLocalMaximum(table, x, y)) {
-				cells.add(table[x][y]);
+			if (this.isLocalMaximum(matrix, x, y)) {
+				cells.add(matrix[x][y]);
 			}
 
 			for (int index = x - 1; 0 <= index; index--) {
-				if (this.isLocalMaximum(table, index, y)) {
-					cells.add(table[index][y]);
+				if (this.isLocalMaximum(matrix, index, y)) {
+					cells.add(matrix[index][y]);
 				}
 			}
 
 			for (int index = y - 1; 0 <= index; index--) {
-				if (this.isLocalMaximum(table, x, index)) {
-					cells.add(table[x][index]);
+				if (this.isLocalMaximum(matrix, x, index)) {
+					cells.add(matrix[x][index]);
 				}
 			}
 
@@ -332,41 +339,41 @@ public class SmithWaterman {
 		return (Cell[]) cells.toArray(new Cell[] {});
 	}
 
-	private boolean isLocalMaximum(final Cell[][] table, final int x,
+	private boolean isLocalMaximum(final Cell[][] matrix, final int x,
 			final int y) {
-		final int value = table[x][y].value;
-		final int maxX = table.length - 1;
-		final int maxY = table[0].length - 1;
+		final int value = matrix[x][y].value;
+		final int maxX = matrix.length - 1;
+		final int maxY = matrix[0].length - 1;
 
-		if ((0 < x) && (0 < y) && (table[x - 1][y - 1].value >= value)) {
+		if ((0 < x) && (0 < y) && (matrix[x - 1][y - 1].value >= value)) {
 			return false;
 		}
 
-		if ((0 < x) && (table[x - 1][y].value >= value)) {
+		if ((0 < x) && (matrix[x - 1][y].value >= value)) {
 			return false;
 		}
 
-		if ((0 < y) && (table[x][y - 1].value >= value)) {
+		if ((0 < y) && (matrix[x][y - 1].value >= value)) {
 			return false;
 		}
 
-		if ((0 < x) && (y < maxY) && (table[x - 1][y + 1].value >= value)) {
+		if ((0 < x) && (y < maxY) && (matrix[x - 1][y + 1].value >= value)) {
 			return false;
 		}
 
-		if ((x < maxX) && (0 < y) && (table[x + 1][y - 1].value >= value)) {
+		if ((x < maxX) && (0 < y) && (matrix[x + 1][y - 1].value >= value)) {
 			return false;
 		}
 
-		if ((y < maxY) && (table[x][y + 1].value >= value)) {
+		if ((y < maxY) && (matrix[x][y + 1].value >= value)) {
 			return false;
 		}
 
-		if ((x < maxX) && (table[x + 1][y].value >= value)) {
+		if ((x < maxX) && (matrix[x + 1][y].value >= value)) {
 			return false;
 		}
 
-		if ((x < maxX) && (y < maxY) && (table[x + 1][y + 1].value >= value)) {
+		if ((x < maxX) && (y < maxY) && (matrix[x + 1][y + 1].value >= value)) {
 			return false;
 		}
 
@@ -434,13 +441,13 @@ public class SmithWaterman {
 		return new ClonedFragment(cloneHash, file, clonedStatements);
 	}
 
-	private void switchToChecked(final Cell[][] table, final int fromX,
+	private void switchToChecked(final Cell[][] matrix, final int fromX,
 			final int toX, final int fromY, final int toY) {
 		for (int x = fromX; x <= toX; x++) {
 			for (int y = fromY; y <= toY; y++) {
 				// assert !table[x][y].isChecked() :
 				// "this cell must not be a checked-state.";
-				table[x][y].switchToChecked();
+				matrix[x][y].switchToChecked();
 			}
 		}
 	}
@@ -449,25 +456,25 @@ public class SmithWaterman {
 		return this.file1.equals(this.file2);
 	}
 
-	private void printTable(final Cell[][] table,
+	private void printTable(final Cell[][] matrix,
 			final List<Statement> xStatements, final List<Statement> yStatements) {
 
 		System.out.print("\t");
-		for (int x = 0; x < table.length; x++) {
+		for (int x = 0; x < matrix.length; x++) {
 			final int xLine = xStatements.get(x).fromLine;
 			System.out.print(x + "," + xLine + "\t");
 		}
 		System.out.println();
-		for (int y = 0; y < table[0].length; y++) {
+		for (int y = 0; y < matrix[0].length; y++) {
 			final int yLine = yStatements.get(y).fromLine;
 			System.out.print(y + "," + yLine + "\t");
-			for (int x = 0; x < table.length; x++) {
+			for (int x = 0; x < matrix.length; x++) {
 				if (x == y) {
 					System.out.print(" -\t");
 					continue;
 				}
-				final Cell cell = table[x][y];
-				final boolean maximum = this.isLocalMaximum(table, x, y);
+				final Cell cell = matrix[x][y];
+				final boolean maximum = this.isLocalMaximum(matrix, x, y);
 				if (maximum) {
 					System.out.print("<" + cell.value + ">");
 				} else {

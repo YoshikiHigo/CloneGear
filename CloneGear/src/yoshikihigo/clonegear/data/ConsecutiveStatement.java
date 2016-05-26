@@ -1,6 +1,6 @@
 package yoshikihigo.clonegear.data;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import yoshikihigo.clonegear.lexer.token.Token;
@@ -14,6 +14,6 @@ public class ConsecutiveStatement extends Statement {
 			final List<Token> tokens, final MD5 hash,
 			final List<Statement> foldedStatements) {
 		super(fromLine, toLine, nestLevel, isTarget, tokens, hash);
-		this.foldedStatements = Collections.unmodifiableList(foldedStatements);
+		this.foldedStatements = new ArrayList<>(foldedStatements);
 	}
 }

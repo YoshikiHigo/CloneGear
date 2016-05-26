@@ -369,7 +369,7 @@ public class CGFinder {
 					continue;
 				}
 
-				Future<?> future = executorService
+				final Future<?> future = executorService
 						.submit(new CloneDetectionThread(iFile, jFile,
 								clonepairs));
 				futures.add(future);

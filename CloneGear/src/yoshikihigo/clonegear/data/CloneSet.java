@@ -25,8 +25,7 @@ public class CloneSet extends CloneData implements Comparable<CloneSet> {
 	}
 
 	public SortedSet<ClonePair> getClonepairs() {
-		final SortedSet<ClonePair> clonepairs = new TreeSet<>(this.clonepairs);
-		return clonepairs;
+		return new TreeSet<>(this.clonepairs);
 	}
 
 	public SortedSet<ClonedFragment> getClonedFragments() {
