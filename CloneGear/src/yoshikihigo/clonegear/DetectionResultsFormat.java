@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import yoshikihigo.clonegear.data.ClonePair;
 import yoshikihigo.clonegear.data.CloneSet;
@@ -22,11 +23,10 @@ import yoshikihigo.clonegear.gui.data.file.GUIFile;
 
 public class DetectionResultsFormat {
 
-	static public void writer(final List<SourceFile> files,
-			final List<CloneSet> clonesets, final String path) {
+	static public void writer(final List<SourceFile> files, final List<CloneSet> clonesets, final String path) {
 
-		try (final PrintWriter writer = null != path ? new PrintWriter(
-				new OutputStreamWriter(new FileOutputStream(path), "UTF-8"))
+		try (final PrintWriter writer = null != path
+				? new PrintWriter(new OutputStreamWriter(new FileOutputStream(path), "UTF-8"))
 				: new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"))) {
 
 			final Set<String> checked = new HashSet<>();
@@ -63,19 +63,20 @@ public class DetectionResultsFormat {
 		return text.toString();
 	}
 
-	static private String makeCloneLine(final int clonesetID,
-			final ClonePair clonepair) {
+	static private String makeCloneLine(final int clonesetID, final ClonePair clonepair) {
 		final StringBuilder text = new StringBuilder();
 		text.append("CLONE\t");
 		text.append(clonesetID);
 		text.append("\t");
-		text.append(makeCloneLine(clonepair.left));
+		text.append(makeClonedFragmentLine(clonepair.left));
 		text.append("\t");
-		text.append(makeCloneLine(clonepair.right));
+		text.append(makeClonedFragmentLine(clonepair.right));
+		text.append("\t");
+		text.append(makeTokenLine(clonepair));
 		return text.toString();
 	}
 
-	static private String makeCloneLine(final ClonedFragment clone) {
+	static private String makeClonedFragmentLine(final ClonedFragment clone) {
 		final StringBuilder text = new StringBuilder();
 		text.append(clone.file.path);
 		text.append("\t");
@@ -87,29 +88,30 @@ public class DetectionResultsFormat {
 		return text.toString();
 	}
 
+	static private String makeTokenLine(final ClonePair clonepair) {
+		final List<String> values = clonepair.tokens.stream().map(t -> t.value).collect(Collectors.toList());
+		return String.join(" ", values);
+	}
+
 	static private float round(final float value) {
 		final BigDecimal d = new BigDecimal(value);
 		return d.setScale(3, BigDecimal.ROUND_HALF_UP).floatValue();
 	}
 
-	static public void read(final String path, final List<GUIFile> files,
-			final List<GUIClonePair> clonepairs) {
+	static public void read(final String path, final List<GUIFile> files, final List<GUIClonePair> clonepairs) {
 
 		try {
-			final List<String> lines = Files.readAllLines(Paths.get(path),
-					StandardCharsets.UTF_8);
+			final List<String> lines = Files.readAllLines(Paths.get(path), StandardCharsets.UTF_8);
 
-			lines.stream().filter(line -> line.startsWith("FILE"))
-					.forEach(line -> {
-						final GUIFile file = makeFile(line);
-						files.add(file);
-					});
+			lines.stream().filter(line -> line.startsWith("FILE")).forEach(line -> {
+				final GUIFile file = makeFile(line);
+				files.add(file);
+			});
 
-			lines.stream().filter(line -> line.startsWith("CLONE"))
-					.forEach(line -> {
-						final GUIClonePair pair = makeClonepair(line);
-						clonepairs.add(pair);
-					});
+			lines.stream().filter(line -> line.startsWith("CLONE")).forEach(line -> {
+				final GUIClonePair pair = makeClonepair(line);
+				clonepairs.add(pair);
+			});
 
 		} catch (final IOException e) {
 			throw new IllegalStateException("unable to read input file.");
@@ -143,14 +145,11 @@ public class DetectionResultsFormat {
 		final float rightCloneRNR = Float.parseFloat(tokens[9]);
 
 		final GUIFile leftFile = GUIFile.getGUIFile(leftPath);
-		final GUIClone leftClone = new GUIClone(clonesetID, leftFile,
-				leftFromLine, leftToLine, leftCloneRNR);
+		final GUIClone leftClone = new GUIClone(clonesetID, leftFile, leftFromLine, leftToLine, leftCloneRNR);
 		final GUIFile rightFile = GUIFile.getGUIFile(rightPath);
-		final GUIClone rightClone = new GUIClone(clonesetID, rightFile,
-				rightFromLine, rightToLine, rightCloneRNR);
+		final GUIClone rightClone = new GUIClone(clonesetID, rightFile, rightFromLine, rightToLine, rightCloneRNR);
 
-		final GUIClonePair clonepair = new GUIClonePair(clonesetID, leftClone,
-				rightClone);
+		final GUIClonePair clonepair = new GUIClonePair(clonesetID, leftClone, rightClone);
 		return clonepair;
 	}
 }
