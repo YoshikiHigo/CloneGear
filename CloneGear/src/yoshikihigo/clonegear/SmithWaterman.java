@@ -300,6 +300,7 @@ public class SmithWaterman {
 
 				final CloneHash hash = new CloneHash(xClonedFragment.cloneID);
 				final List<Token> tokens = CloneHash.getTokens(hash);
+				//final List<Token> tokens = xClonedFragment.getTokens();
 				final ClonePair clonepair = new ClonePair(hash, tokens,
 						xClonedFragment, yClonedFragment);
 				clonepairs.add(clonepair);

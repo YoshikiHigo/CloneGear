@@ -28,13 +28,13 @@ public class UninterestingClonesReportingPanel extends JPanel implements Observe
 		this.cancelButton.setEnabled(false);
 
 		this.reportingButton.addActionListener(e -> {
-			if(null == this.clonepair) {
+			if (null == this.clonepair) {
 				return;
 			}
 		});
 
 		this.cancelButton.addActionListener(e -> {
-			if(null == this.clonepair) {
+			if (null == this.clonepair) {
 				return;
 			}
 		});
