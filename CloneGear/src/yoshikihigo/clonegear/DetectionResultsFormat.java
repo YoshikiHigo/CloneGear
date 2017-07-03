@@ -130,10 +130,12 @@ public class DetectionResultsFormat {
 	}
 
 	static private GUIClonePair makeClonepair(final String line) {
+
 		final String[] tokens = line.split("\t");
-		if (10 != tokens.length) {
+		if ((10 != tokens.length) && (11 != tokens.length)) {
 			throw new IllegalStateException("input file has invalid format.");
 		}
+
 		final int clonesetID = Integer.parseInt(tokens[1]);
 		final String leftPath = tokens[2];
 		final int leftFromLine = Integer.parseInt(tokens[3]);
@@ -143,13 +145,17 @@ public class DetectionResultsFormat {
 		final int rightFromLine = Integer.parseInt(tokens[7]);
 		final int rightToLine = Integer.parseInt(tokens[8]);
 		final float rightCloneRNR = Float.parseFloat(tokens[9]);
-
 		final GUIFile leftFile = GUIFile.getGUIFile(leftPath);
 		final GUIClone leftClone = new GUIClone(clonesetID, leftFile, leftFromLine, leftToLine, leftCloneRNR);
 		final GUIFile rightFile = GUIFile.getGUIFile(rightPath);
 		final GUIClone rightClone = new GUIClone(clonesetID, rightFile, rightFromLine, rightToLine, rightCloneRNR);
 
-		final GUIClonePair clonepair = new GUIClonePair(clonesetID, leftClone, rightClone);
-		return clonepair;
+		if (10 == tokens.length) {
+			return new GUIClonePair(clonesetID, leftClone, rightClone, null);
+		} else {
+			final String code = tokens[10];
+			System.out.println(code);
+			return new GUIClonePair(clonesetID, leftClone, rightClone, code);
+		}
 	}
 }

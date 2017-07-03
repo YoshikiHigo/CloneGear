@@ -6,8 +6,7 @@ import java.util.List;
 import yoshikihigo.clonegear.gui.data.Entity;
 import yoshikihigo.clonegear.gui.data.HavingClones;
 
-public class GUIClonePair implements Comparable<GUIClonePair>, Entity,
-		HavingClones {
+public class GUIClonePair implements Comparable<GUIClonePair>, Entity, HavingClones {
 
 	@Override
 	public final List<GUIClone> getClones() {
@@ -18,8 +17,7 @@ public class GUIClonePair implements Comparable<GUIClonePair>, Entity,
 	}
 
 	public final int getRNR() {
-		final GUICloneSet cloneSet = GUICloneManager.instance().getCloneSet(
-				this.left);
+		final GUICloneSet cloneSet = GUICloneManager.instance().getCloneSet(this.left);
 		return cloneSet.getRNR();
 	}
 
@@ -46,8 +44,7 @@ public class GUIClonePair implements Comparable<GUIClonePair>, Entity,
 		}
 
 		final GUIClonePair clonepair = (GUIClonePair) o;
-		return this.left.equals(clonepair.left)
-				&& this.right.equals(clonepair.right);
+		return this.left.equals(clonepair.left) && this.right.equals(clonepair.right);
 	}
 
 	@Override
@@ -56,13 +53,13 @@ public class GUIClonePair implements Comparable<GUIClonePair>, Entity,
 	}
 
 	public GUIClonePair(final GUIClone left, final GUIClone right) {
-		this(0, left, right);
+		this(0, left, right, null);
 	}
 
-	public GUIClonePair(final int clonesetID, final GUIClone left,
-			final GUIClone right) {
+	public GUIClonePair(final int clonesetID, final GUIClone left, final GUIClone right, final String code) {
 
 		this.clonesetID = clonesetID;
+		this.code = code;
 		final int order = left.compareTo(right);
 		if (order < 0) {
 			this.left = left;
@@ -71,12 +68,12 @@ public class GUIClonePair implements Comparable<GUIClonePair>, Entity,
 			this.left = right;
 			this.right = left;
 		} else {
-			throw new IllegalArgumentException(
-					"Two parameters are the same code fragment!");
+			throw new IllegalArgumentException("Two parameters are the same code fragment!");
 		}
 	}
 
 	final public int clonesetID;
 	final public GUIClone left;
 	final public GUIClone right;
+	final public String code;
 }
