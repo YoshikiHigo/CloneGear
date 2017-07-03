@@ -75,11 +75,14 @@ public class CGFinder {
 				config = CGConfig.getInstance();
 			}
 
-			final Progress progress = new Progress();
-			progress.setVisible(true);
-
-			out = config.isCUI() ? System.err : new ProgressPrintStream(
-					progress);
+			Progress progress = null;
+			if (!config.isCUI()) {
+				progress = new Progress();
+				progress.setVisible(true);
+				out = new ProgressPrintStream(progress);
+			} else {
+				out = System.err;
+			}
 
 			if (!config.isNOTDETECTION()) {
 
@@ -106,9 +109,8 @@ public class CGFinder {
 					timeToFilter = System.nanoTime();
 					final Map<ClonePair, Map<ClonePair, Double>> similarities = new HashMap<>();
 					remainingClonepairs = /*
-										 * filterClones(clonepairs,
-										 * similarities)
-										 */clonepairs;
+											 * filterClones(clonepairs, similarities)
+											 */clonepairs;
 					remainingClonesets = null;
 					printInBellonFomat(remainingClonepairs);
 				} else {
@@ -117,8 +119,7 @@ public class CGFinder {
 					final Map<CloneSet, Map<CloneSet, Double>> similarities = new HashMap<>();
 					remainingClonepairs = null;
 					remainingClonesets = /* filterClones(clonesets, similarities) */clonesets;
-					DetectionResultsFormat.writer(files, remainingClonesets,
-							config.getRESULT());
+					DetectionResultsFormat.writer(files, remainingClonesets, config.getRESULT());
 				}
 				final long timeToEnd = System.nanoTime();
 
@@ -143,42 +144,37 @@ public class CGFinder {
 					}
 
 					text.append("execution time: ");
-					text.append(TimingUtility.getExecutionTime(timeToStart,
-							timeToEnd));
+					text.append(TimingUtility.getExecutionTime(timeToStart, timeToEnd));
 					text.append(System.lineSeparator());
 					text.append(" file reading time: ");
-					text.append(TimingUtility.getExecutionTime(timeToStart,
-							timeToDetect));
+					text.append(TimingUtility.getExecutionTime(timeToStart, timeToDetect));
 					text.append(System.lineSeparator());
 					text.append(" clone detection time: ");
-					text.append(TimingUtility.getExecutionTime(timeToDetect,
-							timeToFilter));
+					text.append(TimingUtility.getExecutionTime(timeToDetect, timeToFilter));
 					text.append(System.lineSeparator());
 					text.append(" clone filtering time: ");
-					text.append(TimingUtility.getExecutionTime(timeToFilter,
-							timeToEnd));
+					text.append(TimingUtility.getExecutionTime(timeToFilter, timeToEnd));
 					text.append(System.lineSeparator());
 					text.append(" (for performance turning) matrix creation time for all the threads: ");
-					text.append(TimingUtility.getExecutionTime(SmithWaterman
-							.getMatrixCreationTime()));
+					text.append(TimingUtility.getExecutionTime(SmithWaterman.getMatrixCreationTime()));
 					text.append(System.lineSeparator());
-					text.append(" (for performance turning) similar alignment identification time for all the threads: ");
-					text.append(TimingUtility.getExecutionTime(SmithWaterman
-							.getCloneDetectionTime()));
+					text.append(
+							" (for performance turning) similar alignment identification time for all the threads: ");
+					text.append(TimingUtility.getExecutionTime(SmithWaterman.getCloneDetectionTime()));
 					out.println(text.toString());
 				}
 			}
 
-			progress.setVisible(false);
+			if (!config.isCUI()) {
+				progress.setVisible(false);
+			}
 
 			if (config.isGEMINI()) {
 				final String results = config.getRESULT();
-				final ExecutorService service = Executors
-						.newSingleThreadExecutor();
+				final ExecutorService service = Executors.newSingleThreadExecutor();
 				final Gemini gemini = new Gemini(results);
 				if (null != gemini.getError()) {
-					JOptionPane.showMessageDialog(wizard, gemini.getError(),
-							"CloneGear", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(wizard, gemini.getError(), "CloneGear", JOptionPane.ERROR_MESSAGE);
 				} else {
 					final Future<?> f = service.submit(gemini);
 					try {
@@ -197,18 +193,15 @@ public class CGFinder {
 
 		final List<SourceFile> files = new ArrayList<>();
 		if (config.hasSOURCE()) {
-			files.addAll(FileUtility.collectSourceFiles(new File(config
-					.getSOURCE())));
+			files.addAll(FileUtility.collectSourceFiles(new File(config.getSOURCE())));
 		}
 		if (config.hasLIST()) {
 			files.addAll(FileUtility.collectFilesWithList(config.getLIST()));
 		}
 
-		for (final Iterator<SourceFile> iterator = files.iterator(); iterator
-				.hasNext();) {
+		for (final Iterator<SourceFile> iterator = files.iterator(); iterator.hasNext();) {
 			final SourceFile file = iterator.next();
-			if (file instanceof HTMLFile || file instanceof JSPFile
-					|| file instanceof PHPFile) {
+			if (file instanceof HTMLFile || file instanceof JSPFile || file instanceof PHPFile) {
 				iterator.remove();
 			}
 		}
@@ -237,11 +230,9 @@ public class CGFinder {
 			final int loc = lines.size();
 			file.setLOC(loc);
 
-			final List<Statement> statements = StringUtility.splitToStatements(
-					text, file.getLanguage());
+			final List<Statement> statements = StringUtility.splitToStatements(text, file.getLanguage());
 			if (!config.isFOLDING()) {
-				final List<Statement> foldedStatements = Statement
-						.getFoldedStatements(statements);
+				final List<Statement> foldedStatements = Statement.getFoldedStatements(statements);
 				file.addStatements(foldedStatements);
 			} else {
 				file.addStatements(statements);
@@ -250,12 +241,10 @@ public class CGFinder {
 
 		final List<WebFile> webFiles = new ArrayList<>();
 		if (config.hasSOURCE()) {
-			webFiles.addAll(FileUtility.collectWebFiles(new File(config
-					.getSOURCE())));
+			webFiles.addAll(FileUtility.collectWebFiles(new File(config.getSOURCE())));
 		}
 		if (config.hasLIST()) {
-			webFiles.addAll(FileUtility.collectWebFilesWithList(config
-					.getLIST()));
+			webFiles.addAll(FileUtility.collectWebFilesWithList(config.getLIST()));
 		}
 
 		if (config.getLANGUAGE().contains(LANGUAGE.JAVASCRIPT)) {
@@ -269,13 +258,11 @@ public class CGFinder {
 				final int loc = lines.size();
 
 				final List<Statement> statements = f.getJavascriptStatements();
-				final JavascriptFile javascriptFile = new JavascriptFile(
-						f.path, 0);
+				final JavascriptFile javascriptFile = new JavascriptFile(f.path, 0);
 				javascriptFile.setLOC(loc);
 
 				if (!config.isFOLDING()) {
-					final List<Statement> foldedStatements = Statement
-							.getFoldedStatements(statements);
+					final List<Statement> foldedStatements = Statement.getFoldedStatements(statements);
 					javascriptFile.addStatements(foldedStatements);
 				} else {
 					javascriptFile.addStatements(statements);
@@ -298,8 +285,7 @@ public class CGFinder {
 				jspFile.setLOC(loc);
 
 				if (!config.isFOLDING()) {
-					final List<Statement> foldedStatements = Statement
-							.getFoldedStatements(statements);
+					final List<Statement> foldedStatements = Statement.getFoldedStatements(statements);
 					jspFile.addStatements(foldedStatements);
 				} else {
 					jspFile.addStatements(statements);
@@ -322,8 +308,7 @@ public class CGFinder {
 				phpFile.setLOC(loc);
 
 				if (!config.isFOLDING()) {
-					final List<Statement> foldedStatements = Statement
-							.getFoldedStatements(statements);
+					final List<Statement> foldedStatements = Statement.getFoldedStatements(statements);
 					phpFile.addStatements(foldedStatements);
 				} else {
 					phpFile.addStatements(statements);
@@ -347,8 +332,7 @@ public class CGFinder {
 		final boolean isCrossFileDetection = config.isCrossFileDetection();
 		final boolean isWithinFileDetection = config.isWithinFileDetection();
 
-		final ExecutorService executorService = Executors
-				.newFixedThreadPool(config.getTHREAD());
+		final ExecutorService executorService = Executors.newFixedThreadPool(config.getTHREAD());
 		final List<ClonePair> clonepairs = new ArrayList<>();
 		final List<Future<?>> futures = new ArrayList<>();
 		for (int i = 0; i < files.size(); i++) {
@@ -360,8 +344,7 @@ public class CGFinder {
 					continue;
 				}
 
-				if (!isCrossFileDetection && (iFile.groupID == jFile.groupID)
-						&& !iFile.path.equals(jFile.path)) {
+				if (!isCrossFileDetection && (iFile.groupID == jFile.groupID) && !iFile.path.equals(jFile.path)) {
 					continue;
 				}
 
@@ -369,9 +352,7 @@ public class CGFinder {
 					continue;
 				}
 
-				final Future<?> future = executorService
-						.submit(new CloneDetectionThread(iFile, jFile,
-								clonepairs));
+				final Future<?> future = executorService.submit(new CloneDetectionThread(iFile, jFile, clonepairs));
 				futures.add(future);
 			}
 		}
@@ -407,8 +388,8 @@ public class CGFinder {
 		return list;
 	}
 
-	private static <T extends CloneData> List<T> filterClones(
-			final List<T> clones, final Map<T, Map<T, Double>> similarities) {
+	private static <T extends CloneData> List<T> filterClones(final List<T> clones,
+			final Map<T, Map<T, Double>> similarities) {
 
 		if (!CGConfig.getInstance().isVERBOSE()) {
 			out.println("filtering trivial clones ... ");
@@ -443,8 +424,7 @@ public class CGFinder {
 		return remaining;
 	}
 
-	private static <T extends CloneData> boolean isTrivial(
-			final Entry<T, Map<T, Double>> entry) {
+	private static <T extends CloneData> boolean isTrivial(final Entry<T, Map<T, Double>> entry) {
 
 		final int N = 10;
 		final double threshold = 0.96d;
@@ -465,10 +445,10 @@ public class CGFinder {
 	private static void printInBellonFomat(final List<ClonePair> clonepairs) {
 
 		final CGConfig config = CGConfig.getInstance();
-		try (final PrintWriter writer = config.hasRESULT() ? new PrintWriter(
-				new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
-						config.getRESULT()), "UTF-8"))) : new PrintWriter(
-				new OutputStreamWriter(System.out, "UTF-8"))) {
+		try (final PrintWriter writer = config.hasRESULT()
+				? new PrintWriter(
+						new BufferedWriter(new OutputStreamWriter(new FileOutputStream(config.getRESULT()), "UTF-8")))
+				: new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"))) {
 
 			for (final ClonePair clonepair : clonepairs) {
 				writer.print(clonepair.left.file.path);
@@ -496,14 +476,13 @@ public class CGFinder {
 			final Collection<SortedSet<ClonedFragment>> clonesets) {
 
 		final CGConfig config = CGConfig.getInstance();
-		try (final PrintWriter writer = config.hasRESULT() ? new PrintWriter(
-				new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
-						config.getRESULT()), "UTF-8"))) : new PrintWriter(
-				new OutputStreamWriter(System.out, "UTF-8"))) {
+		try (final PrintWriter writer = config.hasRESULT()
+				? new PrintWriter(
+						new BufferedWriter(new OutputStreamWriter(new FileOutputStream(config.getRESULT()), "UTF-8")))
+				: new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"))) {
 
 			writer.println("#begin{file description}");
-			Collections.<SourceFile> sort(files,
-					(file1, file2) -> file1.path.compareTo(file2.path));
+			Collections.<SourceFile>sort(files, (file1, file2) -> file1.path.compareTo(file2.path));
 
 			final Map<SourceFile, Integer> map = new HashMap<SourceFile, Integer>();
 			for (final SourceFile file : files) {
@@ -554,20 +533,17 @@ public class CGFinder {
 		}
 	}
 
-	private static <T extends CloneData> void print(
-			final Map<T, Map<T, Double>> similarities) {
+	private static <T extends CloneData> void print(final Map<T, Map<T, Double>> similarities) {
 
 		final CGConfig config = CGConfig.getInstance();
-		try (final PrintWriter writer = new PrintWriter(new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream(
-						config.getSIMILARITY()), "UTF-8")))) {
+		try (final PrintWriter writer = new PrintWriter(
+				new BufferedWriter(new OutputStreamWriter(new FileOutputStream(config.getSIMILARITY()), "UTF-8")))) {
 
 			for (final Entry<T, Map<T, Double>> entry : similarities.entrySet()) {
 
 				final T clone1 = entry.getKey();
 
-				for (final Entry<T, Double> entry2 : entry.getValue()
-						.entrySet()) {
+				for (final Entry<T, Double> entry2 : entry.getValue().entrySet()) {
 
 					final T clone2 = entry2.getKey();
 					final Double similarity = entry2.getValue();
