@@ -107,7 +107,6 @@ public class MD5 {
 		}
 
 		final String text = String.join(" ", normalizedTokens.stream().map(t -> t.value).collect(Collectors.toList()));
-		System.out.println(text);
 		final MD5 md5 = MD5.getMD5(text);
 		tokenToMD5.put(normalizedTokens, md5);
 		md5ToToken.put(md5, normalizedTokens);
