@@ -154,7 +154,6 @@ public class DetectionResultsFormat {
 			return new GUIClonePair(clonesetID, leftClone, rightClone, null);
 		} else {
 			final String code = tokens[10];
-			System.out.println(code);
 			return new GUIClonePair(clonesetID, leftClone, rightClone, code);
 		}
 	}

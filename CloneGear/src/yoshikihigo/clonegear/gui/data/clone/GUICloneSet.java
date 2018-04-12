@@ -1,15 +1,29 @@
 package yoshikihigo.clonegear.gui.data.clone;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
 import yoshikihigo.clonegear.gui.data.Entity;
 import yoshikihigo.clonegear.gui.data.HavingClones;
 
-public class GUICloneSet implements Comparable<GUICloneSet>, Entity,
-		HavingClones {
+public class GUICloneSet implements Comparable<GUICloneSet>, Entity, HavingClones {
+
+	static public GUICloneSet[] convertPairsToSets(final List<GUIClonePair> pairs) {
+		Map<Integer, GUICloneSet> map = new HashMap<>();
+		pairs.stream().forEach(p -> {
+			GUICloneSet set = map.get(p.clonesetID);
+			if (null == set) {
+				set = new GUICloneSet(p.clonesetID);
+				map.put(p.clonesetID, set);
+			}
+			set.addClonepair(p);
+		});
+		return map.values().toArray(new GUICloneSet[0]);
+	}
 
 	public GUICloneSet(final int id) {
 		this.id = id;
@@ -70,6 +84,10 @@ public class GUICloneSet implements Comparable<GUICloneSet>, Entity,
 
 	public final int getRNR() {
 		return GUICloneMetricsManager.SINGLETON.getRNR(this);
+	}
+
+	public final String getCode() {
+		return this.size() > 0 ? this.getClonepairs().get(0).code : "";
 	}
 
 	@Override

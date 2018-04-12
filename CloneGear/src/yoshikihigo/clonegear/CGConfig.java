@@ -20,8 +20,7 @@ public class CGConfig {
 		final Options options = new Options();
 
 		{
-			final Option source = new Option("src", "source", true,
-					"source code of clone detection target");
+			final Option source = new Option("src", "source", true, "source code of clone detection target");
 			source.setArgName("sourcecode");
 			source.setArgs(1);
 			source.setRequired(false);
@@ -29,8 +28,7 @@ public class CGConfig {
 		}
 
 		{
-			final Option list = new Option("list", "list", true,
-					"file listing target source files");
+			final Option list = new Option("list", "list", true, "file listing target source files");
 			list.setArgName("listfile");
 			list.setArgs(1);
 			list.setRequired(false);
@@ -38,8 +36,8 @@ public class CGConfig {
 		}
 
 		{
-			final Option similarityOutput = new Option("sml", "similarity",
-					true, "output file for similarities between clone sets");
+			final Option similarityOutput = new Option("sml", "similarity", true,
+					"output file for similarities between clone sets");
 			similarityOutput.setArgName("file");
 			similarityOutput.setArgs(1);
 			similarityOutput.setRequired(false);
@@ -47,8 +45,7 @@ public class CGConfig {
 		}
 
 		{
-			final Option language = new Option("lang", "language", true,
-					"programming language for analysis");
+			final Option language = new Option("lang", "language", true, "programming language for analysis");
 			language.setArgName("language");
 			language.setArgs(1);
 			language.setRequired(false);
@@ -56,8 +53,7 @@ public class CGConfig {
 		}
 
 		{
-			final Option normalization = new Option("p", "parameterize", true,
-					"parameterization");
+			final Option normalization = new Option("p", "parameterize", true, "parameterization");
 			normalization.setArgName("no/matching/simple");
 			normalization.setArgs(1);
 			normalization.setRequired(false);
@@ -65,8 +61,7 @@ public class CGConfig {
 		}
 
 		{
-			final Option threshold = new Option("thrld", "threshold", true,
-					"threshold of detected clone size");
+			final Option threshold = new Option("thrld", "threshold", true, "threshold of detected clone size");
 			threshold.setArgName("threshold");
 			threshold.setArgs(1);
 			threshold.setRequired(false);
@@ -74,8 +69,7 @@ public class CGConfig {
 		}
 
 		{
-			final Option gap = new Option("gap", "gap", true,
-					"threshold of gap size allowed in clones");
+			final Option gap = new Option("gap", "gap", true, "threshold of gap size allowed in clones");
 			gap.setArgName("gap");
 			gap.setArgs(1);
 			gap.setRequired(false);
@@ -83,8 +77,7 @@ public class CGConfig {
 		}
 
 		{
-			final Option thread = new Option("thd", "thread", true,
-					"end revision of repository for test");
+			final Option thread = new Option("thd", "thread", true, "end revision of repository for test");
 			thread.setArgName("thread");
 			thread.setArgs(1);
 			thread.setRequired(false);
@@ -92,15 +85,13 @@ public class CGConfig {
 		}
 
 		{
-			final Option verbose = new Option("v", "verbose", false,
-					"verbose output for progressing");
+			final Option verbose = new Option("v", "verbose", false, "verbose output for progressing");
 			verbose.setRequired(false);
 			options.addOption(verbose);
 		}
 
 		{
-			final Option result = new Option("result", "result", true,
-					"clone detection results");
+			final Option result = new Option("result", "result", true, "clone detection results");
 			result.setArgName("file");
 			result.setArgs(1);
 			result.setRequired(false);
@@ -108,8 +99,7 @@ public class CGConfig {
 		}
 
 		{
-			final Option cui = new Option("cui", "cui", false,
-					"run in CUI mode");
+			final Option cui = new Option("cui", "cui", false, "run in CUI mode");
 			cui.setRequired(false);
 			options.addOption(cui);
 		}
@@ -122,8 +112,7 @@ public class CGConfig {
 		}
 
 		{
-			final Option cg = new Option("cg", "cross-group", true,
-					"detect clones cross groups");
+			final Option cg = new Option("cg", "cross-group", true, "detect clones cross groups");
 			cg.setArgName("YES-or-NO");
 			cg.setArgs(1);
 			cg.setRequired(false);
@@ -131,8 +120,7 @@ public class CGConfig {
 		}
 
 		{
-			final Option cf = new Option("cf", "cross-file", true,
-					"detect clones cross files");
+			final Option cf = new Option("cf", "cross-file", true, "detect clones cross files");
 			cf.setArgName("YES-or-NO");
 			cf.setArgs(1);
 			cf.setRequired(false);
@@ -140,8 +128,7 @@ public class CGConfig {
 		}
 
 		{
-			final Option wf = new Option("wf", "within-file", true,
-					"detect clones cross files");
+			final Option wf = new Option("wf", "within-file", true, "detect clones cross files");
 			wf.setArgName("YES-or-NO");
 			wf.setArgs(1);
 			wf.setRequired(false);
@@ -149,38 +136,41 @@ public class CGConfig {
 		}
 
 		{
-			final Option n = new Option("n", "no-detection", false,
-					"not execute clone detection");
+			final Option n = new Option("n", "no-detection", false, "not execute clone detection");
 			n.setRequired(false);
 			options.addOption(n);
 		}
 
 		{
-			final Option gemini = new Option("g", "gemini", false,
-					"launch Gemini after finishing clone detection");
+			final Option gemini = new Option("g", "gemini", false, "launch Gemini after finishing clone detection");
 			gemini.setRequired(false);
 			options.addOption(gemini);
 		}
 
 		{
-			final Option debug = new Option("debug", "debug", false,
-					"print some informlation for debugging");
+			final Option debug = new Option("debug", "debug", false, "print some informlation for debugging");
 			debug.setRequired(false);
 			options.addOption(debug);
 		}
 
 		{
-			final Option module = new Option("module", "module", false,
-					"do not consider module boundaries");
+			final Option module = new Option("module", "module", false, "do not consider module boundaries");
 			module.setRequired(false);
 			options.addOption(module);
 		}
 
 		{
-			final Option bellon = new Option("bellon", "bellon", false,
-					"use bellon format for output file");
+			final Option bellon = new Option("bellon", "bellon", false, "use bellon format for output file");
 			bellon.setRequired(false);
 			options.addOption(bellon);
+		}
+
+		{
+			final Option db = new Option("db", "database", false, "database for trivial clones");
+			db.setArgName("database");
+			db.setArgs(1);
+			db.setRequired(false);
+			options.addOption(db);
 		}
 
 		try {
@@ -221,8 +211,7 @@ public class CGConfig {
 			while (tokenizer.hasMoreTokens()) {
 				try {
 					final String value = tokenizer.nextToken();
-					final LANGUAGE language = LANGUAGE.valueOf(value
-							.toUpperCase());
+					final LANGUAGE language = LANGUAGE.valueOf(value.toUpperCase());
 					languages.add(language);
 				} catch (final IllegalArgumentException e) {
 					System.err.println("invalid option value for \"-lang\"");
@@ -245,10 +234,8 @@ public class CGConfig {
 		if (this.commandLine.hasOption("p")) {
 			value = this.commandLine.getOptionValue("p");
 		}
-		if (!value.equals("no") && !value.equals("matching")
-				&& !value.equals("simple")) {
-			System.err
-					.println("either of no/matching/simple is value for option \"-p\"");
+		if (!value.equals("no") && !value.equals("matching") && !value.equals("simple")) {
+			System.err.println("either of no/matching/simple is value for option \"-p\"");
 			System.exit(0);
 		}
 		return value;
@@ -291,18 +278,15 @@ public class CGConfig {
 	}
 
 	public int getTHRESHOLD() {
-		return this.commandLine.hasOption("thrld") ? Integer
-				.parseInt(this.commandLine.getOptionValue("thrld")) : 50;
+		return this.commandLine.hasOption("thrld") ? Integer.parseInt(this.commandLine.getOptionValue("thrld")) : 50;
 	}
 
 	public int getGAP() {
-		return this.commandLine.hasOption("gap") ? Integer
-				.parseInt(this.commandLine.getOptionValue("gap")) : 2;
+		return this.commandLine.hasOption("gap") ? Integer.parseInt(this.commandLine.getOptionValue("gap")) : 2;
 	}
 
 	public int getTHREAD() {
-		return this.commandLine.hasOption("thd") ? Integer
-				.parseInt(this.commandLine.getOptionValue("thd")) : 1;
+		return this.commandLine.hasOption("thd") ? Integer.parseInt(this.commandLine.getOptionValue("thd")) : 1;
 	}
 
 	public boolean isVERBOSE() {
@@ -321,6 +305,18 @@ public class CGConfig {
 		return this.commandLine.getOptionValue("result");
 	}
 
+	public boolean hasDATABASE() {
+		return this.commandLine.hasOption("db");
+	}
+
+	public String getDATABASE() {
+		if (!this.commandLine.hasOption("db")) {
+			System.err.println("option \"db\" is not specified.");
+			System.exit(0);
+		}
+		return this.commandLine.getOptionValue("db");
+	}
+
 	public boolean isCrossGroupDetection() {
 		if (!this.commandLine.hasOption("cg")) {
 			return true;
@@ -331,8 +327,7 @@ public class CGConfig {
 		} else if (value.equalsIgnoreCase("NO")) {
 			return false;
 		} else {
-			System.err.println("\"" + value
-					+ "\" is invalid value for \"--cross-group\".");
+			System.err.println("\"" + value + "\" is invalid value for \"--cross-group\".");
 			System.err.println("acceptable values are YES or NOT.");
 			System.exit(0);
 		}
@@ -349,8 +344,7 @@ public class CGConfig {
 		} else if (value.equalsIgnoreCase("NO")) {
 			return false;
 		} else {
-			System.err.println("\"" + value
-					+ "\" is invalid value for \"--cross-file\".");
+			System.err.println("\"" + value + "\" is invalid value for \"--cross-file\".");
 			System.err.println("acceptable values are YES or NOT.");
 			System.exit(0);
 		}
@@ -367,8 +361,7 @@ public class CGConfig {
 		} else if (value.equalsIgnoreCase("NO")) {
 			return false;
 		} else {
-			System.err.println("\"" + value
-					+ "\" is invalid value for \"--within-file\".");
+			System.err.println("\"" + value + "\" is invalid value for \"--within-file\".");
 			System.err.println("acceptable values are YES or NOT.");
 			System.exit(0);
 		}
