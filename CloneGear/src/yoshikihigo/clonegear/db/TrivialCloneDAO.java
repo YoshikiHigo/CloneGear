@@ -2,18 +2,22 @@ package yoshikihigo.clonegear.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import yoshikihigo.clonegear.CGConfig;
+import yoshikihigo.clonegear.data.MD5;
+import yoshikihigo.clonegear.gui.data.clone.GUICloneSet;
 
-public class CloneTextDAO {
+public class TrivialCloneDAO {
 
-	static private CloneTextDAO SINGLETON = null;
+	static private TrivialCloneDAO SINGLETON = null;
 
-	static public CloneTextDAO getInstance() {
+	static public TrivialCloneDAO getInstance() {
 		if (null == SINGLETON) {
-			SINGLETON = new CloneTextDAO();
+			SINGLETON = new TrivialCloneDAO();
 		}
 		return SINGLETON;
 	}
@@ -28,7 +32,7 @@ public class CloneTextDAO {
 	private String database;
 	private Connection connector;
 
-	private CloneTextDAO() {
+	private TrivialCloneDAO() {
 
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -51,8 +55,8 @@ public class CloneTextDAO {
 
 	private void makeDB() {
 
-		final String CLONETEXT_SCHEMA = "hash blog primary key, text string";
-		final String CLONEDISTRIBUTION_SCHEMA = "hash blog, project string, frequency integer";
+		final String CLONETEXT_SCHEMA = "hash blog, text string, primary key(blog)";
+		final String CLONEDISTRIBUTION_SCHEMA = "hash blog, project string, frequency integer, primary key(hash, project)";
 
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -73,7 +77,7 @@ public class CloneTextDAO {
 			statement.executeUpdate("create index index_text_clonetext on clonetext(text)");
 			statement.close();
 
-			statement.executeUpdate("create table clonedistribution (" + CLONETEXT_SCHEMA + ")");
+			statement.executeUpdate("create table clonedistribution (" + CLONEDISTRIBUTION_SCHEMA + ")");
 			statement.executeUpdate("create index index_hash_clonedistribution on clonetext(hash)");
 			statement.executeUpdate("create index index_project_clonedistribution on clonetext(project)");
 			statement.close();
@@ -83,44 +87,41 @@ public class CloneTextDAO {
 		}
 	}
 
-	private void registerCloneText(final List<GUICloneSet> clonesets){
-			final Statement statement2 = connector.createStatement();
-			final ResultSet results2 = statement2
-					.executeQuery("select software, id, date, message, author from revisions");
-			final PreparedStatement statement3 = connector
-					.prepareStatement("insert into bugfixrevisions values (?, ?, ?, ?, ?, ?, ?)");
-			while (results2.next()) {
-				final String software = results2.getString(1);
-				final String id = results2.getString(2);
-				final String date = results2.getString(3);
-				final String message = results2.getString(4);
-				final String author = results2.getString(5);
+	private void registerCloneText(final List<GUICloneSet> clonesets, final String projectName) {
 
-				int bugfix = 0;
-				final StringBuilder urls = new StringBuilder();
-				for (final Entry<String, String> entry : bugIDs.entrySet()) {
-					final String bugId = entry.getKey();
-					if (message.contains(bugId)) {
-						bugfix++;
-						final String url = entry.getValue();
-						urls.append(url);
-						urls.append(System.lineSeparator());
-					}
+		try {
+			final PreparedStatement statement1 = this.connector.prepareStatement("replace into clonetext (?, ?)");
+			final PreparedStatement statement2 = this.connector.prepareStatement("replace into clonetext (?, ?, ?)");
+
+			int number = 0;
+			for (final GUICloneSet c : clonesets) {
+				final String code = c.getCode();
+				final MD5 md5 = MD5.getMD5(code);
+				final int frequency = c.size();
+
+				statement1.setBytes(1, md5.value);
+				statement1.setString(2, code);
+				statement1.addBatch();
+
+				statement2.setBytes(1, md5.value);
+				statement2.setString(2, projectName);
+				statement2.setInt(3, frequency);
+				statement2.addBatch();
+
+				number++;
+
+				if (number > 10000) {
+					statement1.executeBatch();
+					statement2.executeBatch();
 				}
-
-				statement3.setString(1, software);
-				statement3.setString(2, id);
-				statement3.setString(3, date);
-				statement3.setString(4, message);
-				statement3.setString(5, author);
-				statement3.setInt(6, bugfix);
-				statement3.setString(7, urls.toString());
-				statement3.executeUpdate();
 			}
-			statement2.close();
-			statement3.close();
+			statement1.executeBatch();
+			statement2.executeBatch();
 
-		} catch (SQLException | ClassNotFoundException e) {
+			statement1.close();
+			statement2.close();
+
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}

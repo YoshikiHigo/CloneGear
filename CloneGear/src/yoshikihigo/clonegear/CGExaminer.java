@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import yoshikihigo.clonegear.db.TrivialCloneDAO;
 import yoshikihigo.clonegear.gui.data.clone.GUIClonePair;
 import yoshikihigo.clonegear.gui.data.clone.GUICloneSet;
 import yoshikihigo.clonegear.gui.data.file.GUIFile;
@@ -36,6 +37,8 @@ public class CGExaminer {
 		Arrays.stream(clonesets).forEach(c -> {
 			System.out.println(c.id + " : " + c.getCode());
 		});
+		
+		final TrivialCloneDAO dao = TrivialCloneDAO.getInstance();
 
 	}
 
