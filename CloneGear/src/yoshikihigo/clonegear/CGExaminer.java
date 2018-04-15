@@ -39,7 +39,8 @@ public class CGExaminer {
 		});
 		
 		final TrivialCloneDAO dao = TrivialCloneDAO.getInstance();
-
+		dao.makeDB(false);
+		dao.registerCloneText(clonesets);
 	}
 
 }

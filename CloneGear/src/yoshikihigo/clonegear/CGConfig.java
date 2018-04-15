@@ -172,6 +172,14 @@ public class CGConfig {
 			db.setRequired(false);
 			options.addOption(db);
 		}
+		
+		{
+			final Option projectName = new Option("prj", "project", false, "project name registered to trivial clones database");
+			projectName.setArgName("project");
+			projectName.setArgs(1);
+			projectName.setRequired(false);
+			options.addOption(projectName);
+		}
 
 		try {
 			final CommandLineParser parser = new PosixParser();
@@ -315,6 +323,14 @@ public class CGConfig {
 			System.exit(0);
 		}
 		return this.commandLine.getOptionValue("db");
+	}
+	
+	public String getPROJETNAME() {
+		if (!this.commandLine.hasOption("prj")) {
+			System.err.println("option \"prj\" is not specified.");
+			System.exit(0);
+		}
+		return this.commandLine.getOptionValue("prj");
 	}
 
 	public boolean isCrossGroupDetection() {
